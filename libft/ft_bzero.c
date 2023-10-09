@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:55:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/09 18:09:41 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/09 17:50:12 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/09 18:14:35 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
 
-void * ft_memset(void *str, int c, size_t len)
+void	ft_bzero(void *str, size_t n)
 {
 	int				i;
 	unsigned char	*str_temp;
 
 	i = 0;
-	c = (unsigned char)c;
-	str_temp = (unsigned char *)str;
-	while (len > 0)
+	str_temp = (unsigned char*) str;
+	while (n > 0)
 	{
-		str_temp[i] = c;
-		len--;
+		str_temp[i] = '\0';
+		n--;
 		i++;
 	}
-	return (str);
 }
 /*
 int	main(void)
 {
-	char	str[] = "Il faut que je me souvienne de ce que j'avais fait";
-	
-	ft_memset(&str, '-', 5);
+	char	str[] = "Allez, ça doit pas être si compliqué";
+	char	str2[] = "Allez, ça doit pas être si compliqué";
+	ft_bzero(&str, 4);
 	puts(str);
-	memset(&str, '-', 5);
-	puts(str);
+	bzero(&str2, 4);
+	puts(str2);
 	return (0);
 }
 */
