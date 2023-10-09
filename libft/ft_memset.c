@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 13:09:03 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/09 17:30:31 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/09 16:55:25 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/09 17:23:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <ctype.h>
+#include <string.h>
 
-int	ft_isascii(int c)
+void*	ft_memset(void *str, int c, size_t len)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	else
-		return (0);
+	int	i;
+	unsigned char	*str_temp;
+	
+	i = 0;
+	c = (unsigned char)c;
+	str_temp = (unsigned char *)str;
+	while (len > 0)
+	{
+		str_temp[i] = c;
+		len--;
+		i++;	
+	}
+	return (str);
 }
-/*
-int main(int argc, char ** argv)
+
+int	main(void)
 {
-   // unsigned char   c;
-    //c = 128;
-    if (argc == 2)
-    {
-        printf("argv is : %d\n", ft_isascii(*argv[1]));
-        printf("argv is : %d\n", isascii(*argv[1]));
-    }
-        return 0;
+	char	str[] = "Il faut que je me souvienne de ce que j'avais fait";
+	
+	ft_memset(&str, '-', 5);
+	memset(&str, '-', 5);
+	return (0);
 }
-*/

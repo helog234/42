@@ -6,14 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:17:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/09 16:20:05 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/09 17:30:44 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <ctype.h>
 
-int	ft_isprint(unsigned char c)
+int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 127)
 		return (1);
