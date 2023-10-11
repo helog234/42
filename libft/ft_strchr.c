@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 17:50:12 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 16:54:29 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/11 16:56:21 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/11 17:53:22 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-void	ft_bzero(void *str, size_t n)
+const char	*ft_strchr(const char *s, int c)
 {
-	int				i;
-	unsigned char	*str_temp;
+	int	i;
 
 	i = 0;
-	str_temp = (unsigned char *) str;
-	while (n > 0)
+	while (s[i])
 	{
-		str_temp[i] = '\0';
-		n--;
-		i++;
+		if (s[i] == c)
+			return (&s[i]);
+		else
+			i++;
 	}
+	if (s[i] != c)
+		return (0);
+	return (&s[i]);
 }
 /*
 #include <stdio.h>
@@ -31,12 +32,10 @@ void	ft_bzero(void *str, size_t n)
 
 int	main(void)
 {
-	char	str[] = "Allez, ça doit pas être si compliqué";
-	char	str2[] = "Allez, ça doit pas être si compliqué";
-	ft_bzero(&str, 4);
-	puts(str);
-	bzero(&str2, 4);
-	puts(str2);
+	char	s[] ="Hello World !";
+	char	c = 0;
+	printf("s is : %p\n", ft_strchr(s, c));
+	printf("s is : %p\n", strchr(s, c));
 	return (0);
 }
 */
