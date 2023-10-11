@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 17:50:12 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 09:52:12 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/11 08:56:30 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/11 10:39:42 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
 
-void	ft_bzero(void *str, size_t n)
+void	*ft_memcpy(void	*dst, const void *src, unsigned long n)
 {
 	int				i;
-	unsigned char	*str_temp;
 
 	i = 0;
-	str_temp = (unsigned char *) str;
 	while (n > 0)
 	{
-		str_temp[i] = '\0';
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
 		n--;
 		i++;
 	}
+	return (dst);
 }
 /*
 int	main(void)
 {
-	char	str[] = "Allez, ça doit pas être si compliqué";
-	char	str2[] = "Allez, ça doit pas être si compliqué";
-	ft_bzero(&str, 4);
-	puts(str);
-	bzero(&str2, 4);
-	puts(str2);
+	char	dst[] = "KOKOKOKOKOKO";
+	char	src[] = "ABCDEF";
+	//int	n = 2;
+
+	printf("dest is : %s\n",ft_memcpy(&dst, src, 4));
+	printf("dest is : %s\n",memcpy(&dst, src, 4));
 	return (0);
 }
 */

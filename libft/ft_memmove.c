@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 17:50:12 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 09:52:12 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/11 09:56:58 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/11 10:41:47 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
 
-void	ft_bzero(void *str, size_t n)
+void	*ft_memmove(void *dst, const void *src, unsigned long len)
 {
+	unsigned char	*dst_temp;
+	unsigned char	*src_temp;
 	int				i;
-	unsigned char	*str_temp;
 
 	i = 0;
-	str_temp = (unsigned char *) str;
-	while (n > 0)
+	dst_temp = (unsigned char *)dst;
+	src_temp = (unsigned char *)src;
+	while (len > 0)
 	{
-		str_temp[i] = '\0';
-		n--;
+		dst_temp[i] = src_temp[i];
+		len--;
 		i++;
 	}
+	return (dst);
 }
 /*
 int	main(void)
 {
-	char	str[] = "Allez, ça doit pas être si compliqué";
-	char	str2[] = "Allez, ça doit pas être si compliqué";
-	ft_bzero(&str, 4);
-	puts(str);
-	bzero(&str2, 4);
-	puts(str2);
+	char	dst[] = "Hello world !";
+	char	src[] = "ABC";
+	
+	printf("dest is : %s\n", ft_memmove(&dst, src, 3));
+	printf("dest is : %s\n", memmove(&dst, src, 3));
 	return (0);
 }
 */

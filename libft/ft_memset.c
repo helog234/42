@@ -6,14 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:55:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/09 18:09:41 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/11 10:29:27 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
 
-void * ft_memset(void *str, int c, size_t len)
+void	*ft_memset(void *str, int c, size_t len)
 {
 	int				i;
 	unsigned char	*str_temp;
