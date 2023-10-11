@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:56:58 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 10:41:47 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/11 10:56:23 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	main(void)
 	char	dst[] = "Hello world !";
 	char	src[] = "ABC";
 	
-	printf("dest is : %s\n", ft_memmove(&dst, src, 3));
-	printf("dest is : %s\n", memmove(&dst, src, 3));
+	printf("dest is : %s\n", ft_memmove(&dst, src, 2));
+	printf("dest is : %s\n", memmove(&dst, src, 2));
 	return (0);
 }
 */
