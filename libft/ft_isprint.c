@@ -6,12 +6,9 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:17:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/09 17:30:44 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:22:54 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <ctype.h>
 
 int	ft_isprint(int c)
 {
@@ -21,6 +18,9 @@ int	ft_isprint(int c)
 		return (0);
 }
 /*
+#include <stdio.h>
+#include <ctype.h>
+
 int main(void)
 {
 	unsigned char   c;

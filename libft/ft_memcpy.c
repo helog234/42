@@ -6,12 +6,9 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 08:56:30 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 10:39:42 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:20:35 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <string.h>
 
 void	*ft_memcpy(void	*dst, const void *src, unsigned long n)
 {
@@ -27,6 +24,9 @@ void	*ft_memcpy(void	*dst, const void *src, unsigned long n)
 	return (dst);
 }
 /*
+#include <stdio.h>
+#include <string.h>
+
 int	main(void)
 {
 	char	dst[] = "KOKOKOKOKOKO";

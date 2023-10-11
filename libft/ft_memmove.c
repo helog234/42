@@ -6,12 +6,9 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:56:58 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 10:56:23 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:23:10 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <string.h>
 
 void	*ft_memmove(void *dst, const void *src, unsigned long len)
 {
@@ -31,6 +28,9 @@ void	*ft_memmove(void *dst, const void *src, unsigned long len)
 	return (dst);
 }
 /*
+#include <stdio.h>
+#include <string.h>
+
 int	main(void)
 {
 	char	dst[] = "Hello world !";

@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 12:58:32 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 16:21:23 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/11 15:50:55 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/11 16:19:00 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int c)
+char	ft_toupper(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1);
-	else if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	if (c >= 'a' && c <= 'z')
+		c = c - 32;
+	return (c);
 }
 /*
 #include <stdio.h>
 #include <ctype.h>
 
-int main(void)
+int	main(void)
 {
-    unsigned char   c;
-    c = 48;
-    
-    printf("c is : %d\n", ft_isalnum(c));
-    printf("c is : %d\n", isalnum(c));
+	char	c = 'n';
+	printf("char is : %c\n", ft_toupper(c));
+	printf("char is : %c\n", toupper(c));
+	return (0);
 }
 */

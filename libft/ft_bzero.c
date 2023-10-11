@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:50:12 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 09:52:12 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:24:54 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	ft_bzero(void *str, size_t n)
 	}
 }
 /*
+#include <stdio.h>
+#include <string.h>
+
 int	main(void)
 {
 	char	str[] = "Allez, ça doit pas être si compliqué";

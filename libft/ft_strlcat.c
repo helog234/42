@@ -1,46 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 10:43:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 13:23:45 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/11 13:24:37 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/11 16:19:13 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+unsigned long	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	unsigned long	i;
+	unsigned long	j;
+
+	i = 0;
+	j = 0;
+	while (dst[i])
+		i++;
+	while (src[j])
+		j++;
+	if (i >= dstsize)
+		return (dstsize + j);
+	j = 0;
+	while (src[j] && i < (dstsize - 1))
+	{
+		dst[i] = src[j];
+		i++;
+		j++;
+	}
+	dst[i] = 0;
+	while (src[j])
+		j++;
+	return (i + j);
+}
 #include <stdio.h>
 #include <string.h>
 
-unsigned long	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	unsigned long	i;
-
-	i = 0;
-	if (src[i] == 0)
-		return (i);
-	while (i < (dstsize - 1) && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = 0;
-	while (src[i])
-		i++;
-	return (i);
-}
-/*
 int	main(void)
 {
-	char	dst1[] = "Hello World !";
-	char	dst2[] = "Hello World !";
-	char	src[] = "COUcou";
-
-	printf("dest is :%lu long\n", ft_strlcpy(dst1, src, 4));
+	char	src[20] = "Hello World !";
+	char	dst1[20] = "CouCou";
+	char	dst2[20] = "CouCou";
+	
+	printf("dest is: %lu\n", ft_strlcat(dst1, src, 10));
 	printf("%s\n", dst1);
-	printf("dest is :%lu long\n", strlcpy(dst2, src, 4));
+	printf("dest is: %lu\n", strlcat(dst2, src, 10));
 	printf("%s\n", dst2);
 	return (0);
 }
-*/
