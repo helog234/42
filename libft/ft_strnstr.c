@@ -6,43 +6,35 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:03:56 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/13 17:48:49 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/13 18:58:48 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <string.h>
 //#include "libft.h"
 
-char *ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	unsigned long	i;
 	unsigned long	j;
-	unsigned long	counter;
-	char			*haystack_temp;
-	char			*needle_temp;
-	
+
 	i = 0;
-	haystack_temp = (char *)haystack;
-	needle_temp = (char *)needle;
-	while (haystack_temp[i])
+	while (haystack[i] && i < len)
 	{
-		counter = 0;
 		j = 0;
-		if (needle_temp[j] == 0)
-			return (&haystack_temp[i]);
-		while (needle_temp[j] && j < len)
-		{
-			if (needle_temp[j] == haystack_temp[i] && counter < len)
-				counter++;
-			if (counter == len)
-				return (&needle_temp[j]);
+		if (needle[j] == 0)
+			return ((char *)&haystack[i]);
+		while (needle[j] && needle[j] == haystack[i + j])
 			j++;
-		}
+		if (needle[j] == 0)
+			return ((char *)&haystack[i]);
 		i++;
 	}
 	return (0);
 }
 
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -51,7 +43,8 @@ int	main(void)
 	char	haystack[] = "Salut les moutons. Il fait beau mais froid";
 	char	needle[] = "ai";
 	
-	printf("Returned value : %p\n", ft_strnstr(haystack, needle, 1));
-	printf("Returned value : %p\n", strnstr(haystack, needle, 1));
+	printf("Returned value : %p\n", ft_strnstr(haystack, needle, 40));
+	printf("Returned value : %p\n", strnstr(haystack, needle, 40));
 	return (0);
 }
+*/
