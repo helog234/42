@@ -6,10 +6,9 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:50:12 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 16:54:29 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/13 07:28:40 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 void	ft_bzero(void *str, size_t n)
 {
