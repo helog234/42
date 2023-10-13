@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 08:37:17 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/13 11:30:02 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/13 10:21:10 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/13 11:45:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
 
-void	*ft_memchr(const void *str, int c, size_t n)
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
 	int				i;
-	unsigned char	*char_temp;
+	unsigned char	*c1;
+	unsigned char	*c2;
 
-	char_temp = (unsigned char *)str;
 	i = 0;
-	while (char_temp[i] && n > 0)
+	c1 = (unsigned char *)str1;
+	c2 = (unsigned char *)str2;
+	while (c1[i] == c2[i] && n > 0)
 	{
-		if (char_temp[i] == c)
-			return (&char_temp[i]);
 		i++;
 		n--;
 	}
-	return (0);
+	return (c1[i] - c2[i]);
 }
 /*
 int	main(void)
 {
-	const char	str[] = "Hello World !";
-	char	c = '?';
-	
-	printf("First occurence : %p\n", ft_memchr(str, c, 6));
-	printf("First occurence : %p\n", memchr(str, c, 6));
+	char	str1[] = "Hola";
+	char	str2[] = "Hello";
+	printf("Strings are : %d\n", ft_memcmp(str1, str2, 2));
+	printf("Strings are : %d\n", memcmp(str1, str2, 2));
 	return (0);
 }
 */
