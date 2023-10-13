@@ -6,14 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:49:41 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 16:22:41 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/13 16:10:42 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
-		eturn (1);
+		return (1);
 	else
 		return (0);
 }
