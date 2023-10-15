@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 19:02:49 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/13 20:04:34 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:27:34 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ re: fclean $(NAME)
 
 .PHONY:  all clean fclean re
 
-#ifndef __LIBFT__
-#define __LIBFT__
+#ifndef __LIBFT__H
+#define __LIBFT__H
 
 int	ft_isalpha();
 int	ft_isdigit();
