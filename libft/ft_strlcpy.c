@@ -6,12 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:43:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 13:23:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 11:58:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <string.h>
+#include "libft.h"
 
 unsigned long	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {

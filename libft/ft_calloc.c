@@ -6,24 +6,35 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:06:27 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/15 19:13:31 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 11:50:16 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include "libft.h"
+
 void	*ft_calloc(size_t count, size_t size)
 {
-	
-}
+	void			*pointer;
 
+	pointer = malloc(count * size);
+	if (pointer == NULL)
+		return (NULL);
+	ft_memset(pointer, 0, (count * size));
+	return (pointer);
+}
+/*
 #include <stdlib.h>
 #include <stdio.h>
 int	main(void)
 {
 	unsigned int	count;
 	unsigned int	size;
-	count = 4;
-	size = 2;
+	count = 3;
+	size = 3;
 	printf("Result: %p\n", ft_calloc(count, size));
 	printf("Result: %p\n", calloc(count, size));
+	//free(ft_calloc);
 	return (0);
 }
+*/

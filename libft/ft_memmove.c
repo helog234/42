@@ -6,9 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:56:58 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 16:23:10 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 11:55:57 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, unsigned long len)
 {

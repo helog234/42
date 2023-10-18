@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 08:56:30 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 11:55:48 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/18 10:08:39 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/18 11:58:01 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
-void	*ft_memcpy(void	*dst, const void *src, unsigned long n)
+char	*ft_strdup(const char *str1)
 {
-	int				i;
+	char	*str2;
+	int		i;
 
 	i = 0;
-	while (n > 0)
+	str2 = malloc (strlen(str1));
+	while (str1[i])
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		n--;
+		str2[i] = str1[i];
 		i++;
 	}
-	return (dst);
+	return (str2);
 }
 /*
-
+#include <stdio.h>
 int	main(void)
 {
-	char	dst[] = "KOKOKOKOKOKO";
-	char	src[] = "ABCDEF";
-	//int	n = 2;
-
-	printf("dest is : %s\n",ft_memcpy(&dst, src, 4));
-	printf("dest is : %s\n",memcpy(&dst, src, 4));
+	char	str[] = "Hello Wolrd !";
+	printf("Copy : %p\n", ft_strdup(str));
+	printf("%s\n", ft_strdup(str));
+	printf("Copy : %p\n", strdup(str));
+	printf("%s\n", strdup(str));
 	return (0);
 }
 */

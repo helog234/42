@@ -6,9 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 13:09:03 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 16:22:25 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 11:53:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isascii(int c)
 {

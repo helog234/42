@@ -6,9 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:12:29 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/11 16:18:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 11:59:38 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	ft_tolower(int c)
 {

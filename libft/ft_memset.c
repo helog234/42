@@ -6,10 +6,12 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:55:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/15 19:01:34 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 11:57:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include "libft.h"
 
 void	*ft_memset(void *str, int c, size_t len)
 {

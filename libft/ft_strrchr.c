@@ -6,9 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:54:19 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/13 06:51:21 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 11:58:47 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 const char	*ft_strrchr(const char *s, int c)
 {
