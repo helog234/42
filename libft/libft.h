@@ -6,12 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 19:02:49 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 11:31:17 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 13:45:05 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# include <stdlib.h>
 
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);

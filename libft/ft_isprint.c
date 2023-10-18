@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 15:17:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 11:54:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:07:24 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isprint(int c)
 {
-	if (c >= 32 && c <= 127)
+	if (c >= 32 && c < 127)
 		return (1);
 	else
 		return (0);
@@ -26,7 +26,7 @@ int	ft_isprint(int c)
 int main(void)
 {
 	unsigned char   c;
-	c = 138;
+	c = 127;
 		printf("argv is : %d\n", ft_isprint(c));
 		printf("argv is : %d\n", isprint(c));
 	return 0;

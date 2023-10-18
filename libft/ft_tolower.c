@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:12:29 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 11:59:38 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 18:14:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
+	if (c >= 'A' && c <= 'Z' && ft_isascii(c))
 		c = c + 32;
 	return (c);
 }

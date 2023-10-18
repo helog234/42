@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:24:37 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 11:57:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 13:45:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ unsigned long	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	unsigned long	j;
 	unsigned long	k;
 
-	i = strlen(dst);
-	j = strlen(src);
+	i = ft_strlen(dst);
+	j = ft_strlen(src);
 	k = i + j;
 	if (i >= dstsize)
 		return (dstsize + j);

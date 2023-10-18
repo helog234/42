@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:56:58 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 11:55:57 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/18 17:55:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,45 @@
 
 void	*ft_memmove(void *dst, const void *src, unsigned long len)
 {
-	unsigned char	*dst_temp;
-	unsigned char	*src_temp;
-	int				i;
+	char		*dst_temp;
+	const char	*src_temp;
+	int			i;
 
 	i = 0;
-	dst_temp = (unsigned char *)dst;
-	src_temp = (unsigned char *)src;
-	while (len > 0)
+	dst_temp = (char *)dst;
+	src_temp = (const char *)src;
+	if (dst > src)
 	{
-		dst_temp[i] = src_temp[i];
-		len--;
-		i++;
+		i = len - 1;
+		while (i >= 0)
+		{
+			dst_temp[i] = src_temp[i];
+			i--;
+		}
 	}
+	else
+		ft_memcpy(dst, src, len);
 	return (dst);
 }
+
 /*
 #include <stdio.h>
 #include <string.h>
 
 int	main(void)
 {
-	char	dst[] = "Hello world !";
-	char	src[] = "ABC";
+	char	dst1[0xF0];
+	char	dst2[0xF0];
+
+	(void) dst2;
+	char	*src = "thi\xc3\x9f \xc3\x9f\xde\xad\x!\r\n";
+	//char	*src = "thi\xc3!\r\n";
+	int size = 0xF0 - 0xF;
+	//char dst[] =  "lorem ipum dolor sit a";
 	
-	printf("dest is : %s\n", ft_memmove(&dst, src, 2));
-	printf("dest is : %s\n", memmove(&dst, src, 2));
+	//char *src = dst + 2;
+	printf("dest is : %s\n", memmove(dst1, src, size));
+	printf("dest is : %s\n", ft_memmove(dst2, src, size));	
 	return (0);
-}
+} 
 */
