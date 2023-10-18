@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2023/10/18 10:45:47 by hgandar          ###   ########.fr        #
+#    Updated: 2023/10/18 12:15:05 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ CFILES = t_isalpha.c, ft_isdigit.c, ft_isalnum.c, ft_isascii.c, \
 		 ft_calloc.c, ft_strdup.c
 
 OFILES = $(SRCS:.c=.o)
+
+CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
