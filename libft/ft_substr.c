@@ -1,46 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 10:08:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/19 15:46:09 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/19 15:47:09 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/19 16:50:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
+#include <string.h>
 
-char	*ft_strdup(const char *str1)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str2;
-	int		i;
+	unsigned int		i;
+	char				*str;
 
 	i = 0;
-	str2 = (char *) malloc (ft_strlen(str1) + 1);
-	if (str2 == NULL)
+	str = (char *)(malloc(len));
+	if (str == NULL)
 		return (NULL);
-	while (str1[i])
+	while (s[start] && i < len - 1)
 	{
-		str2[i] = str1[i];
+		str[i] = s[start];
 		i++;
+		start++;
 	}
-	str2[i] = 0;
-	return (str2);
+	str[i] = 0;
+	return (str);
 }
 /*
 #include <stdio.h>
+
 int	main(void)
 {
-	char	str[] = "lorem ipsum dolor sit amet !";
-	char	*str_dup;
-	printf("Copy : %p\n", ft_strdup(str));
-	printf("%s\n", ft_strdup(str));
-	printf("Copy : %p\n", strdup(str));
-	printf("%s\n", strdup(str));
+	char	s[] = "Ca fait du bien de faire autre chose";
+	unsigned int	start = 5;
+	printf("returned : %s\n", ft_substr(s, start, 10));
 	return (0);
 }
 */

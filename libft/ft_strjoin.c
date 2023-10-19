@@ -1,46 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 10:08:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/19 15:46:09 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/19 16:58:22 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/19 17:14:50 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libc.h"
 #include <stdlib.h>
-#include "libft.h"
+#include <string.h>
 
-char	*ft_strdup(const char *str1)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str2;
 	int		i;
+	int		j;
+	char	*str3;
 
 	i = 0;
-	str2 = (char *) malloc (ft_strlen(str1) + 1);
-	if (str2 == NULL)
+	j = 0;
+	str3 = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (str3 == NULL)
 		return (NULL);
-	while (str1[i])
+	while (s1[i])
 	{
-		str2[i] = str1[i];
+		str3[i] = s1[i];
 		i++;
 	}
-	str2[i] = 0;
-	return (str2);
+	while (s2[j])
+	{
+		str3[i] = s2[j];
+		j++;
+		i++;
+	}
+	str3[i] = 0;
+	return (str3);
 }
 /*
 #include <stdio.h>
+
 int	main(void)
 {
-	char	str[] = "lorem ipsum dolor sit amet !";
-	char	*str_dup;
-	printf("Copy : %p\n", ft_strdup(str));
-	printf("%s\n", ft_strdup(str));
-	printf("Copy : %p\n", strdup(str));
-	printf("%s\n", strdup(str));
+	char	str1[] = "Allez on va Malloc";
+	char	str2[] = "maintenant";
+	printf("New string : %s\n", ft_strjoin(str1, str2));
 	return (0);
 }
 */
