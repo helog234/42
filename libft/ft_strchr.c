@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:56:21 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 11:57:37 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/19 11:40:10 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ const char	*ft_strchr(const char *s, int c)
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
-			return (&s[i]);
+		if (s[i] == (char) c)
+			return ((char *) &s[i]);
 		else
 			i++;
 	}
-	if (s[i] != c)
-		return (0);
-	return (&s[i]);
+	if (s[i] == (char) c)
+		return ((char *) &s[i]);
+	return (NULL);
 }
 /*
 #include <stdio.h>
@@ -34,10 +34,11 @@ const char	*ft_strchr(const char *s, int c)
 
 int	main(void)
 {
-	char	s[] ="Hello World !";
-	char	c = 0;
-	printf("s is : %p\n", ft_strchr(s, c));
-	printf("s is : %p\n", strchr(s, c));
+	//char	*s;
+	char s[] = "tripouille";
+	//char	c[] = "";
+	printf("s is : %d\n", ft_strchr(s, 't' + 256) == s);
+	printf("s is : %d\n", strchr(s, 't' + 256) == s);
 	return (0);
 }
 */

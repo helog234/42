@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:03:56 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 11:59:10 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/19 12:19:33 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ char	*ft_strnstr(const char *hstack, const char *needle, size_t len)
 	unsigned long	j;
 
 	i = 0;
+	if (needle[i] == 0)
+		return ((char *)&hstack[i]);
 	while (hstack[i] && i < len)
 	{
 		j = 0;
-		if (needle[j] == 0)
-			return ((char *)&hstack[i]);
+		//if (needle[j] == 0)
+			//return ((char *)&hstack[i]);
 		while (needle[j] && needle[j] == hstack[i + j])
 			j++;
 		if (needle[j] == 0)
@@ -34,17 +36,16 @@ char	*ft_strnstr(const char *hstack, const char *needle, size_t len)
 	return (0);
 }
 
-/*
+
 #include <stdio.h>
 #include <string.h>
 
 int	main(void)
 {
-	char	haystack[] = "Salut les moutons. Il fait beau mais froid";
-	char	needle[] = "ai";
+	char	haystack[] = "lorem ipsum dolor sit amet";
+	char	needle[] = "dolor";
 	
-	printf("Returned value : %p\n", ft_strnstr(haystack, needle, 40));
-	printf("Returned value : %p\n", strnstr(haystack, needle, 40));
+	printf("Returned value : %p\n", ft_strnstr(haystack, needle, 15));
+	printf("Returned value : %p\n", strnstr(haystack, needle, 15));
 	return (0);
 }
-*/
