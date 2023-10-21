@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:47:09 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/19 16:50:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/20 14:26:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str = (char *)(malloc(len));
 	if (str == NULL)
 		return (NULL);
-	while (s[start] && i < len - 1)
+	while (s[start] && i < len)
 	{
 		str[i] = s[start];
 		i++;
