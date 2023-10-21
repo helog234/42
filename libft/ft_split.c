@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:31:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/20 18:48:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/21 10:30:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-/*
+
 int		count_c(char const *s, char c)
 {
 	int	i;
@@ -30,32 +30,45 @@ int		count_c(char const *s, char c)
 	}
 	return (counter);
 }
+/*
+char	fill_str(char const *str, c)
+{
+	
+}
 */
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
 	int		i;
 	int		j;
+	int		k;
 	
 	i = 0;
 	j = 0;
-	str = malloc(strlen(s)+ 1);
+	k = 0;
+	str = malloc((count_c(s, c)+ 1)  * sizeof(char*));
 	if (str == NULL)
 		return (NULL);
 	while (s[i])
 	{
 		if (s[i] == c)
 		{
-			str[i][j] = s[i - 1];
-			str[i][j] = 0;
+			if (j != 0)
+				str[j][k] = 0;
+			str[j] = malloc(i - j + 1);
+			j++;
 			i++;
-			j = 0;
-			printf("New string : %s\n", str[i]);
+			k = 0;
+			printf("New string : %s\n", str[j]);
 		}
 		else
+		{
+			str[j][k] = s[i];
 			i++;
+			k++;
+		}	
 	}
-	str[i] = NULL;
+	str[j + 1] = NULL;
 	return (str);
 }
 
