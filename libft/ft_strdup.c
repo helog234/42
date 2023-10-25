@@ -6,13 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 10:08:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/19 15:46:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/25 08:05:08 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
 #include "libft.h"
+#include <string.h>
 
 char	*ft_strdup(const char *str1)
 {

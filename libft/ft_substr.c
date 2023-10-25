@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:47:09 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/20 14:26:06 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/25 11:29:12 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str[i] = 0;
 	return (str);
 }
-/*
+
 #include <stdio.h>
 
 int	main(void)
 {
-	char	s[] = "Ca fait du bien de faire autre chose";
+	char	s[] = "lorem ipsum dolor sit amet";
 	unsigned int	start = 5;
 	printf("returned : %s\n", ft_substr(s, start, 10));
 	return (0);
 }
-*/

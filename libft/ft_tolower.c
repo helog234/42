@@ -6,15 +6,15 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:12:29 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 18:14:06 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/25 11:39:48 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_tolower(int c)
+int	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z' && ft_isascii(c))
+	if (c >= 'A' && c <= 'Z')
 		c = c + 32;
 	return (c);
 }
@@ -24,9 +24,18 @@ char	ft_tolower(int c)
 
 int	main(void)
 {
-	char	c = 'z';
-	printf("char is : %c\n", ft_tolower(c));
-	printf("char is : %c\n", tolower(c));
+	int i;
+	i = 0;
+	while (i < 256)
+	{
+		if (ft_tolower(i) != tolower(i))
+		{
+			printf("i = %d\n", i);
+			printf("my function is : %c\n", ft_tolower(i));
+			printf("real : %c\n", tolower(i));
+		}
+		i++;
+	}
 	return (0);
 }
 */

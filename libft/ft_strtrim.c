@@ -6,11 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:15:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/20 14:36:22 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/25 10:44:12 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libc.h"
+#include "libft.h"
 #include <stdlib.h>
 #include <string.h>
 
