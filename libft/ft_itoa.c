@@ -6,15 +6,30 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:54:30 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/20 18:06:19 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/26 09:29:33 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
-char	*putstr(int i, char digit, int lenght, int n)
+char	*ft_strcpy(char *dst, const char *src)
+{
+	unsigned long	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = 0;
+	return (dst);
+}
+
+char	*putstr(int i, char digit, int length, int n)
 {
 	char	*str;
 	int		j;
@@ -25,17 +40,17 @@ char	*putstr(int i, char digit, int lenght, int n)
 		return (NULL);
 	j = 0;
 	sign = digit;
-	while (lenght < -10 || lenght > 10)
+	while (length <= -10 || length >= 10)
 	{
-		digit = (lenght % 10) + '0';
+		digit = (length % 10) + '0';
 		str[i - j] = digit;
 		j++;
-		lenght = lenght / 10;
+		length = length / 10;
 	}
 	str[i - j] = n + '0';
 	j++;
 	if (sign == '-')
-		str[i - j] = sign;
+		str[0] = sign;
 	return (str);
 }
 
@@ -44,22 +59,27 @@ char	*ft_itoa(int n)
 	char	digit;
 	char	*str;
 	int		i;
-	int		lenght;
+	int		length;
 
 	i = 0;
 	if (n < 0)
 	{
 		i++;
 		digit = '-';
-		n = -1 * n;
+		n = -n;
 	}
-	lenght = n;
-	while (n >= 10)
+	length = n;
+	while (n < -9 || n > 9)
 	{
 		i++;
 		n = n / 10;
 	}
-	str = putstr(i, digit, lenght, n);
+	if (length == -2147483648)
+	{
+		str = ft_calloc(i + 2, 1);
+		return (str = ft_strcpy(str, "-2147483648"));
+	}
+	str = putstr(i, digit, length, n);
 	return (str);
 }
 /*
@@ -68,9 +88,9 @@ char	*ft_itoa(int n)
 int	main (void)
 {
 	int	n;
-	
-	n = 12345;
+	n = 156;
 	printf("string : %s\n", ft_itoa(n));
+	
 	return (0);
 }
 */

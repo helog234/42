@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:56:58 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 17:55:41 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/25 14:42:27 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	*ft_memmove(void *dst, const void *src, unsigned long len)
 	const char	*src_temp;
 	int			i;
 
-	i = 0;
+	if (len < 0)
+		return (dst);
 	dst_temp = (char *)dst;
 	src_temp = (const char *)src;
 	if (dst > src)
@@ -41,18 +42,18 @@ void	*ft_memmove(void *dst, const void *src, unsigned long len)
 
 int	main(void)
 {
-	char	dst1[0xF0];
-	char	dst2[0xF0];
+	char	dst1[1];
+	char	dst2[1];
 
 	(void) dst2;
-	char	*src = "thi\xc3\x9f \xc3\x9f\xde\xad\x!\r\n";
+	char	*src = "A";
 	//char	*src = "thi\xc3!\r\n";
-	int size = 0xF0 - 0xF;
+	int size = 10;
 	//char dst[] =  "lorem ipum dolor sit a";
 	
 	//char *src = dst + 2;
-	printf("dest is : %s\n", memmove(dst1, src, size));
-	printf("dest is : %s\n", ft_memmove(dst2, src, size));	
+	printf("dest is : %p\n", memmove(dst1, src, size));
+	printf("dest is : %p\n", ft_memmove(dst2, src, size));	
 	return (0);
 } 
 */

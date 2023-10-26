@@ -6,30 +6,12 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:31:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/25 10:24:53 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/25 16:18:47 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-
-static int	count_c(char const *s, char c)
-{
-	int	i;
-	int	counter;
-
-	i = 0;
-	counter = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			counter++;
-		i++;
-	}
-	return (counter);
-}
 
 static int	count_str(char const *s, char c, int i)
 {
@@ -44,7 +26,7 @@ static char	*ft_strndup(const char *str1, int n)
 	int		i;
 
 	i = 0;
-	str2 = (char *) malloc (ft_strlen(str1) + 1);
+	str2 = malloc(n + 1 * sizeof(char));
 	if (str2 == NULL)
 		return (NULL);
 	while (str1[i] && i < n)
@@ -56,39 +38,62 @@ static char	*ft_strndup(const char *str1, int n)
 	return (str2);
 }
 
-char	**ft_split(char const *s, char c)
+void	*free_c(char **str, int j)
 {
-	char	**str;
+	while (j > 0)
+	{
+		free(str[j - 1]);
+		j--;
+	}
+	free(str);
+	return (NULL);
+}
+
+char	**fill_str(char const *s, char c, char **str)
+{
 	int		i;
 	int		j;
 	int		k;
 
 	i = 0;
 	j = 0;
-	str = (char **)malloc((count_c(s, c) + 1) * sizeof(char *));
-	if (str == NULL)
-		return (NULL);
 	while (s[i])
 	{
 		if (s[i] == c)
+		{
 			i++;
+			continue ;
+		}
 		k = count_str(s + i, c, 0);
 		str[j] = ft_strndup(s + i, k);
 		if (str[j] == NULL)
-			return (NULL);
+			return (free_c(str, j));
 		i += k;
 		j++;
 	}
 	str[j] = NULL;
 	return (str);
 }
+
+char	**ft_split(char const *s, char c)
+{
+	char	**str;
+
+	str = malloc((ft_strlen(s)+ 1) * sizeof(char *));
+	if (str == NULL)
+		return (NULL);
+	str = fill_str(s, c, str);
+	if (str == NULL)
+		return (NULL);
+	return (str);
+}
 /*
 int	main(void)
 {
-	char	str1[] = "HelloaWorlda!aHelloaWorlda!";
-	char	c = 'a';
+	char	str1[] = "  tripouille  42  ";
+	char	c = ' ';
 	ft_split(str1, c);
-	//printf("New string : %s\n", ft_split(str1, c));
+	//printf("New string : %s\n", ft_split(str1, sizeof(char *) * 3));
 	return (0);
 }
 */
