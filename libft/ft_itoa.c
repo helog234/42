@@ -6,16 +6,15 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:54:30 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/26 09:29:33 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/26 10:20:47 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
-char	*ft_strcpy(char *dst, const char *src)
+static char	*ft_strcpy(char *dst, const char *src)
 {
 	unsigned long	i;
 
@@ -29,7 +28,7 @@ char	*ft_strcpy(char *dst, const char *src)
 	return (dst);
 }
 
-char	*putstr(int i, char digit, int length, int n)
+static char	*putstr(int i, char digit, int length, int n)
 {
 	char	*str;
 	int		j;
@@ -88,7 +87,7 @@ char	*ft_itoa(int n)
 int	main (void)
 {
 	int	n;
-	n = 156;
+	n = 0;
 	printf("string : %s\n", ft_itoa(n));
 	
 	return (0);

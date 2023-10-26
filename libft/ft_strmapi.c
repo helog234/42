@@ -1,43 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 06:52:08 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/26 12:19:00 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/26 10:24:52 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/26 17:18:12 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
 #include "libft.h"
+#include <string.h>
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	unsigned int	i;
+	char			*new_str;
 
 	i = 0;
-	while (str1[i] && str2[i] && n > 0)
+	new_str = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (new_str == NULL)
+		return (NULL);
+	while (s[i])
 	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
+		new_str[i] = (*f)(i, s[i]);
 		i++;
-		n--;
 	}
-	if (n == 0)
-		return (str1[i - 1] - str2[i - 1]);
-	return (str1[i] - str2[i]);
+	new_str[i] = 0;
+	return (new_str);
 }
 /*
+#include <stdio.h>
+char	f(unsigned int i, char str)
+{
+	printf("test = %d and %c\n", i, str);
+	return (str);
+}
+
 int	main(void)
 {
-	char	str1[] = "Hello World !";
-	char	str2[] = "Oi";
-	
-	printf("strncmp result : %d\n", ft_strncmp(str1, str2, 6));
-	printf("strncmp result : %d\n", strncmp(str1, str2, 6));
+	char s[] = "Hello World";
+	printf("new string : %s\n", ft_strmapi(s, f));
 	return (0);
 }
 */

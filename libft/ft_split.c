@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:31:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/25 16:18:47 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/26 10:21:35 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	*ft_strndup(const char *str1, int n)
 	return (str2);
 }
 
-void	*free_c(char **str, int j)
+static void	*free_c(char **str, int j)
 {
 	while (j > 0)
 	{
@@ -49,7 +49,7 @@ void	*free_c(char **str, int j)
 	return (NULL);
 }
 
-char	**fill_str(char const *s, char c, char **str)
+static char	**fill_str(char const *s, char c, char **str)
 {
 	int		i;
 	int		j;
