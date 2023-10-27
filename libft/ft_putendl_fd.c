@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 17:37:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/27 08:26:22 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/27 08:38:18 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/27 08:45:25 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <unistd.h>
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
-	write(fd, &c, 1);
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
 }
 /*
 int	main(void)
 {
-	char	c = 'c';
-	ft_putchar_fd(c, 2);
+	char	str[] = "Hello World !";
+	ft_putstr_fd(str, 2);
 	return (0);
 }
 */

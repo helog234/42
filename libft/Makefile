@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2023/10/26 17:15:19 by hgandar          ###   ########.fr        #
+#    Updated: 2023/10/27 09:21:46 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,10 @@ CFILES = 	ft_atoi.c \
 			ft_memcpy.c \
 			ft_memmove.c \
 			ft_memset.c \
+			ft_putchar_fd.c \
+			ft_putendl_fd.c \
+			ft_putnbr_fd.c \
+			ft_putstr_fd.c \
 			ft_split.c \
 			ft_strchr.c \
 			ft_strdup.c \
