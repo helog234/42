@@ -6,11 +6,10 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 08:37:17 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/26 10:17:01 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/27 16:18:09 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
 void	*ft_memchr(const void *str, int c, size_t n)

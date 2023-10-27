@@ -6,11 +6,10 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:03:56 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/19 12:30:54 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/27 16:21:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <string.h>
 #include "libft.h"
 

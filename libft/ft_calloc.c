@@ -6,11 +6,10 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:06:27 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/18 11:50:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/27 16:16:17 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
