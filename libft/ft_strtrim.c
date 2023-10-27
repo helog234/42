@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:15:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/25 12:15:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/27 17:23:40 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,25 @@ char	*ft_strtrim(char const *s1, char const *set)
 	start = find_string(s1, set, i);
 	end = find_end(s1, set, ft_strlen(s1));
 	lenght = end - start + 1;
+	if (lenght <= 0 || start >= ft_strlen(s1) || s1 == 0)
+		return (ft_strdup(""));
 	str3 = ft_substr(s1, start, lenght);
 	if (str3 == NULL)
 		return (NULL);
 	return (str3);
 }
 /*
+#include <stdio.h>
 int	main(void)
 {
-	char	str1[] = "";
-	char	str2[] = "";
-	printf("New string : %s\n", ft_strtrim(str1, str2));
+	//char	str1[] = "";
+	//char	str2[] = "";
+	char *s;
+	char s2[] = "";
+	printf("New string : %s\n", ft_strtrim("   xxx   xxx", " x"));
+	s = ft_strtrim("   xxx   xxx", " x");
+	printf("s2 = %s\n", s2);
+	printf("Différence : %d\n", strcmp(s, ""));
 	return (0);
 }
 */
