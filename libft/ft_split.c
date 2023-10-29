@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:31:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/26 10:21:35 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/29 16:48:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*ft_strndup(const char *str1, int n)
 	int		i;
 
 	i = 0;
-	str2 = malloc(n + 1 * sizeof(char));
+	str2 = malloc((n + 1) * sizeof(char));
 	if (str2 == NULL)
 		return (NULL);
 	while (str1[i] && i < n)
@@ -78,8 +78,20 @@ static char	**fill_str(char const *s, char c, char **str)
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
+	int		str_count;
+	int		i;
 
-	str = malloc((ft_strlen(s)+ 1) * sizeof(char *));
+	if (s == NULL)
+		return (NULL);
+	str_count = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] != c && (i == 0 || s[i - 1] == c))
+			str_count++;
+		i++;
+	}
+	str = (char **) malloc((str_count + 1) * sizeof(char *));
 	if (str == NULL)
 		return (NULL);
 	str = fill_str(s, c, str);
@@ -92,8 +104,9 @@ int	main(void)
 {
 	char	str1[] = "  tripouille  42  ";
 	char	c = ' ';
-	ft_split(str1, c);
-	//printf("New string : %s\n", ft_split(str1, sizeof(char *) * 3));
+	//ft_split(str1, c);
+	char * s = ft_strtrim("   xxxtripouille", " x");
+	printf("New string : %s\n", ft_split(str1, sizeof(char *) * 3));
 	return (0);
 }
 */

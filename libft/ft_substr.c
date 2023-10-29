@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:47:09 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/27 16:22:13 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/29 11:20:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 
 static int	s_len(char const *s, unsigned int start, size_t len)
 {
-	if ((int) len >= (ft_strlen(s + start)))
-		len = ft_strlen(s + start);
+	size_t	s_len;
+
+	s_len = ft_strlen(s);
+	if (start + len > s_len)
+		len = s_len - start;
 	return (len);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:56:58 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/25 14:42:27 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/29 17:07:13 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memmove(void *dst, const void *src, unsigned long len)
 	const char	*src_temp;
 	int			i;
 
-	if (len < 0)
+	if (len < 0 || dst == src)
 		return (dst);
 	dst_temp = (char *)dst;
 	src_temp = (const char *)src;
