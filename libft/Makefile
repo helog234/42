@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2023/10/30 14:38:23 by hgandar          ###   ########.fr        #
+#    Updated: 2023/10/30 16:36:28 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,10 @@ BFILES =	ft_lstnew.c \
 			ft_lstsize.c \
 			ft_lstlast.c \
 			ft_lstadd_back.c \
-			ft_lstdelone.c
+			ft_lstdelone.c \
+			ft_lstclear.c \
+			ft_lstiter.c \
+			ft_lstmap.c
 OFILES = $(CFILES:.c=.o)
 BOFILES = $(BFILES:.c=.o)
 NAME = libft.a
