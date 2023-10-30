@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2023/10/27 09:21:46 by hgandar          ###   ########.fr        #
+#    Updated: 2023/10/30 14:38:23 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,19 +46,30 @@ CFILES = 	ft_atoi.c \
 			ft_substr.c \
 			ft_tolower.c \
 			ft_toupper.c
+			
+BFILES =	ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstadd_back.c \
+			ft_lstdelone.c
 OFILES = $(CFILES:.c=.o)
+BOFILES = $(BFILES:.c=.o)
 NAME = libft.a
 
 all: $(NAME)
 
 $(NAME): $(OFILES)
 	ar rcs $(NAME) $(OFILES)
+
+bonus: $(BOFILES)
+	ar rcs $(NAME) $(BOFILES)
 	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
+	
 clean:
-	rm -f $(OFILES)
+	rm -f $(OFILES) $(BOFILES)
 
 fclean: clean
 	rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:54:30 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/27 16:17:43 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/10/30 11:13:39 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,14 @@ char	*ft_itoa(int n)
 	str = putstr(i, digit, length, n);
 	return (str);
 }
-/*
-#include <limits.h>
+
+/* #include <limits.h>
 #include <stdio.h>
 int	main (void)
 {
 	int	n;
-	n = 0;
+	n = -623;
 	printf("string : %s\n", ft_itoa(n));
 	
 	return (0);
-}
-*/
+} */
