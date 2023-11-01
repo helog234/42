@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:54:30 by hgandar           #+#    #+#             */
-/*   Updated: 2023/10/30 11:13:39 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/01 09:23:58 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,17 @@ static char	*putstr(int i, char digit, int length, int n)
 	return (str);
 }
 
+char	sign_setting(int n)
+{
+	char	digit;
+
+	if (n < 0)
+		digit = '-';
+	else
+		digit = 0;
+	return (digit);
+}
+
 char	*ft_itoa(int n)
 {
 	char	digit;
@@ -61,10 +72,10 @@ char	*ft_itoa(int n)
 	int		length;
 
 	i = 0;
+	digit = sign_setting(n);
 	if (n < 0)
 	{
 		i++;
-		digit = '-';
 		n = -n;
 	}
 	length = n;
