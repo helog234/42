@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:10:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 18:03:58 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 18:06:32 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	count_digit(int n)
 		i++;
 		n = n / 10;
 	}
-	va_end(args);
 	return (i);
 }
 
