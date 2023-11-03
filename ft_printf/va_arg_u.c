@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:10:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 15:56:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 18:03:58 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void putstr(char *str)
 	i = 0;
 	while (str[i])
 	{
-		write(1, str[i], 1);
+		write(1, &str[i], 1);
 		i++;
 	}
 }
@@ -53,13 +53,18 @@ int	va_arg_u(va_list args)
 	count = len;
 	str = malloc((len + 1) * sizeof(char));
 	if (!str)
-		return (NULL);
+	{
+		write(1, "null\n", 4);
+		return (-1);
+	}
+	str[len] = 0;
 	while (number)
 	{
-		str[len] = (number % 10) + '0';
+		str[len - 1] = (number % 10) + '0';
 		len--;
 		number = number / 10;
 	}
 	putstr(str);
+	va_end(args);
 	return (count);
 }

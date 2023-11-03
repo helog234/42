@@ -6,12 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:53:45 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 16:55:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 18:02:05 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdarg.h>
+#include <stdio.h>
 
 int	ft_args(const char *s)
 {
@@ -46,14 +47,14 @@ int	ft_printf(const char *str, ...)
 			/* if (str[i] == 'c')
 				count = count + va_arg_c(args);
 			else if (str[i] == 's')
-				count = count + va_arg_s(args);*/
-			if (str[i] == 'p' || str[i + 1] == 'x' || (str[i + 1] == 'X'))
+				count = count + va_arg_s(args);
+			else if (str[i] == 'p' || str[i] == 'x' || (str[i] == 'X'))
 				count = count + va_arg_px(args);
-			/* else if (str[i + 1] == 'd' || (str[i + 1] == 'i'))
-				count = count + va_arg_di(args);
-			else if (str[i + 1] == 'u')
+			else if (str[i] == 'd' || (str[i] == 'i'))
+				count = count + va_arg_di(args);*/
+			if (str[i] == 'u')
 				count = count + va_arg_u(args);
-			else if (str[i + 1] == '%')
+			/*else if (str[i] == '%')
 				count = count + va_arg_prce(args); */
 			i++;
 		}
@@ -68,9 +69,10 @@ int	ft_printf(const char *str, ...)
 
 int	main(void)
 {
-	char	*str = "Hélène";
-	//int		i = 2;
+	//char	*str = "Bon Bah voilà";
+	unsigned int	i = 200;
 	//char	letter = 72;
-	ft_printf("Hello %p", &str);
+	ft_printf("local : %u\n", i);
+	printf("vrai : %u\n", i);
 	return (0);
 }

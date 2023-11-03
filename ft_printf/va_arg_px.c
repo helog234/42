@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:20:16 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 17:03:11 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 17:17:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void putstr(char *str)
 	int	i;
 	
 	i = 0;
+	write(1, "0x", 2);
 	while (str[i])
 	{
 		write(1, &str[i], 1);
@@ -62,10 +63,8 @@ int	va_arg_px(va_list args)
 		temp = n % 16;
 		if (temp < 10)
 			str[len - 1] = temp + '0';
-		else if (temp >= 'a' && temp <= 'z')
+		else
 			str[len - 1] = temp - 10 + 'a';
-		else if (temp >= 'A' && temp <= 'Z')
-			str[len - 1] = temp - 10 + 'A';
 		len--;
 		n = n / 16;
 	}

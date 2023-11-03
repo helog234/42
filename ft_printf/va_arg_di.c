@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:38:10 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 15:56:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 18:00:34 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int	count_digit(int n)
 {
@@ -52,19 +53,25 @@ int	va_arg_di(va_list args)
 	number = va_arg(args, int);
 	len = count_digit(number);
 	count = len;
-	str = malloc(len * sizeof(char));
+	str = malloc((len + 1) * sizeof(int));
 	if (!str)
-		return (NULL);
+	{
+		write(1, "null\n", 4);
+		return (-1);
+	}
 	if (number < 0)
 		str[0] = '-';
+	str[len] = 0;
 	while (number)
 	{
-		if (number < 0)
-			str[len] = (number % 10) + '0';
+		if (number > 0)
+			str[len - 1] = (number % 10) + '0';
 		else 
-			str[len] = - (number % 10) + '0';
+			str[len - 1] = - (number % 10) + '0';
 		len--;
+		number = number / 10;
 	}
+	putstr(str);
 	va_end(args);
 	return (count);
 }
