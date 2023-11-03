@@ -6,18 +6,18 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 14:35:56 by hgandar           #+#    #+#              #
-#    Updated: 2023/11/03 14:44:50 by hgandar          ###   ########.fr        #
+#    Updated: 2023/11/03 15:41:31 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 CFILES = 	ft_printf.c \
-			var_arg_c.c \
-			var_arg_di.c \
-			var_arg_prce.c \
-			var_arg_px.c \
-			var_arg_u.c
+			va_arg_c.c \
+			va_arg_di.c \
+			va_arg_prce.c \
+			va_arg_px.c \
+			va_arg_u.c
 OFILES = $(CFILES:.c=.o)
 NAME = libftprintf.a
 

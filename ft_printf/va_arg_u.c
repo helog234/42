@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var_arg_u.c                                        :+:      :+:    :+:   */
+/*   va_arg_u.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:10:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 14:55:00 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 15:56:36 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	count_digit(int n)
 		i++;
 		n = n / 10;
 	}
+	va_end(args);
 	return (i);
 }
 
@@ -40,7 +41,7 @@ void putstr(char *str)
 	}
 }
 
-int	var_arg_u(va_list args)
+int	va_arg_u(va_list args)
 {
 	unsigned int	number;
 	int				len;

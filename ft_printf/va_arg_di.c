@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var_arg_di.c                                       :+:      :+:    :+:   */
+/*   va_arg_di.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:38:10 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 14:53:58 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 15:56:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void putstr(char *str)
 	i = 0;
 	while (str[i])
 	{
-		write(1, str[i], 1);
+		write(1, &str[i], 1);
 		i++;
 	}
 }
 
-int	var_arg_di(va_list args)
+int	va_arg_di(va_list args)
 {
 	int		number;
 	int		len;
@@ -65,5 +65,6 @@ int	var_arg_di(va_list args)
 			str[len] = - (number % 10) + '0';
 		len--;
 	}
+	va_end(args);
 	return (count);
 }

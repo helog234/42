@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var_arg_s.c                                        :+:      :+:    :+:   */
+/*   va_arg_s.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:26:15 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 14:54:53 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 16:00:19 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-int var_arg_s(va_list args)
+int va_arg_s(va_list args)
 {
 	int	i;
 	char	*str;
@@ -23,8 +23,9 @@ int var_arg_s(va_list args)
 	i = 0;
 	while (str[i])
 	{
-		write(1, str[i], 1);
+		write(1, &str[i], 1);
 		i++;
 	}
+	va_end(args);
 	return (i);
 }

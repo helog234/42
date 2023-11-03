@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var_arg_px.c                                       :+:      :+:    :+:   */
+/*   va_arg_px.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:20:16 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 14:54:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 17:03:11 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int	count_hexa(char *str)
+int	count_hexa(unsigned int hexa)
 {
 	int	i;
-	
+
 	i = 0;
-	while (&str[i])
+	while (hexa)
+	{
 		i++;
+		hexa = hexa / 16;
+	}
 	return (i);
 }
 
@@ -32,23 +35,27 @@ void putstr(char *str)
 	i = 0;
 	while (str[i])
 	{
-		write(1, str[i], 1);
+		write(1, &str[i], 1);
 		i++;
 	}
 }
 
-int	var_arg_px(va_list args)
+int	va_arg_px(va_list args)
 {
-	long int	n;
-	int			len;
-	int			temp;
-	char		*str;
+	unsigned int	n;
+	size_t			len;
+	int				temp;
+	char			*str;
 	
-	n = va_arg(args, char *);
+	str = NULL;
+	n = va_arg(args, unsigned int);
 	len = count_hexa(n);
-	str = malloc((len + 1) * sizeof(char));
+	str = malloc(((len + 1)* sizeof(char)));
 	if (!str)
-		return (NULL);
+	{
+		write(1, "null\n", 4);
+		return (-1);
+	}
 	str[len] = 0;
 	while (n)
 	{
@@ -56,12 +63,13 @@ int	var_arg_px(va_list args)
 		if (temp < 10)
 			str[len - 1] = temp + '0';
 		else if (temp >= 'a' && temp <= 'z')
-			str[len - 1] = temp + 'a';
+			str[len - 1] = temp - 10 + 'a';
 		else if (temp >= 'A' && temp <= 'Z')
-			str[len - 1] = temp + 'A';
+			str[len - 1] = temp - 10 + 'A';
 		len--;
 		n = n / 16;
 	}
 	putstr(str);
+	va_end(args);
 	return (len);
 }
