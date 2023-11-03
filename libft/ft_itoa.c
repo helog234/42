@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:54:30 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/01 09:23:58 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 07:44:12 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,82 +14,46 @@
 #include <stdlib.h>
 #include <string.h>
 
-static char	*ft_strcpy(char *dst, const char *src)
+static int	n_size(int n)
 {
-	unsigned long	i;
+	int	i;
 
 	i = 0;
-	while (src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = 0;
-	return (dst);
-}
-
-static char	*putstr(int i, char digit, int length, int n)
-{
-	char	*str;
-	int		j;
-	char	sign;
-
-	str = ft_calloc(i + 2, 1);
-	if (str == NULL)
-		return (NULL);
-	j = 0;
-	sign = digit;
-	while (length <= -10 || length >= 10)
-	{
-		digit = (length % 10) + '0';
-		str[i - j] = digit;
-		j++;
-		length = length / 10;
-	}
-	str[i - j] = n + '0';
-	j++;
-	if (sign == '-')
-		str[0] = sign;
-	return (str);
-}
-
-char	sign_setting(int n)
-{
-	char	digit;
-
+	if (n == 0)
+		return (1);
 	if (n < 0)
-		digit = '-';
-	else
-		digit = 0;
-	return (digit);
-}
-
-char	*ft_itoa(int n)
-{
-	char	digit;
-	char	*str;
-	int		i;
-	int		length;
-
-	i = 0;
-	digit = sign_setting(n);
-	if (n < 0)
-	{
 		i++;
-		n = -n;
-	}
-	length = n;
-	while (n < -9 || n > 9)
+	while (n)
 	{
 		i++;
 		n = n / 10;
 	}
-	if (length == -2147483648)
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	char			*str;
+	int				len;
+
+	len = n_size(n);
+	str = ft_calloc(len + 1, 1);
+	if (!str)
+		return (NULL);
+	if (n < 0)
+		str[0] = '-';
+	str[len] = 0;
+	if (n == 0)
+		str[0] = '0';
+	while (n)
 	{
-		str = ft_calloc(i + 2, 1);
-		return (str = ft_strcpy(str, "-2147483648"));
+		if (n > 0)
+			str[len - 1] = (n % 10) + '0';
+		else
+			str[len - 1] = -(n % 10) + '0';
+		len--;
+		n = n / 10;
 	}
-	str = putstr(i, digit, length, n);
 	return (str);
 }
 
