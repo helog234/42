@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var_arg_u.c                                        :+:      :+:    :+:   */
+/*   var_arg_di.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 13:10:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 14:51:26 by hgandar          ###   ########.fr       */
+/*   Created: 2023/11/03 12:38:10 by hgandar           #+#    #+#             */
+/*   Updated: 2023/11/03 14:53:58 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libftprintf.h"
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -19,6 +20,8 @@ int	count_digit(int n)
 	int	i;
 	
 	i = 0;
+	if (n < 0)
+		i++;
 	while (n)
 	{
 		i++;
@@ -39,25 +42,28 @@ void putstr(char *str)
 	}
 }
 
-int	var_arg_u(va_list args)
+int	var_arg_di(va_list args)
 {
-	unsigned int	number;
-	int				len;
-	unsigned int	count;
-	char			*str;
+	int		number;
+	int		len;
+	int		count;
+	char	*str;
 	
 	number = va_arg(args, int);
 	len = count_digit(number);
 	count = len;
-	str = malloc((len + 1) * sizeof(char));
+	str = malloc(len * sizeof(char));
 	if (!str)
 		return (NULL);
+	if (number < 0)
+		str[0] = '-';
 	while (number)
 	{
-		str[len] = (number % 10) + '0';
+		if (number < 0)
+			str[len] = (number % 10) + '0';
+		else 
+			str[len] = - (number % 10) + '0';
 		len--;
-		number = number / 10;
 	}
-	putstr(str);
 	return (count);
 }

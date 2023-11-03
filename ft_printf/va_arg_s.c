@@ -6,10 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:26:15 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 12:53:11 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/03 14:54:53 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libftprintf.h"
 #include <stdarg.h>
 #include <unistd.h>
 

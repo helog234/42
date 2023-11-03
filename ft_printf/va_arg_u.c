@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var_arg_px.c                                       :+:      :+:    :+:   */
+/*   var_arg_u.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 14:20:16 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 14:27:08 by hgandar          ###   ########.fr       */
+/*   Created: 2023/11/03 13:10:48 by hgandar           #+#    #+#             */
+/*   Updated: 2023/11/03 14:55:00 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libftprintf.h"
 #include <stdarg.h>
 #include <unistd.h>
-#include <limits.h>
 #include <stdlib.h>
 
-int	count_hexa(char *str)
+int	count_digit(int n)
 {
 	int	i;
 	
 	i = 0;
-	while (&str[i])
+	while (n)
+	{
 		i++;
+		n = n / 10;
+	}
 	return (i);
 }
 
@@ -37,31 +40,25 @@ void putstr(char *str)
 	}
 }
 
-int	var_arg_px(va_list args)
+int	var_arg_u(va_list args)
 {
-	long int	n;
-	int			len;
-	int			temp;
-	char		*str;
+	unsigned int	number;
+	int				len;
+	unsigned int	count;
+	char			*str;
 	
-	n = va_arg(args, char *);
-	len = count_hexa(n);
+	number = va_arg(args, int);
+	len = count_digit(number);
+	count = len;
 	str = malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	str[len] = 0;
-	while (n)
+	while (number)
 	{
-		temp = n % 16;
-		if (temp < 10)
-			str[len - 1] = temp + '0';
-		else if (temp >= 'a' && temp <= 'z')
-			str[len - 1] = temp + 'a';
-		else if (temp >= 'A' && temp <= 'Z')
-			str[len - 1] = temp + 'A';
+		str[len] = (number % 10) + '0';
 		len--;
-		n = n / 16;
+		number = number / 10;
 	}
 	putstr(str);
-	return (len);
+	return (count);
 }

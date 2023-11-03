@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var_arg_c.c                                        :+:      :+:    :+:   */
+/*   var_arg_prce.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:25:31 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 12:52:54 by hgandar          ###   ########.fr       */
+/*   Created: 2023/11/03 13:15:34 by hgandar           #+#    #+#             */
+/*   Updated: 2023/11/03 14:54:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libftprintf.h"
 #include <stdarg.h>
 #include <unistd.h>
 
-int	var_arg_c(va_list args)
+int	var_arg_prce(va_list args)
 {
-	char	c;
-	
-	c = va_arg(args, char);
-	write(1, args, 1);
+	write(1, '%', 1);
 	return (1);
 }

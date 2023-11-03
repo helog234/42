@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   var_arg_di.c                                       :+:      :+:    :+:   */
+/*   var_arg_px.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 12:38:10 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 14:00:57 by hgandar          ###   ########.fr       */
+/*   Created: 2023/11/03 14:20:16 by hgandar           #+#    #+#             */
+/*   Updated: 2023/11/03 14:54:45 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libftprintf.h"
 #include <stdarg.h>
 #include <unistd.h>
-#include <limits.h>
 #include <stdlib.h>
 
-int	count_digit(int n)
+int	count_hexa(char *str)
 {
 	int	i;
 	
 	i = 0;
-	if (n < 0)
+	while (&str[i])
 		i++;
-	while (n)
-	{
-		i++;
-		n = n / 10;
-	}
 	return (i);
 }
 
@@ -42,28 +37,31 @@ void putstr(char *str)
 	}
 }
 
-int	var_arg_di(va_list args)
+int	var_arg_px(va_list args)
 {
-	int		number;
-	int		len;
-	int		count;
-	char	*str;
+	long int	n;
+	int			len;
+	int			temp;
+	char		*str;
 	
-	number = va_arg(args, int);
-	len = count_digit(number);
-	count = len;
-	str = malloc(len * sizeof(char));
+	n = va_arg(args, char *);
+	len = count_hexa(n);
+	str = malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	if (number < 0)
-		str[0] = '-';
-	while (number)
+	str[len] = 0;
+	while (n)
 	{
-		if (number < 0)
-			str[len] = (number % 10) + '0';
-		else 
-			str[len] = - (number % 10) + '0';
+		temp = n % 16;
+		if (temp < 10)
+			str[len - 1] = temp + '0';
+		else if (temp >= 'a' && temp <= 'z')
+			str[len - 1] = temp + 'a';
+		else if (temp >= 'A' && temp <= 'Z')
+			str[len - 1] = temp + 'A';
 		len--;
+		n = n / 16;
 	}
-	return (count);
+	putstr(str);
+	return (len);
 }
