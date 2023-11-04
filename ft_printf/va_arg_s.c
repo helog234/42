@@ -6,19 +6,19 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:26:15 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 16:00:19 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/04 15:16:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 #include <unistd.h>
 
-int va_arg_s(va_list args)
+int	va_arg_s(va_list args)
 {
-	int	i;
+	int		i;
 	char	*str;
-	
+
 	str = va_arg(args, char *);
 	i = 0;
 	while (str[i])

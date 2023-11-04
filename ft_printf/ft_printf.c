@@ -6,11 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:53:45 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/03 18:02:05 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/04 15:16:14 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 #include <stdio.h>
 
@@ -30,11 +30,30 @@ int	ft_args(const char *s)
 	return (args);
 }
 
+int	check_char(const char *str, int i, int count, va_list args)
+{
+	if (str[i] == 'c')
+		count = count + va_arg_c(args);
+	else if (str[i] == 's')
+		count = count + va_arg_s(args);
+	else if (str[i] == 'p' || str[i] == 'x')
+		count = count + va_arg_px(args);
+	else if (str[i] == 'X')
+		count = count + va_arg_xma(args);
+	else if (str[i] == 'd' || (str[i] == 'i'))
+		count = count + va_arg_di(args);
+	else if (str[i] == 'u')
+		count = count + va_arg_u(args);
+	else if (str[i] == '%')
+		count = count + va_arg_prce(args);
+	return (count);
+}
+
 int	ft_printf(const char *str, ...)
 {
-	int				i;
-	int	count;
-	va_list 		args;
+	int		i;
+	int		count;
+	va_list	args;
 
 	i = 0;
 	count = 0;
@@ -44,18 +63,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			/* if (str[i] == 'c')
-				count = count + va_arg_c(args);
-			else if (str[i] == 's')
-				count = count + va_arg_s(args);
-			else if (str[i] == 'p' || str[i] == 'x' || (str[i] == 'X'))
-				count = count + va_arg_px(args);
-			else if (str[i] == 'd' || (str[i] == 'i'))
-				count = count + va_arg_di(args);*/
-			if (str[i] == 'u')
-				count = count + va_arg_u(args);
-			/*else if (str[i] == '%')
-				count = count + va_arg_prce(args); */
+			count = check_char(str, i, count, args);
 			i++;
 		}
 		else
@@ -67,12 +75,12 @@ int	ft_printf(const char *str, ...)
 	return (count + i);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	//char	*str = "Bon Bah voilà";
 	unsigned int	i = 200;
-	//char	letter = 72;
-	ft_printf("local : %u\n", i);
-	printf("vrai : %u\n", i);
+	//char	letter = 'V';
+	ft_printf("local : %X\n", i);
+	printf("vrai : %X\n", i);
 	return (0);
-}
+} */
