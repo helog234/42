@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:47:38 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/04 15:18:06 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/04 15:43:59 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		va_arg_u(va_list args);
 int		va_arg_xma(va_list args);
 int		ft_count_hexa(unsigned int hexa);
 int		ft_count_digit(int n);
-void	ft_putstr(char *str);
+int		ft_putstr(char *str);
 char	*ft_num_str(char *str, int len, unsigned int number);
 char	*ft_hexa_str(char *str, int len, unsigned int n, int temp);
 

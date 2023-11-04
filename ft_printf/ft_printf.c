@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:53:45 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/04 15:16:14 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/04 16:19:36 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,19 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 	}
+	//printf("count = %d\n", count);
+	//printf("i = %d\n", i);
 	return (count + i);
 }
 
-/* int	main(void)
+int	main(void)
 {
-	//char	*str = "Bon Bah voilà";
-	unsigned int	i = 200;
-	//char	letter = 'V';
-	ft_printf("local : %X\n", i);
-	printf("vrai : %X\n", i);
+	char	*str = "Laura";
+	int	i = 23;
+	//char	letter = '0';
+	//ft_printf("%d years old", i);
+	printf("count final = %d\n", ft_printf("hello my name is %s and I'm %d years old\n", str, i));
+	printf("count final = %d\n", printf("hello my name is %s and I'm %d years old\n", str, i));
+	//printf(" %s\n", str);
 	return (0);
-} */
+}

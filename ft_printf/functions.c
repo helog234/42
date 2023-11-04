@@ -6,23 +6,26 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:04:54 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/04 15:17:02 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/04 15:43:46 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (str == 0)
+		return (0);
 	while (str[i])
 	{
 		write(1, &str[i], 1);
 		i++;
 	}
+	return (0);
 }
 
 int	ft_count_hexa(unsigned int hexa)
