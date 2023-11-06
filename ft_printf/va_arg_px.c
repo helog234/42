@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:20:16 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/04 15:16:37 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/06 17:05:25 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int	va_arg_px(va_list args)
+int	va_arg_p(va_list args)
 {
 	unsigned int	n;
 	size_t			len;
@@ -23,18 +23,15 @@ int	va_arg_px(va_list args)
 	char			*str;
 
 	str = NULL;
-	n = va_arg(args, unsigned int);
+	n = va_arg(args, void *);
 	len = ft_count_hexa(n);
 	temp = 0;
 	str = malloc(((len + 1) * sizeof(char)));
 	if (!str)
-	{
-		write(1, "null\n", 4);
-		return (-1);
-	}
-	ft_hexa_str(str, len, n, temp);
-	write(1, "0x1", 3);
-	ft_putstr(str);
+		return (len = write(1, "(null)", 6));
+	ft_s_hexa_str(str, len, n, temp);
+	len = write(1, "0x", 2);
+	len += ft_putstr(str);
 	va_end(args);
 	return (len);
 }

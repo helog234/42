@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:53:45 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/04 16:19:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/06 17:04:01 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ int	ft_args(const char *s)
 int	check_char(const char *str, int i, int count, va_list args)
 {
 	if (str[i] == 'c')
-		count = count + va_arg_c(args);
+		count = va_arg_c(args);
 	else if (str[i] == 's')
-		count = count + va_arg_s(args);
+		count = va_arg_s(args);
 	else if (str[i] == 'p' || str[i] == 'x')
-		count = count + va_arg_px(args);
+		count = va_arg_p(args);
 	else if (str[i] == 'X')
-		count = count + va_arg_xma(args);
+		count = va_arg_xma(args);
 	else if (str[i] == 'd' || (str[i] == 'i'))
-		count = count + va_arg_di(args);
+		count = va_arg_di(args);
 	else if (str[i] == 'u')
-		count = count + va_arg_u(args);
+		count = va_arg_u(args);
 	else if (str[i] == '%')
-		count = count + va_arg_prce(args);
+		count = va_arg_prce(args);
 	return (count);
 }
 
@@ -63,28 +63,26 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
-			count = check_char(str, i, count, args);
+			count += check_char(str, i, count, args);
 			i++;
 		}
 		else
 		{
-			write(1, &str[i], 1);
+			count += write(1, &str[i], 1);
 			i++;
 		}
 	}
-	//printf("count = %d\n", count);
-	//printf("i = %d\n", i);
-	return (count + i);
+	return (count);
 }
 
 int	main(void)
 {
-	char	*str = "Laura";
-	int	i = 23;
-	//char	letter = '0';
-	//ft_printf("%d years old", i);
-	printf("count final = %d\n", ft_printf("hello my name is %s and I'm %d years old\n", str, i));
-	printf("count final = %d\n", printf("hello my name is %s and I'm %d years old\n", str, i));
-	//printf(" %s\n", str);
-	return (0);
+char	*str = "42";
+//int	i = 0;
+//char	letter = '0';
+//ft_printf("%d years old", i);
+printf("count final = %d\n", ft_printf(" %p ", str));
+printf("count final = %d\n", printf(" %p ", str));
+//printf(" %s\n", str);
+return (0);
 }

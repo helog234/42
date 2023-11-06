@@ -6,39 +6,28 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:04:54 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/04 15:43:46 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/06 16:36:57 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <unistd.h>
+#include <stdio.h>
 
 int	ft_putstr(char *str)
 {
 	int	i;
+	int	len;
 
 	i = 0;
-	if (str == 0)
-		return (0);
-	while (str[i])
+	len = 0;
+	while (str && str[i])
 	{
-		write(1, &str[i], 1);
+		len += write(1, &str[i], 1);
 		i++;
 	}
-	return (0);
-}
-
-int	ft_count_hexa(unsigned int hexa)
-{
-	int	i;
-
-	i = 0;
-	while (hexa)
-	{
-		i++;
-		hexa = hexa / 16;
-	}
-	return (i);
+	free(str);
+	return (len);
 }
 
 int	ft_count_digit(int n)
@@ -46,6 +35,8 @@ int	ft_count_digit(int n)
 	int	i;
 
 	i = 0;
+	if (n == 0)
+		i = 1;
 	if (n < 0)
 		i++;
 	while (n)
@@ -56,30 +47,18 @@ int	ft_count_digit(int n)
 	return (i);
 }
 
-char	*ft_num_str(char *str, int len, unsigned int number)
+void	ft_num_str(char *str, int len, unsigned int number)
 {
 	str[len] = 0;
+	if (number == 0)
+		str[0] = '0';
 	while (number)
 	{
-		str[len - 1] = (number % 10) + '0';
+		if (number > 0)
+			str[len - 1] = (number % 10) + '0';
+		else
+			str[len - 1] = - (number % 10) + '0';
 		len--;
 		number = number / 10;
 	}
-	return (str);
-}
-
-char	*ft_hexa_str(char *str, int len, unsigned int n, int temp)
-{
-	str[len] = 0;
-	while (n)
-	{
-		temp = n % 16;
-		if (temp < 10)
-			str[len - 1] = temp + '0';
-		else
-			str[len - 1] = temp - 10 + 'A';
-		len--;
-		n = n / 16;
-	}
-	return (str);
 }

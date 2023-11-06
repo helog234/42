@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:38:10 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/04 16:22:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/06 16:30:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,23 @@ int	va_arg_di(va_list args)
 {
 	int		number;
 	int		len;
-	int		count;
 	char	*str;
 
 	number = va_arg(args, int);
-	printf("number = %d\n", number);
 	len = ft_count_digit(number);
-	count = len;
 	str = malloc((len + 1) * sizeof(int));
 	if (!str)
-	{
-		write(1, "null\n", 4);
-		return (-1);
-	}
+		return (len = write(1, "(null)", 6));
+	if (number == 0)
+		str[0] = '0';
+	str[len] = 0;
 	if (number < 0)
+	{
 		str[0] = '-';
+		number = -number;
+	}
 	ft_num_str(str, len, number);
 	ft_putstr(str);
 	va_end(args);
-	return (count);
+	return (len);
 }

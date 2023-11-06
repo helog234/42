@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:45:55 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/04 15:16:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/06 14:35:01 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,9 @@ int	va_arg_xma(va_list args)
 	temp = 0;
 	str = malloc(((len + 1) * sizeof(char)));
 	if (!str)
-	{
-		write(1, "null\n", 4);
-		return (-1);
-	}
-	ft_hexa_str(str, len, n, temp);
-	ft_putstr(str);
+		return (len = write(1, "(null)", 6));
+	ft_c_hexa_str(str, len, n, temp);
+	len = ft_putstr(str);
 	va_end(args);
 	return (len);
 }
