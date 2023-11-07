@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:38:10 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/06 16:30:28 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/07 14:05:50 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	va_arg_di(va_list args)
 	}
 	ft_num_str(str, len, number);
 	ft_putstr(str);
-	va_end(args);
+	free(str);
 	return (len);
 }

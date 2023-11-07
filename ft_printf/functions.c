@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:04:54 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/06 16:36:57 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/07 14:12:47 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,20 @@ int	ft_putstr(char *str)
 {
 	int	i;
 	int	len;
+	int	temp;
 
 	i = 0;
 	len = 0;
+	temp = 0;
 	while (str && str[i])
 	{
-		len += write(1, &str[i], 1);
+		temp = write(1, &str[i], 1);
+		if (temp < 0)
+			return (-1);
+		else
+			len += temp;
 		i++;
 	}
-	free(str);
 	return (len);
 }
 

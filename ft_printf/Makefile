@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 14:35:56 by hgandar           #+#    #+#              #
-#    Updated: 2023/11/06 16:31:47 by hgandar          ###   ########.fr        #
+#    Updated: 2023/11/07 10:58:26 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ CFILES = 	ft_printf.c \
 			va_arg_c.c \
 			va_arg_di.c \
 			va_arg_prce.c \
-			va_arg_px.c \
+			va_arg_p.c \
 			va_arg_s.c \
 			va_arg_u.c \
-			va_arg_xma.c \
+			va_arg_x.c \
 			functions.c \
 			function_hexa.c
 			

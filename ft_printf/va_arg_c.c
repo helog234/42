@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:25:31 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/06 13:20:48 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/07 13:28:49 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,5 @@ int	va_arg_c(va_list args)
 	char	c;
 
 	c = va_arg(args, int);
-	write(1, &c, 1);
-	va_end(args);
-	return (1);
+	return (write(1, &c, 1));
 }

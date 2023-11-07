@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:10:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/06 16:28:07 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/07 14:06:15 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ int	va_arg_u(va_list args)
 		return (len = write(1, "(null)", 6));
 	ft_num_str(str, len, number);
 	len = ft_putstr(str);
-	va_end(args);
+	free(str);
 	return (len);
 }
