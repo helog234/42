@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:20:16 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/07 14:26:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:39:59 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,16 @@ int	va_arg_p(va_list args)
 	n = va_arg(args, unsigned long);
 	len = ft_count_hexa(n);
 	if (n == 0)
-		return (len = write(1, "0x0", 3));
+		return (write(1, "0x0", 3));
 	temp = 0;
 	str = malloc(((len + 1) * sizeof(char)));
 	if (!str)
-		return (len = write(1, "(null)", 6));
+		return (write(1, "(null)", 6));
 	ft_p_hexa_str(str, len, n, temp);
 	len = write(1, "0x", 2);
 	temp = ft_putstr(str);
-	if (temp < 0)
+	free(str);
+	if (temp < 0 || len < 0)
 		return (-1);
 	else
 		len += temp;
