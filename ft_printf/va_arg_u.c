@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:10:48 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/07 14:06:15 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/08 08:59:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int	ft_count_u_digit(unsigned int n)
 {
@@ -33,14 +34,14 @@ int	ft_count_u_digit(unsigned int n)
 int	va_arg_u(va_list args)
 {
 	unsigned int	number;
-	unsigned int	len;
+	int				len;
 	char			*str;
 
 	number = va_arg(args, unsigned int);
 	len = ft_count_u_digit(number);
 	str = malloc((len + 1) * sizeof(char));
 	if (!str)
-		return (len = write(1, "(null)", 6));
+		return (-1);
 	ft_num_str(str, len, number);
 	len = ft_putstr(str);
 	free(str);

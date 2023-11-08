@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:38:10 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/07 14:05:50 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/07 17:32:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	va_arg_di(va_list args)
 	len = ft_count_digit(number);
 	str = malloc((len + 1) * sizeof(int));
 	if (!str)
-		return (len = write(1, "(null)", 6));
+		return (-1);
 	if (number == 0)
 		str[0] = '0';
 	str[len] = 0;
@@ -36,7 +36,7 @@ int	va_arg_di(va_list args)
 		number = -number;
 	}
 	ft_num_str(str, len, number);
-	ft_putstr(str);
+	len = ft_putstr(str);
 	free(str);
 	return (len);
 }

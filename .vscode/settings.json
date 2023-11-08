@@ -1,8 +1,0 @@
-{
-	"files.associations": {
-		"stdlib.h": "c",
-		"sstream": "c",
-		"__locale": "c",
-		"chrono": "c"
-	}
-}

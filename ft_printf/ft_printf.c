@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 07:53:45 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/07 14:22:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/08 09:11:56 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_printf(const char *str, ...)
 		if (tmp_count < 0)
 		{
 			va_end(args);
-			return (-1);
+			return (tmp_count);
 		}
 		count += tmp_count;
 		i++;
@@ -67,8 +67,8 @@ int	ft_printf(const char *str, ...)
 //int	i = 0;
 //char	letter = '0';
 //ft_printf("%d years old", i);
-printf("count final = %d\n", ft_printf("%p", ""));
-printf("count final = %d\n", printf("%p", ""));
+printf("count final = %d\n", ft_printf("%u", 0));
+printf("count final = %d\n", printf("%u", 0));
 //printf(" %s\n", str);
 return (0);
 } */
