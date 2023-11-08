@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:45:55 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/08 09:00:05 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/08 09:29:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int	va_arg_x(va_list args, char format)
 {
-	unsigned long	n;
+	unsigned int	n;
 	int				len;
 	int				temp;
 	char			*str;
