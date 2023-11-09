@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:36:43 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/09 14:32:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/09 16:08:16 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ unsigned long	ft_strlcat_stash(char *dst, const char *src, int read)
 	{
 		dst[i] = src[j];
 		i++;
-		j++; 
+		j++;
 		read--;
 	}
 	dst[i] = 0;
