@@ -6,12 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:36:43 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/09 16:08:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/09 18:21:08 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "get_next_line.h"
+#include <stdio.h>
 
 static int	s_len(char const *s, unsigned int start, size_t len)
 {
@@ -62,7 +63,7 @@ unsigned long	ft_strlcat_stash(char *dst, const char *src, int read)
 	if (i >= BUFFER_SIZE_D)
 		return (read + j);
 	j = 0;
-	while (src[j] && (i + 1 < BUFFER_SIZE_D) && read >= 0)
+	while (src[j] && (i <= BUFFER_SIZE_D) && read > 0)
 	{
 		dst[i] = src[j];
 		i++;
@@ -96,8 +97,6 @@ int	ft_strlen(const char *s)
 	int	i;
 
 	i = 0;
-	if (s == NULL)
-		return (0);
 	while (s[i])
 		i++;
 	return (i);

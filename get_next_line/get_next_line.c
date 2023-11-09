@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:42:10 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/09 16:25:54 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/09 18:22:43 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,20 @@ int	ft_strchr_line(const char *line, int c)
 char	*fill_line_buffer(int fd, char *stash, char *buffer)
 {
 	int		i;
+	int		j;
 	int		control;
 
 	control = 0;
 	i = 1;
-	while (i != 0 > 0 && control < BUFFER_SIZE_D)
+	while (i > 0 && control < BUFFER_SIZE_D + 1)
 	{
 		i = read(fd, buffer, 5);
 		control = ft_strlcat_stash(stash, buffer, i);
 		if (control == -1)
 			return (NULL);
-		i = ft_strchr_line(stash, '\n');
-		if (i != 0)
+		j = ft_strchr_line(stash, '\n');
+		if (j != 0)
 			return (stash);
-		else
-			continue ;
 	}
 	return (stash);
 }
@@ -54,10 +53,22 @@ char	*fill_line_buffer(int fd, char *stash, char *buffer)
 char	*set_line(char *stash, char *line)
 {
 	int	i;
+	int	j;
 
 	i = ft_strchr_line(stash, '\n');
-	line = ft_substr(stash, 0, i + 1);
-	stash[0] = stash[i + 1];
+	j = ft_strlen(stash);
+	if (i != 0)
+	{
+		line = ft_substr(stash, 0, i + 1);
+		stash[0] = stash[i + 1];
+		return(line);
+	}
+	else
+	{
+		line = ft_substr(stash, 0, j + 1);
+		stash[0] = stash[j + 1];
+		return(line);
+	}
 	return (line);
 }
 
@@ -67,7 +78,7 @@ char	*get_next_line(int fd)
 	static char	*stash;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE_D <= 0 || read(fd, buffer, 5) <= 0)
+	if (fd < 0 || BUFFER_SIZE_D <= 0)
 		return (NULL);
 	line = NULL;
 	stash = malloc((BUFFER_SIZE_D + 1) * sizeof(char));
@@ -75,10 +86,11 @@ char	*get_next_line(int fd)
 		return (NULL);
 	stash = fill_line_buffer(fd, stash, buffer);
 	line = set_line(stash, line);
+	free(stash);
 	return (line);
 }
 
-/* #include <fcntl.h>
+#include <fcntl.h>
 #include <stdio.h>
 int	main(void)
 {
@@ -92,4 +104,4 @@ int	main(void)
 		free(line);
 	}
 	return (0);
-} */
+}
