@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:36:43 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/09 18:21:08 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/10 16:21:10 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int	ft_strlen(const char *s)
 {
 	int	i;
 
+	if (s == NULL)
+		return(0);
 	i = 0;
 	while (s[i])
 		i++;

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:42:10 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/09 18:22:43 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/10 16:21:35 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ char	*fill_line_buffer(int fd, char *stash, char *buffer)
 	while (i > 0 && control < BUFFER_SIZE_D + 1)
 	{
 		i = read(fd, buffer, 5);
+		buffer[i] = 0;
 		control = ft_strlcat_stash(stash, buffer, i);
 		if (control == -1)
 			return (NULL);
