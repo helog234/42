@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:54:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/13 13:39:58 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:03:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*set_stock(char *stock)
 	if (i != 0)
 		new_stock = ft_substr(stock, i + 1, j);
 	else
-		return(stock);
+		return (stock);
 	return (new_stock);
 }
 
@@ -68,7 +68,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (str);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	int		i;
 	int		j;
@@ -76,6 +76,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
+
 	str3 = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (str3 == NULL)
 		return (NULL);
@@ -91,7 +92,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	str3[i] = 0;
-	return (str3);
+	s1 = ft_strdup(str3);
+	free(str3);
+	return (s1);
 }
 
 int	ft_strlen(const char *s)
