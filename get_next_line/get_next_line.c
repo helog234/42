@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/13 15:57:43 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/13 17:20:18 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*set_line(char *stash, char *line)
 
 	i = ft_strchr_line(stash, '\n');
 	j = ft_strlen(stash);
-	if (i != 0)
+	if (i > 0)
 		line = ft_substr(stash, 0, i + 1);
 	else
 		line = ft_substr(stash, 0, j + 1);
@@ -54,7 +54,7 @@ int	ft_strchr_line(const char *line, int c)
 	while (line[i])
 	{
 		if (line[i] == (char) c)
-			return (++i);
+			return (-1);
 		i++;
 	}
 	return (i);
@@ -69,13 +69,13 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 	control = 0;
 	while (i > 0)
 	{
-		i = read(fd, buffer, BUFFER_SIZE_D);
+		i = read(fd, buffer, BUFFER_SIZE);
 		if (i == -1)
 			return (NULL);
 		buffer[i] = 0;
 		stock = ft_strjoin(stock, buffer);
 		control = ft_strchr_line(stock, '\n');
-		if (control > 0)
+		if (control <= 0)
 			return (stock);
 		if (i == 0 && control == 0)
 		{
@@ -83,26 +83,30 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 			return (NULL);
 		}
 	}
-	return (0);
+	return (stock);
 }
 
 char	*get_next_line(int fd)
 {
-	char		buffer[BUFFER_SIZE_D];
+	char		*buffer;
 	static char	*stock;
 	char		*line;
+	int			i;
 
 	line = NULL;
+	i = 0;
 	if (fd == -1)
 		return (NULL);
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	stock = fill_line_buffer(fd, stock, buffer);
 	if (stock == NULL)
 	{
-		free(stock);
+		free(buffer);
 		return (NULL);
 	}
 	line = set_line(stock, line);
 	stock = set_stock(stock);
+	free(buffer);
 	return (line);
 }
 #include <fcntl.h>

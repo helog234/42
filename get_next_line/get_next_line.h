@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:49 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/13 16:03:54 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:47:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# ifdef BUFFER_SIZE
-#  define BUFFER_SIZE_D BUFFER_SIZE
-# else
-#  define BUFFER_SIZE_D 42
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
 # endif
 
 char	*get_next_line(int fd);
