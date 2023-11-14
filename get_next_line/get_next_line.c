@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/14 09:47:31 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/14 12:48:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_strchr_line(const char *line, int c)
 			return (i);
 		i++;
 	}
-	if (!line)
+	if (!line || line[i] == 0)
 		return (0);
 	return (-1);
 }
@@ -77,8 +77,11 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 		buffer[i] = 0;
 		stock = ft_strjoin(stock, buffer);
 		control = ft_strchr_line(stock, '\n');
-		if (i == 0 && (control == 0 || control < 0))
+		if (i == 0 && control == 0)
+		{
+			free(stock);
 			return (NULL);
+		}
 		if (control >= 0)
 			return (stock);
 		if (i == 0 && control > 0)

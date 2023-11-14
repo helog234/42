@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:54:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/14 09:47:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/14 12:44:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,19 +80,15 @@ char	*ft_strjoin(char *s1, char const *s2)
 	if (str3 == NULL)
 		return (NULL);
 	while (s1 && s1[i])
-	{
-		str3[i] = s1[i];
-		i++;
-	}
-	while (s2 && s2[j])
-	{
-		str3[i] = s2[j];
-		j++;
-		i++;
-	}
-	str3[i] = 0;
+		str3[j++] = s1[i++];
+	i = 0;
+	while (s2 && s2[i])
+		str3[j++] = s2[i++];
+	str3[j] = 0;
 	s1 = ft_strdup(str3);
 	free(str3);
+	if (s1 == NULL)
+		return (NULL);
 	return (s1);
 }
 
