@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/14 12:48:41 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/14 13:34:35 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,12 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 		buffer[i] = 0;
 		stock = ft_strjoin(stock, buffer);
 		control = ft_strchr_line(stock, '\n');
-		if (i == 0 && control == 0)
+		if ((i == 0 && control == 0) || stock == NULL)
 		{
 			free(stock);
 			return (NULL);
 		}
 		if (control >= 0)
-			return (stock);
-		if (i == 0 && control > 0)
 			return (stock);
 	}
 	return (stock);
@@ -111,7 +109,7 @@ char	*get_next_line(int fd)
 	free(buffer);
 	return (line);
 }
-/* #include <fcntl.h>
+#include <fcntl.h>
 #include <stdio.h>
 int	main(void)
 {
@@ -124,4 +122,4 @@ int	main(void)
 		free(line);
 	}
 	return (0);
-} */
+}
