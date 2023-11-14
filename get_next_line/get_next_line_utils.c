@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:54:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/13 16:57:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/14 09:47:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*set_stock(char *stock)
 
 	i = ft_strchr_line(stock, '\n');
 	j = ft_strlen(stock);
-	if (i != 0)
+	if (i >= 0)
 		new_stock = ft_substr(stock, i + 1, j);
 	else
 		return (stock);
@@ -76,7 +76,6 @@ char	*ft_strjoin(char *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-
 	str3 = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (str3 == NULL)
 		return (NULL);

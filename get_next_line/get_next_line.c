@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/13 17:20:18 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/14 09:47:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*set_line(char *stash, char *line)
 
 	i = ft_strchr_line(stash, '\n');
 	j = ft_strlen(stash);
-	if (i > 0)
+	if (i >= 0)
 		line = ft_substr(stash, 0, i + 1);
 	else
 		line = ft_substr(stash, 0, j + 1);
@@ -51,13 +51,15 @@ int	ft_strchr_line(const char *line, int c)
 	int	i;
 
 	i = 0;
-	while (line[i])
+	while (line && line[i])
 	{
 		if (line[i] == (char) c)
-			return (-1);
+			return (i);
 		i++;
 	}
-	return (i);
+	if (!line)
+		return (0);
+	return (-1);
 }
 
 char	*fill_line_buffer(int fd, char *stock, char *buffer)
@@ -75,13 +77,12 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 		buffer[i] = 0;
 		stock = ft_strjoin(stock, buffer);
 		control = ft_strchr_line(stock, '\n');
-		if (control <= 0)
-			return (stock);
-		if (i == 0 && control == 0)
-		{
-			free(stock);
+		if (i == 0 && (control == 0 || control < 0))
 			return (NULL);
-		}
+		if (control >= 0)
+			return (stock);
+		if (i == 0 && control > 0)
+			return (stock);
 	}
 	return (stock);
 }
@@ -91,10 +92,8 @@ char	*get_next_line(int fd)
 	char		*buffer;
 	static char	*stock;
 	char		*line;
-	int			i;
 
 	line = NULL;
-	i = 0;
 	if (fd == -1)
 		return (NULL);
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
@@ -109,17 +108,17 @@ char	*get_next_line(int fd)
 	free(buffer);
 	return (line);
 }
-#include <fcntl.h>
+/* #include <fcntl.h>
 #include <stdio.h>
 int	main(void)
 {
 	int	fd;
 	char	*line;
-    fd = open("text_short.txt", O_RDONLY);
+    fd = open("text.txt", O_RDONLY);
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf("%s", line);
 		free(line);
 	}
 	return (0);
-}
+} */
