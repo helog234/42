@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/14 13:34:35 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/14 13:38:39 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,26 +90,21 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	char		*buffer;
+	char		buffer[BUFFER_SIZE + 1];
 	static char	*stock;
 	char		*line;
 
 	line = NULL;
 	if (fd == -1)
 		return (NULL);
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	stock = fill_line_buffer(fd, stock, buffer);
 	if (stock == NULL)
-	{
-		free(buffer);
 		return (NULL);
-	}
 	line = set_line(stock, line);
 	stock = set_stock(stock);
-	free(buffer);
 	return (line);
 }
-#include <fcntl.h>
+/* #include <fcntl.h>
 #include <stdio.h>
 int	main(void)
 {
@@ -122,4 +117,4 @@ int	main(void)
 		free(line);
 	}
 	return (0);
-}
+} */
