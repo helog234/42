@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/17 12:07:59 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/17 15:54:33 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*set_line(char *stock, char *line, int i, int j)
 	if (i >= 0)
 		line = ft_substr(stock, 0, i + 1, k);
 	else
-		line = ft_substr(stock, 0, j + 1, k);
+		line = ft_substr(stock, 0, j, k);
 	return (line);
 }
 
@@ -114,7 +114,7 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-/* #include <fcntl.h>
+#include <fcntl.h>
 #include <stdio.h>
 int	main(void)
 {
@@ -131,4 +131,4 @@ int	main(void)
 		free(line);
 	}
 	return (0);
-} */
+}
