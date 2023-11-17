@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:04:02 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/17 18:39:28 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/17 18:35:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	*get_next_line(int fd)
 	i = 0;
 	j = 0;
 	if (fd == -1)
-		return (NULL);
+		return (0);
 	stock = fill_line_buffer(fd, stock, buffer);
 	if (stock == NULL)
 		return (NULL);

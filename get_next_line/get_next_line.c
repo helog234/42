@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/17 15:54:33 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/17 16:07:49 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-#include <fcntl.h>
+/* #include <fcntl.h>
 #include <stdio.h>
 int	main(void)
 {
@@ -131,4 +131,4 @@ int	main(void)
 		free(line);
 	}
 	return (0);
-}
+} */

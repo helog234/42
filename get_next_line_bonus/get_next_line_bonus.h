@@ -6,10 +6,9 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:08:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/17 18:35:48 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/17 18:10:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
@@ -24,7 +23,6 @@
 # ifndef FD_MAX
 #  define FD_MAX 10496
 # endif
-
 char	*get_next_line(int fd);
 char	*fill_line_buffer(int fd, char *stock, char *buffer);
 char	*set_stock(char *stock, int i, int j);
