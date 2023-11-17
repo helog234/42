@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/17 09:36:37 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/17 11:25:19 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,8 @@ char	*ft_strdup(const char *str1)
 	return (str2);
 }
 
-char	*set_line(char *stash, char *line)
+char	*set_line(char *stash, char *line, int i, int j)
 {
-	int	i;
-	int	j;
-
-	i = ft_strchr_line(stash, '\n');
-	j = ft_strlen(stash);
 	if (i >= 0)
 		line = ft_substr(stash, 0, i + 1);
 	else
@@ -77,7 +72,7 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 		buffer[i] = 0;
 		stock = ft_strjoin(stock, buffer);
 		control = ft_strchr_line(stock, '\n');
-		if ((ft_strlen(stock) == 0 && control == -2 && i == 0)|| stock == NULL)
+		if ((ft_strlen(stock) == 0 && control == -2 && i == 0) || stock == NULL)
 		{
 			free(stock);
 			return (NULL);
@@ -104,13 +99,16 @@ char	*get_next_line(int fd)
 	stock = fill_line_buffer(fd, stock, buffer);
 	if (stock == NULL)
 		return (NULL);
-	line = set_line(stock, line);
 	i = ft_strchr_line(stock, '\n');
 	j = ft_strlen(stock);
+	line = set_line(stock, line, i, j);
 	if (i >= 0)
 		stock = set_stock(stock, i, j);
 	else
+	{
+		free(stock);
 		stock = NULL;
+	}
 	return (line);
 }
 /* #include <fcntl.h>
@@ -120,10 +118,10 @@ int	main(void)
 	int	fd;
 	char	*line;
 	
-	line = NULL;
+	//line = NULL;
     fd = open("text_short.txt", O_RDONLY);
-	line = get_next_line(fd);
-	printf("%s", line);
+	//line = get_next_line(fd);
+	//printf("%s", line);
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf("%s", line);

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:54:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/17 09:31:55 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/17 11:24:54 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*set_stock(char *stock, int i, int j)
 	char	*new_stock;
 
 	new_stock = ft_substr(stock, i + 1, j);
+	free(stock);
 	return (new_stock);
 }
 
@@ -78,6 +79,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	while (s2 && s2[i])
 		str3[j++] = s2[i++];
 	str3[j] = 0;
+	free (s1);
 	s1 = ft_strdup(str3);
 	free(str3);
 	if (s1 == NULL)
