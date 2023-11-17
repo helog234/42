@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/17 11:25:19 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/17 12:07:59 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ char	*ft_strdup(const char *str1)
 	return (str2);
 }
 
-char	*set_line(char *stash, char *line, int i, int j)
+char	*set_line(char *stock, char *line, int i, int j)
 {
+	unsigned int	k;
+
+	k = 0;
 	if (i >= 0)
-		line = ft_substr(stash, 0, i + 1);
+		line = ft_substr(stock, 0, i + 1, k);
 	else
-		line = ft_substr(stash, 0, j + 1);
+		line = ft_substr(stock, 0, j + 1, k);
 	return (line);
 }
 
