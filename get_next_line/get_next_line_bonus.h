@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:08:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/18 13:04:03 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/18 13:15:30 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ char	*ft_strjoin(char *s1, char const *s2);
 int		ft_strlen(const char *s);
 char	*ft_strdup(const char *str1);
 char	*ft_substr(char const *s, unsigned int start, size_t len, size_t i);
+char	*free_str(char *str);
 
 #endif
