@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:04:02 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/18 13:14:29 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/18 13:35:45 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,21 +117,27 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-/*  #include <fcntl.h>
+ #include <fcntl.h>
 #include <stdio.h>
 int main(void)
 {
     int fd;
     int fd2;
+	int fd3;
+	int fd4;
     char *line;
     char *line_2;
+	char *line_3;
+	char *line_4;
 
     line = NULL;
     fd = open("text_short.txt", O_RDONLY);
     fd2 = open("text.txt", O_RDONLY);
+	fd3 = open("line_around_10.txt", O_RDONLY);
+	fd4 = open("giant_line_nl.txt", O_RDONLY);
 
-    while ((line = get_next_line(fd)) != NULL && /
-	(line_2 = get_next_line(fd2)) != NULL)
+    while ((line = get_next_line(fd)) != NULL && \
+	(line_2 = get_next_line(fd2)) != NULL && (line_3 = get_next_line(fd3)) != NULL && (line_4 = get_next_line(fd4)) != NULL)
     {
         if (line != NULL)
         {
@@ -142,6 +148,16 @@ int main(void)
         {
             printf("%s", line_2);
             free(line_2);
+        }
+		 if (line_3 != NULL)
+        {
+            printf("%s", line_3);
+            free(line_3);
+        }
+		 if (line_4 != NULL)
+        {
+            printf("%s", line_4);
+            free(line_4);
         }
     }
     while ((line = get_next_line(fd)) != NULL)
@@ -155,8 +171,20 @@ int main(void)
         printf("%s", line_2);
         free(line_2);
     }
+	while ((line_3 = get_next_line(fd3)) != NULL)
+    {
+        printf("%s", line_3);
+        free(line_3);
+    }
+	while ((line_4 = get_next_line(fd4)) != NULL)
+    {
+        printf("%s", line_4);
+        free(line_4);
+    }
     close(fd);
     close(fd2);
-
+	close(fd3);
+	close(fd4);
+	
     return (0);
-} */
+}
