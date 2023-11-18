@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:05:13 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/17 16:24:12 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/18 12:47:14 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*set_stock(char *stock, int i, int j)
 	return (new_stock);
 }
 
-static int	s_len(char const *s, unsigned int start, size_t len)
+/*  static int	s_len(char const *s, unsigned int start, size_t len)
 {
 	size_t	s_len;
 
@@ -38,23 +38,24 @@ static int	s_len(char const *s, unsigned int start, size_t len)
 	if (start + len > s_len)
 		len = s_len - start;
 	return (len);
-}
-
+} */
+ 
 char	*ft_substr(char const *s, unsigned int start, size_t len, size_t i)
 {
 	char	*str;
-
-	len = s_len(s, start, len);
+	
+	if (start + len > (size_t)ft_strlen(s))
+		len = ft_strlen(s) - start;
 	if (len < 0)
 		return ((char *) s);
-/* 	if (start > (unsigned int) ft_strlen(s))
+ 	if (start > (unsigned int) ft_strlen(s))
 	{
 		str = malloc(1);
 		if (str == NULL)
 			return (NULL);
 		*str = 0;
 		return (str);
-	} */
+	}
 	str = malloc(len + 1);
 	if (str == NULL)
 		return (NULL);
@@ -66,6 +67,37 @@ char	*ft_substr(char const *s, unsigned int start, size_t len, size_t i)
 	str[i] = 0;
 	return (str);
 }
+
+/*  char	*ft_substr_line(char const *s, unsigned int start, size_t len, size_t i)
+{
+	char	*str;
+	
+	if (start + len > (size_t)ft_strlen(s))
+		len = ft_strlen(s) - start;
+	if (len < 0)
+		return ((char *) s);
+	if (start > (unsigned int) ft_strlen(s))
+	{
+		str = malloc(1);
+		if (str == NULL)
+			return (NULL);
+		*str = 0;
+		return (str);
+	} 
+	str = malloc(len + 1);
+	if (str == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		if (i == len - 1)
+			str[i] = '\n';
+		else
+			str[i] = s[start + i];
+		i++;
+	}
+	str[i] = 0;
+	return (str);
+}  */
 
 char	*ft_strjoin(char *s1, char const *s2)
 {
@@ -101,4 +133,4 @@ int	ft_strlen(const char *s)
 	while (s && s[i])
 		i++;
 	return (i);
-}
+} 

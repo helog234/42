@@ -6,10 +6,9 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:08:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/17 18:35:48 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/18 12:45:17 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
@@ -22,7 +21,7 @@
 # endif
 
 # ifndef FD_MAX
-#  define FD_MAX 10496
+#  define FD_MAX 1024
 # endif
 
 char	*get_next_line(int fd);
@@ -32,6 +31,7 @@ int		ft_strchr_line(const char *line, int c);
 char	*ft_strjoin(char *s1, char const *s2);
 int		ft_strlen(const char *s);
 char	*ft_strdup(const char *str1);
+//char	*ft_substr_line(char const *s, unsigned int start, size_t len, size_t i);
 char	*ft_substr(char const *s, unsigned int start, size_t len, size_t i);
 
 #endif

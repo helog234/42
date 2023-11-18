@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:04:02 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/17 18:39:28 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/18 12:45:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*set_line(char *stock, char *line, int i, int j)
 	if (i >= 0)
 		line = ft_substr(stock, 0, i + 1, k);
 	else
-		line = ft_substr(stock, 0, j, k);
+		line = ft_substr(stock, 0, j + 1, k);
 	return (line);
 }
 
@@ -89,7 +89,7 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 char	*get_next_line(int fd)
 {
 	char		buffer[BUFFER_SIZE + 1];
-	static char	*stock;
+	static char	*stock[FD_MAX];
 	char		*line;
 	int			i;
 	int			j;
@@ -97,24 +97,24 @@ char	*get_next_line(int fd)
 	line = NULL;
 	i = 0;
 	j = 0;
-	if (fd == -1)
+	if (fd == -1 || fd >= FD_MAX)
 		return (NULL);
-	stock = fill_line_buffer(fd, stock, buffer);
-	if (stock == NULL)
+	stock[fd] = fill_line_buffer(fd, stock[fd], buffer);
+	if (stock[fd] == NULL)
 		return (NULL);
-	i = ft_strchr_line(stock, '\n');
-	j = ft_strlen(stock);
-	line = set_line(stock, line, i, j);
+	i = ft_strchr_line(stock[fd], '\n');
+	j = ft_strlen(stock[fd]);
+	line = set_line(stock[fd], line, i, j);
 	if (i >= 0)
-		stock = set_stock(stock, i, j);
+		stock[fd] = set_stock(stock[fd], i, j);
 	else
 	{
-		free(stock);
-		stock = NULL;
+		free(stock[fd]);
+		stock[fd] = NULL;
 	}
 	return (line);
 }
-/* #include <fcntl.h>
+/*  #include <fcntl.h>
 #include <stdio.h>
 int main(void)
 {
