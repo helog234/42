@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:04:02 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/18 13:37:58 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/18 13:39:39 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,9 @@ int main(void)
 	fd4 = open("giant_line_nl.txt", O_RDONLY);
 
     while ((line = get_next_line(fd)) != NULL && \
-	(line_2 = get_next_line(fd2)) != NULL && (line_3 = get_next_line(fd3)) != NULL && (line_4 = get_next_line(fd4)) != NULL)
+	(line_2 = get_next_line(fd2)) != NULL && \
+	(line_3 = get_next_line(fd3)) != NULL && \
+	(line_4 = get_next_line(fd4)) != NULL)
     {
         if (line != NULL)
         {
