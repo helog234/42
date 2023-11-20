@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:49 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/18 13:10:59 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/20 14:13:34 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,12 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 42
 # endif
 
 char	*get_next_line(int fd);
-char	*fill_line_buffer(int fd, char *stock, char *buffer);
-char	*set_stock(char *stock, int i, int j);
-int		ft_strchr_line(const char *line, int c);
 char	*ft_strjoin(char *s1, char const *s2);
 int		ft_strlen(const char *s);
-char	*ft_strdup(const char *str1);
 char	*ft_substr(char const *s, unsigned int start, size_t len, size_t i);
 char	*free_str(char *str);
 

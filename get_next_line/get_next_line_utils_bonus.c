@@ -6,29 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:05:13 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/18 13:11:13 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/20 14:24:01 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "get_next_line_bonus.h"
 #include <stdio.h>
-
-char	*set_stock(char *stock, int i, int j)
-{
-	unsigned int	k;
-	char			*new_stock;
-
-	k = 0;
-	new_stock = ft_substr(stock, i + 1, j, k);
-	if (new_stock == NULL)
-	{
-		free(stock);
-		return (NULL);
-	}
-	free(stock);
-	return (new_stock);
-}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len, size_t i)
 {
@@ -76,12 +60,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 		str3[j++] = s2[i++];
 	str3[j] = 0;
 	free (s1);
-	s1 = ft_strdup(str3);
-	free(str3);
-	str3 = NULL;
-	if (s1 == NULL)
-		return (NULL);
-	return (s1);
+	return (str3);
 }
 
 int	ft_strlen(const char *s)

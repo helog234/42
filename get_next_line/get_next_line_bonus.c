@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:04:02 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/18 13:39:39 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/20 15:35:26 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 #include "get_next_line_bonus.h"
 #include <stdio.h>
 
-char	*ft_strdup(const char *str1)
+char	*set_stock(char *stock, int i, int j)
 {
-	char	*str2;
-	int		i;
+	unsigned int	k;
+	char			*new_stock;
 
-	i = 0;
-	str2 = (char *) malloc (ft_strlen(str1) + 1);
-	if (str2 == NULL)
-		return (NULL);
-	while (str1[i])
+	k = 0;
+	new_stock = ft_substr(stock, i + 1, j, k);
+	if (new_stock == NULL)
 	{
-		str2[i] = str1[i];
-		i++;
+		free(stock);
+		return (NULL);
 	}
-	str2[i] = 0;
-	return (str2);
+	free(stock);
+	return (new_stock);
 }
 
 char	*set_line(char *stock, char *line, int i, int j)
@@ -117,76 +115,62 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
+
 /*  #include <fcntl.h>
 #include <stdio.h>
 int main(void)
 {
-    int fd;
-    int fd2;
-	int fd3;
-	int fd4;
+   	int fd[4];
     char *line;
-    char *line_2;
-	char *line_3;
-	char *line_4;
 
     line = NULL;
-    fd = open("text_short.txt", O_RDONLY);
-    fd2 = open("text.txt", O_RDONLY);
-	fd3 = open("line_around_10.txt", O_RDONLY);
-	fd4 = open("giant_line_nl.txt", O_RDONLY);
-
-    while ((line = get_next_line(fd)) != NULL && \
-	(line_2 = get_next_line(fd2)) != NULL && \
-	(line_3 = get_next_line(fd3)) != NULL && \
-	(line_4 = get_next_line(fd4)) != NULL)
-    {
-        if (line != NULL)
-        {
-            printf("%s", line);
-            free(line);
-        }
-        if (line_2 != NULL)
-        {
-            printf("%s", line_2);
-            free(line_2);
-        }
-		 if (line_3 != NULL)
-        {
-            printf("%s", line_3);
-            free(line_3);
-        }
-		 if (line_4 != NULL)
-        {
-            printf("%s", line_4);
-            free(line_4);
-        }
-    }
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        printf("%s", line);
-        free(line);
-    }
-
-    while ((line_2 = get_next_line(fd2)) != NULL)
-    {
-        printf("%s", line_2);
-        free(line_2);
-    }
-	while ((line_3 = get_next_line(fd3)) != NULL)
-    {
-        printf("%s", line_3);
-        free(line_3);
-    }
-	while ((line_4 = get_next_line(fd4)) != NULL)
-    {
-        printf("%s", line_4);
-        free(line_4);
-    }
-    close(fd);
-    close(fd2);
-	close(fd3);
-	close(fd4);
+    fd[0] = open("text_short.txt", O_RDONLY);
+    fd[1] = open("text.txt", O_RDONLY);
+	fd[2] = open("line_around_10.txt", O_RDONLY);
+	fd[3] = open("giant_line_nl.txt", O_RDONLY);
 	
+	int fileIndex = 0;
+    int fileFinished[4] = {0}; 
+    while (1)
+    {
+        if (fileFinished[fileIndex])
+        {
+            printf("NULL\n");
+        }
+        else
+        {
+            line = get_next_line(fd[fileIndex]);
+            if (line != NULL)
+            {
+                printf("%s\n", line);
+                free(line);
+            }
+            else
+            {
+                printf("NULL\n");
+                fileFinished[fileIndex] = 1;
+            }
+        }
+        fileIndex = (fileIndex + 1) % 4;
+        int allFilesFinished = 1;
+        for (int i = 0; i < 4; ++i)
+        {
+            if (!fileFinished[i])
+            {
+                allFilesFinished = 0;
+                break;
+            }
+        }
+
+        if (allFilesFinished)
+        {
+            break; 
+        }
+    }
+    for (int i = 0; i < 4; ++i)
+    {
+        close(fd[i]);
+    }
+ 
     return (0);
 } */

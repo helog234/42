@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/18 13:12:44 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/20 14:32:30 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-char	*ft_strdup(const char *str1)
+char	*set_stock(char *stock, int i, int j)
 {
-	char	*str2;
-	int		i;
+	unsigned int	k;
+	char			*new_stock;
 
-	i = 0;
-	str2 = (char *) malloc (ft_strlen(str1) + 1);
-	if (str2 == NULL)
-		return (NULL);
-	while (str1[i])
+	k = 0;
+	new_stock = ft_substr(stock, i + 1, j, k);
+	if (new_stock == NULL)
 	{
-		str2[i] = str1[i];
-		i++;
+		free(stock);
+		return (NULL);
 	}
-	str2[i] = 0;
-	return (str2);
+	free(stock);
+	return (new_stock);
 }
 
 char	*set_line(char *stock, char *line, int i, int j)
