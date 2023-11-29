@@ -6,10 +6,11 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2023/10/30 16:36:28 by hgandar          ###   ########.fr        #
+#    Updated: 2023/11/29 15:47:38 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 CFILES = 	ft_atoi.c \

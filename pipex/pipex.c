@@ -6,19 +6,45 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:32 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/28 15:52:22 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/29 16:39:15 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/wait.h>
+#include <stdlib.h>
+#include "../libft/libft.h"
+#include "pipex.h"
+
+char	**make_ls(char *argv[])
+{
+	int		i;
+	int		j;
+	int		k;
+	char	**arg_env;
+
+	i = 2;
+	j = 0;
+	k = ft_strlen(argv[i]);
+	arg_env = malloc((k) * sizeof (char *));
+	if (arg_env == NULL)
+		return (NULL);
+	while (argv[i])
+	{
+		arg_env[j] = ft_strdup(argv[i]);
+		j++;
+		i++;
+	}
+	arg_env[j] = NULL;
+	return (arg_env);
+}
 
 int	main(int argc, char *argv[])
 {
-	int		fd[2];
+	/* int		fd[2];
 	int		pid1;
-	int		pid2;
+	int		pid2; */
 	char	**arg_env;
 
 	if (argc == 1)
@@ -26,8 +52,11 @@ int	main(int argc, char *argv[])
 		write(1, "\n", 1);
 		return (0);
 	}
-	arg_env = NULL;
-	if (pipe(fd) == -1)
+	if (argv[2])
+		arg_env = make_ls(argv[2]);
+	if (arg_env == NULL)
+		return (NULL);
+	/* if (pipe(fd) == -1)
 		return (1);
 	pid1 = fork();
 	if (pid1 < 0)
@@ -54,6 +83,6 @@ int	main(int argc, char *argv[])
 	close(fd[0]);
 	close(fd[1]);
 	waitpid(pid1, NULL, 0);
-	waitpid(pid2, NULL, 0);
+	waitpid(pid2, NULL, 0); */
 	return (0);
 }
