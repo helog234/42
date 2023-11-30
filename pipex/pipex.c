@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:32 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/29 16:39:15 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/11/30 17:03:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,53 @@
 #include <stdlib.h>
 #include "../libft/libft.h"
 #include "pipex.h"
+#include <fcntl.h>
 
-char	**make_ls(char *argv[])
+void	child_process(int *pid, int argc, char *argv[], char *envp[])
+{
+	dup2(pid, 0);
+	if (execve(get_path(pid), pids[i], envp) < 0)
+		return (3);
+}
+int	processes(int fd, int argc, char *argv[], char *envp[])
+{
+	int	i;
+	int	*pids;
+	int	pipefd[2];
+
+	i = 0;
+	pipe(pipefd);
+	while (i < argc - 1)
+	{
+		pids[i] = fork();
+		if (pids[i] < 0)
+			return (2);
+		if (pids[i] == 0)
+		{
+			child_process(pids[1], argc, argv, envp);
+			
+		}
+	}
+	
+	
+}
+
+int	main(int argc, char *argv[], char *envp[])
+{
+	int	fd;
+	int	pids;
+
+	if (argc < 5)
+	{
+		// a changer avec ma fonction
+		printf("Not enough arguments");
+		return (0);
+	}
+	fd = open(argv[1], O_RDONLY);
+	processes(fd, argc, argv, envp);
+	
+}
+/* char	**make_ls(char *argv[])
 {
 	int		i;
 	int		j;
@@ -40,11 +85,86 @@ char	**make_ls(char *argv[])
 	return (arg_env);
 }
 
-int	main(int argc, char *argv[])
+char	*get_path(int *i, char *argv)
 {
-	/* int		fd[2];
+	int		i;
+	char	**ls_command;
+	char	path;
+
+	i = 2;
+
+	while (argv[i] != NULL)
+	{
+		ls_command = ft_split(argv[i], ' ')
+		path = 
+	}
+	
+}
+
+int	execute(int **pipes, int argc, char *argv[], char *envp[])
+{
+	int i;
+	int	pids[argc];
+
+	i = 0;
+	while (i < argc)
+	{
+		pids[i] = fork();
+		if (pids[i] < 0)
+			return (2);
+		if (pids[i] == 0)
+		{
+			dup2(pids[1], STDOUT_FILENO);
+			if (execve(get_path(pids[1], argv), pids[i], envp) < 0)
+				return (3);
+		}
+	}
+	
+	
+}
+
+int	**create_pipes(int argc)
+{
+	int	i;
+	int	**pipes;
+
+	i = 0;
+	pipes[argc][2];
+	while (i < argc)
+	{
+		if (pipe(pipes[i]) == -1)
+			return (1);
+		i++;
+	}
+	pipes[i] = NULL;
+	return (pipes);
+}
+
+int	main(int argc, char *argv[], char *envp[])
+{
+	int		i;
+	int		**pipes;
+	char	*path;
+
+	i = 0;
+	path = 0;
+	if (argc == 1)
+	{
+		write(1, "\n", 1);
+		return (0);
+	}
+	pipes = create_pipes(argc);
+	execute(pipes, argc, argv, envp);
+	if (envp == NULL)
+		return (NULL);
+} */
+
+/*int	main(int argc, char *argv[])
+{
+	int		i;
+	int		fd[i][2];
 	int		pid1;
-	int		pid2; */
+	int		pid2;
 	char	**arg_env;
 
 	if (argc == 1)
@@ -56,7 +176,7 @@ int	main(int argc, char *argv[])
 		arg_env = make_ls(argv[2]);
 	if (arg_env == NULL)
 		return (NULL);
-	/* if (pipe(fd) == -1)
+	 if (pipe(fd) == -1)
 		return (1);
 	pid1 = fork();
 	if (pid1 < 0)
@@ -83,6 +203,6 @@ int	main(int argc, char *argv[])
 	close(fd[0]);
 	close(fd[1]);
 	waitpid(pid1, NULL, 0);
-	waitpid(pid2, NULL, 0); */
+	waitpid(pid2, NULL, 0); 
 	return (0);
-}
+}*/
