@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:32 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/01 16:54:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/01 16:57:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	**create_pipes(char *argv, char *envp[])
 	}
 	else
 	{
-		
+		close(pipefd[1]);
+		dup2(pipefd[0], 0);
 	}
 	return (pipes);
 }
