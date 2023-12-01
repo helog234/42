@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:32 by hgandar           #+#    #+#             */
-/*   Updated: 2023/11/30 17:03:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/01 16:54:09 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,59 @@ int	processes(int fd, int argc, char *argv[], char *envp[])
 	
 }
 
+int	**create_pipes(char *argv, char *envp[])
+{
+	int	*pipefd[2];
+	int	pid;
+
+	if (pipe(pipefd) == -1)
+		return (1);
+	pid = fork();
+	if (pid < 0)
+		return (2);
+	if (pid == 0)
+	{
+		close(pipefd[0]);
+		dup2(pipefd[1], 1);
+		if (execve(get_path, &argv[3], get_env) < 0)
+			return (3);
+	}
+	else
+	{
+		
+	}
+	return (pipes);
+}
+
 int	main(int argc, char *argv[], char *envp[])
 {
-	int	fd;
-	int	pids;
+	int	fd_in;
+	int	fd_out;
+	int	i;
 
 	if (argc < 5)
 	{
 		// a changer avec ma fonction
-		printf("Not enough arguments");
+		ft_printf("Not enough arguments");
 		return (0);
 	}
-	fd = open(argv[1], O_RDONLY);
-	processes(fd, argc, argv, envp);
+	else if (ft_strncmp(argv[1], "here_doc", 7))
+	{
+		i = 
+	}
+	else
+	{
+		i = 2;
+		fd_in = open(argv[1], O_RDONLY);
+		fd_out = open(argv[argc - 1], O_WRONLY);
+		dup2(fd_in, 0);
+	}
+	while (i < argc)
+	{
+		create_pipes(argv[i]);
+		i++;
+	}
+	
 	
 }
 /* char	**make_ls(char *argv[])
