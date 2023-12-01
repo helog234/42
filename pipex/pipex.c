@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:53:32 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/01 16:57:21 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/01 17:29:08 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,6 @@
 #include "../libft/libft.h"
 #include "pipex.h"
 #include <fcntl.h>
-
-void	child_process(int *pid, int argc, char *argv[], char *envp[])
-{
-	dup2(pid, 0);
-	if (execve(get_path(pid), pids[i], envp) < 0)
-		return (3);
-}
-int	processes(int fd, int argc, char *argv[], char *envp[])
-{
-	int	i;
-	int	*pids;
-	int	pipefd[2];
-
-	i = 0;
-	pipe(pipefd);
-	while (i < argc - 1)
-	{
-		pids[i] = fork();
-		if (pids[i] < 0)
-			return (2);
-		if (pids[i] == 0)
-		{
-			child_process(pids[1], argc, argv, envp);
-			
-		}
-	}
-	
-	
-}
 
 int	**create_pipes(char *argv, char *envp[])
 {
