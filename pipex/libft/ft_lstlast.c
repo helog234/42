@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 13:34:46 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/06 16:08:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/30 13:13:03 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/30 13:24:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-
-char	*ft_strstr(const char *hstack, const char *needle);
-void	free_all(char **all);
-void	error_message(int flag);
-
-#endif
+t_list	*ft_lstlast(t_list *lst)
+{
+	while (lst != NULL)
+	{
+		if (lst -> next == NULL)
+			return (lst);
+		lst = lst -> next;
+	}
+	return (lst);
+}

@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 13:34:46 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/06 16:08:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/09 12:35:10 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/18 10:51:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+int	ft_isalpha(int c)
+{
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	else
+		return (0);
+}
+/*
+#include <stdio.h>
+#include <ctype.h>
 
-char	*ft_strstr(const char *hstack, const char *needle);
-void	free_all(char **all);
-void	error_message(int flag);
+int main(void)
+{
+	unsigned char    c;
+	c = '!';
 
-#endif
+	printf("c is : %d\n", ft_isalpha(c));
+	printf("c is : %d\n", isalpha(c));
+	return 0;
+}
+*/
