@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/07 15:19:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/07 18:00:44 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,24 +112,29 @@ void	create_pipe(int argc, char *argv[], char *envp[], int fd)
 	int	pid;
 	int	i;
 
-	dup2(fd, STDIN_FILENO);
+	//dup2(fd, STDIN_FILENO);
 	if (pipe(pipefd) == -1)
 		error_message(2);
 	i = 2;
-	while (i < argc - 2)
+	while (i < argc - 3)
 	{
 		pid = fork();
 		if (pid < 0)
 			error_message(3);
 		if (pid == 0)
 		{
+			if (i > 2)
+                dup2(pipefd[0], STDIN_FILENO);
 			close(pipefd[0]);
+			dup2(pipefd[1], STDOUT_FILENO);
+			close(pipefd[1]);
 			child_process(fd, pipefd[1], argv[i], envp);
 		}
 		else
 		{
 			close(pipefd[1]);
 			fd = pipefd[0];
+			close(pipefd[0]);
 		}
 		i++;
 	}
@@ -161,6 +166,7 @@ int	main(int argc, char *argv[], char *envp[])
 	i = 2;*/
 	create_pipe(argc, argv, envp, fd_in);
 	dup2(fd_out, STDOUT_FILENO);
+	perror(argv[argc - 2]);
 	execute(argv[argc - 2], envp);
 	return (EXIT_SUCCESS);
 }
