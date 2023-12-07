@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:28:50 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/06 16:08:21 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/07 09:41:10 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ void	free_all(char **all)
 		i++;
 	while (j < i)
 	{
-		free(all[i]);
-		i++;
+		free(all[j]);
 		j++;
 	}
 	free(all);

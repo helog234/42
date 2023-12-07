@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 13:34:06 by hgandar           #+#    #+#              #
-#    Updated: 2023/12/06 15:37:00 by hgandar          ###   ########.fr        #
+#    Updated: 2023/12/07 14:33:42 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,19 @@ CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 CFILES = 	pipex.c \
-			utils.c			
+			utils.c
 OFILES = $(CFILES:.c=.o)
-LIBFT_DIR = ../libft
 
 all : $(NAME)
 
-$(NAME): $(CFILES) $(LIBFT)
+$(NAME): $(OFILES) $(LIBFT)
 	$(CC) $(CFLAGS) $^ -o $@
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
+	
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 	
 clean:
 	rm -f $(OFILES)
