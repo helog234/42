@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:28:50 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/07 09:41:10 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/08 15:13:59 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,63 @@
 #include "libft/libft.h"
 #include <string.h>
 #include <stdio.h> 
+
+char	**get_env_path(char *envp[])
+{
+	int		i;
+	char	**env_paths;
+
+	i = 0;
+	while (envp[i])
+	{
+		if (ft_strstr(envp[i], "PATH") != 0)
+		{
+			env_paths = ft_split(ft_strstr(envp[i], "PATH"), ':');
+			if (env_paths == NULL)
+				error_message(8);
+			return (env_paths);
+		}
+		i++;
+	}
+	error_message(8);
+	return (NULL);
+}
+
+char	*get_path(char *cmd, char *env_paths[])
+{
+	int		i;
+	//char	**exec;
+	char	*path;
+
+	i = 0;
+	/* exec = ft_split(cmd, ' ');
+	if (exec == NULL)
+	{
+		error_message(7);
+		free_all(exec);
+	} */
+	while (env_paths[i] != NULL)
+	{
+		//if (ft_strncmp(env_paths[i], exec[0], ft_strlen(exec[0])) == 0)
+		if (ft_strstr(env_paths[i], cmd) == 0)
+		{
+			path = ft_strjoin(env_paths[i], "/");
+			path = ft_strjoin(path, cmd);
+			if (access(path, F_OK | X_OK) == 0)
+			{
+				//free(exec);
+				//free_all(env_paths);
+				return (path);
+			}
+			//free(path);
+		}
+		i++;
+	}
+	//free(exec);
+	//free_all(env_paths);
+	error_message(9);
+	return (NULL);
+}
 
 char	*ft_strstr(const char *hstack, const char *needle)
 {

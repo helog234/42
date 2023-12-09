@@ -5,46 +5,39 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/28 13:34:06 by hgandar           #+#    #+#              #
-#    Updated: 2023/12/08 18:01:33 by hgandar          ###   ########.fr        #
+#    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
+#    Updated: 2023/12/08 17:41:36 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
+NAME = get_next_line
 CC = gcc
+LIBFT_DIR = ../libft
 CFLAGS = -Wall -Wextra -Werror
-LIBFT_DIR = libft
-GNL_DIR = gnl
+CFILES = 	get_next_line_bonus.c \
+			get_next_line_utils_bonus.c
 LIBFT = $(LIBFT_DIR)/libft.a
-GNL_OFILES = $(GNL_DIR)/get_next_line_bonus.o \
-             $(GNL_DIR)/get_next_line_utils_bonus.o
-CFILES = 	pipex.c \
-			utils.c
 OFILES = $(CFILES:.c=.o)
+BOFILES = $(CFILES:.c=.o)
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME): $(OFILES) $(LIBFT) $(GNL_OFILES)
-	$(CC) $(CFLAGS) $^ -o $@
+$(NAME): $(OFILES) $(LIBFT)
+	ar rcs $(NAME) $(OFILES)
 
-$(LIBFT):
-	make -C $(LIBFT_DIR)
-
-$(GNL_DIR)/%.o: $(GNL_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+bonus: $(BOFILES) $(LIBFT)
+	ar rcs $(NAME) $(BOFILES)
 	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 	
 clean:
-	rm -f $(OFILES)
+	rm -f $(OFILES) $(BOFILES)
 	make clean -C $(LIBFT_DIR)
-	make clean -C $(GNL_OFILES)
 
 fclean: clean
 	rm -f $(NAME)
 	make fclean -C $(LIBFT_DIR)
-	make fclean -C $(GNL_OFILES)
 
 re: fclean all
 

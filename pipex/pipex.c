@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/07 18:00:44 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/09 18:42:32 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 #include "pipex.h"
+#include "gnl/get_next_line_bonus.h"
 #include <fcntl.h>
 
 void	execute(char *argv, char *envp[])
@@ -42,131 +43,104 @@ void	execute(char *argv, char *envp[])
 	}
 }
 
-char	**get_env_path(char *envp[])
+void	fork_process(char *argv, char *envp[], int *pipefd)
 {
-	int		i;
-	char	**env_paths;
-
-	i = 0;
-	while (envp[i])
-	{
-		if (ft_strstr(envp[i], "PATH") != 0)
-		{
-			env_paths = ft_split(ft_strstr(envp[i], "PATH"), ':');
-			if (env_paths == NULL)
-				error_message(8);
-			return (env_paths);
-		}
-		i++;
-	}
-	error_message(8);
-	return (NULL);
-}
-
-char	*get_path(char *cmd, char *env_paths[])
-{
-	int		i;
-	//char	**exec;
-	char	*path;
-
-	i = 0;
-	/* exec = ft_split(cmd, ' ');
-	if (exec == NULL)
-	{
-		error_message(7);
-		free_all(exec);
-	} */
-	while (env_paths[i] != NULL)
-	{
-		//if (ft_strncmp(env_paths[i], exec[0], ft_strlen(exec[0])) == 0)
-		if (ft_strstr(env_paths[i], cmd) == 0)
-		{
-			path = ft_strjoin(env_paths[i], "/");
-			path = ft_strjoin(path, cmd);
-			if (access(path, F_OK | X_OK) == 0)
-			{
-				//free(exec);
-				//free_all(env_paths);
-				return (path);
-			}
-			//free(path);
-		}
-		i++;
-	}
-	//free(exec);
-	//free_all(env_paths);
-	error_message(9);
-	return (NULL);
-}
-
-void	child_process(int input_fd, int output_fd, char *argv, char *envp[])
-{
-	dup2(input_fd, STDIN_FILENO);
-	dup2(output_fd, STDOUT_FILENO);
-	execute(argv, envp);
-}
-
-void	create_pipe(int argc, char *argv[], char *envp[], int fd)
-{
-	int	pipefd[2];
 	int	pid;
-	int	i;
 
-	//dup2(fd, STDIN_FILENO);
+	pid = fork();
+	if (pid < 0)
+		error_message(3);
+	if (pid == 0)
+	{
+		close(pipefd[0]);
+		dup2(pipefd[1], STDOUT_FILENO);
+		execute(argv, envp);
+	}
+	else
+	{
+		close(pipefd[1]);
+		dup2(pipefd[0], STDIN_FILENO);
+	}
+}
+
+void gnl_argv(char *argv[], int output)
+{
+	char	*line;
+	int		control;
+
+	line = NULL;
+	control = 1;
+	while (control != 0)
+	{
+		line = get_next_line(STDIN_FILENO, line, control);
+		if (line == NULL)
+			break;
+		if (ft_strncmp(line, argv[2], ft_strlen(argv[2])) == 0)
+		{
+			control = 0;
+			free(line);
+			break;
+		}
+		ft_putstr_fd(line, output);
+		free(line);
+	}
+}
+
+void	here_doc_process(int argc, char **argv, int *pipefd, int output)
+{
+	int		pid;
+
+	if (argc < 6)
+		error_message(1);
 	if (pipe(pipefd) == -1)
 		error_message(2);
-	i = 2;
-	while (i < argc - 3)
+	pid = fork();
+	if (pid < 0)
+		error_message(3);
+	if (pid == 0)
 	{
-		pid = fork();
-		if (pid < 0)
-			error_message(3);
-		if (pid == 0)
-		{
-			if (i > 2)
-                dup2(pipefd[0], STDIN_FILENO);
-			close(pipefd[0]);
-			dup2(pipefd[1], STDOUT_FILENO);
-			close(pipefd[1]);
-			child_process(fd, pipefd[1], argv[i], envp);
-		}
-		else
-		{
-			close(pipefd[1]);
-			fd = pipefd[0];
-			close(pipefd[0]);
-		}
-		i++;
+		close(pipefd[0]);
+		gnl_argv(argv, output);
 	}
-	
+	else
+	{
+		close(pipefd[1]);
+		dup2(pipefd[0], STDIN_FILENO);
+		wait(NULL);
+	}
+	exit(EXIT_SUCCESS);
 }
 
 int	main(int argc, char *argv[], char *envp[])
 {
 	int	fd_in;
 	int	fd_out;
-	//int	i;
+	int	i;
+	int	pipefd[2];
 
-	//i = 0;
 	if (argc < 5)
 		error_message(1);
-	/* if (i == 0)
-	{ */
-		//i = 2;
 	fd_in = open(argv[1], O_RDONLY);
-	fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0777);
 	dup2(fd_in, STDIN_FILENO);
-	
-/* 	if (ft_strncmp(argv[1], "here_doc", 7))
+	if (pipe(pipefd) == -1)
+			error_message(2);
+	if (ft_strncmp(argv[1], "here_doc", 7) == 0)
 	{
-		i = 
+		i = 3;
+		fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0777);
+		here_doc_process(argc, argv, pipefd, fd_out);
 	} 
-	if (i == 0)
+	else
 	{
-	i = 2;*/
-	create_pipe(argc, argv, envp, fd_in);
+		i = 2;
+		fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0777);
+	}
+	while (i < argc - 2)
+	{
+		fork_process(argv[i], envp, pipefd);
+		i++;
+	}
 	dup2(fd_out, STDOUT_FILENO);
-	perror(argv[argc - 2]);
 	execute(argv[argc - 2], envp);
 	return (EXIT_SUCCESS);
 }

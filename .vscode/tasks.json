@@ -1,5 +1,27 @@
 {
+    "version": "2.0.0",
     "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make",
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
         {
             "type": "cppbuild",
             "label": "C/C++: clang générer le fichier actif",
@@ -8,8 +30,7 @@
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
                 "-g",
-                "pipex.c",
-				"utils.c",
+                "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
@@ -25,6 +46,5 @@
             },
             "detail": "Tâche générée par le débogueur."
         }
-    ],
-    "version": "2.0.0"
+    ]
 }
