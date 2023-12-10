@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2023/12/08 17:41:36 by hgandar          ###   ########.fr        #
+#    Updated: 2023/12/10 11:02:28 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,21 +18,17 @@ CFILES = 	get_next_line_bonus.c \
 			get_next_line_utils_bonus.c
 LIBFT = $(LIBFT_DIR)/libft.a
 OFILES = $(CFILES:.c=.o)
-BOFILES = $(CFILES:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OFILES) $(LIBFT)
 	ar rcs $(NAME) $(OFILES)
-
-bonus: $(BOFILES) $(LIBFT)
-	ar rcs $(NAME) $(BOFILES)
 	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 	
 clean:
-	rm -f $(OFILES) $(BOFILES)
+	rm -f $(OFILES)
 	make clean -C $(LIBFT_DIR)
 
 fclean: clean
