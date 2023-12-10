@@ -6,20 +6,20 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 13:34:06 by hgandar           #+#    #+#              #
-#    Updated: 2023/12/08 18:01:33 by hgandar          ###   ########.fr        #
+#    Updated: 2023/12/10 10:28:14 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBFT_DIR = libft
 GNL_DIR = gnl
 LIBFT = $(LIBFT_DIR)/libft.a
 GNL_OFILES = $(GNL_DIR)/get_next_line_bonus.o \
              $(GNL_DIR)/get_next_line_utils_bonus.o
-CFILES = 	pipex.c \
-			utils.c
+CFILES = 	pipex_bonus.c \
+			utils_bonus.c
 OFILES = $(CFILES:.c=.o)
 
 all : $(NAME)

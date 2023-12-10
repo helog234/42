@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:28:50 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/08 15:13:59 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/10 10:15:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,11 @@ char	**get_env_path(char *envp[])
 char	*get_path(char *cmd, char *env_paths[])
 {
 	int		i;
-	//char	**exec;
 	char	*path;
 
 	i = 0;
-	/* exec = ft_split(cmd, ' ');
-	if (exec == NULL)
-	{
-		error_message(7);
-		free_all(exec);
-	} */
 	while (env_paths[i] != NULL)
 	{
-		//if (ft_strncmp(env_paths[i], exec[0], ft_strlen(exec[0])) == 0)
 		if (ft_strstr(env_paths[i], cmd) == 0)
 		{
 			path = ft_strjoin(env_paths[i], "/");
@@ -82,7 +74,7 @@ char	*ft_strstr(const char *hstack, const char *needle)
 	if (needle[i] == 0 || needle[j] == 0)
 		return ((char *)hstack);
 	if (hstack == NULL)
-        return NULL;
+		return (NULL);
 	while (hstack[i])
 	{
 		j = 0;
