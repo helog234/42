@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:48:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/11 10:41:46 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/11 17:19:07 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft/libft.h"
 #include <string.h>
 #include <stdio.h> 
+#include <errno.h>
 
 char	**get_env_path(char *envp[])
 {
@@ -60,7 +61,14 @@ char	*get_path(char *cmd, char *env_paths[])
 	}
 	//free(exec);
 	//free_all(env_paths);
-	error_message(9);
+	//pas printf malheureusment
+ /*   if (errno == ENOENT) {
+        fprintf(stderr, "pipex: command not found: %s\n", cmd);
+    } else {
+        // For other errors, print a generic message with strerror
+        fprintf(stderr, "Error: Pipex standard stream - %s\n", strerror(errno));
+    } */
+	exit(0);
 	return (NULL);
 }
 
@@ -114,15 +122,11 @@ void	error_message(int flag)
 		perror("Could not fork\n");
 	else if (flag == 4)
 		perror("Error splitting the command\n");
-	else if (flag == 5)
+	else if (flag == 5 || flag == 8)
 		perror("Error getting env path\n");
 	else if (flag == 6)
 		perror("Error getting execute");
 	else if (flag == 7)
 		perror("Error getting exec split");
-	else if (flag == 8)
-		perror("Error getting env PATH");
-	else if (flag == 9)
-		perror("Error getting PATH");
 	exit(EXIT_FAILURE);
 }

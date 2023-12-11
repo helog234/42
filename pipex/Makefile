@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 13:34:06 by hgandar           #+#    #+#              #
-#    Updated: 2023/12/11 15:36:21 by hgandar          ###   ########.fr        #
+#    Updated: 2023/12/11 16:28:13 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,11 @@ $(NAME): $(OFILES) $(LIBFT)
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-bonus: $(BOFILES) $(LIBFT)
-	$(CC) $(CFLAGS) $^ -o $(NAME)
-
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: $(LIBFT) $(BOFILES)
+	$(CC) $(CFLAGS) $^ -o $(NAME)
 	
 clean:
 	rm -f $(OFILES) $(BOFILES)

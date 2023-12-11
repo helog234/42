@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2023/12/11 14:35:21 by hgandar          ###   ########.fr        #
+#    Updated: 2023/12/11 17:09:39 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,17 @@ CFILES = 	ft_atoi.c \
 			ft_tolower.c \
 			ft_toupper.c \
 			get_next_line_bonus.c \
-			get_next_line_utils_bonus.c
+			get_next_line_utils_bonus.c \
+			ft_printf.c \
+			va_arg_c.c \
+			va_arg_di.c \
+			va_arg_prce.c \
+			va_arg_p.c \
+			va_arg_s.c \
+			va_arg_u.c \
+			va_arg_x.c \
+			functions.c \
+			function_hexa.c
 			
 BFILES =	ft_lstnew.c \
 			ft_lstadd_front.c \
