@@ -6,12 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:05:13 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/10 10:31:21 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:37:11 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "get_next_line_bonus.h"
 #include "../libft/libft.h"
 #include <stdio.h>
 

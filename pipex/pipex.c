@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/11 11:10:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:46:38 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 #include "pipex.h"
-#include "gnl/get_next_line_bonus.h"
 #include <fcntl.h>
 
 void	execute(char *argv, char *envp[])

@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2023/11/29 15:47:38 by hgandar          ###   ########.fr        #
+#    Updated: 2023/12/11 14:35:21 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,9 @@ CFILES = 	ft_atoi.c \
 			ft_strtrim.c \
 			ft_substr.c \
 			ft_tolower.c \
-			ft_toupper.c
+			ft_toupper.c \
+			get_next_line_bonus.c \
+			get_next_line_utils_bonus.c
 			
 BFILES =	ft_lstnew.c \
 			ft_lstadd_front.c \
