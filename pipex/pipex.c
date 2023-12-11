@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/11 10:40:35 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/11 11:10:45 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(int argc, char *argv[], char *envp[])
 	dup2(fd_in, STDIN_FILENO);
 	if (pipe(pipefd) == -1)
 		error_message(2);
-	fd_out = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0777);
+	fd_out = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	fork_process(argv[2], envp, pipefd);
 	dup2(fd_out, STDOUT_FILENO);
 	execute(argv[argc - 2], envp);
