@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:34:46 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/07 08:25:53 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/12 09:06:15 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ void	free_all(char **all);
 void	error_message(int flag);
 char	**get_env_path(char *envp[]);
 char	*get_path(char *cmd, char *env_paths[]);
+void	output_sterr(int i, char *cmd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:28:50 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/11 17:19:19 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/12 10:28:38 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 #include <stdio.h>
 #include <errno.h>
 
+void	output_sterr(int i, char *cmd)
+{
+	ft_putstr_fd("pipex: ", STDERR_FILENO);
+	ft_putstr_fd(cmd, STDERR_FILENO);
+	ft_putstr_fd(": command not found\n", STDERR_FILENO);
+	exit(i);
+}
 
 char	**get_env_path(char *envp[])
 {
@@ -70,8 +77,8 @@ char	*get_path(char *cmd, char *env_paths[])
         // For other errors, print a generic message with strerror
         fprintf(stderr, "Error: Pipex standard stream - %s\n", strerror(errno));
     } */
-	exit(0);
-	return (NULL);
+	output_sterr(127, cmd);
+	exit(EXIT_FAILURE);
 }
 
 char	*ft_strstr(const char *hstack, const char *needle)
