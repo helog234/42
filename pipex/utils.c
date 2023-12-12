@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:48:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/12 10:24:19 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/12 10:30:01 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,6 @@ char	*get_path(char *cmd, char *env_paths[])
 	}
 	//free(exec);
 	//free_all(env_paths);
-	//pas printf malheureusment
- /*   if (errno == ENOENT) {
-        fprintf(stderr, "pipex: command not found: %s\n", cmd);
-    } else {
-        // For other errors, print a generic message with strerror
-        fprintf(stderr, "Error: Pipex standard stream - %s\n", strerror(errno));
-    } */
 	output_sterr(0, cmd);
 	exit(EXIT_FAILURE);
 }

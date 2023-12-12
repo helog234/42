@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/12 09:54:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/12 13:02:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	pipex(int argc, char *argv[], char *envp[], int i)
 	{
 		i = 3;
 		fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0644);
-		here_doc_process(argc, argv, pipefd, fd_out);
+		here_doc_process(argc, argv, pipefd, pipefd[1]);
 	}
 	else
 	{
