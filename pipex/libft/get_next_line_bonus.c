@@ -6,13 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:04:02 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/11 14:37:17 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/12 08:54:15 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
-#include "../libft/libft.h"
+#include "libft.h"
 
 char	*set_stock(char *stock, int i, int j)
 {

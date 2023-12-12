@@ -6,12 +6,12 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:05:13 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/11 14:37:11 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/12 08:54:11 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "../libft/libft.h"
+#include "libft.h"
 #include <stdio.h>
 
 char	*ft_substr_l(char const *s, unsigned int start, size_t len, size_t i)
