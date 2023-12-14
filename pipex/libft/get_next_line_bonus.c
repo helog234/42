@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:04:02 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/12 08:54:15 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 07:49:56 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char	*get_next_line(int fd, char *line, int i)
 	j = 0;
 	if (stock[fd] == NULL || fd == -1 || fd >= FD_MAX)
 		stock[fd] = init(stock[fd], fd);
-	ft_putstr_fd("pipe heredoc> ", STDOUT_FILENO);
+	ft_putstr_fd("pipe heredoc> ", STDIN_FILENO);//change avant = stout
 	stock[fd] = fill_line_buffer(fd, stock[fd], buffer);
 	if (stock[fd] == NULL)
 		return (NULL);

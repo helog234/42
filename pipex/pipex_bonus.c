@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/12 13:02:28 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 08:44:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	execute(char *argv, char *envp[])
 	char	**env_paths;
 	char	*path;
 
-	cmd_split = ft_split(argv, ' ');
+	// cmd_split = check_quote(argv);
+	// if (cmd_split == NULL)
+		cmd_split = ft_split(argv, ' ');
 	if (cmd_split == NULL)
 		error_message(4);
 	env_paths = get_env_path(envp);
@@ -42,7 +44,7 @@ void	execute(char *argv, char *envp[])
 	}
 }
 
-void	fork_process(char *argv, char *envp[], int *pipefd)
+int	fork_process(char *argv, char *envp[], int *pipefd)
 {
 	int	pid;
 
@@ -60,6 +62,7 @@ void	fork_process(char *argv, char *envp[], int *pipefd)
 		close(pipefd[1]);
 		dup2(pipefd[0], STDIN_FILENO);
 	}
+	return (pid);
 }
 
 void	gnl_argv(char *argv[], int output)
@@ -85,7 +88,7 @@ void	gnl_argv(char *argv[], int output)
 	}
 }
 
-void	here_doc_process(int argc, char **argv, int *pipefd, int output)
+void	here_doc_process(int argc, char **argv, int *pipefd)
 {
 	int		pid;
 
@@ -99,7 +102,10 @@ void	here_doc_process(int argc, char **argv, int *pipefd, int output)
 	if (pid == 0)
 	{
 		close(pipefd[0]);
-		gnl_argv(argv, output);
+		//dup2(pipefd[1], STDOUT_FILENO);
+		gnl_argv(argv, pipefd[1]);
+		close(pipefd[1]);//ajout
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
@@ -107,13 +113,15 @@ void	here_doc_process(int argc, char **argv, int *pipefd, int output)
 		dup2(pipefd[0], STDIN_FILENO);
 		wait(NULL);
 	}
-	exit(EXIT_SUCCESS);
 }
 
 int	pipex(int argc, char *argv[], char *envp[], int i)
 {
 	int	fd_out;
 	int	pipefd[2];
+	int	last_pid;
+	int	pid;
+	int	status;
 
 	if (pipe(pipefd) == -1)
 		error_message(2);
@@ -121,21 +129,28 @@ int	pipex(int argc, char *argv[], char *envp[], int i)
 	{
 		i = 3;
 		fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0644);
-		here_doc_process(argc, argv, pipefd, pipefd[1]);
+		here_doc_process(argc, argv, pipefd);
 	}
 	else
 	{
 		i = 2;
 		fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	}
-	while (i < argc - 2)
+	dup2(fd_out, STDOUT_FILENO);
+	while (i < argc - 1) //-2 pour revenir avant
 	{
-		fork_process(argv[i], envp, pipefd);
+		last_pid = fork_process(argv[i], envp, pipefd);
 		i++;
 	}
-	dup2(fd_out, STDOUT_FILENO);
-	execute(argv[argc - 2], envp);
-	return (EXIT_SUCCESS);
+	//dup2(fd_out, STDOUT_FILENO);
+	// close(pipefd[0]);
+    // close(pipefd[1]);
+	while ((pid = waitpid(-1, &status, WNOHANG)) != -1)
+	{
+		if (pid == last_pid)
+			return (WEXITSTATUS(status));
+	}
+	return (1);
 }
 
 int	main(int argc, char *argv[], char *envp[])
