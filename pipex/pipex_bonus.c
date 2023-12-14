@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 10:25:56 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 11:16:57 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	pipex(int argc, char *argv[], char *envp[], int i)
 {
 	int	fd_out;
 	int	pipefd[2];
-	int	last_pid;
+	//int	last_pid;
 
 	if (pipe(pipefd) == -1)
 		error_message(2);
@@ -100,13 +100,20 @@ int	pipex(int argc, char *argv[], char *envp[], int i)
 		i = 2;
 		fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	}
-	dup2(fd_out, STDOUT_FILENO);
-	while (i < argc - 1)
+	// dup2(fd_out, STDOUT_FILENO);
+	// while (i < argc - 1)
+	// {
+	// 	last_pid = fork_process(argv[i], envp, pipefd);
+	// 	i++;
+	// }
+	// i = wait_last(last_pid);
+	while (i < argc - 2)
 	{
-		last_pid = fork_process(argv[i], envp, pipefd);
+		fork_process(argv[i], envp, pipefd);
 		i++;
 	}
-	i = wait_last(last_pid);
+	dup2(fd_out, STDOUT_FILENO);
+	execute(argv[argc - 2], envp);
 	return (EXIT_SUCCESS);
 }
 
