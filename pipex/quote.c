@@ -6,15 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:13:26 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 08:52:41 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 18:47:57 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "pipex.h"
 #include <stdio.h>
-
-//a mettre dans execute apres cmd_split
 
 char	**check_quote(char *cmd)
 {
@@ -34,8 +32,6 @@ char	**check_quote(char *cmd)
 			quote[1] = 0;
 			new_cmd = ft_split(cmd, quote[0]);
 			new_cmd[0] = ft_strtrim(new_cmd[0], " ");
-			//perror(new_cmd[0]);
-			//perror(new_cmd[1]);
 			free(quote);
 			return (new_cmd);
 		}

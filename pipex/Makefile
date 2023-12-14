@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 13:34:06 by hgandar           #+#    #+#              #
-#    Updated: 2023/12/14 16:53:54 by hgandar          ###   ########.fr        #
+#    Updated: 2023/12/14 18:46:57 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,10 +28,10 @@ BFILES =	pipex_bonus.c \
 OFILES = $(CFILES:.c=.o)
 BOFILES = $(BFILES:.c=.o)
 
-all: $(OFILES) $(LIBFT)
+all : $(NAME)
 
-link: $(OFILES) $(LIBFT)
-	$(CC) $(CFLAGS) $^ -o $(NAME)
+$(NAME): $(OFILES) $(LIBFT)
+	$(CC) $(CFLAGS) $^ -o $@
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
