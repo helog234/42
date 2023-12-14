@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 08:59:47 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 16:07:55 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:29:27 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,29 @@ void	gnl_argv(char *argv[], int output)
 	}
 }
 
-void	here_doc_process(int argc, char **argv, t_fd *fd)
+void	here_doc_process(int argc, char **argv, int *pipefd)
 {
 	int		pid;
 
 	if (argc < 6)
 		error_message(1);
-	if (pipe(fd->pipe) == -1)
+	if (pipe(pipefd) == -1)
 		error_message(2);
 	pid = fork();
 	if (pid < 0)
 		error_message(3);
 	if (pid == 0)
 	{
-		close(fd->pipe[0]);
-		gnl_argv(argv, fd->pipe[1]);
-		close(fd->pipe[1]);
+		close(pipefd[0]);
+		dup2(pipefd[1], STDOUT_FILENO);
+		gnl_argv(argv, pipefd[1]);
+		close(pipefd[1]);//ajout
 		exit(EXIT_SUCCESS);
 	}
-	waitpid(pid, NULL, 0);
-	close(fd->tmp);
-	fd->tmp = fd->pipe[0];
-	close(fd->pipe[1]);
+	else
+	{
+		close(pipefd[1]);
+		dup2(pipefd[0], STDIN_FILENO);
+		wait(NULL);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 11:18:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 16:16:12 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	execute(char *argv, char *envp[])
 		error_message(5);
 	}
 	path = get_path(cmd_split[0], env_paths);
-	//dup2(fd_out, STDOUT_FILENO);
 	if (execve(path, cmd_split, envp) < 0)
 	{
 		free(cmd_split);
@@ -59,64 +58,56 @@ void	execute(char *argv, char *envp[])
 	}
 }
 
-int	fork_process(char *argv, char *envp[], int *pipefd)
+void	fork_process(char *argv, char *envp[], t_fd *fd, int i)
 {
-	int	pid;
-
-	pid = fork();
-	if (pid < 0)
+	fd->pid = fork();
+	if (fd->pid < 0)
 		error_message(3);
-	if (pid == 0)
+	if (fd->pid == 0)
 	{
-		close(pipefd[0]);
-		dup2(pipefd[1], STDOUT_FILENO);
+		if (i == 2)
+		{	
+			dup2(fd->tmp, 0);
+			dup2(fd->pipe[1], 1);
+			close(fd->tmp);
+		}
+		else
+		{
+			dup2(fd->pipe[0], 0);
+			dup2(fd->out_file, 1);
+			close(fd->out_file);
+		}
+		(void) close(fd->pipe[0]);
+		(void) close(fd->pipe[1]);
 		execute(argv, envp);
 	}
-	else
-	{
-		close(pipefd[1]);
-		dup2(pipefd[0], STDIN_FILENO);
-	}
-	return (pid);
+	close(fd->pipe[1]);
 }
 
-int	pipex(int argc, char *argv[], char *envp[], int i)
+int	pipex(int argc, char *argv[], char *envp[])
 {
-	int	fd_out;
-	int	pipefd[2];
-	//int	last_pid;
+	t_fd	fd;
+	int		i;
 
-	if (pipe(pipefd) == -1)
+	i = 2;
+	if (pipe(fd.pipe) == -1)
 		error_message(2);
-	fd_out = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	close(pipefd[0]);
-	close(pipefd[1]);
-	// while (i < argc - 1)
-	// {
-	// 	last_pid = fork_process(argv[i], envp, pipefd, fd_out);
-	// 	i++;
-	// }
-	// i = wait_last(last_pid);
-	while (i < argc - 2)
+	fd.tmp = open(argv[1], O_RDONLY);
+	fd.out_file = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	while (i < argc - 1)
 	{
-		fork_process(argv[i], envp, pipefd);
+		fork_process(argv[i], envp, &fd, i);
 		i++;
 	}
-	dup2(fd_out, STDOUT_FILENO);
-	execute(argv[argc - 2], envp);
-	return (EXIT_SUCCESS);
+	close(fd.tmp);
+	close(fd.out_file);
+	close(fd.pipe[0]);
+	return (wait_last(fd.pid));
 }
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	int	i;
-	int	fd_in;
-
 	if (argc < 5)
 		error_message(1);
-	i = 2;
-	fd_in = open(argv[1], O_RDONLY);
-	dup2(fd_in, STDIN_FILENO);
-	pipex(argc, argv, envp, i);
-	return (0);
+	return (pipex(argc, argv, envp));
 }
