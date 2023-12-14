@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 16:08:24 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 19:03:50 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ int	wait_last(int last_pid)
 	}
 	return (value);
 }
-
+//checker si un argument contien des quotes et parser les commandes en consequences
+//sinon spliter les commandes en espace (split espace)
+//recherche le path et l'environnement puis executer
 void	execute(char *argv, char *envp[])
 {
 	char	**cmd_split;
@@ -62,7 +64,10 @@ void	execute(char *argv, char *envp[])
 		error_message(6);
 	}
 }
-
+// fork process: check si child (==0) et une fois dedans check la condition de l'argv
+// en fonction de ces conditions, dup des fils differents car au debut lit de infile (remplace par temp) et ecrit dans pipe
+// et ensuite lit et ecrit dans les pipe
+//qu'importe les condition au dessu, ensuite on execute
 void	fork_process(char *argv, char *envp[], t_fd *fd, bool option)
 {
 	if (pipe(fd->pipe) == -1)
@@ -90,7 +95,8 @@ void	fork_process(char *argv, char *envp[], t_fd *fd, bool option)
 	fd->tmp = fd->pipe[0];
 	close(fd->pipe[1]);
 }
-
+// checker si le 2e argument et here_doc et si oui agir en fonction
+//le true ou fals pourrait juste etre remplace par le i en checkant sa valeur
 int	pipex(int argc, char *argv[], char *envp[])
 {
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 16:16:12 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 18:59:45 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "pipex.h"
 #include <fcntl.h>
 
+//attendre que le dernier child ai termine pour renvoye pour statut
 int	wait_last(int last_pid)
 {
 	int	status;
@@ -33,7 +34,7 @@ int	wait_last(int last_pid)
 	}
 	return (42);
 }
-
+//recherche le path et l'environnement puis executer
 void	execute(char *argv, char *envp[])
 {
 	char	**cmd_split;
@@ -57,7 +58,10 @@ void	execute(char *argv, char *envp[])
 		error_message(6);
 	}
 }
-
+// fork process: check si child (==0) et une fois dedans check la condition de l'argv
+// en fonction de ces conditions, dup des fils differents car au debut lit de infile (remplace par temp) et ecrit dans pipe
+// et ensuite lit et ecrit dans les pipe
+//qu'importe les condition au dessu, ensuite on execute
 void	fork_process(char *argv, char *envp[], t_fd *fd, int i)
 {
 	fd->pid = fork();
@@ -84,6 +88,7 @@ void	fork_process(char *argv, char *envp[], t_fd *fd, int i)
 	close(fd->pipe[1]);
 }
 
+//ouverture des fichiers, initialisation du pipe et iteration de fork process
 int	pipex(int argc, char *argv[], char *envp[])
 {
 	t_fd	fd;

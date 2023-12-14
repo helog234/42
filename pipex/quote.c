@@ -6,14 +6,16 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:13:26 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 18:47:57 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 19:06:32 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "pipex.h"
 #include <stdio.h>
-
+//checker si argument est egal a ' ou a ""
+//creer une string composee de la valeur trouve (' ou "")et \0
+//creer string qui va spliter en fonction de la valeur puis enlever les espaces avant la string
 char	**check_quote(char *cmd)
 {
 	int		i;
