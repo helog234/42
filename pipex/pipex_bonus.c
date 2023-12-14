@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 09:56:57 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:25:56 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int	fork_process(char *argv, char *envp[], int *pipefd)
 	}
 	return (pid);
 }
-
 
 int	pipex(int argc, char *argv[], char *envp[], int i)
 {

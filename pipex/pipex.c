@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 09:56:15 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:22:17 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ int	pipex(int argc, char *argv[], char *envp[], int i)
 		error_message(2);
 	fd_out = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	close(pipefd[0]);
-    close(pipefd[1]);
-	while (i < argc - 1) //-2 pour revenir avant
+	close(pipefd[1]);
+	while (i < argc - 1)
 	{
 		last_pid = fork_process(argv[i], envp, pipefd, fd_out);
 		i++;
