@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 09:38:18 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:56:57 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@
 #include "libft/libft.h"
 #include "pipex.h"
 #include <fcntl.h>
+
+int	wait_last(int last_pid)
+{
+	int	status;
+	int	pid;
+
+	while (1)
+	{
+		pid = waitpid(-1, &status, WNOHANG);
+		if (pid == -1)
+			break ;
+		else if (pid == last_pid)
+			return (WEXITSTATUS(status));
+	}
+	return (42);
+}
 
 void	execute(char *argv, char *envp[])
 {
@@ -29,8 +45,6 @@ void	execute(char *argv, char *envp[])
 		cmd_split = ft_split(argv, ' ');
 	if (cmd_split == NULL)
 		error_message(4);
-	//perror(cmd_split[0]);
-	//perror(cmd_split[1]);
 	env_paths = get_env_path(envp);
 	if (env_paths == NULL)
 	{
@@ -73,8 +87,6 @@ int	pipex(int argc, char *argv[], char *envp[], int i)
 	int	fd_out;
 	int	pipefd[2];
 	int	last_pid;
-	int	pid;
-	int	status;
 
 	if (pipe(pipefd) == -1)
 		error_message(2);
@@ -90,17 +102,13 @@ int	pipex(int argc, char *argv[], char *envp[], int i)
 		fd_out = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	}
 	dup2(fd_out, STDOUT_FILENO);
-	while (i < argc - 1) //-2 pour revenir avant
+	while (i < argc - 1)
 	{
 		last_pid = fork_process(argv[i], envp, pipefd);
 		i++;
 	}
-	while ((pid = waitpid(-1, &status, WNOHANG)) != -1)
-	{
-		if (pid == last_pid)
-			return (WEXITSTATUS(status));
-	}
-	return (1);
+	i = wait_last(last_pid);
+	return (EXIT_SUCCESS);
 }
 
 int	main(int argc, char *argv[], char *envp[])

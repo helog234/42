@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/13 18:38:37 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:56:15 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@
 #include "libft/libft.h"
 #include "pipex.h"
 #include <fcntl.h>
+
+int	wait_last(int last_pid)
+{
+	int	status;
+	int	pid;
+
+	while (1)
+	{
+		pid = waitpid(-1, &status, WNOHANG);
+		if (pid == -1)
+			break ;
+		else if (pid == last_pid)
+			return (WEXITSTATUS(status));
+	}
+	return (42);
+}
 
 void	execute(char *argv, char *envp[], int fd_out)
 {
@@ -69,8 +85,6 @@ int	pipex(int argc, char *argv[], char *envp[], int i)
 	int	fd_out;
 	int	pipefd[2];
 	int	last_pid;
-	int	pid;
-	int	status;
 
 	if (pipe(pipefd) == -1)
 		error_message(2);
@@ -82,11 +96,7 @@ int	pipex(int argc, char *argv[], char *envp[], int i)
 		last_pid = fork_process(argv[i], envp, pipefd, fd_out);
 		i++;
 	}
-	while ((pid = waitpid(-1, &status, WNOHANG)) != -1)
-	{
-		if (pid == last_pid)
-			return (WEXITSTATUS(status));
-	}
+	i = wait_last(last_pid);
 	return (EXIT_SUCCESS);
 }
 

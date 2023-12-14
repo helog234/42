@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:34:46 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 09:23:00 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:04:08 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ void	output_sterr(int i, char *cmd);
 char	**check_quote(char *cmd);
 void	here_doc_process(int argc, char **argv, int *pipefd);
 void	gnl_argv(char *argv[], int output);
+void	output_sterr(int i, char *cmd);
+void	error_message(int flag);
 
 #endif
