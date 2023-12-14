@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 08:44:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2023/12/14 09:38:18 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ void	execute(char *argv, char *envp[])
 	char	**env_paths;
 	char	*path;
 
-	// cmd_split = check_quote(argv);
-	// if (cmd_split == NULL)
+	cmd_split = check_quote(argv);
+	if (cmd_split == NULL)
 		cmd_split = ft_split(argv, ' ');
 	if (cmd_split == NULL)
 		error_message(4);
+	//perror(cmd_split[0]);
+	//perror(cmd_split[1]);
 	env_paths = get_env_path(envp);
 	if (env_paths == NULL)
 	{
@@ -65,55 +67,6 @@ int	fork_process(char *argv, char *envp[], int *pipefd)
 	return (pid);
 }
 
-void	gnl_argv(char *argv[], int output)
-{
-	char	*line;
-	int		control;
-
-	line = NULL;
-	control = 1;
-	while (control != 0)
-	{
-		line = get_next_line(STDIN_FILENO, line, control);
-		if (line == NULL)
-			break ;
-		if (ft_strncmp(line, argv[2], ft_strlen(argv[2])) == 0)
-		{
-			control = 0;
-			free(line);
-			break ;
-		}
-		ft_putstr_fd(line, output);
-		free(line);
-	}
-}
-
-void	here_doc_process(int argc, char **argv, int *pipefd)
-{
-	int		pid;
-
-	if (argc < 6)
-		error_message(1);
-	if (pipe(pipefd) == -1)
-		error_message(2);
-	pid = fork();
-	if (pid < 0)
-		error_message(3);
-	if (pid == 0)
-	{
-		close(pipefd[0]);
-		//dup2(pipefd[1], STDOUT_FILENO);
-		gnl_argv(argv, pipefd[1]);
-		close(pipefd[1]);//ajout
-		exit(EXIT_SUCCESS);
-	}
-	else
-	{
-		close(pipefd[1]);
-		dup2(pipefd[0], STDIN_FILENO);
-		wait(NULL);
-	}
-}
 
 int	pipex(int argc, char *argv[], char *envp[], int i)
 {
@@ -142,9 +95,6 @@ int	pipex(int argc, char *argv[], char *envp[], int i)
 		last_pid = fork_process(argv[i], envp, pipefd);
 		i++;
 	}
-	//dup2(fd_out, STDOUT_FILENO);
-	// close(pipefd[0]);
-    // close(pipefd[1]);
 	while ((pid = waitpid(-1, &status, WNOHANG)) != -1)
 	{
 		if (pid == last_pid)

@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 13:34:06 by hgandar           #+#    #+#              #
-#    Updated: 2023/12/11 16:28:13 by hgandar          ###   ########.fr        #
+#    Updated: 2023/12/14 09:00:33 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,12 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 CFILES = 	pipex.c \
-			utils.c
+			utils.c \
+			quote.c
 BFILES =	pipex_bonus.c \
-			utils_bonus.c
+			utils_bonus.c \
+			quote.c \
+			here_doc.c
 OFILES = $(CFILES:.c=.o)
 BOFILES = $(BFILES:.c=.o)
 
