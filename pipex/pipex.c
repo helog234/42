@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 15:34:32 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:38:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	pipex(int argc, char *argv[], char *envp[])
 	fd.tmp = open(argv[1], O_RDONLY);
 	fd.out_file = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (fd.tmp == -1 || fd.out_file == -1)
-		error_message(1);
+		error_message(9);
 	while (++i < argc - 1)
 	{
 		fork_process(argv[i], envp, &fd, i);

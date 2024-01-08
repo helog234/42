@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:02:11 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 09:31:11 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:38:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ void	error_message(int flag)
 		perror("Error getting execute");
 	else if (flag == 7)
 		perror("Error getting exec split");
+	else if (flag == 9)
+		perror("Error opening file");
 	exit(EXIT_FAILURE);
 }
