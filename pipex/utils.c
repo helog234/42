@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:48:20 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 11:54:59 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:27:56 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*get_path(char *cmd, char *env_paths[])
 				free_all(env_paths);
 				return (path);
 			}
-			//free(path);
+			free(path);
 		}
 		i++;
 	}

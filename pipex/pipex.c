@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 10:30:54 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:06:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ int	wait_last(int last_pid)
 	while (1)
 	{
 		pid = waitpid(-1, &status, WNOHANG);
-		if (pid == -1)
-			break ;
-		else if (pid == last_pid)
+		// if (pid == -1)
+		// 	break ;
+		// else if (pid == last_pid)
+		if (pid == last_pid)
 			return (WEXITSTATUS(status));
 	}
-	return (42);
+	// return (42);
 }
 
 //recherche le path et l'environnement puis executer
@@ -80,8 +81,8 @@ void	fork_process(char *argv, char *envp[], t_fd *fd, int i)
 			dup2(fd->out_file, 1);
 			close(fd->out_file);
 		}
-		(void) close(fd->pipe[0]);
-		(void) close(fd->pipe[1]);
+		(void)close(fd->pipe[0]);
+		(void)close(fd->pipe[1]);
 		execute(argv, envp);
 	}
 	close(fd->pipe[1]);
@@ -93,19 +94,20 @@ int	pipex(int argc, char *argv[], char *envp[])
 	t_fd	fd;
 	int		i;
 
-	i = 2;
+	i = 1;
 	if (pipe(fd.pipe) == -1)
 		error_message(2);
 	fd.tmp = open(argv[1], O_RDONLY);
 	fd.out_file = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	while (i < argc - 1)
+	if (fd.tmp == -1 || fd.out_file == -1)
+		error_message(1);
+	while (++i < argc - 1)
 	{
 		fork_process(argv[i], envp, &fd, i);
-		i++;
 	}
-	close(fd.tmp);
-	close(fd.out_file);
-	close(fd.pipe[0]);
+	(void)close(fd.tmp);
+	(void)close(fd.out_file);
+	(void)close(fd.pipe[0]);
 	return (wait_last(fd.pid));
 }
 

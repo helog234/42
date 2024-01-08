@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 08:25:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/06 14:34:28 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:34:45 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	add_back(t_node **a, long i)
 {
 	t_node	*last;
 	t_node	*new_node;
-	
+
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return ;
@@ -77,6 +77,7 @@ void	free_stack(t_node **head)
 {
 	t_node	*current;
 	t_node	*tmp;
+
 	current = *head;
 	while (current)
 	{

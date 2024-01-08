@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_op.c                                         :+:      :+:    :+:   */
+/*   op_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:46:51 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/07 10:07:18 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:35:43 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(t_node **head)
 {
 	t_node	*first;
 	t_node	*second;
-	
+
 	if (*head == NULL || (*head)->next == NULL)
 		return ;
 	first = *head;
@@ -26,7 +26,7 @@ void	swap(t_node **head)
 	first -> prev = second;
 	first -> next = second -> next;
 	second -> next = first;
-    *head = second;
+	*head = second;
 }
 
 void	sa(t_node **a)

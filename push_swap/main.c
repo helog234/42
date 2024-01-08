@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/06 14:44:53 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:34:26 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	errors(int i)
 		ft_printf("Error : while initiating stack\n");
 	else if (i == 3)
 		ft_printf("Error : Duplicates are not allowed\n");
-		
 	exit(EXIT_FAILURE);
 }
 
@@ -32,7 +31,7 @@ int	*values_array(char *argv[])
 	char	**new_argv;
 	int		*node_array;
 	long		i;
-	
+
 	i = 1;
 	while (i)
 	{
@@ -52,7 +51,7 @@ int	*values_array(char *argv[])
 
 int	main(int argc, char *argv[])
 {
-	long				*values;
+	long			*values;
 	struct t_node	*a;
 	struct t_node	*b;
 

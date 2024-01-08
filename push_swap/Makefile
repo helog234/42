@@ -5,28 +5,26 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/28 13:34:06 by hgandar           #+#    #+#              #
-#    Updated: 2024/01/08 14:55:17 by hgandar          ###   ########.fr        #
+#    Created: 2024/01/08 12:38:13 by hgandar           #+#    #+#              #
+#    Updated: 2024/01/08 13:09:02 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
+NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 LFTINC = $(LIBFT_DIR)/libft.h
-INC	= ./pipex.h
+INC	= ./push_swap.h
 
-CFILES = 	pipex.c \
-			utils.c \
-			quote.c \
-			errors.c
-BFILES =	pipex_bonus.c \
-			utils_bonus.c \
-			quote.c \
-			here_doc.c \
-			errors.c
+CFILES = 	main.c \
+			init_stack.c \
+			op_push.c \
+			op_swap.c \
+			op_rot.c \
+			sort_values.c
+BFILES =	
 OFILES = $(CFILES:.c=.o)
 BOFILES = $(BFILES:.c=.o)
 
