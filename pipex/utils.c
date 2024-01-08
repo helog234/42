@@ -6,15 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:48:20 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 10:26:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 11:54:59 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include "libft/libft.h"
-#include <string.h>
-#include <stdio.h> 
-#include <errno.h>
 
 char	**get_env_path(char *envp[])
 {
@@ -54,12 +50,12 @@ char	*get_path(char *cmd, char *env_paths[])
 				free_all(env_paths);
 				return (path);
 			}
-			free(path);
+			//free(path);
 		}
 		i++;
 	}
 	free_all(env_paths);
-	output_sterr(0, cmd);
+	output_sterr(127, cmd);
 	exit(EXIT_FAILURE);
 }
 

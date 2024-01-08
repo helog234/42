@@ -6,15 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:28:50 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 10:06:00 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 10:13:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include "libft/libft.h"
-#include <string.h>
-#include <stdio.h>
-#include <errno.h>
 
 char	**get_env_path(char *envp[])
 {

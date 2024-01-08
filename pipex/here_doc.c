@@ -6,17 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 08:59:47 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 16:07:55 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 10:24:08 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/wait.h>
-#include <stdlib.h>
-#include "libft/libft.h"
 #include "pipex.h"
-#include <fcntl.h>
 
 void	gnl_argv(char *argv[], int output)
 {

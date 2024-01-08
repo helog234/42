@@ -6,17 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 18:59:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 10:30:54 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/wait.h>
-#include <stdlib.h>
-#include "libft/libft.h"
 #include "pipex.h"
-#include <fcntl.h>
 
 //attendre que le dernier child ai termine pour renvoye pour statut
 int	wait_last(int last_pid)
@@ -34,6 +28,7 @@ int	wait_last(int last_pid)
 	}
 	return (42);
 }
+
 //recherche le path et l'environnement puis executer
 void	execute(char *argv, char *envp[])
 {
@@ -58,8 +53,12 @@ void	execute(char *argv, char *envp[])
 		error_message(6);
 	}
 }
-// fork process: check si child (==0) et une fois dedans check la condition de l'argv
-// en fonction de ces conditions, dup des fils differents car au debut lit de infile (remplace par temp) et ecrit dans pipe
+
+// fork process: check si child (==0) et une fois dedans 
+//check la condition de l'argv
+// en fonction de ces conditions, dup des fils differents 
+//car au debut lit de infile 
+//(remplace par temp) et ecrit dans pipe
 // et ensuite lit et ecrit dans les pipe
 //qu'importe les condition au dessu, ensuite on execute
 void	fork_process(char *argv, char *envp[], t_fd *fd, int i)

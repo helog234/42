@@ -6,15 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:02:11 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 10:25:35 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 09:31:11 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include "libft/libft.h"
-#include <string.h>
-#include <stdio.h> 
-#include <errno.h>
 
 void	output_sterr(int i, char *cmd)
 {

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:34:46 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 16:07:48 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 10:13:36 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <sys/wait.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include "libft/libft.h"
+# include <errno.h>
+# include <string.h>
+# include <stdbool.h>
 
 typedef struct s_fd {
 	int	out_file;

@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 13:34:06 by hgandar           #+#    #+#              #
-#    Updated: 2023/12/14 18:46:57 by hgandar          ###   ########.fr        #
+#    Updated: 2024/01/08 09:37:44 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
+LFTINC = $(LIBFT_DIR)/libft.h
+INC	= ./pipex.h
 
 CFILES = 	pipex.c \
 			utils.c \
@@ -36,7 +38,7 @@ $(NAME): $(OFILES) $(LIBFT)
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-%.o: %.c
+%.o: %.c $(INC) $(LFTINC)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(LIBFT) $(BOFILES)
