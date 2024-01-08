@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 08:59:47 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 10:24:08 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 18:12:55 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	gnl_argv(char *argv[], int output)
 		line = get_next_line(STDIN_FILENO, line, control);
 		if (line == NULL)
 			break ;
-		if (ft_strncmp(line, argv[2], ft_strlen(argv[2])) == 0)
+		if (ft_strncmp(line, argv[2], ft_strlen(argv[2])) == 0 && \
+			argv[2][ft_strlen(argv[2] + 1)] != '\n')
 		{
 			control = 0;
 			free(line);

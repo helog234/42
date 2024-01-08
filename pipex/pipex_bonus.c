@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 15:06:24 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 18:14:58 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ int	pipex(int argc, char *argv[], char *envp[])
 	t_fd	fd;
 
 	fd.tmp = open(argv[1], O_RDONLY);
+	//trouver ou mettre ce check
+	if (fd.tmp == -1)
+		error_message(9);
 	if (ft_strncmp(argv[1], "here_doc", 7) == 0)
 	{
 		i = 3;
@@ -114,6 +117,9 @@ int	pipex(int argc, char *argv[], char *envp[])
 		i = 2;
 		fd.out_file = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	}
+	//trouver ou mettre ce check
+	if (fd.out_file == -1)
+		error_message(9);
 	while (i < argc - 1)
 	{
 		if (i != argc - 2)
