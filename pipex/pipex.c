@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 15:06:52 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:34:32 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ int	wait_last(int last_pid)
 	while (1)
 	{
 		pid = waitpid(-1, &status, WNOHANG);
-		// if (pid == -1)
-		// 	break ;
-		// else if (pid == last_pid)
-		if (pid == last_pid)
+		if (pid == -1)
+			break ;
+		else if (pid == last_pid)
 			return (WEXITSTATUS(status));
 	}
-	// return (42);
+	return (42);
 }
 
 //recherche le path et l'environnement puis executer
