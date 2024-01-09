@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:23:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 12:36:44 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/09 09:48:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@
 typedef struct s_node
 {
 	long			value;
-	bool			negativ;
+	int				index;
+	bool			above_median;
+	bool			cheapest;
+	//bool			negativ;
 	struct s_node	*prev;
 	struct s_node	*next;
+	struct s_node	*target;
 }	t_node;
 
 t_node	init_stack(long *values, t_node **a);

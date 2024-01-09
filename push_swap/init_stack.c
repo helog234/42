@@ -6,13 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 08:25:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 12:34:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/09 09:56:40 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_sign(t_node *node, long i)
+/* void	check_sign(t_node *node, long i)
 {
 	if (i < 0)
 	{
@@ -24,14 +24,14 @@ void	check_sign(t_node *node, long i)
 		node -> negativ = false;
 		node -> value = i;
 	}
-}
+} */
 
 t_node	*find_last(t_node *a)
 {
 	while (a -> next)
 		a = a -> next;
 	return (a);
-}
+} 
 
 void	add_back(t_node **a, long i)
 {
@@ -42,7 +42,7 @@ void	add_back(t_node **a, long i)
 	if (!new_node)
 		return ;
 	new_node -> next = NULL;
-	check_sign(&new_node, i);
+	//check_sign(&new_node, i);
 	if (*a == NULL)
 	{
 		*a = new_node;
@@ -53,7 +53,8 @@ void	add_back(t_node **a, long i)
 		last = find_last(*a);
 		last -> next = new_node;
 		new_node -> prev = last;
-	}	
+	}
+	new_node -> value = i;
 }
 
 void	free_all(int *all)
