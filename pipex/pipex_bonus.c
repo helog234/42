@@ -6,29 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 14:38:39 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 18:14:58 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/10 08:58:39 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-int	wait_last(int last_pid)
-{
-	int	status;
-	int	pid;
-	int	value;
-
-	value = 0;
-	while (1)
-	{
-		pid = waitpid(-1, &status, WNOHANG);
-		if (pid == -1)
-			break ;
-		else if (pid == last_pid)
-			value = (WEXITSTATUS(status));
-	}
-	return (value);
-}
 
 //checker si un argument contien des quotes
 //et parser les commandes en consequences
@@ -95,31 +77,11 @@ void	fork_process(char *argv, char *envp[], t_fd *fd, bool option)
 	close(fd->pipe[1]);
 }
 
-// checker si le 2e argument et here_doc et si oui agir en fonction
-//le true ou fals pourrait juste etre remplace par le i en checkant sa valeur
-int	pipex(int argc, char *argv[], char *envp[])
+void	loop_argv(int argc, char *argv[], t_fd fd, char **envp)
 {
-	int		i;
-	t_fd	fd;
+	int	i;
 
-	fd.tmp = open(argv[1], O_RDONLY);
-	//trouver ou mettre ce check
-	if (fd.tmp == -1)
-		error_message(9);
-	if (ft_strncmp(argv[1], "here_doc", 7) == 0)
-	{
-		i = 3;
-		fd.out_file = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0644);
-		here_doc_process(argc, argv, &fd);
-	}
-	else
-	{
-		i = 2;
-		fd.out_file = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	}
-	//trouver ou mettre ce check
-	if (fd.out_file == -1)
-		error_message(9);
+	i = fd.start;
 	while (i < argc - 1)
 	{
 		if (i != argc - 2)
@@ -128,6 +90,31 @@ int	pipex(int argc, char *argv[], char *envp[])
 			fork_process(argv[i], envp, &fd, false);
 		i++;
 	}
+}
+
+// checker si le 2e argument et here_doc et si oui agir en fonction
+//le true ou fals pourrait juste etre remplace par le i en checkant sa valeur
+int	pipex(int argc, char *argv[], char *envp[])
+{
+	t_fd	fd;
+
+	fd.tmp = open(argv[1], O_RDONLY);
+	if (fd.tmp == -1)
+		error_message(9);
+	if (ft_strncmp(argv[1], "here_doc", 7) == 0)
+	{
+		fd.start = 3;
+		fd.out_file = open(argv[argc - 1], O_CREAT | O_WRONLY | O_APPEND, 0644);
+		here_doc_process(argc, argv, &fd);
+	}
+	else
+	{
+		fd.start = 2;
+		fd.out_file = open(argv[argc - 1], O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	}
+	if (fd.out_file == -1)
+		error_message(9);
+	loop_argv(argc, argv, fd, envp);
 	close(fd.out_file);
 	return (wait_last(fd.pid));
 }

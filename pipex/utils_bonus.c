@@ -6,11 +6,29 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:28:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 10:13:52 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/10 08:47:42 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+int	wait_last(int last_pid)
+{
+	int	status;
+	int	pid;
+	int	value;
+
+	value = 0;
+	while (1)
+	{
+		pid = waitpid(-1, &status, WNOHANG);
+		if (pid == -1)
+			break ;
+		else if (pid == last_pid)
+			value = (WEXITSTATUS(status));
+	}
+	return (value);
+}
 
 char	**get_env_path(char *envp[])
 {

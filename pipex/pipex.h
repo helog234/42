@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:34:46 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 10:13:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/10 08:56:37 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_fd {
 	int	tmp;
 	int	pipe[2];
 	int	pid;
+	int	start;
 }	t_fd;
 
 char	*ft_strstr(const char *hstack, const char *needle);
@@ -42,5 +43,6 @@ void	here_doc_process(int argc, char **argv, t_fd *fd);
 void	gnl_argv(char *argv[], int output);
 void	output_sterr(int i, char *cmd);
 void	error_message(int flag);
+int		wait_last(int last_pid);
 
 #endif
