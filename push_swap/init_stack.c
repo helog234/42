@@ -6,32 +6,18 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 08:25:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/09 09:56:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/10 15:19:09 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* void	check_sign(t_node *node, long i)
-{
-	if (i < 0)
-	{
-		node -> negativ = true;
-		node -> value = -i;
-	}
-	else
-	{
-		node -> negativ = false;
-		node -> value = i;
-	}
-} */
 
 t_node	*find_last(t_node *a)
 {
 	while (a -> next)
 		a = a -> next;
 	return (a);
-} 
+}
 
 void	add_back(t_node **a, long i)
 {
@@ -42,7 +28,6 @@ void	add_back(t_node **a, long i)
 	if (!new_node)
 		return ;
 	new_node -> next = NULL;
-	//check_sign(&new_node, i);
 	if (*a == NULL)
 	{
 		*a = new_node;
@@ -55,38 +40,6 @@ void	add_back(t_node **a, long i)
 		new_node -> prev = last;
 	}
 	new_node -> value = i;
-}
-
-void	free_all(int *all)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (all[i])
-		i++;
-	while (j < i)
-	{
-		free(all[j]);
-		j++;
-	}
-	free(all);
-}
-
-void	free_stack(t_node **head)
-{
-	t_node	*current;
-	t_node	*tmp;
-
-	current = *head;
-	while (current)
-	{
-		tmp = current -> next;
-		free(current);
-		current = tmp;
-	}
-	*head = NULL;
 }
 
 int	check_duplicates(t_node *stack, long new_value)

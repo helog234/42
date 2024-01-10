@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 12:34:26 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/10 15:54:30 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,6 @@ int	main(int argc, char *argv[])
 	values = values_array(argv);
 	init_stack(values, &a);
 	//free(values ??)
-	if (check_negativ(values) >= 0)
-		simplify_values(&a)
-	// sort si negatif alors MSD et si pas negatif alors LSD
-	// ensuite on push le negatif le plus proche de 0 avant le moins proche
 	sort_values 
 	return (0);
 }
