@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/12 17:12:43 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/14 18:29:43 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ bool	is_sorted(t_node **stack)
 	t_node *current_node;
 	
 	current_node = *stack;
+	indexing(stack);
+	/* if (current_node == NULL || current_node->next == NULL) 
+		return (true); */
 	while (current_node)
 	{
 		if (current_node -> value > current_node -> next -> value)
@@ -69,6 +72,7 @@ bool	is_sorted(t_node **stack)
 			return (true); */
 		current_node = current_node -> next;
 	}
+	printf("true\n");
 	return (true);
 }
 

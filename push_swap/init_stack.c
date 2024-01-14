@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 08:25:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/13 21:12:10 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/14 17:20:57 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,27 @@ int	check_duplicates(t_node *stack, long new_value)
 	}
 	return (0);
 }
-void	init_stack_b(t_node **b)
+/* void	init_stack_b(t_node **b)
 {
 	t_node *new_node;
 	
-	new_node = malloc(sizeof(t_node));
+	//new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return ;
+	new_node -> prev = NULL;
 	if (*b == NULL)
 	{
 		*b = new_node;
-		new_node -> prev = NULL;
 		new_node -> next = NULL;
 	}
 	else
 	{
 		(*b) -> prev = new_node;
 		new_node -> next = (*b);
-		new_node -> prev = NULL;
+		*b = new_node;
 	} 
 	indexing(b);
-}
+} */
 
 void	init_stack_a(long *values, t_node **a)
 {

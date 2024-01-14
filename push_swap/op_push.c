@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 10:08:10 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/14 11:54:25 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/14 17:27:50 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	push(t_node **target, t_node **origin)
 	//(*origin)-> prev = NULL;
 	to_push -> prev = NULL;
 	//to_push -> prev = NULL
-	if ((*target) -> next == NULL)
+	if (*target == NULL)
 	{
 		*target = to_push;
 		to_push -> next = NULL;

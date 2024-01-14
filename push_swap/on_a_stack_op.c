@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:28:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/14 12:01:32 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/14 18:05:26 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,23 @@ void	move_to_b(t_node **node, t_node **b, t_node **a)
 	print_stack(a, b);
 }
 
+void	sort(t_node **a)
+{
+	t_node	*min;
+	t_node	*current;
+
+	min = find_min(a);
+	current = *a;
+	while (current && is_sorted(a) == false)
+	{
+		printf("ici\n");
+		if (current -> value > min -> value)
+			ra(a);
+		indexing(a);
+	}
+	
+}
+
 bool	sort_a(t_node **a, t_node **b)
 {
 	t_node	*cheapest;
@@ -52,10 +69,12 @@ bool	sort_a(t_node **a, t_node **b)
 	{
 		define_target(b, a);
 		cheapest = find_cheapest(a, b);
-		//if (is_sorted(a))
 		move_to_a(&cheapest, a, b);
+		//indexing(a);
+		//sort(a);
 		to_push = to_push -> next;
 	}
+	
 	if (is_sorted(a))
 		return (true);
 	return (false);	
@@ -73,25 +92,28 @@ void	clear_a(t_node **a, t_node **b)
 	{
 		//printf("i : %d\n", i);
 		print_stack(a, b);
-		init_stack_b(b);
-		printf("ici");
+		//init_stack_b(b);
+		//printf("ici");
 		if (round == 0 && i >= 5)
 		{
+			//printf("ici\n");
 			pb(a, b);
-			init_stack_b(b);
+			//init_stack_b(b);
 			pb(a, b);
 			define_target(a, b);
 			i--;
 		}
 		else if (round == 0)
 		{
-			printf("ici");
+			//printf("ici\n");
+			//printf("i : %d\n", i);
 			pb(a, b);
 			print_stack(a, b);
 			define_target(a, b);
 		}
 		else
 		{
+			//printf("else");
 			define_target(a, b);
 			to_move = find_cheapest(a, b);
 			move_to_b(&to_move, b, a);

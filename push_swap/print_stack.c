@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:19:05 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/14 11:25:37 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/14 16:53:53 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	print_stack(t_node **a, t_node **b)
 			ft_printf(ft_itoa(current_a -> value));
 			ft_printf(" | ");
 		}
-		else if (current_b != NULL)
+		if (current_b != NULL)
 			ft_printf(ft_itoa(current_b -> value));
 		ft_printf("\n");
 		if (current_a -> next == NULL)

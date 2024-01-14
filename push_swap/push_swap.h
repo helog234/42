@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:23:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/14 10:13:41 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/14 17:54:36 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void	move_to_a(t_node **node, t_node **a, t_node **b);
 bool	sort_a(t_node **a, t_node **b);
 void	errors(int i);
 void	init_stack_b(t_node **b);
+void	sort(t_node **a);
 #endif
