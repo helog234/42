@@ -6,98 +6,85 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:21:09 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/10 16:19:59 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/14 10:23:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	move_to_a()
+t_node	*find_max(t_node **stack)
 {
-	t_node *cheapest;
+	t_node 	*current;
+	t_node	*max_node;
+	int		max;
 	
-	indexing(a);
-	indexing(b);
-	define_target_a();
-	cheapest = find_cheapest_a(a, b);
-	
-}
-
-void	sort_three()
-{
-	
-}
-
-void	move_to_b(t_node **node, t_node **b, t_node **a)
-{
-	t_node	*to_push;
-
-	to_push = (*node);
-	while (to_push -> index > 0 || to_push -> target.index > 0)
+	max = INT_MIN;
+	current = *stack;
+	while (current)
 	{
-		if (to_push -> above_median == true && \
-		to_push -> target.above_median == true)
-			rr(a, b);
-		else if (to_push -> above_median == true)
-			ra(a);
-		else if (to_push -> target.above_median == true)
-			rb(b);
-		else if (to_push -> above_median == false && \
-		to_push -> target.above_median == false)
-			rrr(a, b);
-		else if (to_push -> above_median == false)
-			rra(a);
-		else if (to_push -> target.above_median == false)
-			rrb(b);
-		indexing(a);
-		indexing(b);
+		if (current -> value > max)
+		{
+			max_node = current;
+			max = current -> value;
+		}
+		current = current -> next;
 	}
-	pb(a, b);
+	return (max_node);
 }
 
-
-void	clear_a(t_node **a, t_node **b)
+t_node	*find_min(t_node **stack)
 {
-	int		i;
-	t_node	*to_move;
-	int		round;
-	int		lengh;
-
-	i = indexing(a);
-	round = 0;
-	lengh = i;
-	while (i >= 3)
+	t_node 	*current;
+	t_node	*min_node;
+	int		min;
+	
+	min = INT_MAX;
+	current = *stack;
+	while (current)
 	{
-		if (round == 0 && i >= 5)
+		if (current -> value < min)
 		{
-			pb(a, b);
-			pb(a, b);
-			define_target(a, b);
-			i--;
+			min_node = current;
+			min = current -> value;
 		}
-		else if (round == 0)
-		{
-			pb(a, b);
-			define_target_b(a, b);
-		}
-		else
-		{
-			define_target(lengh, a, b);
-			to_move = find_cheapest_b(a, b);
-			move_to_b(&to_move, b, a);
-		}
-		i--;
-		round++;
+		current = current -> next;
+	}
+	return (min_node);
+}
+
+void	sort_three(t_node **stack)
+{
+	t_node	*min;
+	t_node	*max;
+
+	min = find_min(stack);
+	max = find_max(stack);
+	while (is_sorted(stack))
+	{
+		//print_stack(stack, "a");
+		if (max -> index == 0)
+			ra(stack);
+		else if (min -> index == 2 || max -> index == 1)
+			rra(stack);
+		else if (min -> index == 1)
+			sa(stack);
+		indexing(stack);
 	}
 }
 
 void	sort_values(t_node **a, t_node **b)
 {
 	clear_a(a, b);
-	sort_three();
-	move_to_a();
-
+	sort_three(a);
+	if (sort_a(a, b) == false)
+	{
+		free_stack(a);
+		free_stack(b);
+		errors(4);
+	}
 	
-	
+	//while b n'est pas null
+	/* while (is_sorted(a) == false && (*b) != NULL)
+		sort_a(); */
 	
 }

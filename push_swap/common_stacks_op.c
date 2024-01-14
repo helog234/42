@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   index_set.c                                        :+:      :+:    :+:   */
+/*   common_stacks_op.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/10 16:23:32 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/13 21:19:01 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	indexing(t_node **stack)
 {
 	t_node	*to_index;
 	int		i;
-	int		lengh;
 
 	to_index = *stack;
 	i = 0;
@@ -43,26 +42,22 @@ int	indexing(t_node **stack)
 		i++;
 		to_index = to_index -> next;
 	}
-	set_median(stack, i - 1)
+	set_median(stack, i - 1);
 	return (i--);
 }
 
-t_node	*find_cheapest_a(t_node **a, t_node **b, char *flag)
+t_node	*find_cheapest(t_node **stack_from, t_node **stack_to)
 {
-	//dois calculer le nombre d'operations le plus bas
-}
-
-t_node	*find_cheapest_b(t_node **a, t_node **b, char *flag)
-{
-	t_node	*current_a;
-	t_node	*current_b;
+	t_node	*current_from;
+	t_node	*current_to;
 	t_node	*best_fit;
 	long	cost;
 
-	current_a = *a;
-	current_b = *b;
+	current_from = *stack_from;
+	current_to = *stack_to;
 	cost = INT_MAX;
-	while (current_a)
+	best_fit = malloc(sizeof(t_node));
+	while (current_from)
 	{
 /* 		current_b = current_a -> target;
 		if (current_a -> index == 0 && current_b -> index == 0)
@@ -72,16 +67,16 @@ t_node	*find_cheapest_b(t_node **a, t_node **b, char *flag)
 		}
 		current_a = current_a -> next; */
 
-		current_b = current_a -> target;
-		if (current_a -> index + current_b -> index < cost)
+		current_to = current_from -> target;
+		if (current_from -> index + current_to -> index < cost)
 		{
-			cost = current_a -> index + current_b -> index;
-			best_fit = current_a;
+			cost = current_from -> index + current_to -> index;
+			best_fit = current_to;
 			if (cost == 0)
 				break ;
 		}
-		current_a -> cheapest = false;
-		current_a = current_a -> next;
+		current_from -> cheapest = false;
+		current_from = current_from -> next;
 	}
 	best_fit -> cheapest = true;
 	return (best_fit);
@@ -110,18 +105,18 @@ void	closest_smaller(t_node **node, t_node **b)
 		(*node)-> target = best_target;
 }
 
-void	define_target_b(t_node **a, t_node **b)
+void	define_target(t_node **stack_from, t_node **stack_to)
 {
 	int		i;
 	t_node	*a_stack;
 
-	i = indexing(b);
-	a_stack = *a;
+	i = indexing(stack_to);
+	a_stack = *stack_from;
 	while (a_stack)
 	{
 		if (i == 0)
 			break ;
-		closest_smaller(&a_stack, b);
+		closest_smaller(&a_stack, stack_to);
 		a_stack = a_stack -> next;
 	}
 }

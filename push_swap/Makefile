@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/08 12:38:13 by hgandar           #+#    #+#              #
-#    Updated: 2024/01/08 13:09:02 by hgandar          ###   ########.fr        #
+#    Updated: 2024/01/12 16:35:01 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,14 @@ CFILES = 	main.c \
 			op_push.c \
 			op_swap.c \
 			op_rot.c \
-			sort_values.c
-BFILES =	
+			rev_rot.c \
+			sort_values.c \
+			common_stacks_op.c \
+			on_a_stack_op.c \
+			on_b_stack_op.c \
+			print_stack.c \
+			errors.c
+				
 OFILES = $(CFILES:.c=.o)
 BOFILES = $(BFILES:.c=.o)
 

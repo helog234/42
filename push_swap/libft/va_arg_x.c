@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:45:55 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/12 08:53:12 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/12 09:27:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ int	va_arg_x(va_list args, char format)
 {
 	unsigned int	n;
 	int				len;
-	int				temp;
 	char			*str;
 
 	str = NULL;
-	temp = 0;
 	n = va_arg(args, unsigned long);
 	len = ft_count_hexa(n);
 	if (n == 0)

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:46:51 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/10 15:35:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/14 10:00:27 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	swap(t_node **head)
 	first -> prev = second;
 	first -> next = second -> next;
 	second -> next = first;
+	second -> prev = NULL;
 	*head = second;
 }
 

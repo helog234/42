@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 10:08:10 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 12:35:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/14 11:54:25 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,24 @@ void	push(t_node **target, t_node **origin)
 	if (origin == NULL || *origin == NULL) //enlever 2e partie ?
 		return ;
 	to_push = *origin;
+	*origin = (*origin)-> next;
+	//(*origin)-> prev = NULL;
 	to_push -> prev = NULL;
-	if (*target == NULL)
+	//to_push -> prev = NULL
+	if ((*target) -> next == NULL)
 	{
 		*target = to_push;
 		to_push -> next = NULL;
 	}
 	else
 	{
-		(*target)-> next -> prev = to_push;
-		to_push -> next = (*target)-> next;
+		(*target) -> prev = to_push;
+		to_push -> next = *target;
 		*target = to_push;
 	}
-	*origin = (*origin)-> next;
+	//to_push -> next -> prev = NULL;
+	
+	//*target = to_push;
 }
 
 void	pa(t_node **a, t_node **b)
