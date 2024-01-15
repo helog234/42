@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/14 18:29:43 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/15 13:14:25 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ long	*values_array(int argc, char *argv[])
 	if (argc == 1)
 	{
 		while (argv[i])
-	{
-		new_argv = ft_split(argv[i], ' ');
-		//printf("argv %ld: %s\n",i, argv[i]);
-		if (new_argv == NULL)
-			errors(1);
-		//j++;
-		i++;
-	}
+		{
+			new_argv = ft_split(argv[i], ' ');
+			//printf("argv %ld: %s\n",i, argv[i]);
+			if (new_argv == NULL)
+				errors(1);
+			//j++;
+			i++;
+		}
 	}
 	else
 		new_argv = argv;
@@ -56,22 +56,27 @@ long	*values_array(int argc, char *argv[])
 	return (node_array);
 }
 
-bool	is_sorted(t_node **stack)
+bool	is_sorted(t_node *stack)
 {
-	t_node *current_node;
+
+	while (stack -> next)
+	{
+		if (stack -> value > stack -> next -> value)
+			return (false);
+		stack = stack -> next;
+	}
 	
-	current_node = *stack;
-	indexing(stack);
-	/* if (current_node == NULL || current_node->next == NULL) 
-		return (true); */
+/* 	t_node *current_node;
+	
+	current_node = stack;
+	indexing(&stack);
 	while (current_node)
 	{
+		print_stack(&stack, &current_node);
 		if (current_node -> value > current_node -> next -> value)
 			return (false);
-		/* else if (current_node -> next -> value == NULL)
-			return (true); */
 		current_node = current_node -> next;
-	}
+	} */
 	printf("true\n");
 	return (true);
 }
@@ -83,6 +88,7 @@ int	main(int argc, char *argv[])
 	t_node	*b;
 	long	i;
 
+	
 	a = NULL;
 	b = NULL;
 	i = 0;
@@ -96,7 +102,7 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	init_stack_a(values, &a);
-	if (is_sorted(&a))
+	if (is_sorted(a))
 		return (0);
 	else if (indexing(&a) == 3)
 		sort_three(&a);

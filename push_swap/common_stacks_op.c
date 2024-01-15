@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/13 21:19:01 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/15 15:47:18 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	indexing(t_node **stack)
 		to_index = to_index -> next;
 	}
 	set_median(stack, i - 1);
-	return (i--);
+	return (--i);
 }
 
 t_node	*find_cheapest(t_node **stack_from, t_node **stack_to)
@@ -67,11 +67,14 @@ t_node	*find_cheapest(t_node **stack_from, t_node **stack_to)
 		}
 		current_a = current_a -> next; */
 
-		current_to = current_from -> target;
+		/*current_to = current_from -> target;
+		 printf("current from index : %i\n", current_from -> index);
+		printf("current to index : %i\n", current_to -> index);
+		printf("cost : %ld\n", cost); */
 		if (current_from -> index + current_to -> index < cost)
 		{
 			cost = current_from -> index + current_to -> index;
-			best_fit = current_to;
+			best_fit = current_from;
 			if (cost == 0)
 				break ;
 		}
@@ -79,6 +82,8 @@ t_node	*find_cheapest(t_node **stack_from, t_node **stack_to)
 		current_from = current_from -> next;
 	}
 	best_fit -> cheapest = true;
+/* 	printf("best_fit : %i\n", best_fit -> index);
+	printf("best_fit value: %lu\n", best_fit -> value); */
 	return (best_fit);
 }
 
@@ -107,15 +112,16 @@ void	closest_smaller(t_node **node, t_node **b)
 
 void	define_target(t_node **stack_from, t_node **stack_to)
 {
-	int		i;
+	//int		i;
 	t_node	*a_stack;
 
-	i = indexing(stack_to);
+	//i = indexing(stack_to);
 	a_stack = *stack_from;
+	print_stack(stack_from, stack_to);
 	while (a_stack)
 	{
-		if (i == 0)
-			break ;
+		/* if (i == 0)
+			break ; */
 		closest_smaller(&a_stack, stack_to);
 		a_stack = a_stack -> next;
 	}

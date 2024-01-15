@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:23:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/14 17:54:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:28:46 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		indexing(t_node **stack);
 void	set_median(t_node **stack, int length);
 void	free_all(long *all);
 void	free_stack(t_node **head);
-bool	is_sorted(t_node **stack);
+bool	is_sorted(t_node *stack);
 void	push(t_node **target, t_node **origin);
 void	pa(t_node **a, t_node **b);
 void	pb(t_node **a, t_node **b);
