@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:23:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/15 16:28:46 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/16 16:07:40 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_node	*find_last(t_node *a);
 void	sort_values(t_node **a, t_node **b);
 void	clear_a(t_node **a, t_node **b);
 void	move_to_b(t_node **node, t_node **b, t_node **a);
-void	define_target(t_node **stack_from, t_node **stack_to);
+void	define_target(t_node **stack_from, t_node **stack_to, int flag);
 void	closest_smaller(t_node **node, t_node **b);
 t_node	*find_cheapest(t_node **a, t_node **b);
 int		indexing(t_node **stack);
@@ -70,4 +70,5 @@ bool	sort_a(t_node **a, t_node **b);
 void	errors(int i);
 void	init_stack_b(t_node **b);
 void	sort(t_node **a);
+void	closest_bigger(t_node **node, t_node **b);
 #endif

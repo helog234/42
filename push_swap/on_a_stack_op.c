@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:28:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/15 17:03:26 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/16 15:57:36 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,25 @@ void	sort(t_node **a)
 	t_node	*current;
 
 	min = find_min(a);
+	printf("%ld\n", min -> value);
 	current = *a;
-	while (current && is_sorted(*a) == false)
+	while (current)
 	{
+		if (is_sorted(*a) == true)
+			break ;
 		sleep(3);
 		printf("ici\n");
 		print_stack(a, &min);
 		if (current -> value > min -> value)
+		{
 			ra(a);
-		indexing(a);
+			current = *a;
+		}
+		else
+			current = current -> next;
 	}
+	printf("fin sort\n");
+	printf("%ld\n", current -> value);
 }
 
 bool	sort_a(t_node **a, t_node **b)
@@ -73,16 +82,16 @@ bool	sort_a(t_node **a, t_node **b)
 	while (to_push && b)
 	{
 		indexing(a);
-		define_target(b, a);
-		cheapest = find_cheapest(a, b);
+		define_target(b, a, 1);
+		cheapest = find_cheapest(b, a);
 		sleep(2);
 		printf("cheapest : %ld\n", cheapest -> value);
+		printf("cheapest target : %ld\n", cheapest -> target -> value);
 		move_to_a(&cheapest, a, b);
 		indexing(a);
 		sort(a);
-		to_push = to_push -> next;
+		to_push = *b;
 	}
-
 	if (is_sorted(*a))
 		return (true);
 	return (false);	
@@ -118,12 +127,12 @@ void	clear_a(t_node **a, t_node **b)
 			//printf("i : %d\n", i);
 			pb(a, b);
 			print_stack(a, b);
-			define_target(a, b);
+			define_target(a, b, 0);
 		}
 		else
 		{
 			//printf("else");
-			define_target(a, b);
+			define_target(a, b, 0);
 			to_move = find_cheapest(a, b);
 			move_to_b(&to_move, b, a);
 			//free(to_move);
