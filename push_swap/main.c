@@ -6,13 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/15 13:14:25 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/17 14:52:48 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	*values_array(int argc, char *argv[])
+void	values_array(int argc, char *argv[], t_node **a)
 {
 	char	**new_argv;
 	long	*node_array;
@@ -21,17 +21,12 @@ long	*values_array(int argc, char *argv[])
 	i = 1;
 	new_argv = NULL;
 	argv = &argv[i];
-	if (argc == 1)
+	if (argc == 2)
 	{
-		while (argv[i])
-		{
-			new_argv = ft_split(argv[i], ' ');
-			//printf("argv %ld: %s\n",i, argv[i]);
-			if (new_argv == NULL)
-				errors(1);
-			//j++;
-			i++;
-		}
+		//printf("argv %ld: %s\n",i, argv[0]);
+		new_argv = ft_split(argv[0], ' ');
+		if (new_argv == NULL)
+			errors(1);
 	}
 	else
 		new_argv = argv;
@@ -47,13 +42,11 @@ long	*values_array(int argc, char *argv[])
 		errors(1);
 	i = 0;
 	while (new_argv[i])
-	{
-		node_array[i] = (long)ft_atoi(new_argv[i]);
-		//printf("node %ld: %ld\n",i, node_array[i]);
+	{	
+		init_stack_a((long)ft_atoi(new_argv[i]), a) ;
+		printf("node %ld: %ld\n",i, node_array[i]);
 		i++;
 	}
-	node_array[i] = 0;
-	return (node_array);
 }
 
 bool	is_sorted(t_node *stack)
@@ -83,25 +76,25 @@ bool	is_sorted(t_node *stack)
 
 int	main(int argc, char *argv[])
 {
-	long			*values;
+	//long			*values;
 	t_node	*a;
 	t_node	*b;
-	long	i;
+	//long	i;
 
 	
 	a = NULL;
 	b = NULL;
-	i = 0;
+	//i = 0;
 	if (argc < 2)
 		errors(0);
-	values = values_array(argc, argv);
-	while (values[i])
+	values_array(argc, argv, &a);
+	/* while (values[i])
 	{
-		//printf("value %ld: %ld\n", i, values[i]);
+		printf("value %ld: %ld\n", i, values[i]);
 		//probleme quand 0 a la fin car stop
 		i++;
-	}
-	init_stack_a(values, &a);
+	} */
+	//init_stack_a(values, &a);
 	if (is_sorted(a))
 		return (0);
 	else if (indexing(&a) == 3)

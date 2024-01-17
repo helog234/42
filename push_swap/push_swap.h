@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:23:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/17 10:25:26 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/17 14:53:49 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct s_node
 	struct s_node	*target;
 }	t_node;
 
-void	init_stack_a(long *values, t_node **a);
-t_node	*find_last(t_node *a);
+void	init_stack_a(long values, t_node **a);
+t_node	*find_last(t_node *a, long values);
 void	sort_values(t_node **a, t_node **b);
 void	clear_a(t_node **a, t_node **b);
 void	move_to_b(t_node **node, t_node **b, t_node **a);
@@ -70,5 +70,6 @@ bool	sort_a(t_node **a, t_node **b);
 void	errors(int i);
 void	init_stack_b(t_node **b);
 void	sort(t_node **a);
+int	check_duplicates(t_node *stack, long new_value);
 void	closest_bigger(t_node **node, t_node **a);
 #endif
