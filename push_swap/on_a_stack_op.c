@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:28:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/17 12:37:02 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:31:48 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	move_to_b(t_node **node, t_node **b, t_node **a)
 	t_node	*to_push;
 
 	to_push = (*node);
-	printf("to push : %ld\n", to_push -> value);
-	printf("to push target : %ld\n", to_push -> target -> value);
+	/* printf("to push : %ld\n", to_push -> value);
+	printf("to push target : %ld\n", to_push -> target -> value); */
 	while (to_push -> index > 0 || to_push -> target -> index > 0)
 	{
-		print_stack(a, b);
+		//print_stack(a, b);
 		if (to_push -> above_median == true && \
 		to_push -> target -> above_median == true && to_push->index > 0 && to_push -> target -> index > 0)
 			rr(a, b);
@@ -41,7 +41,7 @@ void	move_to_b(t_node **node, t_node **b, t_node **a)
 	}
 	//init_stack_b(b);
 	pb(a, b);
-	print_stack(a, b);
+	//print_stack(a, b);
 }
 
 void	sort(t_node **a)
@@ -58,7 +58,7 @@ void	sort(t_node **a)
 			break ;
 		min = find_min(a);
 		//printf("ici\n");
-		print_stack(a, &min);
+		//print_stack(a, &min);
 		if (current -> value > min -> value && min -> above_median == true)
 		{
 			ra(a);
@@ -72,7 +72,7 @@ void	sort(t_node **a)
 		else
 			current = current -> next;
 	}
-	printf("fin sort\n");
+	//printf("fin sort\n");
 }
 
 bool	sort_a(t_node **a, t_node **b)
@@ -81,7 +81,7 @@ bool	sort_a(t_node **a, t_node **b)
 	t_node	*to_push;
 
 	to_push = *b;
-	print_stack(a, b);
+	//print_stack(a, b);
 	while (to_push && b)
 	{
 		indexing(a);
@@ -109,9 +109,9 @@ void	clear_a(t_node **a, t_node **b)
 	round = 0;
 	while (i > 2)
 	{
-		printf("%i\n", i);
+		//printf("%i\n", i);
 		//printf("i : %d\n", i);
-		print_stack(a, b);
+		//print_stack(a, b);
 		//init_stack_b(b);
 		//printf("ici");
 		if (round == 0 && i >= 5)
@@ -128,7 +128,7 @@ void	clear_a(t_node **a, t_node **b)
 			//printf("ici\n");
 			//printf("i : %d\n", i);
 			pb(a, b);
-			print_stack(a, b);
+			//print_stack(a, b);
 			define_target(a, b, 0);
 		}
 		else
@@ -144,7 +144,7 @@ void	clear_a(t_node **a, t_node **b)
 		round++;
 		indexing(a);
 		indexing(b);
-		print_stack(a, b);
+		//print_stack(a, b);
 		/* printf("%i\n", i);
 		printf("%i\n", round); */
 	}

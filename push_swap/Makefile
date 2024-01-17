@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/08 12:38:13 by hgandar           #+#    #+#              #
-#    Updated: 2024/01/12 16:35:01 by hgandar          ###   ########.fr        #
+#    Updated: 2024/01/17 15:37:22 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,11 @@ all : $(NAME)
 $(NAME): $(OFILES) $(LIBFT)
 	$(CC) $(CFLAGS) $^ -o $@
 
-$(LIBFT):
+$(LIBFT): $(LFTINC) $(INC)
 	make -C $(LIBFT_DIR)
+
+$(LFTINC):
+	make -C $(LIBFT_DIR) $(LFTINC)
 
 %.o: %.c $(INC) $(LFTINC)
 	$(CC) $(CFLAGS) -c $< -o $@

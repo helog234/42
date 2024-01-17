@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:04:58 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/17 12:29:18 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:13:36 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	move_to_a(t_node **node, t_node **a, t_node **b)
 		}
 		else if (to_push -> target -> above_median == false || to_push -> above_median == false)
 		{
-			printf("check : %i\n", to_push -> above_median);
+			//printf("check : %i\n", to_push -> above_median);
 			if (to_push -> target -> above_median == false && to_push -> above_median == false)
 				rrr(a, b);
 			else if (to_push -> target -> above_median == false && to_push -> above_median == true)
@@ -59,7 +59,7 @@ void	move_to_a(t_node **node, t_node **a, t_node **b)
 		indexing(a);
 	}
 	pa(a, b);
-	print_stack(a, b);
+	//print_stack(a, b);
 }
 
 /* void	sort_b(t_node **stack_b)

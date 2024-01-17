@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:17:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/12 09:25:47 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/17 20:40:43 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	errors(int i)
 {
 	//Attention, changer pour juste Error\n une fois que c'est bon
 	if (i == 0)
-		ft_printf("Error : Not enough argument\n");
+		ft_printf("Error ok\n");
 	else if (i == 1)
-		ft_printf("Error : while splitting argv\n");
+		ft_printf("Error ici\n");
 	else if (i == 2)
-		ft_printf("Error : while initiating stack\n");
+		ft_printf("Error la\n");
 	else if (i == 3)
-		ft_printf("Error : Duplicates are not allowed\n");
+		ft_printf("Error bon\n");
 	else if (i == 4)
-		ft_printf("Error : Could not sort\n");
+		ft_printf("Error et ?\n");
 	exit(EXIT_FAILURE);
 }

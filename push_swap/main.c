@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/17 14:52:48 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/17 20:48:56 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,39 @@ void	values_array(int argc, char *argv[], t_node **a)
 	char	**new_argv;
 	long	*node_array;
 	long	i;
+	int		j;
 
 	i = 1;
 	new_argv = NULL;
 	argv = &argv[i];
 	if (argc == 2)
 	{
-		//printf("argv %ld: %s\n",i, argv[0]);
 		new_argv = ft_split(argv[0], ' ');
 		if (new_argv == NULL)
 			errors(1);
 	}
 	else
 		new_argv = argv;
-	//new_argv = ft_split(argv[i], ' ');
-	i = 0;
 	while (new_argv[i])
-	{
-		//printf("argv %ld: %s\n",i, argv[i]);
 		i++;
-	}
 	node_array = malloc((i + 1) * sizeof(long));
 	if (!node_array)
-		errors(1);
+		errors(4);
 	i = 0;
 	while (new_argv[i])
 	{	
+		j = 1;
+		 while (new_argv[i][j])
+		{
+			//printf("%c\n", new_argv[i][j]);
+			if (ft_isdigit(new_argv[i][j]) == 0)
+			{
+				//printf("%i\n", ft_isdigit(new_argv[i][j]));
+				errors(1);
+			}
+			j++;
+		}
 		init_stack_a((long)ft_atoi(new_argv[i]), a) ;
-		printf("node %ld: %ld\n",i, node_array[i]);
 		i++;
 	}
 }
@@ -70,7 +75,7 @@ bool	is_sorted(t_node *stack)
 			return (false);
 		current_node = current_node -> next;
 	} */
-	printf("true\n");
+	//printf("true\n");
 	return (true);
 }
 

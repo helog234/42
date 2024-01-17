@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2023/12/11 17:09:39 by hgandar          ###   ########.fr        #
+#    Updated: 2024/01/17 15:28:48 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,6 @@ BFILES =	ft_lstnew.c \
 			ft_lstmap.c
 OFILES = $(CFILES:.c=.o)
 BOFILES = $(BFILES:.c=.o)
-NAME = libft.a
 
 all: $(NAME)
 

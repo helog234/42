@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/17 12:22:21 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:14:03 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,11 +171,11 @@ void	closest_smaller(t_node **node, t_node **b)
 		}
 		else if ((*node)-> value < stack_to -> value && stack_to -> value < diff)
 		{
-			printf("diff av: %i\n", diff);
+		/* 	printf("diff av: %i\n", diff);
 			printf("b_stack value : %ld\n", stack_to -> value);
-			printf("(*node)-> value : %ld\n",(*node)-> value);
+			printf("(*node)-> value : %ld\n",(*node)-> value); */
 			diff = stack_to -> value;
-			printf(" diff : %i\n", diff);
+			//printf(" diff : %i\n", diff);
 			best_target = stack_to;
 		}
 		stack_to = stack_to -> next;

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:21:09 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/17 11:27:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/17 20:36:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	sort_three(t_node **stack)
 
 	min = find_min(stack);
 	max = find_max(stack);
-	printf("index min: %i\n", min -> index);
-	printf("index max: %i\n", min -> index);
+	/* printf("index min: %i\n", min -> index);
+	printf("index max: %i\n", min -> index); */
 
 	while (is_sorted(*stack) == false)
 	{
@@ -86,13 +86,13 @@ void	sort_values(t_node **a, t_node **b)
 	clear_a(a, b);
 	sort_three(a);
 	indexing(a);
-	printf("sort 3 ok\n");
-	print_stack(a, b);
+	/* printf("sort 3 ok\n");
+	print_stack(a, b); */
 	if (sort_a(a, b) == false)
 	{
 		free_stack(a);
 		free_stack(b);
 		errors(4);
 	}
-	print_stack(a, b);
+	//print_stack(a, b);
 }
