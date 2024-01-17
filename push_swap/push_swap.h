@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:23:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/16 16:07:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/17 10:25:26 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_node
 	int				index;
 	bool			above_median;
 	bool			cheapest;
-	bool			min;
-	bool			max;
+	int				min;
+	int				max;
 	struct s_node	*prev;
 	struct s_node	*next;
 	struct s_node	*target;
@@ -70,5 +70,5 @@ bool	sort_a(t_node **a, t_node **b);
 void	errors(int i);
 void	init_stack_b(t_node **b);
 void	sort(t_node **a);
-void	closest_bigger(t_node **node, t_node **b);
+void	closest_bigger(t_node **node, t_node **a);
 #endif

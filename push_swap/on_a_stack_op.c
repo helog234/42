@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:28:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/16 15:57:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/17 12:06:05 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	move_to_b(t_node **node, t_node **b, t_node **a)
 	t_node	*to_push;
 
 	to_push = (*node);
-	printf("to push : %i\n", to_push -> index);
+	printf("to push : %ld\n", to_push -> value);
 	printf("to push target : %ld\n", to_push -> target -> value);
 	while (to_push -> index > 0 || to_push -> target -> index > 0)
 	{
@@ -85,13 +85,13 @@ bool	sort_a(t_node **a, t_node **b)
 		define_target(b, a, 1);
 		cheapest = find_cheapest(b, a);
 		sleep(2);
-		printf("cheapest : %ld\n", cheapest -> value);
-		printf("cheapest target : %ld\n", cheapest -> target -> value);
+		//printf("cheapest : %ld\n", cheapest -> value);
+		//printf("cheapest target : %ld\n", cheapest -> target -> value);
 		move_to_a(&cheapest, a, b);
 		indexing(a);
-		sort(a);
 		to_push = *b;
 	}
+	sort(a);
 	if (is_sorted(*a))
 		return (true);
 	return (false);	
@@ -132,6 +132,7 @@ void	clear_a(t_node **a, t_node **b)
 		else
 		{
 			//printf("else");
+			//sort_b(b);
 			define_target(a, b, 0);
 			to_move = find_cheapest(a, b);
 			move_to_b(&to_move, b, a);
