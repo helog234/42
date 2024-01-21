@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:04:58 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/17 16:13:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/20 20:49:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	move_to_a(t_node **node, t_node **a, t_node **b)
 	if (*b == NULL)
 		return ;
 	to_push = (*node);
+	//print_stack(a, b);
 	while (*b && to_push && to_push->target && (to_push->index > 0 || to_push->target->index > 0))
 	{
 		/* printf("move to a\n");
 		printf("to_push %ld\n", to_push -> value);
 		printf("to_push target %ld\n", to_push -> target -> value);
+		printf("to_push target index %i\n", to_push -> target -> index);
 		print_stack(a, b);
 		sleep(2); */
 		/* if (to_push -> next == NULL)
@@ -54,7 +56,7 @@ void	move_to_a(t_node **node, t_node **a, t_node **b)
 			else if (to_push -> target -> above_median == true && to_push -> above_median == false)
 				rrb(b);		
 		}
-		//to_push = *b;
+		to_push = *b;
 		indexing(b);
 		indexing(a);
 	}

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/17 16:14:03 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/20 21:14:46 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ int	indexing(t_node **stack)
 
 	to_index = *stack;
 	i = 0;
+	if ( to_index -> next == NULL)
+	{
+		to_index -> index = i;
+		to_index -> above_median = true;
+		return (0);
+	}
 	min_node = find_min(stack);
 	max_node = find_max(stack);
 	while (to_index)
@@ -70,18 +76,7 @@ t_node	*find_cheapest(t_node **stack_from, t_node **stack_to)
 	best_fit = malloc(sizeof(t_node));
 	while (current_from)
 	{
-/* 		current_b = current_a -> target;
-		if (current_a -> index == 0 && current_b -> index == 0)
-		{
-			best_fit = currrent_a;
-			break;
-		}
-		current_a = current_a -> next; */
-
 		current_to = current_from -> target;
-		//printf("current from index : %i\n", current_from -> index);
-		//printf("current to index : %i\n", current_to -> index);
-		//printf("cost : %ld\n", cost);
 		if (current_from -> index + current_to -> index < cost)
 		{
 			cost = current_from -> index + current_to -> index;
@@ -93,72 +88,53 @@ t_node	*find_cheapest(t_node **stack_from, t_node **stack_to)
 		current_from = current_from -> next;
 	}
 	best_fit -> cheapest = true;
-/* 	printf("best_fit : %i\n", best_fit -> index);
-	printf("best_fit value: %lu\n", best_fit -> value); */
 	return (best_fit);
 }
 
-void	closest_bigger(t_node **node, t_node **a)
+void	closest_bigger(t_node **node, t_node **a , long diff)
 {
 	t_node	*stack_to;
 	t_node	*best_target;
-	int		diff;
 
 	stack_to = *a;
-	//printf("target b\n");
-	//print_stack(node, b);
-	diff = INT_MAX;
 	while (stack_to)
 	{
-		//printf("b_stack value iteration: %ld\n", stack_to -> value);
-		//printf("b_stack value : %ld\n", stack_to -> value);
-		//printf("(*node)-> value : %ld\n",(*node)-> value);
-		//printf("diff av: %ld\n", diff);
-		if ((*node)-> value < stack_to -> min)
-		{
-			best_target = find_min(&stack_to);
-			break;
-		}
-		else if ((*node)-> value > stack_to -> max)
+		if ((*node)-> value < stack_to -> min || (*node)-> value > stack_to -> max)
 		{
 			best_target = find_min(&stack_to);
 			break;
 		}
 		else if (stack_to -> value > (*node)-> value && stack_to -> value - (*node)-> value < diff)
 		{
-			//printf("diff : %i\n", diff);
-			//printf("diff av: %i\n", diff);
-			/* printf("b value : %ld\n",(*node)-> value);
-			printf("target in a : %ld\n", stack_to -> value); */
-			//printf("(*node)-> value : %ld\n",(*node)-> value);
 			diff = stack_to -> value - (*node)-> value;
-			//printf(" diff : %i\n", diff);
 			best_target = stack_to;
 		}
 		stack_to = stack_to -> next;
 	}
-/* 	printf("target b final ----------- \n");
-	printf("diff : %i\n", diff);
-	printf("node to move to a : %ld\n", (*node)-> value);
-	printf("target in a : %ld\n", best_target -> value); */
 	(*node)-> target = best_target;
 }
 
-void	closest_smaller(t_node **node, t_node **b)
+long	normalize_negativ(long diff)
 {
-	int		diff;
+	if (diff > 0)
+		diff = - diff;
+	return (diff);
+}
+/* t_node	check_smallest()
+{
+	
+} */
+
+void	closest_smaller(t_node **node, t_node **b, long diff)
+{
 	t_node	*stack_to;
 	t_node	*best_target;
+	long	current_diff;
 
-	diff = INT_MAX;
 	stack_to = *b;
-	//printf("target b\n");
-	diff = INT_MAX;
 	while (stack_to)
 	{
-		//printf("b_stack value : %ld\n", stack_to -> value);
-		//printf("(*node)-> value : %ld\n",(*node)-> value);
-		//printf("diff av: %ld\n", diff);
+		current_diff = normalize_negativ(((*node)->value - stack_to->value));
 		if ((*node)-> value < stack_to -> min)
 		{
 			best_target = find_min(&stack_to);
@@ -171,11 +147,12 @@ void	closest_smaller(t_node **node, t_node **b)
 		}
 		else if ((*node)-> value < stack_to -> value && stack_to -> value < diff)
 		{
-		/* 	printf("diff av: %i\n", diff);
-			printf("b_stack value : %ld\n", stack_to -> value);
-			printf("(*node)-> value : %ld\n",(*node)-> value); */
 			diff = stack_to -> value;
-			//printf(" diff : %i\n", diff);
+			best_target = stack_to;
+		}
+		else if ((*node)->value > stack_to -> value && current_diff < diff)
+		{
+			diff = current_diff;
 			best_target = stack_to;
 		}
 		stack_to = stack_to -> next;
@@ -185,18 +162,26 @@ void	closest_smaller(t_node **node, t_node **b)
 
 void	define_target(t_node **stack_from, t_node **stack_to, int flag)
 {
-	//int		i;
 	t_node	*origin;
+	long	diff;
 
-	//i = indexing(stack_to);
 	origin = *stack_from;
-	//print_stack(stack_from, stack_to);
+	diff = LLONG_MAX;
 	while (origin)
 	{
 		if (flag == 0)
-			closest_smaller(&origin, stack_to);
+		{
+			if ((*stack_to) -> next == NULL)
+			{
+				(*stack_from)-> target = *stack_to;
+				return ;
+			}
+			else
+				closest_smaller(&origin, stack_to, diff);
+		}
 		else
-			closest_bigger(&origin, stack_to);	
+			closest_bigger(&origin, stack_to, diff);	
 		origin = origin -> next;
 	}
 }
+

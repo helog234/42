@@ -3,6 +3,7 @@
 		"libft.h": "c",
 		"get_next_line_bonus.h": "c",
 		"__functional_03": "c",
-		"functional": "c"
+		"functional": "c",
+		"stack": "c"
 	}
 }

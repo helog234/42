@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:23:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/17 14:53:49 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/20 18:17:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ void	sort_values(t_node **a, t_node **b);
 void	clear_a(t_node **a, t_node **b);
 void	move_to_b(t_node **node, t_node **b, t_node **a);
 void	define_target(t_node **stack_from, t_node **stack_to, int flag);
-void	closest_smaller(t_node **node, t_node **b);
+void	closest_smaller(t_node **node, t_node **b, long diff);
 t_node	*find_cheapest(t_node **a, t_node **b);
 int		indexing(t_node **stack);
 void	set_median(t_node **stack, int length);
 void	free_all(long *all);
 void	free_stack(t_node **head);
-bool	is_sorted(t_node *stack);
+bool	is_sorted(t_node **stack);
 void	push(t_node **target, t_node **origin);
 void	pa(t_node **a, t_node **b);
 void	pb(t_node **a, t_node **b);
@@ -70,6 +70,6 @@ bool	sort_a(t_node **a, t_node **b);
 void	errors(int i);
 void	init_stack_b(t_node **b);
 void	sort(t_node **a);
-int	check_duplicates(t_node *stack, long new_value);
-void	closest_bigger(t_node **node, t_node **a);
+int		check_duplicates(t_node *stack, long new_value);
+void	closest_bigger(t_node **node, t_node **a, long diff);
 #endif
