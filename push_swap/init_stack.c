@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 08:25:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/17 20:41:58 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:59:42 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 t_node	*find_last(t_node *a, long values)
 {
-	while (a -> next)
+	t_node	*current;
+
+	current = a;
+	if (values == 2147483648 || check_duplicates(a, values) == 1)
 	{
-		if (values == 2147483648 || check_duplicates(a, values) == 1)
-		{
-			//free_all(values);
-			free_stack(&a);
-			errors(3);
-		}
-		a = a -> next;
+		free_stack(&a);
+		errors(3);
 	}
-	return (a);
+	while (current -> next)
+	{
+		current = current -> next;
+	}
+	return (current);
 }
 
 void	add_back(t_node **a, long i)
@@ -32,7 +34,6 @@ void	add_back(t_node **a, long i)
 	t_node	*last;
 	t_node	*new_node;
 
-	//printf("add: %ld\n", i);
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return ;
@@ -55,44 +56,20 @@ int	check_duplicates(t_node *stack, long new_value)
 {
 	while (stack)
 	{
-		if (stack -> value == new_value)
+		if (stack-> value == new_value)
 			return (1);
-		stack = stack -> next;
+		stack = stack-> next;
 	}
 	return (0);
 }
-/* void	init_stack_b(t_node **b)
-{
-	t_node *new_node;
-	
-	//new_node = malloc(sizeof(t_node));
-	if (!new_node)
-		return ;
-	new_node -> prev = NULL;
-	if (*b == NULL)
-	{
-		*b = new_node;
-		new_node -> next = NULL;
-	}
-	else
-	{
-		(*b) -> prev = new_node;
-		new_node -> next = (*b);
-		*b = new_node;
-	} 
-	indexing(b);
-} */
+
 
 void	init_stack_a(long values, t_node **a)
 {
-	//printf("%ld\n", values);
 	if (values < INT_MIN || values > INT_MAX)
 	{
-		//free_all(values);
 		free_stack(a);
 		errors(2);
 	}
-	//printf("node (init a) %ld: %ld\n",i, values[i]);
 	add_back(a, values);
-
 }

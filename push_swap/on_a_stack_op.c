@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:28:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/20 20:57:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:59:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,14 @@ void	move_to_b(t_node **node, t_node **b, t_node **a)
 	t_node	*to_push;
 
 	to_push = (*node);
-/* 	printf("to push : %ld\n", to_push -> value);
-	printf("to push index : %i\n", to_push -> index);
-	printf("to push target : %ld\n", to_push -> target -> value);
-	printf("to push target index: %i\n", to_push -> target -> index); */
 	while ((to_push -> index > 0 || to_push -> target -> index > 0) && b)
 	{
-		//print_stack(a, b);
-		indexing(a);
-		indexing(b);
-		/* printf("to push : %ld\n", to_push -> value);
-		printf("to push target : %ld\n", to_push -> target -> value);
-		sleep(2); */
 		if (to_push -> above_median == true && \
-		to_push -> target -> above_median == true && to_push->index > 0 && to_push -> target -> index > 0)
+		to_push -> target -> above_median == true && \
+		to_push->index > 0 && to_push -> target -> index > 0)
 			rr(a, b);
-		else if (to_push -> above_median == true && to_push->index > 0 && to_push -> target -> index > 0)
+		else if (to_push -> above_median == true && \
+		to_push->index > 0 && to_push -> target -> index > 0)
 			ra(a);
 		else if (to_push -> target -> above_median == true)
 			rb(b);
@@ -45,12 +37,8 @@ void	move_to_b(t_node **node, t_node **b, t_node **a)
 			rrb(b);
 		indexing(a);
 		indexing(b);
-		//sleep(2);
 	}
-	//init_stack_b(b);
 	pb(a, b);
-	//sleep(2);
-	//print_stack(a, b);
 }
 
 void	sort(t_node **a)
@@ -58,8 +46,6 @@ void	sort(t_node **a)
 	t_node	*min_node;
 	t_node	*current;
 
-	//min = find_min(a);
-	//printf("%ld\n", min -> value);
 	current = *a;
 	while (current)
 	{
@@ -67,25 +53,21 @@ void	sort(t_node **a)
 			break ;
 		indexing(a);
 		min_node = find_min(a);
-		//printf("ici\n");
-		print_stack(a, &min_node);
-		if (current -> value > min_node -> value && min_node -> above_median == true)
+		if (current -> value > min_node -> value && \
+		min_node -> above_median == true)
 		{
 			ra(a);
 			current = *a;
-			//printf("ici\n");
 		}
-		else if (current -> value > min_node -> value && min_node -> above_median == false)
+		else if (current -> value > min_node -> value && \
+		min_node -> above_median == false)
 		{
-			//printf("ici\n");
 			rra(a);
 			current = *a;
 		}
 		else
 			current = current -> next;
-		//printf("ici\n");
 	}
-	//printf("fin sort\n");
 }
 
 bool	sort_a(t_node **a, t_node **b)
@@ -94,83 +76,46 @@ bool	sort_a(t_node **a, t_node **b)
 	t_node	*to_push;
 
 	to_push = *b;
-	//print_stack(a, b);
 	while (to_push && b)
 	{
 		indexing(a);
-		//printf("AV cheapest target index : %i\n", to_push -> target -> index);
 		define_target(b, a, 1);
-		/* printf("après define tar cheapest target index : %i\n", to_push -> target -> index);
-		print_stack(a, b); */
-		//sleep(2);
 		cheapest = find_cheapest(b, a);
-	/* 	printf("cheapest : %ld\n", cheapest -> value);
-		printf("cheapest target : %ld\n", cheapest -> target -> value);
-		printf("cheapest target index : %i\n", cheapest -> target -> index);
-		sleep(2); */
 		move_to_a(&cheapest, a, b);
-		//print_stack(a, b);
 		indexing(a);
 		to_push = *b;
 	}
 	sort(a);
-	//print_stack(a, b);
 	if (is_sorted(a))
 		return (true);
-	return (false);	
+	return (false);
 }
 
-void	clear_a(t_node **a, t_node **b)
+void	clear_a(t_node **a, t_node **b, int round)
 {
 	int		i;
 	t_node	*to_move;
-	int		round;
 
 	i = indexing(a);
-	round = 0;
 	while (i > 2)
 	{
-		//printf("%i\n", i);
-		//printf("i : %d\n", i);
-		//print_stack(a, b);
-		//init_stack_b(b);
-		//printf("ici");
 		if (round == 0 && i >= 5)
 		{
-			//printf("ici\n");
 			pb(a, b);
-			//init_stack_b(b);
 			pb(a, b);
-			//define_target(a, b);
 			i--;
 		}
 		else if (round == 0)
-		{
-			//printf("ici\n");
-			//printf("i : %d\n", i);
 			pb(a, b);
-			//print_stack(a, b);
-			define_target(a, b, 0);
-		}
 		else
 		{
-			//printf("else");
-			//sort_b(b);
 			define_target(a, b, 0);
 			to_move = find_cheapest(a, b);
 			move_to_b(&to_move, b, a);
-			//sleep(2);
-			//print_stack(a, b);
-			//free(to_move);
 		}
 		i--;
 		round++;
 		indexing(a);
 		indexing(b);
-		/* printf("ici");
-		sleep(2); */
-		//print_stack(a, b);
-		/* printf("%i\n", i);
-		printf("%i\n", round); */
 	}
 }

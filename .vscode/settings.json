@@ -4,6 +4,7 @@
 		"get_next_line_bonus.h": "c",
 		"__functional_03": "c",
 		"functional": "c",
-		"stack": "c"
+		"stack": "c",
+		"random": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:17:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/20 10:35:14 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/22 12:54:32 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,15 @@ void	free_stack(t_node **head)
 
 void	errors(int i)
 {
-	//Attention, changer pour juste Error\n une fois que c'est bon
 	if (i == 0)
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 	else if (i == 1)
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 	else if (i == 2)
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 	else if (i == 3)
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 	else if (i == 4)
-		ft_printf("Error\n");
+		ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
 }
