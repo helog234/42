@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:23:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/22 16:52:13 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/23 17:42:58 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ void	init_stack_b(t_node **b);
 void	sort(t_node **a);
 int		check_duplicates(t_node *stack, long new_value);
 void	closest_bigger(t_node **node, t_node **a, long diff);
+void	free_split(char *str[]);
 #endif

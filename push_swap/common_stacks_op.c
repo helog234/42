@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/22 11:36:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/23 18:23:23 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ t_node	*find_cheapest(t_node **stack_from, t_node **stack_to)
 	current_from = *stack_from;
 	current_to = *stack_to;
 	cost = LLONG_MAX;
-	best_fit = malloc(sizeof(t_node));
 	while (current_from)
 	{
 		current_to = current_from -> target;

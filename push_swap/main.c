@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/22 17:17:49 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/23 17:48:53 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,28 @@ void	create_nodes(long i, char *new_argv[], t_node **a)
 void	values_array(int argc, char *argv[], t_node **a)
 {
 	char	**new_argv;
-	long	*node_array;
 	long	i;
+	int		flag;
 
 	i = 1;
+	flag = 0;
 	new_argv = NULL;
 	argv = &argv[i];
 	if (argc == 2)
 	{
 		new_argv = ft_split(argv[0], ' ');
+		flag = 1;
 		if (new_argv == NULL)
 			errors(1);
 	}
 	else
 		new_argv = argv;
-	while (new_argv[i])
-		i++;
-	node_array = malloc((i + 1) * sizeof(long));
-	if (!node_array || new_argv[0] == NULL)
+	if (new_argv[0] == NULL)
 		errors(4);
 	i = 0;
 	create_nodes(i, new_argv, a);
+	if (flag == 1)
+		free_split(new_argv);
 }
 
 bool	is_sorted(t_node **stack_check)

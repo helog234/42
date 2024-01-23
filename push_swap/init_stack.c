@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 08:25:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/22 16:59:42 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/23 17:15:57 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	check_duplicates(t_node *stack, long new_value)
 	}
 	return (0);
 }
-
 
 void	init_stack_a(long values, t_node **a)
 {

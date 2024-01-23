@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:17:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/22 12:54:32 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/23 17:46:22 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ void	free_all(long *all)
 		j++;
 	} */
 	free(all);
+}
+
+void	free_split(char *str[])
+{
+	int	i;
+	
+	i = 0;
+	if (str == NULL)
+		return ;
+	while (str[i])
+	{
+		free(str[i]);
+		str[i] = NULL;
+		i++;
+	}
+	free(str);
 }
 
 void	free_stack(t_node **head)
