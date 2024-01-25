@@ -6,13 +6,13 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/08 12:38:13 by hgandar           #+#    #+#              #
-#    Updated: 2024/01/22 17:27:56 by hgandar          ###   ########.fr        #
+#    Updated: 2024/01/25 11:53:53 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 #-fsanitize=address
 LFLAG = leaks -atExit --
 LIBFT_DIR = libft

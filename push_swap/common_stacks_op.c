@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/23 18:23:23 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/25 12:15:08 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,28 +63,45 @@ int	indexing(t_node **stack)
 	return (--i);
 }
 
-t_node	*find_cheapest(t_node **stack_from, t_node **stack_to)
+void	set_cost_a(t_node **a, t_node **b)
 {
-	t_node	*current_from;
-	t_node	*current_to;
-	t_node	*best_fit;
-	long	cost;
-
-	current_from = *stack_from;
-	current_to = *stack_to;
-	cost = LLONG_MAX;
-	while (current_from)
+	int	len_a;
+	int	len_b;
+	t_node	*current_a;
+	
+	len_a = indexing(a);
+	len_b = indexing(b);
+	current_a = *a;
+	while (current_a)
 	{
-		current_to = current_from -> target;
-		if (current_from -> index + current_to -> index < cost)
+		current_a -> cost = current_a -> index;
+		if(!current_a -> above_median)
+			current_a -> cost = len_a - (current_a -> index);
+		if (current_a -> target -> above_median)
+			current_a -> cost += current_a -> target -> index;
+		else
+			current_a -> cost += len_b - (current_a -> target -> index);
+		current_a = current_a -> next;
+	}
+}
+
+t_node	*find_cheapest(t_node **stack_a)
+{
+	t_node	*current;
+	t_node	*best_fit;
+	long	cheapest;
+
+	cheapest = LLONG_MAX;
+	current = *stack_a;
+	while (current)
+	{
+		if (current -> cost < cheapest)
 		{
-			cost = current_from -> index + current_to -> index;
-			best_fit = current_from;
-			if (cost == 0)
-				break ;
+			best_fit = current;
+			cheapest = current -> cost;
 		}
-		current_from -> cheapest = false;
-		current_from = current_from -> next;
+		current -> cheapest = false;
+		current = current -> next;
 	}
 	best_fit -> cheapest = true;
 	return (best_fit);
@@ -173,7 +190,11 @@ void	define_target(t_node **stack_from, t_node **stack_to, int flag)
 		{
 			if ((*stack_to)-> next == NULL)
 			{
-				(*stack_from)-> target = *stack_to;
+				while (origin)
+				{
+					origin -> target = *stack_to;
+					origin = origin -> next;
+				}
 				return ;
 			}
 			else

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:28:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/22 16:59:52 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/25 11:50:18 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	sort(t_node **a)
 
 bool	sort_a(t_node **a, t_node **b)
 {
-	t_node	*cheapest;
+	//t_node	*cheapest;
 	t_node	*to_push;
 
 	to_push = *b;
@@ -80,8 +80,8 @@ bool	sort_a(t_node **a, t_node **b)
 	{
 		indexing(a);
 		define_target(b, a, 1);
-		cheapest = find_cheapest(b, a);
-		move_to_a(&cheapest, a, b);
+		//cheapest = find_cheapest(b, a);
+		move_to_a(a, b);
 		indexing(a);
 		to_push = *b;
 	}
@@ -110,7 +110,8 @@ void	clear_a(t_node **a, t_node **b, int round)
 		else
 		{
 			define_target(a, b, 0);
-			to_move = find_cheapest(a, b);
+			set_cost_a(a, b);
+			to_move = find_cheapest(a);
 			move_to_b(&to_move, b, a);
 		}
 		i--;
