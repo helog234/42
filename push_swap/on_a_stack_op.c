@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:28:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/26 12:31:07 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/26 12:39:02 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ bool	sort_a(t_node **a, t_node **b)
 		indexing(a);
 		define_target(b, a, 1);
 		cheapest_b(b, a);
+		//utiliser cheapest b
 		move_to_a(a, b);
 		/* if (flag == 1)
 			rb(b); */
