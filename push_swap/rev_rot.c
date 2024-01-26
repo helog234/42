@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:26:18 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/22 16:51:22 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/25 14:42:25 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	reverse_rotate(t_node **head)
 
 	if (!*head)
 		return ;
-	to_move = find_last(*head, LLONG_MAX);
+	to_move = find_last(head);
 	init_head = *head;
 	new_last = to_move -> prev;
 	to_move -> next = init_head;

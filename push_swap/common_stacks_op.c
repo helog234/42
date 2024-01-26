@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/25 12:15:08 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/26 12:22:08 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,15 @@ void	set_cost_a(t_node **a, t_node **b)
 	current_a = *a;
 	while (current_a)
 	{
-		current_a -> cost = current_a -> index;
-		if(!current_a -> above_median)
-			current_a -> cost = len_a - (current_a -> index);
-		if (current_a -> target -> above_median)
-			current_a -> cost += current_a -> target -> index;
-		else
-			current_a -> cost += len_b - (current_a -> target -> index);
+		if (current_a -> above_median && current_a -> target -> above_median)
+			current_a -> cost = current_a -> index + current_a -> target -> index;
+		else if (!(current_a -> above_median) && !(current_a -> target -> above_median))
+			current_a -> cost = len_a - (current_a -> index) + 1 \
+			+ len_b - (current_a -> target -> index) + 1;
+		else if (current_a -> above_median && !(current_a -> target -> above_median))
+			current_a -> cost = current_a -> index + (len_b - (current_a -> target -> index) + 1);
+		else if (!(current_a -> above_median) && current_a -> target -> above_median)
+			current_a -> cost = len_a - (current_a -> index) + 1 + current_a -> target -> index;
 		current_a = current_a -> next;
 	}
 }
@@ -103,7 +105,9 @@ t_node	*find_cheapest(t_node **stack_a)
 		current -> cheapest = false;
 		current = current -> next;
 	}
-	best_fit -> cheapest = true;
+	/* printf("best fit value : %ld , target %ld cost :%i\n", \
+	best_fit -> value, best_fit->target->value, best_fit-> cost);
+	best_fit -> cheapest = true; */
 	return (best_fit);
 }
 
@@ -139,16 +143,6 @@ long	normalize_negativ(long diff)
 	return (diff);
 }
 
-t_node	*check_min_max(int value, t_node **stack_to)
-{
-	if (value < (*stack_to)-> min)
-		return (find_min(stack_to));
-	else if (value > (*stack_to)-> max)
-		return (find_max(stack_to));
-	else
-		return (NULL);
-}
-
 void	closest_smaller(t_node **node, t_node **b, long diff)
 {
 	t_node	*stack_to;
@@ -158,20 +152,17 @@ void	closest_smaller(t_node **node, t_node **b, long diff)
 	stack_to = *b;
 	while (stack_to)
 	{
-		current_diff = normalize_negativ(((*node)->value - stack_to->value));
-		if (check_min_max((*node)-> value, &stack_to) != NULL)
+		current_diff = (*node)->value - stack_to->value;
+		if ((*node)-> value < stack_to -> min)
 		{
-			best_target = check_min_max((*node)-> value, &stack_to);
+			best_target = find_max(&stack_to);
 			break ;
 		}
-		else if ((*node)-> value < stack_to -> value && \
-		stack_to -> value < diff)
-		{
-			diff = stack_to -> value;
-			best_target = stack_to;
-		}
-		else if ((*node)->value > stack_to -> value && current_diff < diff)
-			best_target = stack_to;
+		if (current_diff > 0 && current_diff < diff)
+        {
+            diff = current_diff;
+            best_target = stack_to;
+        }
 		stack_to = stack_to -> next;
 	}
 	(*node)-> target = best_target;

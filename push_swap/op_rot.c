@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:08:41 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/22 16:51:11 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/25 14:42:09 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	rotate(t_node **head)
 		return ;
 	to_rotate = *head;
 	new_head = (*head)-> next;
-	last_node = find_last(*head, INT_MAX + 10);
+	last_node = find_last(head);
 	to_rotate -> prev = last_node;
 	last_node -> next = to_rotate;
 	to_rotate -> next = NULL;

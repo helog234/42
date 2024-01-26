@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/23 17:48:53 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/26 12:30:44 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	main(int argc, char *argv[])
 	values_array(argc, argv, &a);
 	if (is_sorted(&a) || indexing(&a) == 0)
 	{
+		//print_stack(&a, &b);
 		free_stack(&a);
 		return (0);
 	}
@@ -101,6 +102,7 @@ int	main(int argc, char *argv[])
 		sort_three(&a);
 	else
 		sort_values(&a, &b);
+	//print_stack(&a, &b);
 	free_stack(&a);
 	return (0);
 }

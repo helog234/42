@@ -6,13 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 08:25:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/23 17:15:57 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/26 12:26:02 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*find_last(t_node *a, long values)
+t_node	*find_last_add(t_node *a, long values)
 {
 	t_node	*current;
 
@@ -45,7 +45,7 @@ void	add_back(t_node **a, long i)
 	}
 	else
 	{
-		last = find_last(*a, i);
+		last = find_last_add(*a, i);
 		last -> next = new_node;
 		new_node -> prev = last;
 	}

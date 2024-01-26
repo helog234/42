@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:28:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/25 11:50:18 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/26 12:31:07 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,19 @@ void	sort(t_node **a)
 
 bool	sort_a(t_node **a, t_node **b)
 {
-	//t_node	*cheapest;
 	t_node	*to_push;
+	//int		flag;
 
 	to_push = *b;
+	//print_stack(a, b);
 	while (to_push && b)
 	{
 		indexing(a);
 		define_target(b, a, 1);
-		//cheapest = find_cheapest(b, a);
+		cheapest_b(b, a);
 		move_to_a(a, b);
+		/* if (flag == 1)
+			rb(b); */
 		indexing(a);
 		to_push = *b;
 	}
@@ -112,6 +115,7 @@ void	clear_a(t_node **a, t_node **b, int round)
 			define_target(a, b, 0);
 			set_cost_a(a, b);
 			to_move = find_cheapest(a);
+			//print_stack(a,b);
 			move_to_b(&to_move, b, a);
 		}
 		i--;
