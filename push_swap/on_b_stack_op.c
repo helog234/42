@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:04:58 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 12:13:34 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/27 16:08:07 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	move_to_a(t_node **a, t_node **b)
 	}
 	pa(a, b);
 }
+
 t_node *find_last(t_node **b)
 {
 	t_node *current;

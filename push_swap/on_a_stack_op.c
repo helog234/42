@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:28:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 12:13:06 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/27 16:05:38 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	move_to_b(t_node **node, t_node **b, t_node **a)
 		to_push -> target -> above_median == true && \
 		to_push->index > 0 && to_push -> target -> index > 0)
 			rr(a, b);
-		else if (to_push -> above_median == true && \
-		to_push->index > 0)
+		else if (to_push -> above_median == true && to_push->index > 0)
 			ra(a);
 		else if (to_push -> target -> above_median == true && \
 		to_push -> target -> index > 0)
@@ -91,12 +90,10 @@ bool	sort_a(t_node **a, t_node **b)
 	return (false);
 }
 
-void	clear_a(t_node **a, t_node **b, int round)
+void	clear_a(t_node **a, t_node **b, int round, int i)
 {
-	int		i;
 	t_node	*to_move;
 
-	i = indexing(a);
 	while (i > 2)
 	{
 		if (round == 0 && i >= 5)

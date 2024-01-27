@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 12:13:22 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/27 16:07:38 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,12 +166,6 @@ void	closest_bigger(t_node **node, t_node **a, long diff)
 	(*node)-> target = best_target;
 }
 
-long	normalize_negativ(long diff)
-{
-	if (diff > 0)
-		diff = - diff;
-	return (diff);
-}
 
 void	closest_smaller(t_node **node, t_node **b, long diff)
 {

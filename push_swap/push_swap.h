@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:23:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/25 16:40:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/27 16:05:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_node
 void	init_stack_a(long values, t_node **a);
 t_node	*find_last_add(t_node *a, long values);
 void	sort_values(t_node **a, t_node **b);
-void	clear_a(t_node **a, t_node **b, int round);
+void	clear_a(t_node **a, t_node **b, int round, int i);
 void	move_to_b(t_node **node, t_node **b, t_node **a);
 void	define_target(t_node **stack_from, t_node **stack_to, int flag);
 void	closest_smaller(t_node **node, t_node **b, long diff);
