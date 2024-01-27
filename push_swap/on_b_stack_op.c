@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:04:58 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/26 09:16:25 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/27 12:13:34 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	move_to_a(t_node **a, t_node **b)
 	if (*b == NULL)
 		return ;
 	
-	//faire un flag pour checker si mvmt dans cheapest b et potentiellement revenir
 	to_push = *b;
 	while (*b && to_push && to_push->target && \
 	(to_push->index > 0 || to_push->target->index > 0))
@@ -79,8 +78,7 @@ int	cheapest_b(t_node **b, t_node **a)
 	int		len_a;
 
 	check_push = *b;
-	len_a = indexing(a) / 4;
-	//print_stack(a, b);
+	len_a = indexing(a) / 3;
 	if (check_push -> next == NULL)
 		return (0);
 	last = find_last(b);
