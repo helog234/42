@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:20:53 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 17:27:43 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:59:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ bool	checker(t_node **a, t_node **b)
 	instructions = get_next_line(STDIN_FILENO);
 	while (instructions)
 	{
-		(void)a;
-		(void)b;
 		if (!executer(instructions, a, b))
 		{
 			free(instructions);
-			return (false);
+			errors(1);
 		}
 		free(instructions);
 		instructions = get_next_line(STDIN_FILENO);
