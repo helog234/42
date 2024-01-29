@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:28:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 16:05:38 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:47:38 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,23 @@ void	move_to_b(t_node **node, t_node **b, t_node **a)
 		if (to_push -> above_median == true && \
 		to_push -> target -> above_median == true && \
 		to_push->index > 0 && to_push -> target -> index > 0)
-			rr(a, b);
+			rr(a, b, 0);
 		else if (to_push -> above_median == true && to_push->index > 0)
-			ra(a);
+			ra(a, 0);
 		else if (to_push -> target -> above_median == true && \
 		to_push -> target -> index > 0)
-			rb(b);
+			rb(b, 0);
 		else if (to_push -> above_median == false && \
 		to_push -> target -> above_median == false)
-			rrr(a, b);
+			rrr(a, b, 0);
 		else if (to_push -> above_median == false)
-			rra(a);
+			rra(a, 0);
 		else if (to_push -> target -> above_median == false)
-			rrb(b);
+			rrb(b, 0);
 		indexing(a);
 		indexing(b);
 	}
-	pb(a, b);
+	pb(a, b, 0);
 }
 
 void	sort(t_node **a)
@@ -56,13 +56,13 @@ void	sort(t_node **a)
 		if (current -> value > min_node -> value && \
 		min_node -> above_median == true)
 		{
-			ra(a);
+			ra(a, 0);
 			current = *a;
 		}
 		else if (current -> value > min_node -> value && \
 		min_node -> above_median == false)
 		{
-			rra(a);
+			rra(a, 0);
 			current = *a;
 		}
 		else
@@ -98,16 +98,16 @@ void	clear_a(t_node **a, t_node **b, int round, int i)
 	{
 		if (round == 0 && i >= 5)
 		{
-			pb(a, b);
-			pb(a, b);
+			pb(a, b, 0);
+			pb(a, b, 0);
 			i--;
 		}
 		else if (round == 0)
-			pb(a, b);
+			pb(a, b, 0);
 		else
 		{
 			define_target(a, b, 0);
-			set_cost_a(a, b);
+			set_cost_a(a, indexing(a), indexing(b));
 			to_move = find_cheapest(a);
 			move_to_b(&to_move, b, a);
 		}

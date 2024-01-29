@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 10:08:10 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/22 12:06:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:18:05 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,16 @@ void	push(t_node **target, t_node **origin)
 	}
 }
 
-void	pa(t_node **a, t_node **b)
+void	pa(t_node **a, t_node **b, int flag)
 {
 	push(a, b);
-	ft_printf("pa\n");
+	if (flag == 0)
+		ft_printf("pa\n");
 }
 
-void	pb(t_node **a, t_node **b)
+void	pb(t_node **a, t_node **b, int flag)
 {
 	push(b, a);
-	ft_printf("pb\n");
+	if (flag == 0)
+		ft_printf("pb\n");
 }

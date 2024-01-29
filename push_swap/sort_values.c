@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:21:09 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 12:09:44 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:20:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ void	sort_three(t_node **stack)
 	{
 		indexing(stack);
 		if (max -> index == 0)
-			ra(stack);
+			ra(stack, 0);
 		else if (min -> index == 2 || max -> index == 1)
-			rra(stack);
+			rra(stack, 0);
 		else if (min -> index == 1)
-			sa(stack);
+			sa(stack, 0);
 		min = find_min(stack);
 		max = find_max(stack);
 	}
@@ -81,7 +81,7 @@ void	sort_values(t_node **a, t_node **b)
 	round = 0;
 	len_a = indexing(a);
 	if (len_a == 1)
-		sa(a);
+		sa(a, 0);
 	else if (len_a == 2)
 		sort_three(a);
 	else
@@ -92,7 +92,6 @@ void	sort_values(t_node **a, t_node **b)
 	}
 	if (sort_a(a, b) == false)
 	{
-		//print_stack(a, b);
 		free_stack(a);
 		free_stack(b);
 		errors(4);

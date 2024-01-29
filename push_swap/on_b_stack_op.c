@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 08:04:58 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 16:08:07 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:35:38 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ void	not_above_medium(t_node **a, t_node **b, t_node **to_push)
 {
 	if ((*to_push)->target -> above_median == false && \
 	(*to_push)->above_median == false)
-		rrr(a, b);
+		rrr(a, b, 0);
 	else if ((*to_push)-> target -> above_median == false && \
 	(*to_push)-> above_median == true)
-		rra(a);
+		rra(a, 0);
 	else if ((*to_push)-> target -> above_median == true && \
 	(*to_push)-> above_median == false)
-		rrb(b);
+		rrb(b, 0);
 }
 
 void	above_medium(t_node **a, t_node **b, t_node **to_push)
 {
 	if ((*to_push)->target -> index > 0 && (*to_push)->index > 0)
-		rr(a, b);
+		rr(a, b, 0);
 	else if ((*to_push)->target -> index > 0 && (*to_push)-> index == 0)
-		ra(a);
+		ra(a, 0);
 	else if ((*to_push)->index > 0 && (*to_push)-> target -> index == 0)
-		rb(b);
+		rb(b, 0);
 }
 
 void	move_to_a(t_node **a, t_node **b)
@@ -41,7 +41,6 @@ void	move_to_a(t_node **a, t_node **b)
 
 	if (*b == NULL)
 		return ;
-	
 	to_push = *b;
 	while (*b && to_push && to_push->target && \
 	(to_push->index > 0 || to_push->target->index > 0))
@@ -57,13 +56,13 @@ void	move_to_a(t_node **a, t_node **b)
 		indexing(b);
 		indexing(a);
 	}
-	pa(a, b);
+	pa(a, b, 0);
 }
 
-t_node *find_last(t_node **b)
+t_node	*find_last(t_node **b)
 {
-	t_node *current;
-	
+	t_node	*current;
+
 	current = *b;
 	while (current -> next)
 	{
@@ -85,11 +84,11 @@ int	cheapest_b(t_node **b, t_node **a)
 	last = find_last(b);
 	if (check_push -> target -> index > len_a && \
 	check_push -> next -> target -> index < len_a + 1)
-		sb(b);
+		sb(b, 0);
 	else if (check_push -> target -> index > len_a && \
 	last -> target -> index < len_a + 1)
 	{
-		rrb(b);
+		rrb(b, 0);
 		return (1);
 	}
 	return (0);

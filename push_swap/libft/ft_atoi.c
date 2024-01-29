@@ -6,12 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 15:22:24 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/22 15:56:50 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 14:59:04 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 long	ft_atoi(const char *str)
 {

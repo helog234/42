@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 16:07:38 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 14:58:10 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,24 +63,13 @@ int	indexing(t_node **stack)
 	return (--i);
 }
 
-int	move_index(t_node *node_a, t_node *node_b)
-{
-	int a;
-	int	b;
-
-	a = node_a -> index;
-	b = node_b -> index;
-	if (a < b)
-		return (b);
-	else
-		return (a);
-}
+/* 
 int	reverse_move(t_node *node_a, t_node *node_b, int length_a, int length_b)
 {
-	int a;
+	int	a;
 	int	b;
 	int	diff;
-	
+
 	a = node_a -> index;
 	b = node_b -> index;
 	if (length_a - a < length_b - b)
@@ -88,58 +77,9 @@ int	reverse_move(t_node *node_a, t_node *node_b, int length_a, int length_b)
 		diff = length_a - a + (length_b - length_a - a) + 2;
 	}
 	else
-		diff = length_b -b + (length_b - length_a - a) + 2;
-	return(diff);
-}
-
-void	set_cost_a(t_node **a, t_node **b)
-{
-	int	len_a;
-	int	len_b;
-	t_node	*current_a;
-	
-	len_a = indexing(a);
-	len_b = indexing(b);
-	current_a = *a;
-	while (current_a)
-	{
-		if (current_a -> above_median && current_a -> target -> above_median && current_a -> index > 0\
-		&& current_a -> target > 0)
-			current_a -> cost = move_index(current_a, current_a -> target);
-		else if (current_a -> above_median && current_a -> target -> above_median)
-			current_a -> cost = current_a -> index + current_a -> target -> index;
-		else if (!(current_a -> above_median) && !(current_a -> target -> above_median))
-			current_a -> cost = len_a - (current_a -> index) + 1 \
-			+ len_b - (current_a -> target -> index) + 1;
-		else if (current_a -> above_median && !(current_a -> target -> above_median))
-			current_a -> cost = current_a -> index + (len_b - (current_a -> target -> index));
-		else if (!(current_a -> above_median) && current_a -> target -> above_median)
-			current_a -> cost = len_a - (current_a -> index) + current_a -> target -> index;
-		current_a = current_a -> next;
-	}
-}
-
-t_node	*find_cheapest(t_node **stack_a)
-{
-	t_node	*current;
-	t_node	*best_fit;
-	long	cheapest;
-
-	cheapest = LLONG_MAX;
-	current = *stack_a;
-	while (current)
-	{
-		if (current -> cost < cheapest)
-		{
-			best_fit = current;
-			cheapest = current -> cost;
-		}
-		current -> cheapest = false;
-		current = current -> next;
-	}
-	best_fit -> cheapest = true;
-	return (best_fit);
-}
+		diff = length_b - b + (length_b - length_a - a) + 2;
+	return (diff);
+} */
 
 void	closest_bigger(t_node **node, t_node **a, long diff)
 {
@@ -166,7 +106,6 @@ void	closest_bigger(t_node **node, t_node **a, long diff)
 	(*node)-> target = best_target;
 }
 
-
 void	closest_smaller(t_node **node, t_node **b, long diff)
 {
 	t_node	*stack_to;
@@ -183,10 +122,10 @@ void	closest_smaller(t_node **node, t_node **b, long diff)
 			break ;
 		}
 		if (current_diff > 0 && current_diff < diff)
-        {
-            diff = current_diff;
-            best_target = stack_to;
-        }
+		{
+			diff = current_diff;
+			best_target = stack_to;
+		}
 		stack_to = stack_to -> next;
 	}
 	(*node)-> target = best_target;
@@ -220,4 +159,3 @@ void	define_target(t_node **stack_from, t_node **stack_to, int flag)
 		origin = origin -> next;
 	}
 }
-

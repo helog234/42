@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 11:08:41 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/25 14:42:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:15:15 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,24 @@ void	rotate(t_node **head)
 	indexing(head);
 }
 
-void	ra(t_node **a)
+void	ra(t_node **a, int flag)
 {
 	rotate(a);
-	ft_printf("ra\n");
+	if (flag == 0)
+		ft_printf("ra\n");
 }
 
-void	rb(t_node **b)
+void	rb(t_node **b, int flag)
 {
 	rotate(b);
-	ft_printf("rb\n");
+	if (flag == 0)
+		ft_printf("rb\n");
 }
 
-void	rr(t_node **a, t_node **b)
+void	rr(t_node **a, t_node **b, int flag)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
+	if (flag == 0)
+		ft_printf("rr\n");
 }

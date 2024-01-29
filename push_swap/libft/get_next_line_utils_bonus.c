@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:05:13 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 18:51:22 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:43:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ char	*ft_substr_gnl(char const *s, unsigned int start, size_t len, size_t i)
 {
 	char	*str;
 
+	if (s == NULL)
+		return (NULL);
 	if (start + len > (size_t)ft_strlen_gnl(s))
-		len = ft_strlen(s) - start;
-	if (len < 0)
-		return ((char *) s);
+		len = ft_strlen_gnl(s) - start;
 	if (start > (unsigned int) ft_strlen_gnl(s))
 	{
 		str = malloc(1);
@@ -48,7 +48,7 @@ char	*ft_strjoin_gnl(char *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	str3 = (char *)malloc(ft_strlen(s1) + ft_strlen_gnl(s2) + 1);
+	str3 = (char *)malloc(ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1);
 	if (str3 == NULL)
 		return (NULL);
 	while (s1 && s1[i])
@@ -73,7 +73,8 @@ int	ft_strlen_gnl(const char *s)
 
 char	*free_str(char *str)
 {
-	free(str);
+	if (str != NULL)
+		free(str);
 	str = NULL;
 	return (NULL);
 }

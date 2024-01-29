@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 19:02:49 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 18:52:12 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:54:09 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ long			ft_atoi(const char *str);
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strdup(const char *str1);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
-char			*ft_substr_gnl(char const *s, unsigned int start, size_t len, size_t i);
+char			*ft_substr_gnl(char const *s, unsigned int start, \
+				size_t len, size_t i);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
@@ -79,7 +80,8 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
 				void (*del)(void *));
 char			*get_next_line(int fd);
-char			*fill_line_buffer(int fd, char *stock, char *buffer);
+char			*fill_line_buffer(int fd, char *stock, \
+				char *buffer, int control);
 int				ft_strchr_line(const char *line, int c);
 char			*ft_substr_l(char const *s, unsigned int start, \
 				size_t len, size_t i);

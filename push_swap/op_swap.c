@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:46:51 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/14 10:00:27 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:16:59 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,24 @@ void	swap(t_node **head)
 	*head = second;
 }
 
-void	sa(t_node **a)
+void	sa(t_node **a, int flag)
 {
 	swap(a);
-	ft_printf("sa\n");
+	if (flag == 0)
+		ft_printf("sa\n");
 }
 
-void	sb(t_node **b)
+void	sb(t_node **b, int flag)
 {
 	swap(b);
-	ft_printf("sb\n");
+	if (flag == 0)
+		ft_printf("sb\n");
 }
 
-void	ss(t_node **a, t_node **b)
+void	ss(t_node **a, t_node **b, int flag)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss\n");
+	if (flag == 0)
+		ft_printf("ss\n");
 }
