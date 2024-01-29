@@ -6,23 +6,21 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:05:13 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/12 08:54:11 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/27 18:51:22 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
-#include <stdio.h>
 
-char	*ft_substr_l(char const *s, unsigned int start, size_t len, size_t i)
+char	*ft_substr_gnl(char const *s, unsigned int start, size_t len, size_t i)
 {
 	char	*str;
 
-	if (start + len > (size_t)ft_strlen(s))
+	if (start + len > (size_t)ft_strlen_gnl(s))
 		len = ft_strlen(s) - start;
 	if (len < 0)
 		return ((char *) s);
-	if (start > (unsigned int) ft_strlen(s))
+	if (start > (unsigned int) ft_strlen_gnl(s))
 	{
 		str = malloc(1);
 		if (str == NULL)
@@ -42,7 +40,7 @@ char	*ft_substr_l(char const *s, unsigned int start, size_t len, size_t i)
 	return (str);
 }
 
-char	*ft_strjoin_l(char *s1, char const *s2)
+char	*ft_strjoin_gnl(char *s1, char const *s2)
 {
 	int		i;
 	int		j;
@@ -50,7 +48,7 @@ char	*ft_strjoin_l(char *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	str3 = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	str3 = (char *)malloc(ft_strlen(s1) + ft_strlen_gnl(s2) + 1);
 	if (str3 == NULL)
 		return (NULL);
 	while (s1 && s1[i])
@@ -63,23 +61,19 @@ char	*ft_strjoin_l(char *s1, char const *s2)
 	return (str3);
 }
 
+int	ft_strlen_gnl(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
+}
+
 char	*free_str(char *str)
 {
 	free(str);
 	str = NULL;
 	return (NULL);
-}
-
-char	*init(char *stock, int fd)
-{
-	stock = malloc(1);
-	if (stock == NULL)
-	{
-		perror("Memory allocation error");
-		return (NULL);
-	}
-	stock[0] = '\0';
-	if (fd == -1 || fd >= FD_MAX)
-		return (NULL);
-	return (stock);
 }

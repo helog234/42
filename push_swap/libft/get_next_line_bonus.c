@@ -6,12 +6,10 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:04:02 by hgandar           #+#    #+#             */
-/*   Updated: 2023/12/14 10:28:44 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/27 18:51:45 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include "libft.h"
 
 char	*set_stock(char *stock, int i, int j)
@@ -20,7 +18,7 @@ char	*set_stock(char *stock, int i, int j)
 	char			*new_stock;
 
 	k = 0;
-	new_stock = ft_substr_l(stock, i + 1, j, k);
+	new_stock = ft_substr_gnl(stock, i + 1, j, k);
 	if (new_stock == NULL)
 	{
 		free(stock);
@@ -36,9 +34,9 @@ char	*set_line(char *stock, char *line, int i, int j)
 
 	k = 0;
 	if (i >= 0)
-		line = ft_substr_l(stock, 0, i + 1, k);
+		line = ft_substr_gnl(stock, 0, i + 1, k);
 	else
-		line = ft_substr_l(stock, 0, j + 1, k);
+		line = ft_substr_gnl(stock, 0, j + 1, k);
 	return (line);
 }
 
@@ -74,9 +72,9 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 			return (NULL);
 		}
 		buffer[i] = 0;
-		stock = ft_strjoin_l(stock, buffer);
+		stock = ft_strjoin_gnl(stock, buffer);
 		control = ft_strchr_line(stock, '\n');
-		if ((ft_strlen(stock) == 0 && control == -2 && i == 0) || stock == NULL)
+		if ((ft_strlen_gnl(stock) == 0 && control == -2 && i == 0) || stock == NULL)
 		{
 			free(stock);
 			return (NULL);
@@ -87,22 +85,24 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 	return (stock);
 }
 
-char	*get_next_line(int fd, char *line, int i)
+char	*get_next_line(int fd)
 {
 	char		buffer[BUFFER_SIZE + 1];
 	static char	*stock[FD_MAX];
+	char		*line;
+	int			i;
 	int			j;
 
+	line = NULL;
 	i = 0;
 	j = 0;
-	if (stock[fd] == NULL || fd == -1 || fd >= FD_MAX)
-		stock[fd] = init(stock[fd], fd);
-	ft_putstr_fd("pipe heredoc> ", STDOUT_FILENO);
+	if (fd == -1 || fd >= FD_MAX)
+		return (NULL);
 	stock[fd] = fill_line_buffer(fd, stock[fd], buffer);
 	if (stock[fd] == NULL)
 		return (NULL);
 	i = ft_strchr_line(stock[fd], '\n');
-	j = ft_strlen(stock[fd]);
+	j = ft_strlen_gnl(stock[fd]);
 	line = set_line(stock[fd], line, i, j);
 	if (i >= 0)
 		stock[fd] = set_stock(stock[fd], i, j);

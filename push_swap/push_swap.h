@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 20:23:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 16:05:52 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/27 18:24:49 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ void	closest_bigger(t_node **node, t_node **a, long diff);
 void	free_split(char *str[]);
 void	set_cost_a(t_node **a, t_node **b);
 t_node 	*find_last(t_node **b);
-int	cheapest_b(t_node **b, t_node **a);
+int		cheapest_b(t_node **b, t_node **a);
+void	values_array(int argc, char *argv[], t_node **a);
+void	create_nodes(long i, char *new_argv[], t_node **a);
 #endif
