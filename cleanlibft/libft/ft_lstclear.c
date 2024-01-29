@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 12:10:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/30 15:13:01 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/30 16:19:38 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	main(int argc, char *argv[])
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_node	*a;
-	t_node	*b;
+	t_list	*current;
+	t_list	*next;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	if (ft_strlen(argv[1]) == 0)
-		errors(0);
-	values_array(argc, argv, &a);
-	if (is_sorted(&a) || indexing(&a) == 0)
+	if (lst == NULL || del == NULL)
+		return ;
+	current = *lst;
+	while (current != NULL)
 	{
-		free_stack(&a);
-		return (0);
+		next = current -> next;
+		ft_lstdelone(current, del);
+		current = next;
 	}
-	sort_values(&a, &b);
-	free_stack(&a);
-	return (0);
+	*lst = NULL;
+	return ;
 }

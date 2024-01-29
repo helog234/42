@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   va_arg_s.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 12:10:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/11/03 12:26:15 by hgandar           #+#    #+#             */
+/*   Updated: 2023/12/12 08:53:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdarg.h>
+#include <unistd.h>
 
-int	main(int argc, char *argv[])
+int	va_arg_s(va_list args)
 {
-	t_node	*a;
-	t_node	*b;
+	int		i;
+	char	*str;
+	int		temp;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	if (ft_strlen(argv[1]) == 0)
-		errors(0);
-	values_array(argc, argv, &a);
-	if (is_sorted(&a) || indexing(&a) == 0)
+	str = va_arg(args, char *);
+	i = 0;
+	temp = 0;
+	if (str == NULL)
+		return (write(1, "(null)", 6));
+	while (str[i])
 	{
-		free_stack(&a);
-		return (0);
+		temp = write(1, &str[i], 1);
+		if (temp < 0)
+			return (-1);
+		i++;
 	}
-	sort_values(&a, &b);
-	free_stack(&a);
-	return (0);
+	return (i);
 }

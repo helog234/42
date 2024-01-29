@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 12:10:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/09 16:41:23 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/18 11:58:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+
+int	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+/*
+#include <stdio.h>
+#include <string.h>
 
 int	main(int argc, char *argv[])
 {
-	t_node	*a;
-	t_node	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	if (ft_strlen(argv[1]) == 0)
-		errors(0);
-	values_array(argc, argv, &a);
-	if (is_sorted(&a) || indexing(&a) == 0)
+	if (argc == 2)
 	{
-		free_stack(&a);
-		return (0);
+		printf("Lenght of the string : %d\n", ft_strlen(argv[1]));
+		printf("Lenght of the string : %lu\n", strlen(argv[1]));
 	}
-	sort_values(&a, &b);
-	free_stack(&a);
 	return (0);
 }
+*/

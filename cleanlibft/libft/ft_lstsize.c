@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 12:10:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/30 13:03:09 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/30 13:11:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_lstsize(t_list *lst)
 {
-	t_node	*a;
-	t_node	*b;
+	int	i;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	if (ft_strlen(argv[1]) == 0)
-		errors(0);
-	values_array(argc, argv, &a);
-	if (is_sorted(&a) || indexing(&a) == 0)
+	i = 0;
+	while (lst != NULL)
 	{
-		free_stack(&a);
-		return (0);
+		i++;
+		lst = lst -> next;
 	}
-	sort_values(&a, &b);
-	free_stack(&a);
-	return (0);
+	return (i);
 }

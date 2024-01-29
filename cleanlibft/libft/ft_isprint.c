@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 12:10:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/09 15:17:39 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/18 14:07:24 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_isprint(int c)
 {
-	t_node	*a;
-	t_node	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
+	if (c >= 32 && c < 127)
+		return (1);
+	else
 		return (0);
-	if (ft_strlen(argv[1]) == 0)
-		errors(0);
-	values_array(argc, argv, &a);
-	if (is_sorted(&a) || indexing(&a) == 0)
-	{
-		free_stack(&a);
-		return (0);
-	}
-	sort_values(&a, &b);
-	free_stack(&a);
-	return (0);
 }
+/*
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void)
+{
+	unsigned char   c;
+	c = 127;
+		printf("argv is : %d\n", ft_isprint(c));
+		printf("argv is : %d\n", isprint(c));
+	return 0;
+}
+*/

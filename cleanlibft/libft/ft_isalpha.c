@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 12:10:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/09 12:35:10 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/18 10:51:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_isalpha(int c)
 {
-	t_node	*a;
-	t_node	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		return (1);
+	else
 		return (0);
-	if (ft_strlen(argv[1]) == 0)
-		errors(0);
-	values_array(argc, argv, &a);
-	if (is_sorted(&a) || indexing(&a) == 0)
-	{
-		free_stack(&a);
-		return (0);
-	}
-	sort_values(&a, &b);
-	free_stack(&a);
-	return (0);
 }
+/*
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void)
+{
+	unsigned char    c;
+	c = '!';
+
+	printf("c is : %d\n", ft_isalpha(c));
+	printf("c is : %d\n", isalpha(c));
+	return 0;
+}
+*/

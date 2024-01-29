@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:04:02 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 13:40:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/27 18:51:45 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	ft_strchr_line(const char *line, int c)
 			return (i);
 		i++;
 	}
-	/* if (!line || line[i] == 0)
-		return (-2); */
+	if (!line || line[i] == 0)
+		return (-2);
 	return (-1);
 }
 
@@ -73,12 +73,13 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 		}
 		buffer[i] = 0;
 		stock = ft_strjoin_gnl(stock, buffer);
-		/* if ((ft_strlen_gnl(stock) == 0 && control == -2 && i == 0) || stock == NULL)
+		control = ft_strchr_line(stock, '\n');
+		if ((ft_strlen_gnl(stock) == 0 && control == -2 && i == 0) || stock == NULL)
 		{
 			free(stock);
 			return (NULL);
-		} */
-		if (control >= 0 || (ft_strlen_gnl(stock) == 0 && i == 0))
+		}
+		if (control >= 0)
 			return (stock);
 	}
 	return (stock);
@@ -101,14 +102,9 @@ char	*get_next_line(int fd)
 	if (stock[fd] == NULL)
 		return (NULL);
 	i = ft_strchr_line(stock[fd], '\n');
-	//line = set_line(stock[fd], line, i, j);
-	if (i < 0 && ft_strlen_gnl(stock[fd]) > 0)
-	{
-		line = ft_substr_gnl(stock[fd], 0, j, 0);
-		free_str(stock[fd]);
-        stock[fd] = NULL;
-	}
-	else if (i >= 0)
+	j = ft_strlen_gnl(stock[fd]);
+	line = set_line(stock[fd], line, i, j);
+	if (i >= 0)
 		stock[fd] = set_stock(stock[fd], i, j);
 	else
 	{

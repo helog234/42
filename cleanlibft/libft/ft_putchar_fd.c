@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 12:10:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/26 17:37:39 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/27 08:26:22 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <unistd.h>
 
-int	main(int argc, char *argv[])
+void	ft_putchar_fd(char c, int fd)
 {
-	t_node	*a;
-	t_node	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	if (ft_strlen(argv[1]) == 0)
-		errors(0);
-	values_array(argc, argv, &a);
-	if (is_sorted(&a) || indexing(&a) == 0)
-	{
-		free_stack(&a);
-		return (0);
-	}
-	sort_values(&a, &b);
-	free_stack(&a);
+	write(fd, &c, 1);
+}
+/*
+int	main(void)
+{
+	char	c = 'c';
+	ft_putchar_fd(c, 2);
 	return (0);
 }
+*/

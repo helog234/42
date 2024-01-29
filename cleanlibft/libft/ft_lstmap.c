@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 12:10:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/30 16:36:18 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/30 17:19:14 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdlib.h>
 
-int	main(int argc, char *argv[])
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_node	*a;
-	t_node	*b;
+	t_list	*next;
+	t_list	*new_node;
+	t_list	*new_lst;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	if (ft_strlen(argv[1]) == 0)
-		errors(0);
-	values_array(argc, argv, &a);
-	if (is_sorted(&a) || indexing(&a) == 0)
+	next = lst;
+	new_lst = NULL;
+	while (next)
 	{
-		free_stack(&a);
-		return (0);
+		new_node = ft_lstnew(f(next -> content));
+		if (new_node == NULL)
+		{
+			ft_lstclear(&new_lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_lst, new_node);
+		next = next -> next;
 	}
-	sort_values(&a, &b);
-	free_stack(&a);
-	return (0);
+	return (new_lst);
 }

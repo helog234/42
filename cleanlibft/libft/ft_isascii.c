@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 20:26:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 12:10:06 by hgandar          ###   ########.fr       */
+/*   Created: 2023/10/09 13:09:03 by hgandar           #+#    #+#             */
+/*   Updated: 2023/10/18 11:53:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_isascii(int c)
 {
-	t_node	*a;
-	t_node	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
+	if (c >= 0 && c <= 127)
+		return (1);
+	else
 		return (0);
-	if (ft_strlen(argv[1]) == 0)
-		errors(0);
-	values_array(argc, argv, &a);
-	if (is_sorted(&a) || indexing(&a) == 0)
-	{
-		free_stack(&a);
-		return (0);
-	}
-	sort_values(&a, &b);
-	free_stack(&a);
-	return (0);
 }
+/*
+#include <stdio.h>
+#include <ctype.h>
+
+int main(int argc, char ** argv)
+{
+   // unsigned char   c;
+    //c = 128;
+    if (argc == 2)
+    {
+        printf("argv is : %d\n", ft_isascii(*argv[1]));
+        printf("argv is : %d\n", isascii(*argv[1]));
+    }
+        return 0;
+}
+*/

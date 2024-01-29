@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:21:09 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 16:05:21 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/29 12:09:44 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,19 @@ void	sort_values(t_node **a, t_node **b)
 
 	round = 0;
 	len_a = indexing(a);
-	clear_a(a, b, round, len_a);
-	sort_three(a);
-	indexing(a);
+	if (len_a == 1)
+		sa(a);
+	else if (len_a == 2)
+		sort_three(a);
+	else
+	{
+		clear_a(a, b, round, len_a);
+		sort_three(a);
+		indexing(a);
+	}
 	if (sort_a(a, b) == false)
 	{
-		print_stack(a, b);
+		//print_stack(a, b);
 		free_stack(a);
 		free_stack(b);
 		errors(4);
