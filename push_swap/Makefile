@@ -6,12 +6,12 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/08 12:38:13 by hgandar           #+#    #+#              #
-#    Updated: 2024/02/02 14:47:47 by hgandar          ###   ########.fr        #
+#    Updated: 2024/02/02 15:00:15 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-CHECKER_NAME = checker_ps
+CHECKER_NAME = checker
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 # -g3 -fsanitize=address
