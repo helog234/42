@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:20:53 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 17:59:31 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/01/31 17:08:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ bool	executer(char *str, t_node **a, t_node **b)
 bool	checker(t_node **a, t_node **b)
 {
 	char	*instructions;
-	int		i;
 
-	i = 0;
 	instructions = get_next_line(STDIN_FILENO);
 	while (instructions)
 	{

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 19:21:35 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/02 14:40:54 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,46 @@ void	create_nodes(long i, char *new_argv[], t_node **a)
 	}
 }
 
+char	**parsing(char *str)
+{
+	char	**new_argv;
+	
+	if (ft_strchr(str, ' ') != NULL)
+	{
+		new_argv = ft_split(str, ' ');
+		if (new_argv == NULL)
+			errors(1);
+	}
+	else
+	{
+		new_argv = malloc(2 * sizeof(char*));
+		new_argv[0] = str;
+		new_argv[1] = 0;
+	}	
+	return (new_argv);
+}
+
 void	values_array(int argc, char *argv[], t_node **a)
 {
 	char	**new_argv;
 	long	i;
 	int		flag;
 
-	i = 1;
-	flag = 0;
-	new_argv = NULL;
-	argv = &argv[i];
-	if (argc == 2)
-	{
-		new_argv = ft_split(argv[0], ' ');
-		flag = 1;
-		if (new_argv == NULL)
-			errors(1);
-	}
-	else
-		new_argv = argv;
-	if (new_argv[0] == NULL)
-		errors(4);
 	i = 0;
-	create_nodes(i, new_argv, a);
-	if (flag == 1)
-		free_split(new_argv);
+	argv = &argv[1];
+	while (argv[i] && i <= argc - 2)
+	{
+		flag = 0;
+		new_argv = parsing(argv[i]);
+		if (ft_strchr(argv[i], ' ') != NULL)
+			flag = 1;
+		create_nodes(0, new_argv, a);
+		if (flag == 1)
+			free_split(new_argv);
+		else
+			free(new_argv);
+		i++;
+	}
 }
 
 bool	is_sorted(t_node **stack_check)

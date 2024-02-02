@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/08 12:38:13 by hgandar           #+#    #+#              #
-#    Updated: 2024/01/29 17:42:38 by hgandar          ###   ########.fr        #
+#    Updated: 2024/02/02 14:47:47 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ CFILES = 	noding.c \
 			on_a_stack_op.c \
 			on_b_stack_op.c \
 			costing.c \
+			print_stack.c \
 			errors.c
 
 # ajouter print_stack.c au besoin
@@ -60,9 +61,6 @@ bonus: $(CHECKER_NAME)
 
 $(CHECKER_NAME): $(BOFILES) $(LIBFT)
 	$(CC) $(CFLAGS) $^ -o $(CHECKER_NAME)
-
-leaks:
-	$(LFLAGS) ./push_swap 2 1 3 6 5 8 1
 	
 clean:
 	rm -f $(PS_OFILES) $(BOFILES)
