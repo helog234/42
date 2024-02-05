@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/08 12:38:13 by hgandar           #+#    #+#              #
-#    Updated: 2024/02/02 15:00:15 by hgandar          ###   ########.fr        #
+#    Updated: 2024/02/05 09:53:22 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ CFILES = 	noding.c \
 			on_a_stack_op.c \
 			on_b_stack_op.c \
 			costing.c \
-			print_stack.c \
 			errors.c
 
 # ajouter print_stack.c au besoin

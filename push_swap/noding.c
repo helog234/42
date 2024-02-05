@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 19:18:50 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/02 14:40:54 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/05 09:52:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	create_nodes(long i, char *new_argv[], t_node **a)
 char	**parsing(char *str)
 {
 	char	**new_argv;
-	
+
 	if (ft_strchr(str, ' ') != NULL)
 	{
 		new_argv = ft_split(str, ' ');
@@ -49,7 +49,7 @@ char	**parsing(char *str)
 	}
 	else
 	{
-		new_argv = malloc(2 * sizeof(char*));
+		new_argv = malloc(2 * sizeof(char *));
 		new_argv[0] = str;
 		new_argv[1] = 0;
 	}	

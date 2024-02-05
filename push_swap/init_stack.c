@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 08:25:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/02 13:02:56 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/05 09:51:57 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,4 @@ void	init_stack_a(long values, t_node **a)
 		errors(2);
 	}
 	add_back(a, values);
-	//printf("%li\n", values);
 }
