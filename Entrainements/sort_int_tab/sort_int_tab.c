@@ -6,62 +6,41 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 15:59:25 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/05 16:52:54 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/06 14:31:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	check(int *tab)
+int	check(int *tab, int size)
 {
 	int	i;
 
-	i = 0;
-	while (tab[i])
+	i = size - 1;
+	while (i > 0)
 	{
-		if (tab[i] > tab[i +1])
-			return (1);
-		i++
+		if (tab[i] < tab[i - 1])
+			return (i);
+		i--;
 	}
-	return (0);
+	return (-1);
 }
 
-int	value_to_change(int *tab)
-{
-	int	i;
-	
-	i = 0;
-	while (tab[i])
-	{
-		if (tab[i] > tab[i + 1]);
-			return(tab[i]);
-		i++;
-	}
-	return (0);
-}
-
-
-void sort_int_tab(int *tab, unsigned int size)
+void	sort_int_tab(int *tab, unsigned int size)
 {
 	int	tmp;
 	int	i;
-	
-	tmp = NULL;
-	while (check(tab) == 1)
+	int	j;
+
+	while (check(tab, size) >= 0)
 	{
-		i = 0;
-		while (tab[i])
-		{
-			if (tab[i +1] != NULL && tab[i] > tab[i +1])
-			{
-				tmp = value_to_change(tab);
-				tab[i] = tab[i + 1];
-				tab[i + 1] = tmp;
-			}
-			i++;
-		}
+		i = check(tab, size);
+		tmp = tab[i];
+		tab[i] = tab[i - 1];
+		tab[i - 1] = tmp;
 	}
-	while (tab[i])
+	i = 0;
+	while (i < size)
 	{
 		printf("%i\n", tab[i]);
 		i++;
@@ -70,8 +49,8 @@ void sort_int_tab(int *tab, unsigned int size)
 
 int	main(void)
 {
-	int tab = {2, 1, 7, 3};
+	int tab[4] = {2, 1, 7, 3};
 
-	sort_int_tab(tab, 5);
+	sort_int_tab(tab, 4);
 	return (0);
 }

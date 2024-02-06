@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 15:04:18 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/05 15:27:24 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/06 14:12:33 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	is_prime(int prime)
 	int	i;
 
 	i = 2;
-	while (i <= prime)
+	while (i < prime)
 	{
-		if (prime % i != 0)
+		if (prime % i == 0)
 			return (0);
 		i++;
 	}
@@ -37,7 +37,7 @@ void	fprime(int nbr)
 	cpy = nbr;
 	while (i <= nbr)
 	{
-		if (is_prime(i) == 0)
+		if (is_prime(i) == 1)
 		{
 			while (nbr % i == 0 && nbr >= i)
 			{
