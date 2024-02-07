@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 17:59:58 by hgandar           #+#    #+#              #
-#    Updated: 2024/02/05 10:10:28 by hgandar          ###   ########.fr        #
+#    Updated: 2024/02/07 10:45:40 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 LFTINC = $(LIBFT_DIR)/libft.h
 INC	= ./so_long.h
 
-CFILES = 	
+CFILES = 	error.c
 
 
 PS_FILES = main.c $(CFILES)			

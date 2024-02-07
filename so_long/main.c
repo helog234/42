@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/05 15:02:18 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/07 17:46:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,44 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-/* int	close_window(int keycode, t_vars *vars)
+int	close_w(int keycode, t_vars *vars)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
+	if (keycode == 53)
+		mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
-} */
+}
 
+
+
+
+
+
+
+int	map_checker(int argc, char *argv[], t_map **game)
+{
+	if (argc == 1)
+		error_mngmt(0);
+	if (valid_map(argv[1], game) != 1)
+		error_mngmt(0);
+	if (valid_game(game) != 1)
+		error_mngmt(0);
+}
+
+int	main(int argc, char*argv[])
+{
+	t_vars	*game;
+	int		esc_key;
+
+	esc_key = 53;
+	game = NULL;
+	map_checker(argc, argv, &game);
+	game.mlx = mlx_init();
+	game.win = mlx_new_window(game.mlx, 1920, 1080, "So Long");
+	mlx_hook(game.win, 3, esc_key, close_w, &game);
+	mlx_loop(game.mlx);
+}
+
+/* 
 int	main(void)
 {
 	void	*mlx;
@@ -37,26 +69,29 @@ int	main(void)
 
 	x = 10;
 	y = 10;
-	mlx = NULL;
-	vars.mlx = mlx_init();
+	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
 	img.img = mlx_new_image(mlx, 1920, 1080);
+
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-/* 	while (x <= 40 && y <= 40)
+	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_loop(mlx);
+	while (x <= 40 && y <= 40)
 	{
 		if (x - y == r)
 			my_mlx_pixel_put(&img, x, y, 0x00FF0000);
 		x++;
 		y++;
 	}
-	y = 40; */
-	/* while (x > 10)
+	y = 40;
+	while (x > 10)
 	{
 		my_mlx_pixel_put(&img, x, y, 0x00FF0000);
 		x--;
-	} */
+	} 
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 	mlx_hook(vars.win, 2, 1L<<0, close, &vars);
 	mlx_loop(vars.mlx);
-}
+}*/
