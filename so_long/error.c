@@ -6,17 +6,47 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:43:12 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/07 11:46:56 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:24:46 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	error_mngmt(int i)
+void	error_mngmt(int i)
 {
 	if (i == 0)
 		printf("No valid map. Try again !");
 	if (i == 1)
 		printf("No valid map while parsing. Try again !");
 	exit(1);
+}
+/* void	free_node(t_node **node)
+{
+	int	i;
+
+	i = 0;
+	
+} */
+
+void	free_grid(t_map **game)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	while (i < (*game)->col)
+	{
+		j = 0;
+		while (j < (*game)->row)
+		{
+			if ((*game)->nodes[i][j] != NULL)
+			{
+				free((*game)->nodes[i][j]);
+				(*game)->nodes[i][j] = NULL;
+			}
+			j++;
+		}
+		i++;
+	}
+	close((*game)->fd);
 }

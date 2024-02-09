@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/07 17:46:21 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/09 15:55:08 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ int	close_w(int keycode, t_vars *vars)
 }
 
 
-
-
-
-
-
 int	map_checker(int argc, char *argv[], t_map **game)
 {
 	if (argc == 1)
@@ -40,21 +35,26 @@ int	map_checker(int argc, char *argv[], t_map **game)
 	if (valid_map(argv[1], game) != 1)
 		error_mngmt(0);
 	if (valid_game(game) != 1)
+	{
+		free_grid(game);
 		error_mngmt(0);
+	}
+	return (1);
 }
 
 int	main(int argc, char*argv[])
 {
-	t_vars	*game;
-	int		esc_key;
+	t_map	*game;
+	//int		esc_key;
 
-	esc_key = 53;
+	//esc_key = 53;
 	game = NULL;
-	map_checker(argc, argv, &game);
-	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 1920, 1080, "So Long");
-	mlx_hook(game.win, 3, esc_key, close_w, &game);
-	mlx_loop(game.mlx);
+	if (map_checker(argc, argv, &game) == 1)
+		printf("Bien joué !\n");
+	/* game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, 1920, 1080, "So Long");
+	mlx_hook(game->win, 3, esc_key, close_w, &game);
+	mlx_loop(game->mlx); */
 }
 
 /* 
