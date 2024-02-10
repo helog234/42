@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 19:02:49 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/27 18:52:12 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/10 15:02:40 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1
 # endif
 
 # ifndef FD_MAX
@@ -79,7 +79,7 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
 				void (*del)(void *));
 char			*get_next_line(int fd);
-char			*fill_line_buffer(int fd, char *stock, char *buffer);
+//char			*fill_line_buffer(int fd, char *stock, char *buffer);
 int				ft_strchr_line(const char *line, int c);
 char			*ft_substr_l(char const *s, unsigned int start, \
 				size_t len, size_t i);

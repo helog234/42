@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2024/01/17 15:28:48 by hgandar          ###   ########.fr        #
+#    Updated: 2024/02/10 12:29:15 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,8 @@ CFILES = 	ft_atoi.c \
 			ft_substr.c \
 			ft_tolower.c \
 			ft_toupper.c \
-			get_next_line_bonus.c \
-			get_next_line_utils_bonus.c \
+			get_next_line.c \
+			get_next_line_utils.c \
 			ft_printf.c \
 			va_arg_c.c \
 			va_arg_di.c \

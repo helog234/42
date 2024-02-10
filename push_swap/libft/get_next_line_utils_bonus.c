@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 16:05:13 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/29 17:43:06 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/10 12:23:44 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char	*ft_strjoin_gnl(char *s1, char const *s2)
 		str3[j++] = s2[i++];
 	str3[j] = 0;
 	free (s1);
+	s1 = NULL;
 	return (str3);
 }
 

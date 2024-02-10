@@ -6,13 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/09 15:55:08 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/10 11:17:15 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+/* void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -25,7 +25,7 @@ int	close_w(int keycode, t_vars *vars)
 	if (keycode == 53)
 		mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
-}
+} */
 
 
 int	map_checker(int argc, char *argv[], t_map **game)
@@ -34,6 +34,7 @@ int	map_checker(int argc, char *argv[], t_map **game)
 		error_mngmt(0);
 	if (valid_map(argv[1], game) != 1)
 		error_mngmt(0);
+	printf("ici\n");
 	if (valid_game(game) != 1)
 	{
 		free_grid(game);

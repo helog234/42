@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 17:59:58 by hgandar           #+#    #+#              #
-#    Updated: 2024/02/09 08:32:21 by hgandar          ###   ########.fr        #
+#    Updated: 2024/02/10 11:52:27 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ INC	= ./so_long.h
 CFILES = 	error.c \
 			map_init.c \
 			map_utils.c \
+			global_utils.c \
 
 
 PS_FILES = main.c $(CFILES)			
