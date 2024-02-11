@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/10 11:17:15 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/11 17:36:59 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ int	map_checker(int argc, char *argv[], t_map **game)
 		error_mngmt(0);
 	if (valid_map(argv[1], game) != 1)
 		error_mngmt(0);
-	printf("ici\n");
 	if (valid_game(game) != 1)
 	{
+		//trouver solution pour free grid car segfault
 		free_grid(game);
 		error_mngmt(0);
 	}
+	//ajouter une fonction pour réinitiliser les visited
 	return (1);
 }
 

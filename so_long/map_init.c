@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:41:19 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/11 16:48:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/11 17:47:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,36 +74,45 @@ int	valid_map(char *str, t_map **game)
 	return (1);
 }
 
-int	is_playable(t_player **player, t_map **game)
+int	is_playable(t_player **player, t_map **game, t_node *current_p)
 {
 	int		i;
-	t_node	*original_position;
+	//t_node	*original_position;
 	t_node	*new_position;
-	int		candy_count;
+	//int		candy_count;
 
 	i = 0;
-	if ((*player)->position == NULL || (*player)->position->visited == true)
+	if (current_p == NULL)
 		return (0);
-	(*player)->position->visited = true;
-	if ((*player)->position == (*game)->exit && (*player)->candy_col == (*game)->candy_nbr)
+	if (current_p == (*game)->exit && (*player)->candy_col == (*game)->candy_nbr)
 		return (1);
-	if ((*player)->position->type == 'C')
+	if (current_p->type == 'C' && current_p->visited == false)
 		(*player)->candy_col++;
-	original_position = (*player)->position;
-	candy_count = (*player)->candy_col;
-	while (i < (*player)->position->adj_nbr)
+	/* if (current_p->visited == true)
+		return 0; */
+	current_p->visited = true;
+	
+	//original_position = (*player)->position;
+	//candy_count = (*player)->candy_col;
+	printf("ici\n");
+	while (i < current_p->adj_nbr)
 	{
-		new_position = (*player)->position->adj[i];
+		new_position = current_p->adj[i];
 		if (new_position != NULL && new_position->visited == false && new_position->type != '1')
 		{
-			(*player)->position = new_position;
-			if (is_playable(player, game) == 1)
+			//current_p = new_position;
+			if (is_playable(player, game, new_position) == 1)
+			{
+				//current_p->visited = false;
 				return (1);
-			new_position = original_position;
-			(*player)->candy_col = candy_count;
+			}
+			//(*player)->position = original_position;
+			//(*player)->candy_col = candy_count;
 		}
+		printf("%i\n", i);
 		i++;
 	}
+	current_p->visited = false;
 	return (0);
 }	
 
@@ -116,7 +125,7 @@ int	valid_game(t_map **game)
 		return (0);
 	player->candy_col = 0;
 	player->position = (*game)->p_start;
-	if (is_playable(&player, game) == 1)
+	if (is_playable(&player, game, player->position) == 1)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:00 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/11 16:32:49 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/11 17:29:49 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct	s_vars
 
 void	error_mngmt(int i);
 int	valid_map(char *str, t_map **game);
-int	is_playable(t_player **player, t_map **game);
+int	is_playable(t_player **player, t_map **game, t_node *current_p);
 int	valid_game(t_map **game);
 //int *init_checker(int flag);
 void	*ft_realloc(void *to_resized, size_t new_size);

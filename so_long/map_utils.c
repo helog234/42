@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:44:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/11 16:52:03 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/11 17:45:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_node	*add_node(int y, int x, int type)
 	new_node->visited = false;
 	while (i < 4)
 	{
-		new_node->adj[i] = NULL;
+		new_node->adj[i] = 0;
 		i++;
 	}
 	new_node->adj_nbr = 0;
