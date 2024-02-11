@@ -6,15 +6,16 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 09:19:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/10 11:09:02 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/11 16:33:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	*ft_realloc(size_t old_size, t_node **to_resized, size_t new_size)
+void	*ft_realloc(void *to_resized, size_t new_size)
 {
 	void	*pointer;
+	//size_t	size;
 	
 	if (new_size == 0)
 	{
@@ -27,16 +28,21 @@ void	*ft_realloc(size_t old_size, t_node **to_resized, size_t new_size)
 	pointer = malloc(new_size);
 	if (pointer == NULL)
 		return (NULL);
-	new_size = ((old_size) * new_size);
-	ft_memcpy(pointer, to_resized, new_size);
-	free(to_resized);
+	//printf("la\n");
+/* 	if (old_size < new_size)
+		size = old_size;
+	else
+		size = new_size; */
+	pointer = ft_memcpy(pointer, to_resized, new_size);
 	if (pointer == NULL)
 	{
 		free(pointer);
 		return (NULL);
 	}
+	//free(*to_resized);
 	return (pointer);
 }
+
 
 /* int *init_checker(int flag)
 {

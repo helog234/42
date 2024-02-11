@@ -6,26 +6,55 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:41:19 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/10 14:51:31 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/11 16:33:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	valid_map(char *str, t_map **game)
+/* int	get_map_size(char *str, t_map **game)
 {
 	int		y;
+	int		x;
 	char	*to_node;
-	int		control;
 
 	create_map(str, game);
 	y = 0;
 	to_node = get_next_line((*game)->fd);
 	while (to_node)
 	{
-		control = parsing(to_node, game, y);
-		printf("control %i\n", control);
-		if (control == 0)
+		(*game)->str[y] = to_node;
+		x = 0;
+		while (to_node[x] && to_node[x] != '\n')
+			x++;
+		if (y == 0)
+			(*game)->col = x;
+		free(to_node);
+		to_node = NULL;
+		if (y > 0 && x != (*game)->col)
+		{
+			free(game);
+			close((*game)->fd);
+			error_mngmt(1);
+		}
+		to_node = get_next_line((*game)->fd);
+		y++;
+	}
+	(*game)->row = y;
+} */
+
+int	valid_map(char *str, t_map **game)
+{
+	int		y;
+	char	*to_node;
+
+	create_map(str, game);
+	y = 0;
+	to_node = get_next_line((*game)->fd);
+	while (to_node)
+	{
+		//printf("%s\n", to_node);
+		if (parsing(to_node, game, y) == 0)
 		{
 			free(to_node);
 			free_grid(game);
@@ -33,7 +62,6 @@ int	valid_map(char *str, t_map **game)
 		}
 		free(to_node);
 		to_node = get_next_line((*game)->fd);
-		printf("%s\n", to_node);
 		y++;
 	}
 	(*game)->row = y;

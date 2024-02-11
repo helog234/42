@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:00 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/10 11:06:55 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/11 16:32:49 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	valid_map(char *str, t_map **game);
 int	is_playable(t_player **player, t_map **game);
 int	valid_game(t_map **game);
 //int *init_checker(int flag);
-void	*ft_realloc(size_t old_size, t_node **to_resized, size_t new_size);
+void	*ft_realloc(void *to_resized, size_t new_size);
 void	create_map(char *str, t_map **game);
 int		parsing(char *str, t_map **game, int y);
 void	control_data(int flag, t_map **game, int y, int x);
