@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:44:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/11 16:33:11 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/11 16:52:03 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,24 @@
 
 void	link_adj(t_map **game, int y, int x)
 {
-	if ((*game)->nodes[y][x + 1]->type != '1')
+	/* printf("x : %i\n", x);
+	printf("y : %i\n", y); */
+	if (x < (*game)->col - 1 && (*game)->nodes[y][x + 1]->type != '1')
 	{
 		(*game)->nodes[y][x]->adj[0] = (*game)->nodes[y][x + 1];
 		(*game)->nodes[y][x]->adj_nbr++;
 	}
-	if ((*game)->nodes[y + 1][x]->type != '1')
+	if (y < (*game)->row - 1 &&  (*game)->nodes[y + 1][x]->type != '1')
 	{
 		(*game)->nodes[y][x]->adj[1] = (*game)->nodes[y + 1][x];
 		(*game)->nodes[y][x]->adj_nbr++;
 	}
-	if ((*game)->nodes[y][x - 1]->type != '1')
+	if (x > 0 && (*game)->nodes[y][x - 1]->type != '1')
 	{
 		(*game)->nodes[y][x]->adj[2] = (*game)->nodes[y][x - 1];
 		(*game)->nodes[y][x]->adj_nbr++;
 	}
-	if ((*game)->nodes[y - 1][x]->type != '1')
+	if (y > 0 && (*game)->nodes[y - 1][x]->type != '1')
 	{
 		(*game)->nodes[y][x]->adj[3] = (*game)->nodes[y - 1][x];
 		(*game)->nodes[y][x]->adj_nbr++;
@@ -42,10 +44,12 @@ void	create_grid(t_map **game)
 	int	j;
 
 	i = 0;
-	j = 0;
-	while (i <= (*game)->row)
+/* 	printf("col : %i\n", (*game)->col);
+	printf("row : %i\n", (*game)->row); */
+	while (i < (*game)->row)
 	{
-		while (j <= (*game)->col)
+		j = 0;
+		while (j < (*game)->col)
 		{
 			link_adj(game, i, j);
 			j++;
@@ -129,8 +133,8 @@ int	parsing(char *str, t_map **game, int y)
 		//printf("strx %c\n", str[x]);
 	}
 	if (y == 0)
-		(*game)-> col = x;
-	else if (y > 0 && x != (*game)-> col)
+		(*game)->col = x;
+	else if (y > 0 && x != (*game)->col)
 	{
 		free_grid(game);
 		error_mngmt(1);
