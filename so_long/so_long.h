@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:00 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/11 17:29:49 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:27:07 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,26 @@
 # include "libft/libft.h"
 #include <stdbool.h>
 
+# define BPX 100
 
-typedef struct	s_data 
+typedef struct	s_img 
 {
+	void	*mlx;
 	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+	void	*win;
+	char	*path;
+	int		img_width;
+	int		img_height;
+}				t_img;
 
-typedef struct s_img
+/* typedef struct s_img
 {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;	
-}				t_img;
+}				t_img; */
 
 typedef struct s_node
 {
@@ -51,12 +53,16 @@ typedef struct s_node
 	struct s_node	*adj[4];
 	int				adj_nbr;
 	int				type;
+	void			*img_bg;
+	void			*img_asset;
 	bool			visited;
 }				t_node;
 
 typedef struct s_map
 {
 	int		fd;
+	void	*mlx;
+	void	*win;
 	t_node	***nodes;
 	t_node	*p_start;
 	int		row;
@@ -64,6 +70,8 @@ typedef struct s_map
 	t_node	*exit;
 	t_node	**candy;
 	int		candy_nbr;
+	t_img	*map;
+	
 }			t_map;
 
 typedef struct s_player
@@ -93,4 +101,8 @@ t_node	*add_node(int y, int x, int type);
 void	create_grid(t_map **game);
 void	link_adj(t_map **game, int y, int x);
 void	free_grid(t_map **game);
+void	draw_background(t_map **game);
+void	draw_sprites(t_map **game);
+void	drap_map(t_map **game);
+
 #endif

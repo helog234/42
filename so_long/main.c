@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/13 10:57:02 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/13 16:40:54 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,29 @@ int	main(int argc, char*argv[])
 {
 	t_map	*game;
 	int		esc_key;
+	//t_img	vars;
+	//void	*img;
 
 	esc_key = 53;
-	t_vars	vars;
 	game = NULL;
+	//ajouter NULL à img dans nodes
 	if (map_checker(argc, argv, &game) == 1)
 	{
 		printf("Bien joué !\n");
+		game->mlx = mlx_init();
+		game->win = mlx_new_window(game->mlx, 1920, 1080, "So Long");
+		
+		//img = mlx_new_image(vars.mlx, 10, 10);
+		//img = mlx_xpm_file_to_image(vars.mlx, relative_path, &img_width, &img_height);
+		//if (img == NULL)
+			//printf("bon\n");
+		//mlx_put_image_to_window(vars.mlx, vars.win, img, 20, 20);
+		printf("Bravo!\n");
 	}
 	else
 		printf("Cool !\n");
-	(void)argv;
-	(void)argc;
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "So Long");
-	mlx_hook(vars.win, 3, esc_key, close_w, &vars);
-	mlx_loop(vars.mlx);
+	mlx_hook(game->win, 3, esc_key, close_w, &game);
+	mlx_loop(game->mlx);
 }
 
 /* 

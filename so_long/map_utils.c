@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:44:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/13 09:41:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/13 16:41:24 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ t_node	*add_node(int y, int x, int type)
 	new_node->x = x;
 	new_node->type = type;
 	new_node->visited = false;
+	new_node->img_asset = NULL;
+	new_node->img_bg = NULL;
 	while (i < 4)
 	{
 		new_node->adj[i] = NULL;
