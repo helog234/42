@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:44:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/11 17:45:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/13 09:41:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,22 @@
 
 void	link_adj(t_map **game, int y, int x)
 {
-	/* printf("x : %i\n", x);
-	printf("y : %i\n", y); */
-	if (x < (*game)->col - 1 && (*game)->nodes[y][x + 1]->type != '1')
+	if (x < (*game)->col - 1)
 	{
 		(*game)->nodes[y][x]->adj[0] = (*game)->nodes[y][x + 1];
 		(*game)->nodes[y][x]->adj_nbr++;
 	}
-	if (y < (*game)->row - 1 &&  (*game)->nodes[y + 1][x]->type != '1')
+	if (y < (*game)->row - 1)
 	{
 		(*game)->nodes[y][x]->adj[1] = (*game)->nodes[y + 1][x];
 		(*game)->nodes[y][x]->adj_nbr++;
 	}
-	if (x > 0 && (*game)->nodes[y][x - 1]->type != '1')
+	if (x > 0)
 	{
 		(*game)->nodes[y][x]->adj[2] = (*game)->nodes[y][x - 1];
 		(*game)->nodes[y][x]->adj_nbr++;
 	}
-	if (y > 0 && (*game)->nodes[y - 1][x]->type != '1')
+	if (y > 0)
 	{
 		(*game)->nodes[y][x]->adj[3] = (*game)->nodes[y - 1][x];
 		(*game)->nodes[y][x]->adj_nbr++;
@@ -73,7 +71,7 @@ t_node	*add_node(int y, int x, int type)
 	new_node->visited = false;
 	while (i < 4)
 	{
-		new_node->adj[i] = 0;
+		new_node->adj[i] = NULL;
 		i++;
 	}
 	new_node->adj_nbr = 0;
@@ -150,7 +148,7 @@ void	create_map(char *str, t_map **game)
 	(*game)->fd = open(str, O_RDONLY);
 	if ((*game)->fd == -1)
 	{
-		free(game);
+		free(*game);
 		error_mngmt(1);
 	}
 	(*game)->nodes = NULL;

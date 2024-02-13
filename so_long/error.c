@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:43:12 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/09 17:24:46 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/13 09:36:10 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	free_grid(t_map **game)
 	int	j;
 	
 	i = 0;
-	while (i < (*game)->col)
+	while (i < (*game)->row)
 	{
 		j = 0;
-		while (j < (*game)->row)
+		while (j < (*game)->col)
 		{
 			if ((*game)->nodes[i][j] != NULL)
 			{

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/11 17:36:59 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/13 09:19:53 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,11 @@ int	main(int argc, char*argv[])
 	//esc_key = 53;
 	game = NULL;
 	if (map_checker(argc, argv, &game) == 1)
+	{
 		printf("Bien joué !\n");
+	}
+	else
+		printf("Cool !\n");
 	/* game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, 1920, 1080, "So Long");
 	mlx_hook(game->win, 3, esc_key, close_w, &game);
