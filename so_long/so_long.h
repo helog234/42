@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:00 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/15 16:54:59 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/15 17:28:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define KEY_LEFT 123
 # define KEY_UP 126
 # define KEY_DOWN 125
+# define CLOSE
 
 typedef struct	s_img 
 {
@@ -117,5 +118,6 @@ int	check_key(int keycode, t_map **game);
 int	explore_map(int keycode, t_map **game);
 void	lets_play(t_map **game);
 void	refresh_map(t_node *next, t_map **game);
+void	the_end(t_map **game);
 
 #endif

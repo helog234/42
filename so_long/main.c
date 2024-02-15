@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/15 17:03:14 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/15 17:38:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 int	close_w(int keycode, t_map *game)
 {
-	//printf("%i\n", keycode);
-	if (keycode == KEY_ESC)
+	// printf("%i\n", keycode);
+	if (keycode == KEY_ESC || keycode == 1L << 5)
 	{
 		mlx_destroy_window(game->mlx, game->win);
 		free_grid(&game);
@@ -72,7 +72,7 @@ int	main(int argc, char*argv[])
 		printf("Cool !\n");
 	// mlx_hook(game->win, 2, 1L << 0, close_w, &game);
 	// mlx_hook(game->win, 2, KEY_ESC, close_w, &game);
-	mlx_loop(game->mlx);
+	//mlx_loop(game->mlx);
 }
 
 /* int	main(void)

@@ -6,11 +6,19 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:28:51 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/15 17:09:56 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/15 17:26:01 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	the_end(t_map **game)
+{
+	mlx_destroy_window((*game)->mlx, (*game)->win);
+	free_grid(game);
+	free(game);
+	exit(1);
+}
 
 t_node	*key_handler(int keycode, t_node *current_p)
 {

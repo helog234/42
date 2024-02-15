@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:06 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/15 17:08:06 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/15 17:39:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,20 @@ void	refresh_map(t_node *next, t_map **game)
 		(*game)->player->candy_col += 1;
 		next->type = '0';
 		relative_path = "img/new_cat.xpm";
-		next->img_asset = NULL;
+		//next->img_asset = NULL;
 		mlx_put_image_to_window((*game)->mlx, (*game)->win, \
 		(*game)->player->position->img_bg, \
 		(*game)->player->position->x * WIN_W, \
 		(*game)->player->position->y * WIN_H);
 	}
+	//revoir ca
+	if ((*game)->player->position == (*game)->exit && \
+		(*game)->player->candy_col <= (*game)->candy_nbr)
+			the_end(game);
+	mlx_put_image_to_window((*game)->mlx, (*game)->win, \
+		(*game)->player->position->img_bg, \
+		(*game)->player->position->x * WIN_W, \
+		(*game)->player->position->y * WIN_H);
 	(*game)->player->position = next;
 	mlx_put_image_to_window((*game)->mlx, (*game)->win, \
 	(*game)->player->position->img_asset, (*game)->player->position->x * WIN_W, \
@@ -44,7 +52,9 @@ int	explore_map(int keycode, t_map **game)
 	current = (*game)->player->position;
 	// keycode = mlx_hook((*game)->mlx, 2, 1L << 0, check_key, game);
 	if (keycode == KEY_ESC)
-		mlx_hook((*game)->win, 2, KEY_ESC, close_w, &game);
+		mlx_hook((*game)->win, 3, KEY_ESC, close_w, (*game));
+	//revoir ici et un fois aarive au bout
+	mlx_hook((*game)->win, 17, 1L << 5, close_w, (*game));
 	printf("%i\n", keycode);
 	if (keycode > 0)
 	{
