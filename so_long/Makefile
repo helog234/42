@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 17:59:58 by hgandar           #+#    #+#              #
-#    Updated: 2024/02/14 13:42:11 by hgandar          ###   ########.fr        #
+#    Updated: 2024/02/15 13:17:24 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,12 @@ CFILES = 	error.c \
 			map_utils.c \
 			global_utils.c \
 			launch_game.c \
+			move.c \
+			play.c \
 
 
 PS_FILES = main.c $(CFILES)			
 PS_OFILES =  $(PS_FILES:.c=.o)
-
 
 all : $(NAME)
 

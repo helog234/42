@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/14 20:26:52 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/15 17:03:14 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,18 @@
 	*(unsigned int *)dst = color;
 } */
 
-int	close_w(int keycode, t_vars *vars)
+int	close_w(int keycode, t_map *game)
 {
-	if (keycode == 53)
-		mlx_destroy_window(vars->mlx, vars->win);
+	//printf("%i\n", keycode);
+	if (keycode == KEY_ESC)
+	{
+		mlx_destroy_window(game->mlx, game->win);
+		free_grid(&game);
+		free(game);
+		exit(1);
+	}
 	return (0);
 }
-
 
 int	map_checker(int argc, char *argv[], t_map **game)
 {
@@ -47,31 +52,38 @@ int	map_checker(int argc, char *argv[], t_map **game)
 int	main(int argc, char*argv[])
 {
 	t_map	*game;
-	int		esc_key;
-	//t_img	vars;
-	//void	*img;
 
-	esc_key = 53;
 	game = NULL;
 	//ajouter NULL à img dans nodes
 	if (map_checker(argc, argv, &game) == 1)
 	{
 		printf("Bien joué !\n");
 		game->mlx = mlx_init();
-		game->win = mlx_new_window(game->mlx, game->col * WIN_H, game->row * WIN_W, "So Long");
+		game->win = mlx_new_window(game->mlx, game->col * WIN_W, game->row * WIN_H, "So Long");
 		draw_map(&game);
-		//img = mlx_new_image(vars.mlx, 10, 10);
-		//img = mlx_xpm_file_to_image(vars.mlx, relative_path, &img_width, &img_height);
-		//if (img == NULL)
-			//printf("bon\n");
-		//mlx_put_image_to_window(vars.mlx, vars.win, img, 20, 20);
-		printf("Bravo!\n");
+		//lets_play(&game);
+		mlx_hook(game->win, 2, 1L << 0, explore_map, &game);
+		if (game->player->position == game->exit && \
+		game->player->candy_col <= game->candy_nbr)
+			printf("Bravo!\n");
+		mlx_loop(game->mlx);
 	}
 	else
 		printf("Cool !\n");
-	mlx_hook(game->win, 3, esc_key, close_w, &game);
+	// mlx_hook(game->win, 2, 1L << 0, close_w, &game);
+	// mlx_hook(game->win, 2, KEY_ESC, close_w, &game);
 	mlx_loop(game->mlx);
 }
+
+/* int	main(void)
+{
+	t_vars	vars;
+
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+	mlx_hook(vars.win, 2, 1L<<0, close_w, &vars);
+	mlx_loop(vars.mlx);
+} */
 
 /* 
 int	main(void)

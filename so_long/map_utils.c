@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:44:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/14 16:08:07 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/15 16:46:14 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,11 @@ void	control_data(int flag, t_map **game, int y, int x)
 {
 	if (flag == 'C')
 	{
-		if ((*game)->candy_nbr == 0)
+/* 		if ((*game)->candy_nbr == 0)
 			(*game)->candy = malloc(sizeof(t_node*) * ((*game)->candy_nbr +1));
 		else if ((*game)->candy_nbr > 0)
 			(*game)->candy = ft_realloc((*game)->candy, (((*game)->candy_nbr + 2) * sizeof(t_node*)));
-		(*game)->candy[(*game)->candy_nbr] = (*game)->nodes[y][x];
+		(*game)->candy[(*game)->candy_nbr] = (*game)->nodes[y][x]; */
 		//(*game)->candy[(*game)->candy_nbr + 1] = NULL;
 		(*game)->candy_nbr++;
 	}
@@ -158,6 +158,6 @@ void	create_map(char *str, t_map **game)
 	(*game)->row = 0;
 	(*game)->col = 0;
 	(*game)->exit = NULL;
-	(*game)->candy = NULL;
 	(*game)->candy_nbr = 0;
+	(*game)->player = NULL;
 }

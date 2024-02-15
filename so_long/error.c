@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:43:12 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/13 09:36:10 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/15 16:52:48 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,23 @@ void	error_mngmt(int i)
 	i = 0;
 	
 } */
+/* void	free_node(t_node *node)
+{
+	int	i;
+
+	i = 0;
+	while (i <)
+	{
+	
+	}
+	
+} */
 
 void	free_grid(t_map **game)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (i < (*game)->row)
 	{
@@ -48,5 +59,11 @@ void	free_grid(t_map **game)
 		}
 		i++;
 	}
+	/*i = 0
+	 while (i < (*game)->candy_nbr)
+	{
+		free(*game)->candy)
+	} */
+	
 	close((*game)->fd);
 }
