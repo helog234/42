@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:18 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/15 14:54:38 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/16 17:56:04 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,75 +22,48 @@ void	load_img(char *path)
 	close(fd);
 }
 
-void	draw_background(t_map **game)
-{
-	int	y;
-	int	x;
-	int		img_width;
-	int		img_height;
-	char	*relative_path;
 
-	y = 0;
-	while (y <(*game)->row)
+void	draw_background(t_map **game, int x, int y)
+{
+	int		width;
+	int		height;
+
+	while (y < (*game)->row)
 	{
 		x = 0;
 		while (x < (*game)->col)
 		{
-			relative_path = "img/grass.xpm";
-			load_img(relative_path);
-			(*game)->nodes[y][x]->img_bg = mlx_xpm_file_to_image((*game)->mlx, relative_path, &img_width, &img_height);
+			(*game)->nodes[y][x]->img_bg = \
+			mlx_xpm_file_to_image((*game)->mlx, GRASS, &width, &height);
 			if ((x == 0 && y == 0) || (x == 0 && y + 1 == (*game)->row))
-			{
-				relative_path = "img/Big-wooden-fence-1.xpm";
-				load_img(relative_path);
-				(*game)->nodes[y][x]->img_asset = mlx_xpm_file_to_image((*game)->mlx, relative_path, &img_width, &img_height);
-			}
-			else if ((y == 0 && x + 1 == (*game)->col) || (y + 1 == (*game)->col && x + 1 == (*game)->col))
-			{
-				relative_path = "img/Big-wooden-fence-3.xpm";
-				load_img(relative_path);
-				(*game)->nodes[y][x]->img_asset = mlx_xpm_file_to_image((*game)->mlx, relative_path, &img_width, &img_height);
-			}
+				(*game)->nodes[y][x]->img_asset = \
+				mlx_xpm_file_to_image((*game)->mlx, FENCE_1, &width, &height);
+			else if ((y == 0 && x + 1 == (*game)->col) || \
+			(y + 1 == (*game)->col && x + 1 == (*game)->col))
+				(*game)->nodes[y][x]->img_asset = \
+				mlx_xpm_file_to_image((*game)->mlx, FENCE_3, &width, &height);
 			else if (y == 0 || y + 1 == (*game)->row)
-			{
-				relative_path = "img/Big-wooden-fence-2.xpm";
-				load_img(relative_path);
-				(*game)->nodes[y][x]->img_asset = mlx_xpm_file_to_image((*game)->mlx, relative_path, &img_width, &img_height);
-			}
+				(*game)->nodes[y][x]->img_asset = \
+				mlx_xpm_file_to_image((*game)->mlx, FENCE_2, &width, &height);
 			else if (x == 0 || x + 1 == (*game)->col)
-			{
-				relative_path = "img/Big-wooden-fence-4.xpm";
-				load_img(relative_path);
-				(*game)->nodes[y][x]->img_asset = mlx_xpm_file_to_image((*game)->mlx, relative_path, &img_width, &img_height);
-			}
+				(*game)->nodes[y][x]->img_asset = \
+				mlx_xpm_file_to_image((*game)->mlx, FENCE_4, &width, &height);
 			else if ((*game)->nodes[y][x]->type == '1')
-			{
-				relative_path = "img/Tree.xpm";
-				load_img(relative_path);
-				(*game)->nodes[y][x]->img_asset = mlx_xpm_file_to_image((*game)->mlx, relative_path, &img_width, &img_height);
-			}
+				(*game)->nodes[y][x]->img_asset = \
+				mlx_xpm_file_to_image((*game)->mlx, TREE, &width, &height);
 			else
-			{
-				relative_path = "img/Grass.xpm";
-				load_img(relative_path);
-				(*game)->nodes[y][x]->img_asset = mlx_xpm_file_to_image((*game)->mlx, relative_path, &img_width, &img_height);
-			}
-			if ((*game)->nodes[y][x]->img_asset == NULL)
-				printf("y : %i  x : %i\n", y, x);
-			//printf("bon\n");
+				(*game)->nodes[y][x]->img_asset = \
+				mlx_xpm_file_to_image((*game)->mlx, GRASS, &width, &height);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	draw_sprites(t_map **game)
+void	draw_sprites(t_map **game, int x, int y)
 {
-	int		y;
-	int		x;
-	int		img_width;
-	int		img_height;
-	char	*relative_path;
+	int		width;
+	int		height;
 
 	y = 1;
 	while (y < (*game)->row - 1)
@@ -99,23 +72,20 @@ void	draw_sprites(t_map **game)
 		while (x < (*game)->col - 1)
 		{
 			if ((*game)->nodes[y][x]->type == 'P')
-			{
-				relative_path = "img/new_cat.xpm";
-				(*game)->nodes[y][x]->img_asset = mlx_xpm_file_to_image((*game)->mlx, relative_path, &img_width, &img_height);
-			}
+				(*game)->nodes[y][x]->img_asset = \
+				mlx_xpm_file_to_image((*game)->mlx, CAT, &width, &height);
 			else if ((*game)->nodes[y][x]->type == 'E')
 			{
-				relative_path = "img/door.xpm";
-				(*game)->nodes[y][x]->img_asset = mlx_xpm_file_to_image((*game)->mlx, relative_path, &img_width, &img_height);
+				(*game)->nodes[y][x]->img_asset = \
+				mlx_xpm_file_to_image((*game)->mlx, DOOR, &width, &height);
+				(*game)->door = \
+				mlx_xpm_file_to_image((*game)->mlx, DOOR, &width, &height);
 			}
 			else if ((*game)->nodes[y][x]->type == 'C')
-			{
-				relative_path = "img/Chest.xpm";
-				(*game)->nodes[y][x]->img_asset = mlx_xpm_file_to_image((*game)->mlx, relative_path, &img_width, &img_height);
-			}
+				(*game)->nodes[y][x]->img_asset = \
+				mlx_xpm_file_to_image((*game)->mlx, CANDY, &width, &height);
 			x++;
 		}
-		
 		y++;
 	}
 }
@@ -124,29 +94,23 @@ void	draw_map(t_map **game)
 {
 	int	y;
 	int	x;
-	//int		width;
-	//int		height;
-	//int		size;
 
 	y = 0;
-	draw_background(game);
-	draw_sprites(game);
-	//width = (WIN_W / BPX);
-	//height = (WIN_H / BPX);
-	//size = WIN_W * WIN_H;
-	//size = size;
-	/* width = WIN_W * ;
-	height = ; */
-	//width = WIN_W / width;
-	//height = WIN_H / height;
+	x = 0;
+	draw_background(game, x, y);
+	draw_sprites(game, x, y);
 	while (y < (*game)->row)
 	{
 		x = 0;
 		while (x < (*game)->col)
 		{
-			mlx_put_image_to_window((*game)->mlx, (*game)->win, (*game)->nodes[y][x]->img_bg, x * WIN_W, y * WIN_H);
+			if ((*game)->nodes[y][x]->img_bg == NULL)
+				error_map(game);
+			mlx_put_image_to_window((*game)->mlx, (*game)->win, \
+			(*game)->nodes[y][x]->img_bg, x * BPX, y * BPX);
 			if ((*game)->nodes[y][x]->img_asset != NULL)
-				mlx_put_image_to_window((*game)->mlx, (*game)->win, (*game)->nodes[y][x]->img_asset,  x * WIN_W, y * WIN_H);
+				mlx_put_image_to_window((*game)->mlx, (*game)->win, \
+				(*game)->nodes[y][x]->img_asset, x * BPX, y * BPX);
 			x++;
 		}
 		y++;

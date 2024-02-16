@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:44:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/15 17:14:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/16 17:48:09 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	create_grid(t_map **game)
 	int	j;
 
 	i = 0;
-/* 	printf("col : %i\n", (*game)->col);
-	printf("row : %i\n", (*game)->row); */
 	while (i < (*game)->row)
 	{
 		j = 0;
@@ -84,12 +82,6 @@ void	control_data(int flag, t_map **game, int y, int x)
 {
 	if (flag == 'C')
 	{
-/* 		if ((*game)->candy_nbr == 0)
-			(*game)->candy = malloc(sizeof(t_node*) * ((*game)->candy_nbr +1));
-		else if ((*game)->candy_nbr > 0)
-			(*game)->candy = ft_realloc((*game)->candy, (((*game)->candy_nbr + 2) * sizeof(t_node*)));
-		(*game)->candy[(*game)->candy_nbr] = (*game)->nodes[y][x]; */
-		//(*game)->candy[(*game)->candy_nbr + 1] = NULL;
 		(*game)->candy_nbr++;
 	}
 	else if (flag == 'E' && (*game)->exit == NULL)
@@ -104,20 +96,14 @@ int	parsing(char *str, t_map **game, int y)
 
 	x = 0;
 	if (y == 0)
-	(*game)->nodes = malloc(sizeof(t_node*) * (y + 1));
+	(*game)->nodes = malloc(sizeof(t_node *) * (y + 1));
 	else
-	{
-		(*game)->nodes = ft_realloc((*game)->nodes, (y + 2) * sizeof(t_node*));
-		//(*game)->nodes = realloc((*game)->nodes, (y + 2) * sizeof(t_node*));
-	}
-	(*game)->nodes[y] = malloc(sizeof(t_node*) * ft_strlen(str));
+		(*game)->nodes = ft_realloc((*game)->nodes, (y + 2) * sizeof(t_node *));
+	(*game)->nodes[y] = malloc(sizeof(t_node *) * ft_strlen(str));
 	if ((*game)->nodes == NULL || (*game)->nodes[y] == NULL)
 		return (0);
-	//printf("%s\n", str);
-	//printf("%i\n", y);
 	while (str[x] != '\n' && str[x])
 	{
-		//printf("%c\n", str[x]);
 		(*game)->nodes[y][x] = add_node(y, x, (int)str[x]);
 		if ((*game)->nodes[y][x] == NULL)
 			return (0);
@@ -130,7 +116,6 @@ int	parsing(char *str, t_map **game, int y)
 		if (str[x] == 'C' || str[x] == 'E' || str[x] == 'P')
 			control_data(str[x], game, y, x);
 		x++;
-		//printf("strx %c\n", str[x]);
 	}
 	if (y == 0)
 		(*game)->col = x;
@@ -160,4 +145,5 @@ void	create_map(char *str, t_map **game)
 	(*game)->exit = NULL;
 	(*game)->candy_nbr = 0;
 	(*game)->player = NULL;
+	(*game)->door = NULL;
 }

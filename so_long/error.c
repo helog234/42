@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:43:12 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/15 16:52:48 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/16 17:59:19 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,19 @@
 void	error_mngmt(int i)
 {
 	if (i == 0)
-		printf("No valid map. Try again !");
+		ft_printf("No valid map. Try again !");
 	if (i == 1)
-		printf("No valid map while parsing. Try again !");
+		ft_printf("No valid map while parsing. Try again !");
 	exit(1);
 }
-/* void	free_node(t_node **node)
-{
-	int	i;
 
-	i = 0;
-	
-} */
-/* void	free_node(t_node *node)
+void	error_map(t_map **game)
 {
-	int	i;
+	free_grid(game);
+	ft_printf("Error loading image. Try again !");
+	exit(1);
+}
 
-	i = 0;
-	while (i <)
-	{
-	
-	}
-	
-} */
 
 void	free_grid(t_map **game)
 {
@@ -59,11 +49,5 @@ void	free_grid(t_map **game)
 		}
 		i++;
 	}
-	/*i = 0
-	 while (i < (*game)->candy_nbr)
-	{
-		free(*game)->candy)
-	} */
-	
 	close((*game)->fd);
 }
