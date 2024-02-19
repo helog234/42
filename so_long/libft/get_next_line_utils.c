@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:54:20 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/10 14:15:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 11:18:14 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ char	*ft_strjoin_gnl(char *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	//printf("s1 %s\n", s1);
-	//printf("s2 %s\n", s2);
 	str3 = (char *)malloc(ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1);
 	if (str3 == NULL)
 		return (NULL);
@@ -59,9 +57,8 @@ char	*ft_strjoin_gnl(char *s1, char const *s2)
 	while (s2 && s2[i])
 		str3[j++] = s2[i++];
 	str3[j] = 0;
-	/* free (s1);
-	s1 = NULL; */
-	//printf("s3 %s\n", str3);
+	free (s1);
+	s1 = NULL;
 	return (str3);
 }
 

@@ -6,13 +6,13 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 17:59:58 by hgandar           #+#    #+#              #
-#    Updated: 2024/02/15 13:17:24 by hgandar          ###   ########.fr        #
+#    Updated: 2024/02/19 11:11:40 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Imlx -Wno-deprecated-declarations -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Imlx -Wno-deprecated-declarations -g3
 # -g3 -fsanitize=address
 LIBFT_DIR = libft
 MLX_DIR = mlx
@@ -38,7 +38,7 @@ all : $(NAME)
 
 #est-ce que les CFLAGS sont nécessaires ici ?
 $(NAME): $(PS_OFILES) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $^ -o $@
+	$(CC) -g $(CFLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $^ -o $@
 
 $(LIBFT): $(LFTINC) $(INC)
 	make -C $(LIBFT_DIR)

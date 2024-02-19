@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 09:19:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/16 17:59:48 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 10:45:15 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,8 @@ void	*ft_realloc(void *to_resized, size_t new_size)
 	pointer = malloc(new_size);
 	if (pointer == NULL)
 		return (NULL);
-	pointer = ft_memcpy(pointer, to_resized, new_size);
-	if (pointer == NULL)
-	{
-		free(pointer);
-		return (NULL);
-	}
+	ft_memcpy(pointer, to_resized, new_size);
+	free(to_resized);
 	return (pointer);
 }
 

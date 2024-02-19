@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:44:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/16 17:48:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 10:59:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,14 @@ void	control_data(int flag, t_map **game, int y, int x)
 int	parsing(char *str, t_map **game, int y)
 {
 	int	x;
+	t_node	***new;
 
 	x = 0;
-	if (y == 0)
-	(*game)->nodes = malloc(sizeof(t_node *) * (y + 1));
-	else
-		(*game)->nodes = ft_realloc((*game)->nodes, (y + 2) * sizeof(t_node *));
+
+	new = ft_realloc((*game)->nodes, (y + 1) * sizeof(t_node *));
+	if (new == NULL)
+		return (0);
+	(*game)->nodes = new;
 	(*game)->nodes[y] = malloc(sizeof(t_node *) * ft_strlen(str));
 	if ((*game)->nodes == NULL || (*game)->nodes[y] == NULL)
 		return (0);
@@ -109,10 +111,7 @@ int	parsing(char *str, t_map **game, int y)
 			return (0);
 		if (str[x] != '0' && str[x] != '1' && \
 		str[x] != 'C' && str[x] != 'E' && str[x] != 'P')
-		{
-			free_grid(game);
-			error_mngmt(1);
-		}
+			return (0);
 		if (str[x] == 'C' || str[x] == 'E' || str[x] == 'P')
 			control_data(str[x], game, y, x);
 		x++;
@@ -120,10 +119,7 @@ int	parsing(char *str, t_map **game, int y)
 	if (y == 0)
 		(*game)->col = x;
 	else if (y > 0 && x != (*game)->col)
-	{
-		free_grid(game);
-		error_mngmt(1);
-	}
+		return (0);
 	return (1);
 }
 
@@ -131,12 +127,12 @@ void	create_map(char *str, t_map **game)
 {
 	*game = malloc(sizeof(t_map));
 	if (game == NULL)
-		error_mngmt(1);
+		error_mngmt(0, game);
 	(*game)->fd = open(str, O_RDONLY);
 	if ((*game)->fd == -1)
 	{
 		free(*game);
-		error_mngmt(1);
+		error_mngmt(1, game);
 	}
 	(*game)->nodes = NULL;
 	(*game)->p_start = NULL;

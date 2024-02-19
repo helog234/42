@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:41:19 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/16 17:59:32 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 10:02:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	valid_map(char *str, t_map **game, int y)
 		if (parsing(to_node, game, y) == 0)
 		{
 			free(to_node);
-			free_grid(game);
-			error_mngmt(1);
+			return (0);
 		}
 		free(to_node);
 		to_node = get_next_line((*game)->fd);
@@ -33,11 +32,31 @@ int	valid_map(char *str, t_map **game, int y)
 	(*game)->row = y;
 	if ((*game)->candy_nbr == 0 || (*game)->exit == NULL \
 	|| (*game)->p_start == NULL)
-	{
-		free_grid(game);
-		error_mngmt(1);
-	}
+		return (0);
 	create_grid(game);
+	return (1);
+}
+
+int	check_limits(t_map **game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < (*game)->row)
+	{
+		x = 0;
+		while (x < (*game)->col)
+		{
+			if ((x == 0 && (*game)->nodes[y][x]->type != '1') ||
+			(x + 1 == (*game)->col && (*game)->nodes[y][x]->type != '1') \
+			|| (y == 0 && (*game)->nodes[y][x]->type != '1') || \
+			(y + 1 == (*game)->row && (*game)->nodes[y][x]->type != '1'))
+				return (0);
+			x++;
+		}
+		y++;
+	}
 	return (1);
 }
 

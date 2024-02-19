@@ -6,13 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 11:10:18 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/16 17:56:04 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 09:31:25 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	load_img(char *path)
+/* void	load_img(char *path)
 {
 	int	fd;
 
@@ -20,7 +20,7 @@ void	load_img(char *path)
 	if (fd < 0)
 		error_mngmt(1);
 	close(fd);
-}
+} */
 
 
 void	draw_background(t_map **game, int x, int y)

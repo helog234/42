@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/16 18:00:23 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 09:29:47 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,16 @@ int	close_w(int keycode, t_map *game)
 int	map_checker(int argc, char *argv[], t_map **game)
 {
 	if (argc == 1)
-		error_mngmt(0);
+		error_mngmt(0, game);
 	if (valid_map(argv[1], game, 0) != 1)
-		error_mngmt(0);
+		error_mngmt(1, game);
+	if (check_limits(game) != 1)
+		error_mngmt(3, game);
 	if (valid_game(game) != 1)
 	{
 		//trouver solution pour free grid car segfault
 		free_grid(game);
-		error_mngmt(0);
+		error_mngmt(4, game);
 	}
 	return (1);
 }
