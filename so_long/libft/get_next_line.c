@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/10 14:46:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 14:04:12 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,11 @@ int	ft_strchr_line(const char *line, int c)
 	return (-1);
 }
 
-char	*fill_line_buffer(int fd, char *stock, char *buffer)
+char	*fill_line_buffer(int fd, char *stock, char *buffer, int control)
 {
 	int	i;
-	int	control;
 
 	i = 1;
-	control = 0;
 	while (i > 0)
 	{
 		i = read(fd, buffer, BUFFER_SIZE);
@@ -74,10 +72,9 @@ char	*fill_line_buffer(int fd, char *stock, char *buffer)
 		buffer[i] = 0;
 		stock = ft_strjoin_gnl(stock, buffer);
 		control = ft_strchr_line(stock, '\n');
-		//printf("control : %i and i : %i and len stck : %i\n", control, i, ft_strlen_gnl(stock));
 		if (control == -2 && i == 0)
 		{
-			if (ft_strlen_gnl(stock) > 0 )
+			if (ft_strlen_gnl(stock) > 0)
 				return (stock);
 			free(stock);
 			return (NULL);
@@ -101,7 +98,7 @@ char	*get_next_line(int fd)
 	j = 0;
 	if (fd == -1)
 		return (NULL);
-	stock = fill_line_buffer(fd, stock, buffer);
+	stock = fill_line_buffer(fd, stock, buffer, 0);
 	if (stock == NULL)
 		return (NULL);
 	i = ft_strchr_line(stock, '\n');

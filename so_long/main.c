@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 12:03:50 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 13:40:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	on_destroy(t_map *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
 	free_grid(&game);
-	free(game);
+	ft_printf("Bye !\n");
 	exit(1);
 	return (0);
 }
@@ -27,7 +27,7 @@ int	close_w(int keycode, t_map *game)
 	{
 		mlx_destroy_window(game->mlx, game->win);
 		free_grid(&game);
-		free(game);
+		ft_printf("Bye !\n");
 		exit(1);
 	}
 	return (0);
@@ -61,11 +61,7 @@ int	main(int argc, char*argv[])
 		game->player->move = 0;
 		draw_map(&game);
 		mlx_hook(game->win, 2, 1L << 0, explore_map, &game);
-		if (game->player->position == game->exit && \
-		game->player->candy_col <= game->candy_nbr)
-			printf("Bravo!\n");
 		mlx_loop(game->mlx);
 	}
-	else
-		printf("Cool !\n");
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:28:51 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 11:43:34 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 14:05:32 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	the_end(t_map **game)
 {
 	mlx_destroy_window((*game)->mlx, (*game)->win);
+	ft_printf("Kitty manage to escape !\n");
 	exit(1);
 }
 
@@ -29,13 +30,4 @@ t_node	*key_handler(int keycode, t_node *current_p)
 	else if (keycode == KEY_DOWN)
 		current_p = current_p->adj[1];
 	return (current_p);
-}
-
-int	check_key(int keycode, t_map **game)
-{
-	(void)game;
-	if (keycode == KEY_RIGHT || keycode == KEY_LEFT || \
-	keycode == KEY_UP || keycode == KEY_DOWN)
-		return (keycode);
-	return (-1);
 }

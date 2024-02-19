@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:43:12 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 12:02:25 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 13:41:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	error_mngmt(int i, t_map **game)
 void	error_map(t_map **game)
 {
 	free_grid(game);
+	ft_printf("Error\n");
 	ft_printf("Error loading image. Try again !");
 	exit(1);
 }
@@ -63,5 +64,6 @@ void	free_grid(t_map **game)
 		free((*game)->nodes[i]);
 		i++;
 	}
+	free((*game)->player);
 	close((*game)->fd);
 }
