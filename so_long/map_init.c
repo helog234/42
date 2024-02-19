@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:41:19 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 10:02:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 11:41:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,3 @@ int	valid_game(t_map **game)
 		return (1);
 	return (0);
 }
-

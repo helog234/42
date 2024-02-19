@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:06 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/16 17:49:58 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 11:50:46 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	explore_map(int keycode, t_map **game)
 
 	prev = NULL;
 	current = (*game)->player->position;
+	(*game)->player->move += 1;
+	ft_printf("Current number of move : %i\n", (*game)->player->move += 1);
 	if (keycode == KEY_ESC)
 		mlx_hook((*game)->win, 3, KEY_ESC, close_w, (*game));
 	if (keycode > 0)
@@ -62,4 +64,3 @@ int	explore_map(int keycode, t_map **game)
 	}
 	return (0);
 }
-

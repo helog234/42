@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:00 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 09:19:37 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 12:27:30 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_player
 {
 	t_node	*position;
 	int		candy_col;
+	int		move;
 }				t_player;
 
 typedef struct s_map
@@ -105,6 +106,6 @@ void	refresh_map(t_node *current, t_node *next, t_map **game);
 void	the_end(t_map **game);
 void	error_map(t_map **game);
 int		on_destroy(t_map *game);
-int	check_limits(t_map **game);
+int		check_limits(t_map **game);
 
 #endif

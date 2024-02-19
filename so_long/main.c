@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 09:29:47 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 12:03:50 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,7 @@ int	map_checker(int argc, char *argv[], t_map **game)
 	if (check_limits(game) != 1)
 		error_mngmt(3, game);
 	if (valid_game(game) != 1)
-	{
-		//trouver solution pour free grid car segfault
-		free_grid(game);
 		error_mngmt(4, game);
-	}
 	return (1);
 }
 
@@ -62,6 +58,7 @@ int	main(int argc, char*argv[])
 		game->row * BPX, "So Long");
 		mlx_hook(game->win, 17, 0L, on_destroy, game);
 		game->player->candy_col = 0;
+		game->player->move = 0;
 		draw_map(&game);
 		mlx_hook(game->win, 2, 1L << 0, explore_map, &game);
 		if (game->player->position == game->exit && \
@@ -71,6 +68,4 @@ int	main(int argc, char*argv[])
 	}
 	else
 		printf("Cool !\n");
-
 }
-

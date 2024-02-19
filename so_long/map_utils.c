@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:44:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 10:59:29 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 11:29:39 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,75 +52,6 @@ void	create_grid(t_map **game)
 		}
 		i++;
 	}
-}
-
-t_node	*add_node(int y, int x, int type)
-{
-	t_node	*new_node;
-	int		i;
-
-	new_node = malloc(sizeof(t_node));
-	if (new_node == NULL)
-		return (NULL);
-	i = 0;
-	new_node->y = y;
-	new_node->x = x;
-	new_node->type = type;
-	new_node->visited = false;
-	new_node->img_asset = NULL;
-	new_node->img_bg = NULL;
-	while (i < 4)
-	{
-		new_node->adj[i] = NULL;
-		i++;
-	}
-	new_node->adj_nbr = 0;
-	return (new_node);
-}
-
-void	control_data(int flag, t_map **game, int y, int x)
-{
-	if (flag == 'C')
-	{
-		(*game)->candy_nbr++;
-	}
-	else if (flag == 'E' && (*game)->exit == NULL)
-		(*game)->exit = (*game)->nodes[y][x];
-	else if (flag == 'P' && (*game)->p_start == NULL)
-		(*game)->p_start = (*game)->nodes[y][x];
-}
-
-int	parsing(char *str, t_map **game, int y)
-{
-	int	x;
-	t_node	***new;
-
-	x = 0;
-
-	new = ft_realloc((*game)->nodes, (y + 1) * sizeof(t_node *));
-	if (new == NULL)
-		return (0);
-	(*game)->nodes = new;
-	(*game)->nodes[y] = malloc(sizeof(t_node *) * ft_strlen(str));
-	if ((*game)->nodes == NULL || (*game)->nodes[y] == NULL)
-		return (0);
-	while (str[x] != '\n' && str[x])
-	{
-		(*game)->nodes[y][x] = add_node(y, x, (int)str[x]);
-		if ((*game)->nodes[y][x] == NULL)
-			return (0);
-		if (str[x] != '0' && str[x] != '1' && \
-		str[x] != 'C' && str[x] != 'E' && str[x] != 'P')
-			return (0);
-		if (str[x] == 'C' || str[x] == 'E' || str[x] == 'P')
-			control_data(str[x], game, y, x);
-		x++;
-	}
-	if (y == 0)
-		(*game)->col = x;
-	else if (y > 0 && x != (*game)->col)
-		return (0);
-	return (1);
 }
 
 void	create_map(char *str, t_map **game)

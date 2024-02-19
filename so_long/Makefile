@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 17:59:58 by hgandar           #+#    #+#              #
-#    Updated: 2024/02/19 11:11:40 by hgandar          ###   ########.fr        #
+#    Updated: 2024/02/19 12:27:20 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ INC	= ./so_long.h
 CFILES = 	error.c \
 			map_init.c \
 			map_utils.c \
-			global_utils.c \
+			parsing.c \
 			launch_game.c \
 			move.c \
 			play.c \
@@ -36,7 +36,6 @@ PS_OFILES =  $(PS_FILES:.c=.o)
 
 all : $(NAME)
 
-#est-ce que les CFLAGS sont nécessaires ici ?
 $(NAME): $(PS_OFILES) $(LIBFT) $(MLX)
 	$(CC) -g $(CFLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit $^ -o $@
 
