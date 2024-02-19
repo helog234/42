@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:41:19 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 11:41:41 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 16:48:05 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ int	is_playable(t_player *player, t_map **game, t_node *current_p)
 		return (0);
 	if (current_p == (*game)->exit && player->candy_col == (*game)->candy_nbr)
 		return (1);
+	if (current_p == (*game)->exit && player->candy_col < (*game)->candy_nbr)
+		(*game)->escap = true;
+	if ((*game)->escap == true && player->candy_col == (*game)->candy_nbr)
+		return (1);
 	if (current_p->type == 'C' && current_p->visited == false)
 		player->candy_col++;
 	current_p->visited = true;
@@ -82,7 +86,6 @@ int	is_playable(t_player *player, t_map **game, t_node *current_p)
 		}
 		i++;
 	}
-	current_p->visited = false;
 	return (0);
 }	
 

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 17:44:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 11:29:39 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 16:24:27 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	create_map(char *str, t_map **game)
 	(*game)->row = 0;
 	(*game)->col = 0;
 	(*game)->exit = NULL;
+	(*game)->escap = false;
 	(*game)->candy_nbr = 0;
 	(*game)->player = NULL;
 	(*game)->door = NULL;

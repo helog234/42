@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:00 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 12:27:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/19 16:23:55 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_map
 	t_node		*p_start;
 	int			row;
 	int			col;
+	bool		escap;
 	t_node		*exit;
 	int			candy_nbr;
 	t_player	*player;
