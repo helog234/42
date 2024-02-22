@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 17:37:39 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/22 16:10:14 by hgandar          ###   ########.fr       */
+/*   Created: 2024/02/22 09:58:28 by hgandar           #+#    #+#             */
+/*   Updated: 2024/02/22 10:05:26 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "ft_list.h"
 
-void	ft_putchar_fd(char c, int fd)
+void    ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
-	write(fd, &c, 1);
+	t_list	*current;
+
+	current = begin_list;
+	while (current)
+	{
+		(*f)(current->data);
+		current = current->next;
+	}
 }
-/*
-int	main(void)
-{
-	char	c = 'c';
-	ft_putchar_fd(c, 2);
-	return (0);
-}
-*/

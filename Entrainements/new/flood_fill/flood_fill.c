@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 14:34:16 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 14:47:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/22 09:15:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,23 @@
 #include <stdio.h>
 #include "flood_fill.h"
 
-
+void	fill(int y, int x, char target, char **tab, t_point size)
+{
+	if (x < 0 || x >= size.x || y < 0 || y >= size.y)
+		return ;
+	if (tab[y][x] != target)
+		return ;
+	tab[y][x] = 'F';
+	fill(y + 1, x, target, tab, size);
+	fill(y - 1, x, target, tab, size);
+	fill(y, x + 1, target, tab, size);
+	fill(y, x - 1, target, tab, size);
+}
 
 void  flood_fill(char **tab, t_point size, t_point begin)
 {
-	
+	if (tab[begin.y][begin.x] != 'F')
+		fill(begin.y, begin.x, tab[begin.y][begin.x], tab, size);
 }
 char** make_area(char** zone, t_point size)
 {
