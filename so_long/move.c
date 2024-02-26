@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:28:51 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 14:05:32 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/26 12:05:33 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	the_end(t_map **game)
 {
 	mlx_destroy_window((*game)->mlx, (*game)->win);
 	ft_printf("Kitty manage to escape !\n");
-	exit(1);
+	exit(0);
 }
 
 t_node	*key_handler(int keycode, t_node *current_p)

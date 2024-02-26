@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 13:40:31 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/26 12:14:07 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	on_destroy(t_map *game)
 	mlx_destroy_window(game->mlx, game->win);
 	free_grid(&game);
 	ft_printf("Bye !\n");
-	exit(1);
+	exit(0);
 	return (0);
 }
 
@@ -28,14 +28,36 @@ int	close_w(int keycode, t_map *game)
 		mlx_destroy_window(game->mlx, game->win);
 		free_grid(&game);
 		ft_printf("Bye !\n");
-		exit(1);
+		exit(0);
 	}
 	return (0);
+}
+
+int	map_test(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == 0)
+		return (0);
+	while (str[i])
+		i++;
+	if (str[i - 4] != '.')
+		return (0);
+	if (str[i - 3] != 'b')
+		return (0);
+	if (str[i - 2] != 'e')
+		return (0);
+	if (str[i - 1] != 'r')
+		return (0);
+	return (1);
 }
 
 int	map_checker(int argc, char *argv[], t_map **game)
 {
 	if (argc == 1)
+		error_mngmt(0, game);
+	if (map_test(argv[1]) != 1)
 		error_mngmt(0, game);
 	if (valid_map(argv[1], game, 0) != 1)
 		error_mngmt(1, game);

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:43:12 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 13:41:28 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/26 12:08:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	error_mngmt(int i, t_map **game)
 		free_grid(game);
 		ft_printf("Map not playable. Try again !\n");
 	}
-	exit(1);
+	exit(0);
 }
 
 void	error_map(t_map **game)

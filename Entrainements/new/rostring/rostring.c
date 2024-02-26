@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:41:23 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/22 17:18:19 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/26 09:58:19 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,73 @@ char	**rostring(char *str)
 	return (new);
 }
 
+int	print_line(char *str)
+{
+	char	*first;
+	int		i;
+	int		j;
+	int		flag;
+
+	i = 0;
+	j = 0;
+	flag = 0;
+	while (str[i])
+	{
+		if (str[i] == ' ' || str[i] == '	' || str[i] == 0)
+			break ;
+		i++;
+	}
+	first = malloc(i * sizeof(char));
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ' ' || str[i] == '	' || str[i] == 0)
+			break ;
+		first[i] = str[i];
+		i++;
+	}
+	first[i] = 0;
+	if (str[i] == 0)
+	{
+		while (first[j])
+		{
+			write(1, &first[j], 1);
+			j++;
+		}
+		return (0);
+	}
+	i++;
+	while (str[i])
+	{
+		if ((str[i - 1] == ' ' && str[i] == ' ') || (str[i - 1] == '	' && str[i] == '	') \
+		|| (str[i - 1] == ' ' && str[i] == '	') || (str[i - 1] == '	' && str[i] == ' ') )
+			i++ ;
+		else
+		{
+			write(1, &str[i], 1);
+			i++;
+			flag = 1;
+		}
+	}
+	if (flag == 1)
+		write(1, " ", 1);
+	j = 0;
+	while (first[j])
+	{
+		write(1, &first[j], 1);
+		j++;
+	}
+	free(first);
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
-	char	**str;
+	if (argc > 1)
+		print_line(argv[1]);
+	write(1, "\n", 1);
+	return (0);
+	/* 	char	**str;
 	int		i;
 	int		j;
 
@@ -135,5 +199,5 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	write(1, "\n", 1);
-	return (0);
+	return (0); */
 }

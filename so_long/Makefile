@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 17:59:58 by hgandar           #+#    #+#              #
-#    Updated: 2024/02/22 16:21:47 by hgandar          ###   ########.fr        #
+#    Updated: 2024/02/26 11:51:57 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ CFILES = 	error.c \
 			parsing.c \
 			launch_game.c \
 			move.c \
+			map_vizu.c \
 			play.c
 
 PS_FILES = main.c $(CFILES)
