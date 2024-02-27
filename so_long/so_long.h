@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:00 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/27 14:00:05 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/27 14:43:23 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,6 @@
 # define CAT "img/new_cat.xpm"
 # define DOOR "img/door.xpm"
 # define CANDY "img/Chest.xpm"
-
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;	
-}				t_img;
 
 typedef struct s_node
 {
