@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 09:19:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 11:42:22 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/27 13:43:18 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	control_data(int flag, t_map **game, int y, int x)
 		(*game)->exit = (*game)->nodes[y][x];
 	else if (flag == 'P' && (*game)->p_start == NULL)
 		(*game)->p_start = (*game)->nodes[y][x];
+	else
+		error_mngmt(0, game);
 }
 
 int	loop_node(t_map **game, char *str, int y)

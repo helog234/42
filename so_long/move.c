@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 10:28:51 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/26 12:05:33 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/27 13:36:03 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ t_node	*key_handler(int keycode, t_node *current_p)
 		current_p = current_p->adj[3];
 	else if (keycode == KEY_DOWN)
 		current_p = current_p->adj[1];
+	else
+		return (NULL);
 	return (current_p);
 }

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:18:42 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/26 12:14:07 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/27 13:23:13 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	map_test(char *str)
 
 int	map_checker(int argc, char *argv[], t_map **game)
 {
-	if (argc == 1)
+	if (argc != 2)
 		error_mngmt(0, game);
 	if (map_test(argv[1]) != 1)
 		error_mngmt(0, game);

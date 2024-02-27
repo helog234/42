@@ -6,14 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:35:25 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/26 18:11:53 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/27 11:34:46 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-char	*dup(char *str, int beg, int end)
+char	*dupdup(char *str, int beg, int end)
 {
 	char	*new;
 	int		i;
@@ -52,17 +52,17 @@ char    **ft_split(char *str)
 	i = 0;
 	k = j;
 	j = 0;
-	while (str[i] && j < k )
+	while (str[i])
 	{
 		while (str[i] == ' ' || str[i] == '\t')
 			i++;
 		start = i;
-		while (str[i] != ' ' && str[i] != '\t')
+		while ((str[i] != ' ' && str[i] != '\t') && str[i] != '\0')
 			i++;
 		if (i > start)
 		{
-			new[j] = dup(str, start, i);
-			// printf("%s\n", new[j]);
+			new[j] = dupdup(str, start, i);
+			printf("%s\n", new[j]);
 			j++;
 		}
 		// printf("%i", i);
@@ -77,12 +77,15 @@ int	main(int argc, char *argv[])
 	int		i;
 
 	if (argc == 2)
-		str = ft_split(argv[1]);
-	i = 0;
-	while (str[i])
 	{
-		printf("%s\n", str[i]);
-		i++;
+		str = ft_split(argv[1]);
+		i = 0;
+		while (str[i])
+		{
+			printf("%s\n", str[i]);
+			i++;
+		}
 	}
+
 	return (0);
 }

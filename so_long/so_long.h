@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 18:15:00 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/26 12:12:42 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/27 14:00:05 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ void	the_end(t_map **game);
 void	error_map(t_map **game);
 int		on_destroy(t_map *game);
 void	vizualizer(t_map **game);
-int	check_limits(t_map **game);
+int		check_limits(t_map **game);
 
 #endif

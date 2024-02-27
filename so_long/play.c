@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 11:46:06 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/26 11:43:32 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/02/27 13:38:09 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ int	explore_map(int keycode, t_map **game)
 		(keycode == KEY_UP && current->adj[3]->type == '1') || \
 		(keycode == KEY_DOWN && current->adj[1]->type == '1'))
 			return (0);
-		if (keycode == KEY_ESC)
-			return (0);
 		next = key_handler(keycode, current);
-		prev = (*game)->player->position;
-		refresh_map(current, next, game);
-		(*game)->player->move += 1;
-		ft_printf("Current number of move : %i\n", (*game)->player->move);
+		if (next != NULL)
+		{
+			prev = (*game)->player->position;
+			refresh_map(current, next, game);
+			(*game)->player->move += 1;
+			ft_printf("Current number of move : %i\n", (*game)->player->move);
+		}
 	}
 	return (0);
 }
