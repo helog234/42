@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:34:46 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/10 08:56:37 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/03/01 16:16:11 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # include <string.h>
 # include <stdbool.h>
 
-typedef struct s_fd {
+typedef struct s_fd
+{
 	int	out_file;
 	int	tmp;
 	int	pipe[2];

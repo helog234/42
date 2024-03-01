@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:21:55 by hgandar           #+#    #+#             */
-/*   Updated: 2024/01/08 15:38:29 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/03/01 16:59:23 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	fork_process(char *argv, char *envp[], t_fd *fd, int i)
 	if (fd->pid == 0)
 	{
 		if (i == 2)
-		{	
+		{
 			dup2(fd->tmp, 0);
 			dup2(fd->pipe[1], 1);
 			close(fd->tmp);
