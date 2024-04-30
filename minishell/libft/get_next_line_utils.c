@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:54:20 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 11:18:14 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/04/25 16:31:37 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,23 @@ char	*free_str(char *str)
 	free(str);
 	str = NULL;
 	return (NULL);
+}
+
+int	control_gnl(char **stock, char *buffer, int i)
+{
+	int	control;
+
+	buffer[i] = 0;
+	*stock = ft_strjoin_gnl(*stock, buffer);
+	control = ft_strchr_line(*stock, '\n');
+	if (control == -2 && i == 0)
+	{
+		if (ft_strlen_gnl(*stock) > 0)
+			return (1);
+		free(*stock);
+		return (0);
+	}
+	if (control >= 0)
+		return (1);
+	return (-1);
 }

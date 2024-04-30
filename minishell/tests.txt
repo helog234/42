@@ -1,0 +1,59 @@
+** between two stars is the *prompt* writen in terminal
+
+PARSING
+========================
+*CD (+arg)* returns the prompt
+*ENV* and *env* both work, *PWD* and *pwd* both work
+*EXPORT* returns "bash: EXPORT: cechommand not found" like any other nonsens word (command) so should be transfered for execution as is (same for *UNSET* and *EXIT*)
+*echo hello >>> outfile* error message "bash: syntax error near unexpected token `>'"
+*echo hello >>><< outfile* error message bash: syntax error near unexpected token `>', error code 258
+*echo hello >>s outfile* creates file "s" and writes "hello outfile" in int
+*C=kiki D=neo* creates two variables
+*export C=kiki D=neo* exports two variables
+*echo $kiki koko* (or any other cmd) $kiki is an unknown variable and is ignored
+
+
+
+
+ENVIRONMENT
+========================
+*env* => printf env; if made after changing the directory we add a variable OLDPWD
+*export A=''* or *A=""* we write A=  in env
+*export A* => nothing added in env, no error message
+*unset A=1* => bash: unset: `A=1': not a valid identifier, exit code 1
+*unset A* where A is nit an existiong variable, returns the prompt, exit code 0
+*export "A=hello=5* creates a variable with = inside and a newline
++ if we do cd - without changing directory first message "bash: cd: OLDPWD not set"
++ when we do export we have OLDPWD line even if empty, we don't have the line of the last command (last line in env)
++ with echo $_ we get the last command used, stored in env last line (_=), after piping we only show newline, if command used with arguments, only last argument is shown
++ if variables are written with anyting else after (command, non-command, pipe) it is not stored, but the command is executed
+
+
+EXECUTION
+========================
+*./minishel > out* should exit (controle !isatty(0) || isatty(1))
+cat | ls
+cat | cat | ls
+grep a << EOF
+echo hello >> file2 (x2)
+less
+A= hello + echo $_ (x2)
+unset _ + echo $_
+file <
+ls - with space after commande
+grep j < koko
+echo - "" "      " hello
+echo $kiki koko
+echo "hello    world"
+echo "bon;jour"
+ctrl c in empty prompt
+echo hello"$_"world
+
+
+
+
+NOTES
+===============================
+-I think it would be better to have only the command in token->data without the args to facilitate comparison (not have to compare "cd" and "cd " every time)
+- variables without export should be sent to execution as only arg
+-

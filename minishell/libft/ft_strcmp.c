@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 06:52:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/04/08 15:14:34 by hgandar          ###   ########.fr       */
+/*   Created: 2024/03/15 16:28:01 by hgandar           #+#    #+#             */
+/*   Updated: 2024/04/11 14:05:56 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <string.h>
 #include "libft.h"
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
+int	ft_strcmp(const char *str1, const char *str2)
 {
-	while (n > 0)
+	while (*str1 == *str2)
 	{
 		if (*str1 != *str2)
 			return ((unsigned char)*str1 - (unsigned char)*str2);
@@ -24,18 +24,6 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n)
 			return (0);
 		str1++;
 		str2++;
-		n--;
 	}
 	return (0);
 }
-/*
-int	main(void)
-{
-	char	str1[] = "Hello World !";
-	char	str2[] = "Oi";
-	
-	printf("strncmp result : %d\n", ft_strncmp(str1, str2, 6));
-	printf("strncmp result : %d\n", strncmp(str1, str2, 6));
-	return (0);
-}
-*/

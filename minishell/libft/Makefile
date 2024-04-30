@@ -6,17 +6,18 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2024/02/22 16:20:39 by hgandar          ###   ########.fr        #
+#    Updated: 2024/04/26 15:00:57 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-HEADER_FILES = libft.h
+HEADER_FILES = ./
 CFILES =  ft_atoi.c \
 		  ft_bzero.c \
 		  ft_calloc.c \
+		  ft_free_arr.c \
 		  ft_isalnum.c \
 		  ft_isalpha.c \
 		  ft_isascii.c \
@@ -34,6 +35,7 @@ CFILES =  ft_atoi.c \
 		  ft_putstr_fd.c \
 		  ft_split.c \
 		  ft_strchr.c \
+		  ft_strcmp.c \
 		  ft_strdup.c \
 		  ft_striteri.c \
 		  ft_strjoin.c \
@@ -48,6 +50,7 @@ CFILES =  ft_atoi.c \
 		  ft_substr.c \
 		  ft_tolower.c \
 		  ft_toupper.c \
+		  ft_realloc.c \
 		  get_next_line.c \
 		  get_next_line_utils.c \
 		  ft_printf.c \
@@ -71,26 +74,27 @@ BFILES = ft_lstnew.c \
 		  ft_lstiter.c \
 		  ft_lstmap.c
 
-OFILES = $(CFILES:.c=.o)
-BOFILES = $(BFILES:.c=.o)
+OBJS_DIR = ./objs
+
+OFILES = $(CFILES:%.c=$(OBJS_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(OFILES)
 	ar rcs $@ $^
 
-bonus: $(OFILES) $(BOFILES)
-	ar rcs $(NAME) $^
+$(OBJS_DIR)/%.o: %.c | obdir
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER_FILES)
 
-%.o: %.c $(HEADER_FILES)
-	$(CC) $(CFLAGS) -c $< -o $@
+obdir:
+	mkdir -p $(OBJS_DIR)
 
 clean:
-	rm -f $(OFILES) $(BOFILES)
+	@rm -rf $(OBJS_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re obdir

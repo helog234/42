@@ -6,11 +6,12 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:38:25 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 14:04:12 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/04/25 16:54:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "../minishell.h"
 
 static char	*set_stock(char *stock, int i, int j)
 {
@@ -56,36 +57,36 @@ int	ft_strchr_line(const char *line, int c)
 	return (-1);
 }
 
-char	*fill_line_buffer(int fd, char *stock, char *buffer, int control)
+char	*fill_line_buffer(int fd, char *stock, char *buffer, int flag)
 {
-	int	i;
+	int				i;
+	int				control;
+	struct termios	original_term;
 
 	i = 1;
+	control = 0;
+	if (flag == 1)
+		ft_putstr_fd("> ", STDOUT_FILENO);
+	tcgetattr(STDIN_FILENO, &original_term);
 	while (i > 0)
 	{
+		if (control && flag)
+			ignore_ctrld(&original_term);
 		i = read(fd, buffer, BUFFER_SIZE);
+		restore_ctrld(&original_term);
 		if (i == -1)
-		{
-			free_str(stock);
-			return (NULL);
-		}
-		buffer[i] = 0;
-		stock = ft_strjoin_gnl(stock, buffer);
-		control = ft_strchr_line(stock, '\n');
-		if (control == -2 && i == 0)
-		{
-			if (ft_strlen_gnl(stock) > 0)
-				return (stock);
-			free(stock);
-			return (NULL);
-		}
-		if (control >= 0)
+			return (free_str(stock), NULL);
+		control = control_gnl(&stock, buffer, i);
+		if (control > 0)
 			return (stock);
+		else if (!control)
+			return (NULL);
+		control = i;
 	}
 	return (stock);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int flag)
 {
 	char		buffer[BUFFER_SIZE + 1];
 	static char	*stock;
@@ -98,7 +99,7 @@ char	*get_next_line(int fd)
 	j = 0;
 	if (fd == -1)
 		return (NULL);
-	stock = fill_line_buffer(fd, stock, buffer, 0);
+	stock = fill_line_buffer(fd, stock, buffer, flag);
 	if (stock == NULL)
 		return (NULL);
 	i = ft_strchr_line(stock, '\n');

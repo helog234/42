@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: mremenar <mremenar@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 19:02:49 by hgandar           #+#    #+#             */
-/*   Updated: 2024/02/19 14:04:33 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/04/23 16:54:47 by mremenar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
-int				ft_strcmp(const char *str1, const char *str2, size_t n);
+int				ft_strcmp(const char *str1, const char *str2);
 void			*ft_memchr(const void *str, int c, size_t n);
 int				ft_memcmp(const void *str1, const void *str2, size_t n);
 char			*ft_strnstr(const char *hstack, const char *needle, size_t len);
@@ -79,7 +79,7 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
 				void (*del)(void *));
-char			*get_next_line(int fd);
+char			*get_next_line(int fd, int flag);
 //char			*fill_line_buffer(int fd, char *stock, char *buffer);
 int				ft_strchr_line(const char *line, int c);
 char			*ft_substr_l(char const *s, unsigned int start, \
@@ -104,5 +104,8 @@ void			ft_x_hexa_str(char *str, int len, unsigned long n, char format);
 int				ft_count_u_digit(unsigned int n);
 char			*ft_strjoin_gnl(char *s1, char const *s2);
 int				ft_strlen_gnl(const char *s);
+void			ft_free_arr(char	**arr_strs);
+void			*ft_realloc(void *ptr, size_t new_size, size_t current_size);
+int				control_gnl(char **stock, char *buffer, int i);
 
 #endif
