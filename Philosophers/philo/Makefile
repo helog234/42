@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 16:37:56 by hgandar           #+#    #+#              #
-#    Updated: 2024/04/29 17:37:09 by hgandar          ###   ########.fr        #
+#    Updated: 2024/05/02 13:56:25 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,13 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 INC = ./philo.h
 
-CFILES = 
+CFILES = parsing.c \
+		set_table.c \
+		process.c \
+		ctr_philo.c \
+		eat_think_sleep.c \
+		msg_and_free.c \
+		utils.c
 
 PS_FILES = main.c $(CFILES)
 PS_OFILES = $(PS_FILES:.c=.o)
@@ -23,7 +29,7 @@ PS_OFILES = $(PS_FILES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(PS_OFILES)
-	$(CC) $(CFLAGS) $(PS_OFILES) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 %.o: %.c $(INC)
 	$(CC) $(CFLAGS) -c $< -o $@

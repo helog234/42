@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:58:24 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/01 13:40:05 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/02 14:11:14 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	ft_isdigit(char c)
 {
-	if (c >= '0' && c <= 9)
+	if (c >= '0' && c <= '9')
 		return (true);
 	return (false);
 }
@@ -55,8 +55,7 @@ void	parsing(int argc, char **argv, t_settings **to_set, int i)
 	if (argv[i])
 		n = ft_atoi(argv[i]);
 	if (n <= 0 && i < 5)
-		return ;
-	//faire un message d'erreur
+		error_msg(to_set, 0);
 	if (i == 1)
 		(*to_set)->number_of_philosophers = n;
 	else if (i == 2)
