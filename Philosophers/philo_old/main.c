@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 16:45:02 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/06 17:49:37 by hgandar          ###   ########.fr       */
+/*   Created: 2024/04/29 16:37:12 by hgandar           #+#    #+#             */
+/*   Updated: 2024/05/06 14:01:33 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ int	main(int argc, char **argv)
 	pthread_mutex_init(&new_set->meal_lock, NULL);
 	pthread_mutex_init(&new_set->write_lock, NULL);
 	create_philosopher(&new_set);
-	create_threads(new_set);
+	// create_threads(new_set);
+	while (check_for_deads(&new_set) == 0 || ctr_limit_meal(&new_set) == 0)
+	{
+		if (create_threads(new_set) == 1)
+			break ;
+	}
+	free_all(&new_set, new_set->philo);
 	return (0);
 }

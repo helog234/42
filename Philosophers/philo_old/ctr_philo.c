@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:20:03 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/03 17:54:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/06 13:59:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ int	check_for_deads(t_settings **settings)
 	while (i < (*settings)->number_of_philosophers)
 	{
 		pthread_mutex_lock(philo[i]->dead_lock);
-		printf("philo[%i] last meal %lu - curr time %lu = %lu and time to die %lu\n", \
-		i, philo[i]->last_meal_time, set_curr_time(), \
-		set_curr_time() - philo[i]->last_meal_time, (*settings)->time_to_die);
+		// printf("philo[%i] last meal %lu - curr time %lu = %lu and time to die %lu\n", \
+		// i, \
+		// philo[i]->last_meal_time - philo[i]->time_start, \
+		// set_curr_time(), \
+		// set_curr_time() - philo[i]->last_meal_time, \
+		// (*settings)->time_to_die);
 		if (set_curr_time() - philo[i]->last_meal_time >= (*settings)->time_to_die && \
 		philo[i]->is_eating == false)
 		{
@@ -56,6 +59,7 @@ int	ctr_limit_meal(t_settings **settings)
 		(*settings)->number_of_times_each_philosopher_must_eat)
 			ctr++;
 		pthread_mutex_unlock(philo[i]->meal_lock);
+		i++;
 	}
 	if (ctr == (*settings)->number_of_times_each_philosopher_must_eat)
 		return (1);
@@ -69,10 +73,8 @@ void	*ctr_loops(void *arg)
 	settings = (t_settings *)arg;
 	while (1)
 	{
-		printf("la\n");
 		if (check_for_deads(&settings) == 1 || ctr_limit_meal(&settings) == 1)
 		{
-			printf("ici\n");
 			break ;
 			/* free_all(&settings, settings->philo);
 			return (NULL); */

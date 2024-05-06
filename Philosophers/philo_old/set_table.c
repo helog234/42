@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:34:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/06 16:49:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/06 16:48:57 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int i, pthread_mutex_t *fork)
 	new->nbr_philo = (*settings)->number_of_philosophers;
 	new->has_died = false;
 	new->is_eating = false;
-	new->can_eat = false;
 	new->fork_right = &fork[i];
 	new->dead_lock = &(*settings)->dead_lock;
 	new->meal_lock = &(*settings)->meal_lock;

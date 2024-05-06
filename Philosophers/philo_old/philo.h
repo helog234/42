@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:37:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/06 18:08:29 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/06 13:57:48 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 typedef struct s_settings
 {
 	int						number_of_philosophers;
-	size_t					time_start;	
+	int						time_start;	
 	size_t					time_to_die;
 	size_t					time_to_eat;
 	size_t					time_to_sleep;
@@ -46,7 +46,6 @@ typedef struct s_philosopher
 	size_t			time_to_sleep;
 	size_t			last_meal_time;
 	int				nbr_philo;
-	bool			can_eat;
 	bool			is_eating;
 	bool			has_died;
 	pthread_mutex_t	*fork_right;
@@ -68,16 +67,14 @@ void	create_philosopher(t_settings **settings);
 // process.c
 bool	life_check(t_philosopher *philo);
 void	*routine(void *arg);
-void	create_threads(t_settings *settings);
+int	create_threads(t_settings *settings);
 
 //eat_think_sleep.c
 void	think(t_philosopher *philo);
 void	rest(t_philosopher *philo);
 void	eat(t_philosopher *philo);
 
-// dinner.c
-void	garcon(t_settings **set, t_philosopher **philo);
-void	end_dinner(t_settings **set, t_philosopher **philo);
+// crt_philo.c
 int		check_for_deads(t_settings **settings);
 int		ctr_limit_meal(t_settings **settings);
 void	*ctr_loops(void *arg);

@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 16:37:56 by hgandar           #+#    #+#              #
-#    Updated: 2024/05/06 17:51:43 by hgandar          ###   ########.fr        #
+#    Updated: 2024/05/02 13:56:25 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ INC = ./philo.h
 CFILES = parsing.c \
 		set_table.c \
 		process.c \
-		dinner.c \
+		ctr_philo.c \
 		eat_think_sleep.c \
 		msg_and_free.c \
 		utils.c
