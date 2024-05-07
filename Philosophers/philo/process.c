@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:22:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/07 17:26:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/07 17:35:02 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ void	create_threads(t_settings *settings)
 	while (i < j && !settings->one_dead)
 	{
 		if (pthread_create(&philo[i]->thread, NULL, &routine, philo[i]) != 0)
-				error_msg(&settings, 1);
-		printf("philo[%i]\n", philo[i]->id);
+			error_msg(&settings, 1);
 		if (philo[i]->has_died == true)
 		{
 			//settings->one_dead = true;
@@ -87,11 +86,11 @@ void	create_threads(t_settings *settings)
 	}
 	i = 0;
 	if (pthread_join(monitor, NULL) != 0)
-		error_msg(&settings, 0);
+		error_msg(&settings, 2);
 	while (philo[i])
 	{
 		if (pthread_join(philo[i]->thread, NULL) != 0)
-			error_msg(&settings, 0);
+			error_msg(&settings, 2);
 		i++;
 	}
 	//end_dinner(&settings, philo);

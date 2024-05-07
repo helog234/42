@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:09:18 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/07 17:18:44 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/07 17:31:46 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	*garcon(void *arg)
 		//i = 0;
 		if (check_for_deads(set) == 1 || ctr_limit_meal(set) == 1)
 		{
-			end_dinner(&set, philo);
+			//end_dinner(&set, philo);
 			return (set);
 		}
 		/* while (i < set->number_of_philosophers)
