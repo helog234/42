@@ -6,11 +6,21 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 08:44:14 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/02 13:46:13 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/07 18:33:15 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
@@ -26,6 +36,8 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n)
 	}
 	return (0);
 }
+
+
 
 int	my_usleep(size_t mscd)
 {

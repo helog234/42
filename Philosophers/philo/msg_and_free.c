@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:18:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/07 17:31:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/07 19:03:16 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,23 @@
 
 void	print_msg(t_philosopher *philo, char *str, int id)
 {
+	t_settings	**set;
+
+	set = philo->settings;
 	pthread_mutex_lock(philo->write_lock);
-	if (philo && id >= 0)
-		printf("%lu %i %s\n", set_curr_time() - philo->time_start, id, str);
+	if ((*set)->one_dead)
+	{
+		pthread_mutex_unlock(philo->write_lock);
+		pthread_mutex_destroy(philo->write_lock);
+	}
 	else
-		printf("%s\n", str);
-	pthread_mutex_unlock(philo->write_lock);
+	{
+		if (philo && id >= 0)
+			printf("%lu %i %s\n", set_curr_time() - philo->time_start, id, str);
+		else
+			printf("%s\n", str);
+		pthread_mutex_unlock(philo->write_lock);
+	}
 }
 
 void	destroy_mutex(t_settings **settings, t_philosopher **philo)
@@ -34,6 +45,7 @@ void	free_all(t_settings **settings, t_philosopher **philo)
 	int	i;
 
 	i = (*settings)->number_of_philosophers;
+	pthread_mutex_destroy((*philo)->fork_right);
 	pthread_mutex_destroy((*philo)->fork_right);
 	pthread_mutex_destroy(&(*settings)->dead_lock);
 	pthread_mutex_destroy(&(*settings)->meal_lock);

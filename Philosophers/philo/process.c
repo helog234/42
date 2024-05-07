@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:22:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/07 17:35:02 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/07 17:39:33 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,7 @@ void	create_threads(t_settings *settings)
 		if (pthread_create(&philo[i]->thread, NULL, &routine, philo[i]) != 0)
 			error_msg(&settings, 1);
 		if (philo[i]->has_died == true)
-		{
-			//settings->one_dead = true;
-			//destroy_mutex(&settings, philo);
 			break;
-		}
 		i++;
 	}
 	i = 0;
@@ -93,5 +89,4 @@ void	create_threads(t_settings *settings)
 			error_msg(&settings, 2);
 		i++;
 	}
-	//end_dinner(&settings, philo);
 }

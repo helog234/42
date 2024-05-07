@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:37:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/07 17:16:11 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/07 18:33:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	error_msg(t_settings **settings, int flag);
 void	destroy_mutex(t_settings **settings, t_philosopher **philo);
 
 // utils.c
+int		ft_strlen(const char *s);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
 int		my_usleep(size_t mscd);
 size_t	set_curr_time(void);
