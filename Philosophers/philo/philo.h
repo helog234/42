@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:37:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/06 18:08:29 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/07 17:16:11 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@ typedef struct s_philosopher
 	bool			can_eat;
 	bool			is_eating;
 	bool			has_died;
+	t_settings		**settings;
 	pthread_mutex_t	*fork_right;
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*dead_lock;
 	pthread_mutex_t	*meal_lock;
 	pthread_mutex_t	*write_lock;
-	pthread_t		*thread;
+	pthread_t		thread;
 }				t_philosopher;
 
 
@@ -76,16 +77,17 @@ void	rest(t_philosopher *philo);
 void	eat(t_philosopher *philo);
 
 // dinner.c
-void	garcon(t_settings **set, t_philosopher **philo);
+void	*garcon(void *arg);
 void	end_dinner(t_settings **set, t_philosopher **philo);
-int		check_for_deads(t_settings **settings);
-int		ctr_limit_meal(t_settings **settings);
+int		check_for_deads(t_settings *settings);
+int		ctr_limit_meal(t_settings *settings);
 void	*ctr_loops(void *arg);
 
 // msg_and_free.c
 void	print_msg(t_philosopher *philo, char *str, int id);
 void	free_all(t_settings **settings, t_philosopher **philo);
 void	error_msg(t_settings **settings, int flag);
+void	destroy_mutex(t_settings **settings, t_philosopher **philo);
 
 // utils.c
 int		ft_strncmp(const char *str1, const char *str2, size_t n);

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:18:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/06 17:43:52 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/07 17:26:50 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,24 @@ void	print_msg(t_philosopher *philo, char *str, int id)
 	pthread_mutex_unlock(philo->write_lock);
 }
 
+void	destroy_mutex(t_settings **settings, t_philosopher **philo)
+{
+	pthread_mutex_destroy((*philo)->fork_right);
+	pthread_mutex_destroy(&(*settings)->dead_lock);
+	pthread_mutex_destroy(&(*settings)->meal_lock);
+}
+
 void	free_all(t_settings **settings, t_philosopher **philo)
 {
 	int	i;
 
 	i = (*settings)->number_of_philosophers;
+	pthread_mutex_destroy((*philo)->fork_right);
+	pthread_mutex_destroy(&(*settings)->dead_lock);
+	pthread_mutex_destroy(&(*settings)->meal_lock);
 	while (philo && philo[i] && i >= 0)
 	{
-		pthread_mutex_destroy((*philo)->fork_right);
+		free((*philo)->fork_right);
 		free(philo[i]->thread);
 		philo[i]->thread = NULL;
 		free(philo[i]);
@@ -37,11 +47,9 @@ void	free_all(t_settings **settings, t_philosopher **philo)
 		i--;
 	}
 	free((*philo));
-	(*philo) = NULL;
-	pthread_mutex_destroy(&(*settings)->dead_lock);
-	pthread_mutex_destroy(&(*settings)->meal_lock);
+	philo = NULL;
 	free((*settings));
-	(*settings) = NULL;
+	settings = NULL;
 }
 
 void	error_msg(t_settings **settings, int flag)
