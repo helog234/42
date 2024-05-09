@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:18:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/09 10:00:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/09 10:10:25 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	print_msg(t_philosopher *philo, char *str, int id)
 {
 	t_settings	**set;
 
+	if (philo == NULL)
+		return ;
 	set = philo->settings;
 
 	pthread_mutex_lock(philo->write_lock);
@@ -67,10 +69,19 @@ void	free_all(t_settings **settings, t_philosopher **philo)
 
 void	error_msg(t_settings **settings, int flag)
 {
-	if (flag == 0 && !(*settings)->philo)
+	if (flag == 0 && !(*settings))
+	{
 		printf("error malloc\n");
+	}
+	else if (flag == 0 && !(*settings)->philo)
+	{
+		free((*settings));
+		settings = NULL;
+		printf("error input, please try again\n");
+		exit(EXIT_FAILURE);
+	}
 	else if (flag == 0)
-		print_msg(NULL, "error malloc", -1);
+		printf("error malloc\n");
 	else if (flag == 1)
 		print_msg(*(*settings)->philo, "error creating mutex", -1);
 	else if (flag == 2)
