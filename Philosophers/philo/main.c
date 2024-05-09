@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:45:02 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/07 16:18:02 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/09 09:49:42 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,17 @@ int	main(int argc, char **argv)
 	new_set->philo = NULL;
 	new_set->time_start = set_curr_time();
 	new_set->one_dead = false;
+	new_set->end = false;
+	new_set->number_of_times_each_philosopher_must_eat = 0;
 	parsing(argc, argv, &new_set, 1);
 	pthread_mutex_init(&new_set->dead_lock, NULL);
 	pthread_mutex_init(&new_set->meal_lock, NULL);
 	pthread_mutex_init(&new_set->write_lock, NULL);
+	//printf("is %i\n", new_set->number_of_times_each_philosopher_must_eat);
 	create_philosopher(&new_set);
 	create_threads(new_set);
-	garcon(&new_set);
+	//garcon(&new_set);
+	end_dinner(&new_set, new_set->philo);
 	/* while (1)
 	{
 		if (!new_set->philo[i]->is_eating && set_curr_time() - new_set->philo[i]->last_meal_time >= new_set->philo[i]->time_to_die / 3)

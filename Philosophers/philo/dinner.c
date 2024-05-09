@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:09:18 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/07 17:31:46 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/09 09:58:47 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int	check_for_deads(t_settings *settings)
 
 	philo = settings->philo;
 	i = 0;
-	while (i < settings->number_of_philosophers)
+	while (philo && i < settings->number_of_philosophers && !settings->one_dead && !settings->end)
 	{
-		if (!philo)
-			return (1);
+		//printf("philo[%i]\n", i);
 		pthread_mutex_lock(philo[i]->dead_lock);
 		if (set_curr_time() - philo[i]->last_meal_time >= settings->time_to_die && \
 		philo[i]->is_eating == false)
@@ -39,26 +38,35 @@ int	check_for_deads(t_settings *settings)
 	return (0);
 }
 
-int	ctr_limit_meal(t_settings *settings)
+int	ctr_limit_meal(t_settings **settings)
 {
 	t_philosopher	**philo;
 	int				i;
 	int				ctr;
 
-	philo = settings->philo;
+	philo = (*settings)->philo;
 	i = 0;
 	ctr = 0;
-	while (i < settings->number_of_philosophers)
+	if ((*settings)->number_of_times_each_philosopher_must_eat == 0)
+		return (0);
+	while (i < (*settings)->number_of_philosophers)
 	{
+		if (philo[i]->nbr_eaten_meal >= 7)
+			sleep(1);
 		pthread_mutex_lock(philo[i]->meal_lock);
-		if (philo[i]->nbr_eaten_meal == \
-		settings->number_of_times_each_philosopher_must_eat)
+		if (philo[i]->nbr_eaten_meal >= \
+		(*settings)->number_of_times_each_philosopher_must_eat)
 			ctr++;
 		pthread_mutex_unlock(philo[i]->meal_lock);
 		i++;
 	}
-	if (ctr == settings->number_of_times_each_philosopher_must_eat)
+	//printf("ctr %i\n", ctr);
+	if (ctr == (*settings)->number_of_times_each_philosopher_must_eat)
+	{
+		(*settings)->end = true;
 		return (1);
+	}
+
 	return (0);
 }
 
@@ -90,9 +98,10 @@ void	*garcon(void *arg)
 	while (1)
 	{
 		//i = 0;
-		if (check_for_deads(set) == 1 || ctr_limit_meal(set) == 1)
+		if (check_for_deads(set) == 1 || ctr_limit_meal(&set) == 1)
 		{
 			//end_dinner(&set, philo);
+			printf("ici\n");
 			return (set);
 		}
 		/* while (i < set->number_of_philosophers)

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:37:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/07 18:33:28 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/09 08:44:55 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_settings
 	pthread_mutex_t			meal_lock;
 	pthread_mutex_t			write_lock;
 	bool					one_dead;
+	bool					end;
 	struct s_philosopher	**philo;
 	pthread_t				thread;
 }				t_settings;
@@ -80,7 +81,7 @@ void	eat(t_philosopher *philo);
 void	*garcon(void *arg);
 void	end_dinner(t_settings **set, t_philosopher **philo);
 int		check_for_deads(t_settings *settings);
-int		ctr_limit_meal(t_settings *settings);
+int		ctr_limit_meal(t_settings **settings);
 void	*ctr_loops(void *arg);
 
 // msg_and_free.c

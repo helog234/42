@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:10:10 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/07 16:13:04 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/07 21:33:39 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	eat(t_philosopher *philo)
 		philo->last_meal_time = set_curr_time();
 		pthread_mutex_unlock(philo->meal_lock);
 		my_usleep(philo->time_to_eat);
+		//printf("philo[%i] eaten %i\n", philo->id, philo->nbr_eaten_meal);
 		philo->is_eating = false;
 		/* philo->can_eat = false;
 		pthread_mutex_unlock(philo->fork_right);
