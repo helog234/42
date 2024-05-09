@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:22:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/09 09:47:19 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/09 10:14:08 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	get_forks(t_philosopher *philo)
 	if (philo->has_died == false)
 	{
 		pthread_mutex_lock(philo->fork_right);
-		print_msg(philo, " has taken a fork right", philo->id);
+		print_msg(philo, " has taken a fork", philo->id);
 		pthread_mutex_lock(philo->fork_left);
-		print_msg(philo, " has taken a fork left", philo->id);
+		print_msg(philo, " has taken a fork", philo->id);
 		philo->is_eating = true;
 	}
 }
@@ -35,9 +35,9 @@ void	free_forks(t_philosopher *philo)
 {
 	//philo->can_eat = false;
 	pthread_mutex_unlock(philo->fork_left);
-	print_msg(philo, " has free a fork left", philo->id);
+	//print_msg(philo, " has free a fork left", philo->id);
 	pthread_mutex_unlock(philo->fork_right);
-	print_msg(philo, " has free a fork right", philo->id);
+	//print_msg(philo, " has free a fork right", philo->id);
 }
 
 void	*routine(void *arg)
