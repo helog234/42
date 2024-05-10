@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:58:24 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/09 10:12:43 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:50:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,17 @@ void	parsing(int argc, char **argv, t_settings **to_set, int i)
 		(*to_set)->number_of_times_each_philosopher_must_eat = n;
 	i++;
 	parsing(argc, argv, to_set, i);
+}
+int	init_dinner(int argc, char **argv, t_settings **to_init)
+{
+	(*to_init)->philo = NULL;
+	(*to_init)->time_start = set_curr_time();
+	(*to_init)->one_dead = false;
+	(*to_init)->end = false;
+	(*to_init)->number_of_times_each_philosopher_must_eat = 0;
+	parsing(argc, argv, to_init, 1);
+	pthread_mutex_init(&(*to_init)->dead_lock, NULL);
+	pthread_mutex_init(&(*to_init)->meal_lock, NULL);
+	pthread_mutex_init(&(*to_init)->write_lock, NULL);
+	return (create_philosopher(to_init));
 }

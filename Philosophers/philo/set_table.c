@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:34:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/07 16:06:21 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:48:17 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int i, pthread_mutex_t *fork)
 	return (new);
 }
 
-void	create_philosopher(t_settings **settings)
+int	create_philosopher(t_settings **settings)
 {
 	int				i;
 	t_philosopher	**new;
@@ -54,16 +54,18 @@ void	create_philosopher(t_settings **settings)
 	fork = malloc(((*settings)->number_of_philosophers + 1) * \
 	sizeof(pthread_mutex_t));
 	if (!new || !fork)
-		error_msg(settings, 0);
+		return (1);
 	while (i < (*settings)->number_of_philosophers)
 	{
 		pthread_mutex_init(&fork[i], NULL);
 		new[i] = add_philosopher(settings, i, fork);
 		if (!new[i])
-			error_msg(settings, 0);
+			return (1);
 		i++;
 	}
 	new[0]->fork_left = &fork[(*settings)->number_of_philosophers];
 	new[i] = NULL;
 	(*settings)->philo = new;
+	return (0);
 }
+

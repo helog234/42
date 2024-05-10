@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:37:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/09 08:44:55 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:50:30 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ typedef struct s_philosopher
 // parsing.c
 void	parsing(int argc, char **argv, t_settings **to_set, int i);
 bool	ft_isdigit(char c);
+int		init_dinner(int argc, char **argv, t_settings **to_init);
 
 // set_table.c
-void	create_philosopher(t_settings **settings);
+int	create_philosopher(t_settings **settings);
 
 // process.c
 bool	life_check(t_philosopher *philo);
