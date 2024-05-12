@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:34:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/10 11:48:17 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/10 16:01:34 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ int	create_philosopher(t_settings **settings)
 			return (1);
 		i++;
 	}
-	new[0]->fork_left = &fork[(*settings)->number_of_philosophers];
+	if ((*settings)->number_of_philosophers > 1)
+		new[0]->fork_left = &fork[(*settings)->number_of_philosophers];
+	else
+		new[0]->fork_left = NULL;
 	new[i] = NULL;
 	(*settings)->philo = new;
 	return (0);
 }
-

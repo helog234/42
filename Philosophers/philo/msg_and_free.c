@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:18:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/09 10:10:25 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/10 15:22:53 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ void	print_msg(t_philosopher *philo, char *str, int id)
 	if (philo == NULL)
 		return ;
 	set = philo->settings;
-
 	pthread_mutex_lock(philo->write_lock);
 	if ((*set)->one_dead)
 	{
-		//printf("%lu %i %s\n", set_curr_time() - philo->time_start, id, str);
 		pthread_mutex_unlock(philo->write_lock);
 		pthread_mutex_destroy(philo->write_lock);
 	}
@@ -42,13 +40,8 @@ void	free_all(t_settings **settings, t_philosopher **philo)
 	int	i;
 
 	i = (*settings)->number_of_philosophers;
-	//printf("ICIIIIIIIIIIIIIIIIII\n");
 	if ((*settings)->end)
-	{
-		printf("la\n");
 		pthread_mutex_destroy(&(*settings)->write_lock);
-	}
-	//pthread_mutex_destroy(&(*settings)->write_lock);
 	pthread_mutex_destroy((*philo)->fork_right);
 	pthread_mutex_destroy(&(*settings)->dead_lock);
 	pthread_mutex_destroy(&(*settings)->meal_lock);

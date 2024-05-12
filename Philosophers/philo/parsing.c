@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:58:24 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/10 11:50:21 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/10 15:11:42 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	parsing(int argc, char **argv, t_settings **to_set, int i)
 	i++;
 	parsing(argc, argv, to_set, i);
 }
+
 int	init_dinner(int argc, char **argv, t_settings **to_init)
 {
 	(*to_init)->philo = NULL;
