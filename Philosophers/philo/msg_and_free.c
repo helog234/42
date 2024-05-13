@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:18:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/10 15:22:53 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/13 13:40:40 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	print_msg(t_philosopher *philo, char *str, int id)
 {
-	t_settings	**set;
+	t_settings	*set;
 
 	if (philo == NULL)
 		return ;
 	set = philo->settings;
 	pthread_mutex_lock(philo->write_lock);
-	if ((*set)->one_dead)
+	if (set->one_dead)
 	{
 		pthread_mutex_unlock(philo->write_lock);
 		pthread_mutex_destroy(philo->write_lock);
@@ -28,24 +28,25 @@ void	print_msg(t_philosopher *philo, char *str, int id)
 	else
 	{
 		if (philo && id >= 0)
-			printf("%lu %i %s\n", set_curr_time() - philo->time_start, id, str);
+			printf("%lu %i %s\n", set_curr_time() - \
+			philo->settings->time_start, id, str);
 		else
 			printf("%s\n", str);
 		pthread_mutex_unlock(philo->write_lock);
 	}
 }
 
-void	free_all(t_settings **settings, t_philosopher **philo)
+void	free_all(t_settings *settings, t_philosopher **philo)
 {
 	int	i;
 
-	i = (*settings)->number_of_philosophers;
-	if ((*settings)->end)
-		pthread_mutex_destroy(&(*settings)->write_lock);
+	i = settings->number_of_philosophers;
+	if (settings->end)
+		pthread_mutex_destroy(&settings->write_lock);
 	pthread_mutex_destroy((*philo)->fork_right);
-	pthread_mutex_destroy(&(*settings)->dead_lock);
-	pthread_mutex_destroy(&(*settings)->meal_lock);
-	while (philo && philo[i] && i >= 0)
+	pthread_mutex_destroy(&settings->dead_lock);
+	pthread_mutex_destroy(&settings->meal_lock);
+	while (i >= 0)
 	{
 		free((*philo)->fork_right);
 		free(philo[i]->thread);
@@ -56,19 +57,17 @@ void	free_all(t_settings **settings, t_philosopher **philo)
 	}
 	free((*philo));
 	philo = NULL;
-	free((*settings));
+	free(settings);
 	settings = NULL;
 }
 
-void	error_msg(t_settings **settings, int flag)
+void	error_msg(t_settings *settings, int flag)
 {
-	if (flag == 0 && !(*settings))
-	{
+	if (flag == 0 && !settings)
 		printf("error malloc\n");
-	}
-	else if (flag == 0 && !(*settings)->philo)
+	else if (flag == 0 && !settings->philo)
 	{
-		free((*settings));
+		free(settings);
 		settings = NULL;
 		printf("error input, please try again\n");
 		exit(EXIT_FAILURE);
@@ -76,12 +75,12 @@ void	error_msg(t_settings **settings, int flag)
 	else if (flag == 0)
 		printf("error malloc\n");
 	else if (flag == 1)
-		print_msg(*(*settings)->philo, "error creating mutex", -1);
+		print_msg(*settings->philo, "error creating mutex", -1);
 	else if (flag == 2)
-		print_msg(*(*settings)->philo, "error creating mutex", -1);
+		print_msg(*settings->philo, "error creating mutex", -1);
 	else if (flag == 3)
-		print_msg(*(*settings)->philo, "error joining mutex", -1);
+		print_msg(*settings->philo, "error joining mutex", -1);
 	if (flag >= 0)
-		free_all(settings, (*settings)->philo);
+		free_all(settings, settings->philo);
 	exit(EXIT_FAILURE);
 }

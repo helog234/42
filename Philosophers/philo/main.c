@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:45:02 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/10 11:50:39 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/13 13:58:32 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ int	main(int argc, char **argv)
 	int				i;
 
 	new_set = malloc(sizeof(t_settings));
-	if (argc < 5 || !new_set || init_dinner(argc, argv, &new_set) == 1)
-		return (1);
+	if (argc < 5 || !new_set || init_dinner(argc, argv, new_set) == 1)
+		return (free(new_set), 1);
 	create_threads(new_set);
 	philo = new_set->philo;
 	while (1)
 	{
-		if (check_for_deads(new_set) == 1 || ctr_limit_meal(&new_set) == 1)
+		if (check_for_deads(new_set) == 1 || ctr_limit_meal(new_set) == 1)
 		{
 			i = 0;
 			while (i < new_set->number_of_philosophers && philo[i])
 			{
 				if (pthread_join(philo[i]->thread, NULL) != 0)
-					error_msg(&new_set, 2);
+					error_msg(new_set, 2);
 				i++;
 			}
 			break ;

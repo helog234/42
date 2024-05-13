@@ -6,13 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:34:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 09:02:59 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/13 13:42:03 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_philosopher	*add_philosopher(t_settings **settings, \
+t_philosopher	*add_philosopher(t_settings *settings, \
 int i, pthread_mutex_t *fork)
 {
 	t_philosopher	*new;
@@ -22,19 +22,13 @@ int i, pthread_mutex_t *fork)
 		return (NULL);
 	new->id = i + 1;
 	new->nbr_eaten_meal = 0;
-	new->time_to_die = (*settings)->time_to_die;
-	new->time_to_eat = (*settings)->time_to_eat;
-	new->time_to_sleep = (*settings)->time_to_sleep;
 	new->last_meal_time = set_curr_time();
-	new->time_start = set_curr_time();
-	new->nbr_philo = (*settings)->number_of_philosophers;
 	new->has_died = false;
 	new->is_eating = false;
-	new->can_eat = true;
 	new->fork_right = &fork[i];
-	new->dead_lock = &(*settings)->dead_lock;
-	new->meal_lock = &(*settings)->meal_lock;
-	new->write_lock = &(*settings)->write_lock;
+	new->dead_lock = &settings->dead_lock;
+	new->meal_lock = &settings->meal_lock;
+	new->write_lock = &settings->write_lock;
 	new->settings = settings;
 	if (i > 0)
 		new->fork_left = &fork[i - 1];
@@ -58,7 +52,7 @@ int	create_philosopher(t_settings **settings)
 	while (i < (*settings)->number_of_philosophers)
 	{
 		pthread_mutex_init(&fork[i], NULL);
-		new[i] = add_philosopher(settings, i, fork);
+		new[i] = add_philosopher(*settings, i, fork);
 		if (!new[i])
 			return (1);
 		i++;

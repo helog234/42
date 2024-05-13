@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:37:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/10 15:24:11 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/13 13:53:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,10 @@ typedef struct s_philosopher
 {
 	int				id;
 	int				nbr_eaten_meal;
-	size_t			time_start;	
-	size_t			time_to_die;
-	size_t			time_to_eat;
-	size_t			time_to_sleep;
 	size_t			last_meal_time;
-	int				nbr_philo;
-	bool			can_eat;
 	bool			is_eating;
 	bool			has_died;
-	t_settings		**settings;
+	t_settings		*settings;
 	pthread_mutex_t	*fork_right;
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*dead_lock;
@@ -60,40 +54,42 @@ typedef struct s_philosopher
 }				t_philosopher;
 
 // parsing.c
-void	parsing(int argc, char **argv, t_settings **to_set, int i);
-bool	ft_isdigit(char c);
-int		init_dinner(int argc, char **argv, t_settings **to_init);
+bool			ft_isdigit(char c);
+int				ft_atoi(char *str);
+void			parsing(int argc, char **argv, t_settings *to_set, int i);
+int				init_dinner(int argc, char **argv, t_settings *to_init);
 
 // set_table.c
-int		create_philosopher(t_settings **settings);
+t_philosopher	*add_philosopher(t_settings *settings, \
+				int i, pthread_mutex_t *fork);
+int				create_philosopher(t_settings **settings);
 
 // process.c
-bool	life_check(t_philosopher *philo);
-void	*routine(void *arg);
-void	create_threads(t_settings *settings);
+bool			life_check(t_philosopher *philo);
+void			*routine(void *arg);
+void			create_threads(t_settings *settings);
 
 //eat_think_sleep.c
-void	think(t_philosopher *philo);
-void	rest(t_philosopher *philo);
-void	eat(t_philosopher *philo);
+void			think(t_philosopher *philo);
+void			rest(t_philosopher *philo);
+void			get_forks(t_philosopher *philo);
+void			free_forks(t_philosopher *philo);
+void			eat(t_philosopher *philo);
 
 // dinner.c
-void	*garcon(void *arg);
-void	end_dinner(t_settings **set, t_philosopher **philo);
-int		check_for_deads(t_settings *settings);
-int		ctr_limit_meal(t_settings **settings);
-void	*ctr_loops(void *arg);
+int				check_for_deads(t_settings *settings);
+int				ctr_limit_meal(t_settings *settings);
+void			end_dinner(t_settings **set, t_philosopher **philo);
 
 // msg_and_free.c
-void	print_msg(t_philosopher *philo, char *str, int id);
-void	free_all(t_settings **settings, t_philosopher **philo);
-void	error_msg(t_settings **settings, int flag);
-void	destroy_mutex(t_settings **settings, t_philosopher **philo);
+void			print_msg(t_philosopher *philo, char *str, int id);
+void			free_all(t_settings *settings, t_philosopher **philo);
+void			error_msg(t_settings *settings, int flag);
 
 // utils.c
-int		ft_strlen(const char *s);
-int		ft_strncmp(const char *str1, const char *str2, size_t n);
-int		my_usleep(size_t mscd);
-size_t	set_curr_time(void);
+int				ft_strlen(const char *s);
+int				ft_strncmp(const char *str1, const char *str2, size_t n);
+int				my_usleep(size_t mscd);
+size_t			set_curr_time(void);
 
 #endif

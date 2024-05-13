@@ -6,14 +6,16 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 16:37:56 by hgandar           #+#    #+#              #
-#    Updated: 2024/05/07 21:20:12 by hgandar          ###   ########.fr        #
+#    Updated: 2024/05/13 13:08:34 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3
 INC = ./philo.h
+#leaks -atExit --
+#-g3 -fsanitize=address
 
 CFILES = parsing.c \
 		set_table.c \
