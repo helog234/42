@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:18:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 13:40:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/13 15:48:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	print_msg(t_philosopher *philo, char *str, int id)
 	if (philo == NULL)
 		return ;
 	set = philo->settings;
-	pthread_mutex_lock(philo->write_lock);
+	pthread_mutex_lock(&philo->settings->write_lock);
 	if (set->one_dead)
 	{
-		pthread_mutex_unlock(philo->write_lock);
-		pthread_mutex_destroy(philo->write_lock);
+		pthread_mutex_unlock(&philo->settings->write_lock);
+		pthread_mutex_destroy(&philo->settings->write_lock);
 	}
 	else
 	{
@@ -32,7 +32,7 @@ void	print_msg(t_philosopher *philo, char *str, int id)
 			philo->settings->time_start, id, str);
 		else
 			printf("%s\n", str);
-		pthread_mutex_unlock(philo->write_lock);
+		pthread_mutex_unlock(&philo->settings->write_lock);
 	}
 }
 

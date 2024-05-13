@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:10:10 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 13:51:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/13 15:46:40 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	get_forks(t_philosopher *philo)
 		{
 			pthread_mutex_lock(philo->fork_left);
 			print_msg(philo, " has taken a fork", philo->id);
-			pthread_mutex_lock(philo->meal_lock);
+			pthread_mutex_lock(&philo->settings->meal_lock);
 			philo->is_eating = true;
-			pthread_mutex_unlock(philo->meal_lock);
+			pthread_mutex_unlock(&philo->settings->meal_lock);
 		}
 	}
 }
@@ -59,8 +59,8 @@ void	eat(t_philosopher *philo)
 		philo->nbr_eaten_meal++;
 		philo->last_meal_time = set_curr_time();
 		my_usleep(philo->settings->time_to_eat);
-		pthread_mutex_lock(philo->meal_lock);
+		pthread_mutex_lock(&philo->settings->meal_lock);
 		philo->is_eating = false;
-		pthread_mutex_unlock(philo->meal_lock);
+		pthread_mutex_unlock(&philo->settings->meal_lock);
 	}
 }

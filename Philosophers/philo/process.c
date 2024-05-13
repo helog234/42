@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:22:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 13:52:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/13 15:45:35 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 bool	life_check(t_philosopher *philo)
 {
-	pthread_mutex_lock(philo->dead_lock);
+	pthread_mutex_lock(&philo->settings->dead_lock);
 	if (philo->has_died == true)
 	{
-		pthread_mutex_unlock(philo->dead_lock);
+		pthread_mutex_unlock(&philo->settings->dead_lock);
 		return (false);
 	}
-	pthread_mutex_unlock(philo->dead_lock);
+	pthread_mutex_unlock(&philo->settings->dead_lock);
 	return (true);
 }
 

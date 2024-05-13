@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:34:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 13:42:03 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/13 15:50:16 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ int i, pthread_mutex_t *fork)
 	new->has_died = false;
 	new->is_eating = false;
 	new->fork_right = &fork[i];
-	new->dead_lock = &settings->dead_lock;
-	new->meal_lock = &settings->meal_lock;
-	new->write_lock = &settings->write_lock;
 	new->settings = settings;
 	if (i > 0)
 		new->fork_left = &fork[i - 1];

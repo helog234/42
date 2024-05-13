@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:37:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 13:53:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/13 15:50:25 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,6 @@ typedef struct s_philosopher
 	t_settings		*settings;
 	pthread_mutex_t	*fork_right;
 	pthread_mutex_t	*fork_left;
-	pthread_mutex_t	*dead_lock;
-	pthread_mutex_t	*meal_lock;
-	pthread_mutex_t	*write_lock;
 	pthread_t		thread;
 }				t_philosopher;
 
