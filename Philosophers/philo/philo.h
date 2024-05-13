@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:37:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 15:50:25 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/13 15:58:17 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_settings
 	bool					one_dead;
 	bool					end;
 	struct s_philosopher	**philo;
-	pthread_t				thread;
 }				t_settings;
 
 typedef struct s_philosopher
