@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/18 10:37:17 by hgandar           #+#    #+#              #
-#    Updated: 2024/04/26 15:00:57 by hgandar          ###   ########.fr        #
+#    Updated: 2024/05/14 11:08:19 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,16 +78,16 @@ OBJS_DIR = ./objs
 
 OFILES = $(CFILES:%.c=$(OBJS_DIR)/%.o)
 
-all: $(NAME)
+all: obdir $(NAME)
 
 $(NAME): $(OFILES)
 	ar rcs $@ $^
 
-$(OBJS_DIR)/%.o: %.c | obdir
+$(OBJS_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER_FILES)
 
 obdir:
-	mkdir -p $(OBJS_DIR)
+	@test -d $(OBJS_DIR) || mkdir -p $(OBJS_DIR)
 
 clean:
 	@rm -rf $(OBJS_DIR)

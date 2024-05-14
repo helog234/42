@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/14 09:13:08 by hgandar           #+#    #+#              #
-#    Updated: 2024/05/14 10:31:07 by hgandar          ###   ########.fr        #
+#    Updated: 2024/05/14 11:23:57 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INC = -I. -I ./libft
 CFILES = $(addsuffix .c, main)
 OFILES = $(CFILES:%.c=$(OBJS_DIR)/%.o)
 
-all: $(NAME)
+all: obdir $(NAME)
 
 $(NAME): $(OFILES) | libftk 
 	$(CC) $(CFLAGS) -L $(LIBFT_DIR) -lft -o $@ $^
@@ -31,11 +31,11 @@ $(NAME): $(OFILES) | libftk
 libftk:
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(OBJS_DIR)/%.o: %.c | obdir
+$(OBJS_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 obdir:
-	mkdir -p $(OBJS_DIR)
+	@test -d $(OBJS_DIR) || mkdir -p $(OBJS_DIR)
 
 clean:
 	rm -rf $(OBJS_DIR)

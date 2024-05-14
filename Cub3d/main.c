@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:27:28 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/14 10:27:53 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/14 10:46:58 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ int	main(int argc, char **argv)
 	(void)argv;
 	printf("coucou\n");
 	return (0);
+
 }
