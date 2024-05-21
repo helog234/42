@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 11:18:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 15:48:52 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/21 11:29:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,19 @@ void	free_all(t_settings *settings, t_philosopher **philo)
 {
 	int	i;
 
-	i = settings->number_of_philosophers;
+	i = settings->number_of_philosophers -1;
 	if (settings->end)
 		pthread_mutex_destroy(&settings->write_lock);
-	pthread_mutex_destroy((*philo)->fork_right);
 	pthread_mutex_destroy(&settings->dead_lock);
 	pthread_mutex_destroy(&settings->meal_lock);
 	while (i >= 0)
 	{
-		free((*philo)->fork_right);
-		free(philo[i]->thread);
-		philo[i]->thread = NULL;
+		pthread_mutex_destroy(&philo[i]->fork_right);
 		free(philo[i]);
 		philo[i] = NULL;
 		i--;
 	}
-	free((*philo));
+	free(philo);
 	philo = NULL;
 	free(settings);
 	settings = NULL;

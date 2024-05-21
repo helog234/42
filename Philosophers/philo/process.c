@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:22:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 15:45:35 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/21 11:29:19 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 bool	life_check(t_philosopher *philo)
 {
 	pthread_mutex_lock(&philo->settings->dead_lock);
-	if (philo->has_died == true)
+	pthread_mutex_lock(&philo->settings->meal_lock);
+	if (philo->has_died == true || (set_curr_time() - philo->last_meal_time >= \
+		philo->settings->time_to_die && philo->is_eating == false))
 	{
 		pthread_mutex_unlock(&philo->settings->dead_lock);
+		pthread_mutex_unlock(&philo->settings->meal_lock);
 		return (false);
 	}
 	pthread_mutex_unlock(&philo->settings->dead_lock);
+	pthread_mutex_unlock(&philo->settings->meal_lock);
 	return (true);
 }
 

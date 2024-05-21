@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:45:02 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 13:58:32 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/21 11:39:55 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 
 	new_set = malloc(sizeof(t_settings));
 	if (argc < 5 || !new_set || init_dinner(argc, argv, new_set) == 1)
-		return (free(new_set), 1);
+		error_msg(new_set, 0);
 	create_threads(new_set);
 	philo = new_set->philo;
 	while (1)

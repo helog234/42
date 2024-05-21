@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:37:45 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 15:58:17 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/21 10:17:07 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_philosopher
 	bool			is_eating;
 	bool			has_died;
 	t_settings		*settings;
-	pthread_mutex_t	*fork_right;
+	pthread_mutex_t	fork_right;
 	pthread_mutex_t	*fork_left;
 	pthread_t		thread;
 }				t_philosopher;
@@ -56,8 +56,7 @@ void			parsing(int argc, char **argv, t_settings *to_set, int i);
 int				init_dinner(int argc, char **argv, t_settings *to_init);
 
 // set_table.c
-t_philosopher	*add_philosopher(t_settings *settings, \
-				int i, pthread_mutex_t *fork);
+t_philosopher	*add_philosopher(t_settings *settings, int i);
 int				create_philosopher(t_settings **settings);
 
 // process.c

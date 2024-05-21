@@ -6,14 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 09:34:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/05/13 15:50:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/05/21 10:54:40 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 t_philosopher	*add_philosopher(t_settings *settings, \
-int i, pthread_mutex_t *fork)
+int i)
 {
 	t_philosopher	*new;
 
@@ -25,10 +25,9 @@ int i, pthread_mutex_t *fork)
 	new->last_meal_time = set_curr_time();
 	new->has_died = false;
 	new->is_eating = false;
-	new->fork_right = &fork[i];
+	pthread_mutex_init(&new->fork_right, NULL);
+	new->fork_left = NULL;
 	new->settings = settings;
-	if (i > 0)
-		new->fork_left = &fork[i - 1];
 	new->thread = (pthread_t){0};
 	return (new);
 }
@@ -37,27 +36,23 @@ int	create_philosopher(t_settings **settings)
 {
 	int				i;
 	t_philosopher	**new;
-	pthread_mutex_t	*fork;
 
 	i = 0;
-	new = malloc(((*settings)->number_of_philosophers + 1) * \
+	new = malloc(((*settings)->number_of_philosophers) * \
 	sizeof(t_philosopher *));
-	fork = malloc(((*settings)->number_of_philosophers + 1) * \
-	sizeof(pthread_mutex_t));
-	if (!new || !fork)
+	if (!new)
 		return (1);
 	while (i < (*settings)->number_of_philosophers)
 	{
-		pthread_mutex_init(&fork[i], NULL);
-		new[i] = add_philosopher(*settings, i, fork);
+		new[i] = add_philosopher(*settings, i);
 		if (!new[i])
 			return (1);
+		if (i > 0)
+			new[i]->fork_left = &new[i - 1]->fork_right;
 		i++;
 	}
 	if ((*settings)->number_of_philosophers > 1)
-		new[0]->fork_left = &fork[(*settings)->number_of_philosophers];
-	else
-		new[0]->fork_left = NULL;
-	new[i] = NULL;
+		new[0]->fork_left = \
+		&new[(*settings)->number_of_philosophers - 1]->fork_right;
 	return ((*settings)->philo = new, 0);
 }
