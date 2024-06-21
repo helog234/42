@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/20 15:28:20 by hgandar           #+#    #+#              #
-#    Updated: 2024/06/21 16:22:05 by hgandar          ###   ########.fr        #
+#    Updated: 2024/06/21 20:36:22 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,18 +15,18 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 CPPFILES = tests.cpp Account.cpp
 INC = Account.hpp
-OCPPFILES = $(CPPFILES:.c=.o)
+OFILES = $(CPPFILES:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OCPPFILES)
+$(NAME): $(OFILES)
 	$(CC) $(CFLAGS) $^ -o $@
 
 %.o: %.c $(INC)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OCPPFILES)
+	rm -f $(OFILES)
 
 fclean: clean
 	rm -f $(NAME)
