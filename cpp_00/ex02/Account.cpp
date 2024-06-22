@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:33:28 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/21 20:32:47 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/06/22 11:30:26 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,10 @@ int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
-/* static std::vector<Account*> _accountsList; */
 
 Account::Account( int initial_deposit )
+: _accountIndex(_nbAccounts++), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
 {
-	_accountIndex = _nbAccounts++;
-	_amount = initial_deposit;
-	_nbDeposits = 0;
-	_nbWithdrawals	= 0;
 	_displayTimestamp();
 	std::cout << " index:";
 	std::cout << _accountIndex << ";";
@@ -34,7 +30,6 @@ Account::Account( int initial_deposit )
 	std::cout << _amount << ";";
 	this->_totalAmount += initial_deposit;
 	std::cout << "created" << std::endl;
-	 /* _accountsList.push_back(this); */
 }
 
 Account::Account( void ) 
@@ -76,7 +71,6 @@ int	Account::getNbWithdrawals( void )
 
 void	Account::displayAccountsInfos( void )
 {
-/* 	std::vector<Account> accounts; */
 	int	nbAccounts = getNbAccounts();
 	_displayTimestamp();
 	std::cout << " accounts:";
@@ -87,8 +81,6 @@ void	Account::displayAccountsInfos( void )
 	std::cout << getNbDeposits() << ";";
 	std::cout << "withdrawals:";
 	std::cout << getNbWithdrawals() << std::endl;
-	/* for (std::vector<Account*>::iterator it = _accountsList.begin(); it != _accountsList.end(); ++it)
-		 (*it)->displayStatus(); */
 	return ;
 }
 
