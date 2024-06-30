@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/20 15:28:20 by hgandar           #+#    #+#              #
-#    Updated: 2024/06/21 20:36:22 by hgandar          ###   ########.fr        #
+#    Updated: 2024/06/24 16:18:46 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ all: $(NAME)
 $(NAME): $(OFILES)
 	$(CC) $(CFLAGS) $^ -o $@
 
-%.o: %.c $(INC)
+%.o: %.cpp $(INC)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

@@ -5,16 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/18 13:57:41 by hgandar           #+#    #+#              #
-#    Updated: 2024/06/24 16:18:51 by hgandar          ###   ########.fr        #
+#    Created: 2024/06/24 11:36:59 by hgandar           #+#    #+#              #
+#    Updated: 2024/06/24 11:37:31 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = brain
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-CPPFILES = main.cpp phonebook.cpp contact.cpp
-INC = phonebook.hpp contact.hpp
+CPPFILES = main.cpp
 OFILES = $(CPPFILES:.cpp=.o)
 
 all: $(NAME)
@@ -22,7 +21,7 @@ all: $(NAME)
 $(NAME): $(OFILES)
 	$(CC) $(CFLAGS) $^ -o $@
 
-%.o: %.cpp $(INC)
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
