@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:38:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/30 14:23:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/01 11:07:05 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ public:
 	void guardGate();
 	void attack(const std::string& target);
 	void highFivesGuys(void);
+	void displayInfo(void);
+	
 	
 private:
+	std::string _Name;
 	
 };
-
 
 #endif

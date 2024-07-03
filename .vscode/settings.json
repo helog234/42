@@ -59,6 +59,7 @@
 		"algorithm": "cpp",
 		"iomanip": "cpp",
 		"fstream": "cpp",
-		"map": "cpp"
+		"map": "cpp",
+		"execution": "cpp"
 	}
 }

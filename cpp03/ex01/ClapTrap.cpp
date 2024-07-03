@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:08:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/28 17:09:31 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/01 10:55:13 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ ClapTrap::ClapTrap(std::string Name)
 :_Name(Name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(10)
 {
     std::cout << "ClapTrap default constructor called" << std::endl;
-    return ;
 }
 
 // Copy constructor
@@ -99,8 +98,8 @@ void ClapTrap::beRepaired(unsigned int amount)
 void ClapTrap::displayInfo(void)
 {
 	
-	std::cout << this->_Name << " has ";
-	std::cout << this->_HitPoints << " hit points left ";
-	std::cout << this->_EnergyPoints << " Energy points left ";
-	std::cout << this->_AttackDamage << " Attack damage left" << std::endl;
+	std::cout << _Name << " has ";
+	std::cout << _HitPoints << " hit points left ";
+	std::cout << _EnergyPoints << " Energy points left ";
+	std::cout << _AttackDamage << " Attack damage left" << std::endl;
 }
