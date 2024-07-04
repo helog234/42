@@ -6,13 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:58:07 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/27 13:56:55 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 13:43:37 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_H
-# define FIXED_H
+#ifndef FIXED_HPP
+# define FIXED_HPP
 # include <iostream>
+# include <cmath>
 # pragma once
 
 class Fixed
@@ -32,20 +33,24 @@ public:
 	void	setRawBits( int const raw );
 	float	toFloat( void ) const;
 	int 	toInt( void ) const;
+	
 	bool	operator>(const Fixed& t) const;
 	bool	operator<(const Fixed& t) const;
 	bool	operator>=(const Fixed& t) const;
 	bool	operator<=(const Fixed& t) const;
 	bool	operator==(const Fixed& t) const;
 	bool	operator!=(const Fixed& t) const;
+	
 	Fixed	operator+(const Fixed& t) const;
 	Fixed	operator-(const Fixed& t) const;
 	Fixed	operator*(const Fixed& t) const;
 	Fixed	operator/(const Fixed& t) const;
+	
 	Fixed&	operator++(void);
 	Fixed	operator++(int i);
 	Fixed&	operator--(void);
 	Fixed	operator--(int i);
+	
 	static			Fixed&	min(Fixed& a, Fixed& b);
 	static const	Fixed&	min(const Fixed& a, const Fixed& b);
 	static			Fixed&	max(Fixed& a, Fixed& b);

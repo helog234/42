@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 08:55:33 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/25 10:48:54 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 18:37:39 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,3 +63,11 @@ void Harl::complain( std::string level )
 	else
 		std::cout << "Type of complain not found" << std::endl;
 }
+
+//std::map permet d'associer des éléments entre eux (ici string et méthode)
+//l'iterateur (it) pointe vers l'élément passé en paramettre de find()
+// si il n'est pas égal à .end c'est qu'il a trouvé une correspondance
+// dans ce cas on lui demande d'appeler l'élément associé à cette recherche
+
+
+

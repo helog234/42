@@ -6,13 +6,13 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 12:44:49 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/25 08:52:24 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 16:49:39 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_H
-# define WEAPON_H
 #pragma once
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 #include <iostream>
 
 class Weapon

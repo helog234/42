@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:52:41 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 14:30:25 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 16:48:16 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,88 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-int main()
+//main du sujet
+/* int main()
 {
-const WrongAnimal* meta = new WrongAnimal();
-const Animal* j = new Dog();
-const WrongAnimal* i = new WrongCat();
-std::cout << j->getType() << " " << std::endl;
-std::cout << i->getType() << " " << std::endl;
-i->makeSound(); //will output the cat sound!
-j->makeSound();
-meta->makeSound();
-delete meta;
-delete j;
-delete i;
-return 0;
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+	return 0;
+} */
+
+//With wrongAnimal
+/* int main()
+{
+	const WrongAnimal* meta = new WrongAnimal();
+	const Animal* j = new Dog();
+	const WrongAnimal* i = new WrongCat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+	delete meta;
+	delete j;
+	delete i;
+	return 0;
+} */
+
+int main() 
+{
+	const Animal* meta = new Animal();
+	const Animal* dog = new Dog();
+	const Animal* cat = new Cat();
+
+	std::cout << dog->getType() << " " << std::endl;
+	std::cout << cat->getType() << " " << std::endl;
+	cat->makeSound();
+	dog->makeSound();
+	meta->makeSound();
+
+	delete meta;
+	delete dog;
+	delete cat;
+
+	// Test avec WrongAnimal et WrongCat
+	/* const WrongAnimal* wrongMeta = new WrongAnimal();
+	const WrongAnimal* wrongCat = new WrongCat();
+
+	std::cout << wrongCat->getType() << " " << std::endl;
+	wrongCat->makeSound();
+	wrongMeta->makeSound();
+
+	delete wrongMeta;
+	delete wrongCat; */
+
+	// constructeurs de copie et d'affectation
+	/* Dog originalDog;
+	Dog copyDog = originalDog; 
+	Dog assignedDog;
+	assignedDog = originalDog;
+
+	originalDog.makeSound();
+	copyDog.makeSound();
+	assignedDog.makeSound(); */
+
+	// Automatisme
+	/* Animal* animals[4];
+	animals[0] = new Dog();
+	animals[1] = new Cat();
+	animals[2] = new Dog();
+	animals[3] = new Cat();
+
+	for (int i = 0; i < 4; ++i) {
+		animals[i]->makeSound();
+	}
+
+	for (int i = 0; i < 4; ++i) {
+		delete animals[i];
+	} */
+	
+	return 0;
 }

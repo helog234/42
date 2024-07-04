@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 10:35:22 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/25 10:55:38 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 18:20:49 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 		for (int i = 1; i < argc; i++)
 		{
 			str = argv[i];
+			std::transform(str.begin(), str.end(), str.begin(), ::toupper);
 			instance.complain(str);
 		}
 	}

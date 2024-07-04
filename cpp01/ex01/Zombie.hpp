@@ -6,22 +6,22 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:58:22 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/24 10:27:25 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 15:59:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 class Zombie
 {	
 public:
-	Zombie(std::string name);
 	Zombie();
 	~Zombie();
 	
-	void announce( void );
+	void setName(std::string name);
+	void announce( void ) const;
 	
 private:
 	std::string	_name;

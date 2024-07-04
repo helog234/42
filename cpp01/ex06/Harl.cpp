@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:02:57 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/25 14:26:42 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 18:47:03 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void Harl::debug( void )
 	std::cout << "[ DEBUG ]" << std::endl;
 	std::cout << "I love having extra bacon for my ";
 	std::cout << "7XL-double-cheese-triple-pickle-specialketchup burger." << std::endl;
-	std::cout<< " I really do!" << std::endl << std::endl;
+	std::cout<< "I really do!" << std::endl << std::endl;
 }
 
 void Harl::info( void )
@@ -60,19 +60,25 @@ void Harl::error( void )
 void Harl::complain( std::string level )
 {
 	std::map<std::string, Entry>::iterator it = convert.find(level);
-	switch (it->second)
+	if (it != convert.end())
 	{
-		case D:
-			debug();
-		case I:
-			info();
-		case W:
-			warning();
-		case E:
-			error();
-			break;
-		default:
-			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-			break;
+		switch (it->second)
+		{
+			case D:
+				debug();
+			case I:
+				info();
+			case W:
+				warning();
+			case E:
+				error();
+				break;
+			default:
+				std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+				break;
+		}
 	}
+	else
+		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+		
 }

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 18:05:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/03 13:04:05 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 17:08:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@ Cure::Cure()
 	//std::cout << "Cure default constructor called" << std::endl;
 }
 
-/* Cure::Cure(std::string const & type)
-: _type(type)
-{
-	std::cout << "Cure default constructor called" << std::endl;
-} */
 
 Cure::Cure(const Cure &other)
 : AMateria("cure")

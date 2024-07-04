@@ -6,13 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:08:40 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/21 13:22:38 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 15:31:38 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "phonebook.hpp"
 #include <stdlib.h>
+#include <iomanip>
 
 Phonebook::Phonebook(void) : _index(1) {}
 
@@ -22,7 +23,7 @@ void Phonebook::addContact()
 {
 	if (this->_index > 7)
 	{
-		std::cout << "\031[1;31mThis action will overwrite the data from the contact ";
+		std::cout << "\033[38;5;208mThis action will overwrite the data from the contact ";
 		std::cout << _Contacts[0].getFirstName() << " " << _Contacts[0].getLastName() << "\033[0m" << std::endl;
 		std::string str = "";
 		while (true)
@@ -52,25 +53,17 @@ void Phonebook::addContact()
 
 void Phonebook::printList(const std::string& str) const
 {
-	int len = str.length();
 	std::cout << "|";
-	if (len > 10)
-	{
-		std::cout.width(9);
-		std::cout << str.substr(0, 9);
-		std::cout << ".";
-	}
+	if (str.length() > 10)
+		std::cout << str.substr(0, 9) << ".";
 	else
-	{
-		std::cout.width(10);
-		std::cout << str.substr(0, len);
-	}
+		std::cout << std::left << std::setw(10) << str;
 }
 
 void Phonebook::printContact(int index) const
 {
-	if (index <= 0 || index > _index)
-		std::cout << "\033[1;31mWrong index. No entry for this index\033[0m" << std::endl;
+	if (_Contacts[index].getFirstName() == "")
+		std::cout << "\033[1;31mWrong index. No entry for this index.\033[0m" << std::endl;
 	else
 	{
 		std::cout << std::endl;
@@ -89,8 +82,7 @@ void Phonebook::searchContact() const
 {
 	for (int i = 1; i < 8; i++)
 	{
-		std::cout.width(10);
-		std::cout << i;
+		std::cout << std::right << std::setw(9) << i;
 		printList(_Contacts[i].getFirstName());
 		printList(_Contacts[i].getLastName());
 		printList(_Contacts[i].getNickname());

@@ -6,11 +6,11 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/28 12:01:31 by hgandar           #+#    #+#              #
-#    Updated: 2024/06/28 15:30:36 by hgandar          ###   ########.fr        #
+#    Updated: 2024/07/04 15:35:50 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = DiamondTrap
+NAME = FragTrap
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 CPPFILES = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp

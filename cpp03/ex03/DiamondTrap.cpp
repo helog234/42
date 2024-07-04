@@ -6,22 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:39:02 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 12:49:46 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 16:08:44 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
-
-// Default constructor
-DiamondTrap::DiamondTrap(void)
-: ClapTrap("Unamed"),  ScavTrap("Unamed"), FragTrap("Unamed"), _Name("Unamed")
-{
-	_HitPoints = FragTrap::_HitPoints;
-	_EnergyPoints = ScavTrap::_EnergyPoints;
-	_AttackDamage = FragTrap::_AttackDamage;
-    std::cout << " DiamondTrap default constructor called" << std::endl;
-    return ;
-}
 
 DiamondTrap::DiamondTrap(std::string Name)
 : ClapTrap(Name + "_clap_name"), ScavTrap(Name), FragTrap(Name), _Name(Name)
@@ -63,7 +52,6 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other)
 // Destructor
 DiamondTrap::~DiamondTrap(void)
 {
-	//~ClapTrap();
     std::cout << "DiamondTrap destructor called" << std::endl;
     return ;
 }
@@ -82,7 +70,7 @@ void DiamondTrap::guardGate()
 
 void DiamondTrap::attack(const std::string& target)
 {
-	ClapTrap::attack(target);
+	ScavTrap::attack(target);
 }
 
 void DiamondTrap::highFivesGuys(void)

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:42:36 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/24 09:49:03 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 15:48:17 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ int	main(void)
 	Zombie *add = newZombie("Rotten Ralph");
 	add->announce();
 	randomChump("Gory Gabe");
-	delete(add);
+	add->announce();
+	add->announce();
+	delete add;
 }

@@ -6,12 +6,12 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:01:43 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/25 14:11:52 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 18:32:09 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_H
-# define HARL_H
+#ifndef HARL_HPP
+# define HARL_HPP
 # include <iostream>
 # include <map>
 

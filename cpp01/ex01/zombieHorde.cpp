@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:59:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/24 11:17:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 15:58:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ Zombie* zombieHorde( int N, std::string name )
 		return (nullptr);
 	Zombie *instance = new Zombie[N];
 	for (int i = 0; i < N; i++)
-		new(&instance[i]) Zombie(name);
+		instance[i].setName(name);
 	return (instance);
 }

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:29:36 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/28 14:41:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 15:13:52 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,20 @@
 int	main(void)
 {
 	ClapTrap Albert = ClapTrap("Albert");
-	ClapTrap Josef = ClapTrap("Josef");
 	ScavTrap Alice = ScavTrap("Alice");
 	
-	Albert.attack("Josef");
-	Josef.takeDamage(2);
-	Alice.attack("Albert");
-	Albert.takeDamage(3);
-	Josef.beRepaired(1);
-	std::cout << "*****" << std::endl;
-	Albert.displayInfo();
-	Josef.displayInfo();
-	Alice.displayInfo();
-	std::cout << "*****" << std::endl;
-	Josef.attack("Albert");
-	Alice.attack("Albert");
-	Alice.attack("Josef");
-	Albert.takeDamage(4);
-	Josef.takeDamage(8);
-	Josef.attack("Alice");
-	Alice.takeDamage(3);
-	std::cout << "*****" << std::endl;
-	Albert.displayInfo();
-	Josef.displayInfo();
-	Alice.displayInfo();
-	std::cout << "*****" << std::endl;
+	for (int i = 0; i < 3; ++i)
+	{
+		Alice.attack("Albert");
+		Albert.takeDamage(2);
 	}
+	Alice.beRepaired(4);
+	
+	for (int i = 0; i < 10; ++i)
+    {
+		Albert.attack("Alice");
+		Alice.takeDamage(2);
+	}
+    Albert.beRepaired(5);
+	Alice.beRepaired(5);
+}

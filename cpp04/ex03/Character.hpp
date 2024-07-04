@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 08:47:26 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/03 08:32:50 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 17:35:12 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,14 @@ class Character: public ICharacter
 	private:
 		std::string _name;
 		AMateria *_inventory[4];
-		AMateria *_used[];//mettre en vector pour ajuster taille ?
+		struct MateriaNode
+		{
+			AMateria* materia;
+			MateriaNode* next;
+		};
+		MateriaNode* _unequipped;
+		void addUnequipped(AMateria* m);
+		void clearUnequipped();
 };
 
 #endif

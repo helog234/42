@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:20:31 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 14:21:05 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 16:37:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@
 
 class WrongAnimal
 {
-public:
-	WrongAnimal(void);
-	WrongAnimal(std::string type);
-	WrongAnimal(const WrongAnimal& other);
-	WrongAnimal &operator=(const WrongAnimal& other);
-	~WrongAnimal();
-	void makeSound() const;
-	std::string getType() const;
+	public:
+		WrongAnimal(void);
+		WrongAnimal(std::string type);
+		WrongAnimal(const WrongAnimal& other);
+		WrongAnimal &operator=(const WrongAnimal& other);
+		virtual ~WrongAnimal();
+		void makeSound() const;
+		std::string getType() const;
 
-protected:
-	std::string _type;
+	protected:
+		std::string _type;
 };
-
 
 #endif

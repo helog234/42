@@ -6,12 +6,12 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:05:59 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/25 17:26:08 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 09:14:16 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_H
-# define FIXED_H
+#ifndef FIXED_HPP
+# define FIXED_HPP
 # include <iostream>
 
 class Fixed

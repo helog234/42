@@ -6,13 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:21:26 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 14:38:49 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 16:41:43 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal()
+: _type("undefined")
 {
 	std::cout << "WrongAnimal default constructor called" << std::endl;
 }
@@ -20,11 +21,11 @@ WrongAnimal::WrongAnimal()
 WrongAnimal::WrongAnimal(std::string type)
 : _type(type)
 {
-	std::cout << "WrongAnimal default constructor called with type" << std::endl;
+	std::cout << "WrongAnimal default constructor called with type " << _type << std::endl;
 }
 WrongAnimal::WrongAnimal(const WrongAnimal& other)
+: _type(other._type)
 {
-	_type = other._type;
 	std::cout << "WrongAnimal copy constructor called" << std::endl;
 }
 
@@ -32,8 +33,8 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal& other)
 {
 	if (this != &other)
 		_type = other._type;
-	return (*this);
 	std::cout << "WrongAnimal assignment operator called" << std::endl;
+	return (*this);
 }
 
 WrongAnimal::~WrongAnimal()

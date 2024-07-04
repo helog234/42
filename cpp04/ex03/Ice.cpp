@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 18:02:05 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/03 13:03:47 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 17:09:47 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@ Ice::Ice()
 {
 	//std::cout << "Ice default constructor called" << std::endl;
 }
-
-/* Ice::Ice(std::string const & type)
-: _type(type)
-{
-	std::cout << "Ice default constructor called" << std::endl;
-
-} */
 
 Ice::Ice(const Ice &other)
 : AMateria("ice")
@@ -48,7 +41,3 @@ Ice* Ice::clone() const
 	return (new Ice(*this));
 }
 
-/* void Ice::use(ICharacter& target)
-{
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-} */

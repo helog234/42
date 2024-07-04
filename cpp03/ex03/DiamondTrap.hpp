@@ -6,10 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:38:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 11:07:05 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 15:43:23 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #ifndef DIAMONDTRAP_HPP
 # define DIAMONDTRAP_HPP
 # include "ScavTrap.hpp"

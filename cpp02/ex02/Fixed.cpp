@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:58:28 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/27 13:44:49 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 13:32:58 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ Fixed::Fixed(const int i)
 	//std::cout << "Int constructor called" << std::endl;
 }
 
-// Shift the bit to left (1 is 0000 0001) so it becomes
+// Shift the bit to left (dond mutiplier par 2^ int2) (1 is 0000 0001) so it becomes
 // 0000 0001 0000 0000 (256 in decimal)
 // multiply the float by it (256) which will still give us a float
 // then we need to round it so it becomes an int
 Fixed::Fixed(const float f)
+: _int1(static_cast<int>(roundf(f * (1 << _int2))))
 {
 	//std::cout << "Float constructor called" << std::endl;
-	this->_int1 = roundf(f * (1 << 8));
 }
 
 Fixed::Fixed(const Fixed &t)
+: _int1(t.getRawBits())
 {
 	//std::cout << "Copy constructor called" << std::endl;
-	_int1 = t.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed& t)
@@ -71,9 +71,8 @@ float Fixed::toFloat( void ) const
 
 int Fixed::toInt( void ) const
 {
-	return (static_cast<int>(this->_int1) >> this->_int2);
+	return this->_int1 >> _int2;
 }
-
 
 // --- opérateurs de comparaison
 bool	Fixed::operator>(const Fixed& t) const
@@ -116,25 +115,25 @@ bool	Fixed::operator!=(const Fixed& t) const
 Fixed	Fixed::operator+(const Fixed& t) const
 {
 	//std::cout << "+ called" << std::endl;
-	return (this->toFloat() + t.toFloat());
+	return (Fixed(this->toFloat() + t.toFloat()));
 }
 
 Fixed	Fixed::operator-(const Fixed& t) const
 {
 	//std::cout << "- called" << std::endl;
-	return (this->toFloat() - t.toFloat());
+	return (Fixed(this->toFloat() - t.toFloat()));
 }
 
 Fixed	Fixed::operator*(const Fixed& t) const
 {
 	//std::cout << "* called" << std::endl;
-	return (this->toFloat() * t.toFloat());
+	return (Fixed(this->toFloat() * t.toFloat()));
 }
 
 Fixed	Fixed::operator/(const Fixed& t) const
 {
 	//std::cout << "/ called" << std::endl;
-	return (this->toFloat() / t.toFloat());
+	return (Fixed(this->toFloat() / t.toFloat()));
 }
 
 // opérateurs d’incrémentation et de décrémentation
@@ -146,8 +145,7 @@ Fixed&	Fixed::operator++(void)
 	return (*this);
 }
 
-// The int parameter is a dummy parameter
-// used to differentiate between 
+// The int is just used to differentiate between 
 // prefix and postfix versions of the operators
 Fixed	Fixed::operator++(int i)
 {
@@ -165,8 +163,7 @@ Fixed&	Fixed::operator--(void)
 	return (*this);
 }
 
-// The int parameter is a dummy parameter
-// used to differentiate between 
+// The int is just used to differentiate between 
 // prefix and postfix versions of the operators
 Fixed	Fixed::operator--(int i)
 {

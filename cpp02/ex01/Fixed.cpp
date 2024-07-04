@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:39:39 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/27 10:53:44 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 10:47:50 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ Fixed::Fixed(const int i)
 	std::cout << "Int constructor called" << std::endl;
 }
 
-// Shift the bit to left (1 is 0000 0001) so it becomes
+// Shift the bit to left (dond mutiplier par 2^ int2) (1 is 0000 0001) so it becomes
 // 0000 0001 0000 0000 (256 in decimal)
 // multiply the float by it (256) which will still give us a float
 // then we need to round it so it becomes an int
 Fixed::Fixed(const float f)
+: _int1(static_cast<int>(roundf(f * (1 << _int2))))
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_int1 = roundf(f * (1 << 8));
 }
 
 Fixed::Fixed(const Fixed &t)
+: _int1(t.getRawBits())
 {
 	std::cout << "Copy constructor called" << std::endl;
-	_int1 = t.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed& t)
@@ -71,7 +71,7 @@ float Fixed::toFloat( void ) const
 
 int Fixed::toInt( void ) const
 {
-	return (static_cast<int>(this->_int1) >> this->_int2);
+	return this->_int1 >> _int2;
 }
 
 // allows to use cout with a fixed class parameter

@@ -6,12 +6,12 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:30:11 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/20 13:48:10 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 15:34:11 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-# define CONTACT_H
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 # include <iostream>
 # include <string>
 

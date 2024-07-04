@@ -6,17 +6,11 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:47:05 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/03 12:57:39 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 17:59:11 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
-
-/* AMateria::AMateria()
-: _type("hola")
-{
-	std::cout << "AMateria default constructor called" << std::endl;
-} */
 
 AMateria::AMateria(std::string const & type)
 : _type(type)
@@ -46,12 +40,6 @@ AMateria::~AMateria()
 std::string const & AMateria::getType() const
 {
 	return (_type);
-}
-
-AMateria* AMateria::clone() const
-{
-	return ((AMateria*)this);
-	//return (new this->AMateria::AMateria(getType()));
 }
 
 void AMateria::use(ICharacter& target)

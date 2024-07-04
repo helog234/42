@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:24:03 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 14:26:24 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 16:34:13 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ WrongCat::WrongCat()
 	std::cout << "WrongCat default constructor called" << std::endl;
 }
 WrongCat::WrongCat(const WrongCat& other)
+: WrongAnimal(other)
 {
 	_type = other._type;
 	std::cout << "WrongCat copy constructor called" << std::endl;

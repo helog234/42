@@ -6,12 +6,12 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:01:57 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/20 10:40:13 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 15:34:22 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_H
-# define PHONEBOOK_H
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 # include <iostream>
 # include <string>
 # include "contact.hpp"

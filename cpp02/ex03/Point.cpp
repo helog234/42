@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:48:40 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/27 16:27:48 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 14:08:25 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,22 @@ Point&	Point::operator=(const Point& t)
 
 Point::~Point() {}
 
-Fixed	Point::getFixedX(void)
+Fixed	Point::getFixedX(void) const
 {
 	return (this->_x);
 }
 
-Fixed	Point::getFixedY(void)
+Fixed	Point::getFixedY(void) const
 {
 	return (this->_y);
 }
 
-const float	Point::getFloatX(void)
+float	Point::getFloatX(void) const
 {
 	return (this->_x.toFloat());
 }
 
-const float	Point::getFloatY(void)
+float	Point::getFloatY(void) const
 {
 	return (this->_y.toFloat());
 }

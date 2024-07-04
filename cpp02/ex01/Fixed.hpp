@@ -6,13 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:39:07 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/27 10:01:54 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 10:42:05 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_H
-# define FIXED_H
+#ifndef FIXED_HPP
+# define FIXED_HPP
 # include <iostream>
+# include <cmath>
 
 class Fixed
 {
@@ -27,6 +28,7 @@ public:
 	Fixed(const Fixed &t);
 	Fixed&operator=(const Fixed& t);
 	~Fixed();
+	
 	int getRawBits( void ) const;
 	void setRawBits( int const raw );
 	float toFloat( void ) const;

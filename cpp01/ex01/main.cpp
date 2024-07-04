@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 10:30:17 by hgandar           #+#    #+#             */
-/*   Updated: 2024/06/24 11:15:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/03 16:28:35 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ Zombie* zombieHorde( int N, std::string name );
 
 int	main(void)
 {
-	int	N = 10;
+	size_t	N = 12;
 	Zombie *newHorde = zombieHorde(N, "Georges");
-	if (newHorde)
+	if (&newHorde[0] != nullptr)
 	{
 		for (size_t i = 0; i < N; i++)
 			newHorde[i].announce();

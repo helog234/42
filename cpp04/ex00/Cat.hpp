@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:07:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 13:55:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/04 16:19:12 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 
 class Cat: public Animal
 {
-public:
-	Cat();
-	Cat(const Cat& other);
-	Cat &operator=(const Cat& other);
-	~Cat();
-	void makeSound();
-	std::string getType();
+	public:
+		Cat();
+		Cat(const Cat& other);
+		Cat &operator=(const Cat& other);
+		~Cat();
+		void makeSound();
+		std::string getType();
 
-protected:
-	std::string _type;
+	protected:
+		std::string _type;
 };
 
 #endif
