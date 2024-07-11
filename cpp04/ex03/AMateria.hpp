@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:43:37 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/03 10:04:38 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/08 12:48:46 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ class AMateria
 		std::string _type;
 		
 	public:
-	//AMateria();
 	AMateria(std::string const & type);
 	AMateria(const AMateria& other);
 	AMateria &operator=(const AMateria& other);
