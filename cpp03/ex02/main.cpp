@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:29:36 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/04 15:31:47 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/11 14:42:34 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,4 @@ int	main(void)
 	Josef.displayInfo();
 	Alice.displayInfo();
 	std::cout << "*****" << std::endl;
-	}
+}

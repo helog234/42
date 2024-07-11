@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:52:41 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/04 16:48:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/11 16:24:59 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 	return 0;
 } */
 
-//With wrongAnimal
+//avec wrongAnimal
 /* int main()
 {
 	const WrongAnimal* meta = new WrongAnimal();
@@ -63,7 +63,7 @@ int main()
 	delete dog;
 	delete cat;
 
-	// Test avec WrongAnimal et WrongCat
+	// WrongAnimal et WrongCat
 	/* const WrongAnimal* wrongMeta = new WrongAnimal();
 	const WrongAnimal* wrongCat = new WrongCat();
 

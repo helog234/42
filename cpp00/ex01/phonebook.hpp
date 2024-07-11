@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:01:57 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/03 15:34:22 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/11 10:13:56 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Phonebook
 		void printContact(int index) const;
 	
 	private:
-		Contact _Contacts[8];
+		Contact _Contacts[9];
 		int		_index;
 };
 

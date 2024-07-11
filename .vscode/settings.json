@@ -60,6 +60,18 @@
 		"iomanip": "cpp",
 		"fstream": "cpp",
 		"map": "cpp",
-		"execution": "cpp"
+		"execution": "cpp",
+		"__functional_base": "cpp",
+		"__nullptr": "cpp",
+		"__string": "cpp",
+		"__tuple": "cpp",
+		"bit": "cpp",
+		"chrono": "cpp",
+		"functional": "cpp",
+		"iterator": "cpp",
+		"memory": "cpp",
+		"stack": "cpp",
+		"type_traits": "cpp",
+		"utility": "cpp"
 	}
 }

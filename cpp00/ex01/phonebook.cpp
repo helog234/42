@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:08:40 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/03 15:31:38 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/11 10:16:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ Phonebook::~Phonebook(void) {}
 
 void Phonebook::addContact()
 {
-	if (this->_index > 7)
+	if (this->_index > 8)
 	{
 		std::cout << "\033[38;5;208mThis action will overwrite the data from the contact ";
-		std::cout << _Contacts[0].getFirstName() << " " << _Contacts[0].getLastName() << "\033[0m" << std::endl;
+		std::cout << _Contacts[1].getFirstName() << " " << _Contacts[1].getLastName() << "\033[0m" << std::endl;
 		std::string str = "";
 		while (true)
 		{
@@ -36,11 +36,11 @@ void Phonebook::addContact()
 			if (str == "y")
 				break ;
 		}
-		for (int i = 1; i < 8; i++)
+		for (int i = 2; i < 8; i++)
 		{
 			_Contacts[i - 1] = _Contacts[i];
 		}
-		_index = 7;
+		_index = 8;
 	}
 	std::cout << "Add a new contact" << std::endl;
 	_Contacts[_index].setFirstName();
@@ -80,7 +80,7 @@ void Phonebook::printContact(int index) const
 
 void Phonebook::searchContact() const
 {
-	for (int i = 1; i < 8; i++)
+	for (int i = 1; i <= 8; i++)
 	{
 		std::cout << std::right << std::setw(9) << i;
 		printList(_Contacts[i].getFirstName());
@@ -100,7 +100,7 @@ void Phonebook::searchContact() const
 		else
 		{
 			index = std::atoi(str.c_str());
-			if (index >= 0 && index <= 8)
+			if (index > 0 && index <= 8)
 			{
 				printContact(index);
 				break ;
