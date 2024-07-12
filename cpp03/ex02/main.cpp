@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:29:36 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/11 14:42:34 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/12 14:33:42 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int	main(void)
 	FragTrap Josef = FragTrap("Josef");
 	ScavTrap Alice = ScavTrap("Alice");
 	
+	Albert.displayInfo();
+	Josef.displayInfo();
+	Alice.displayInfo();
 	for (int i = 0; i < 3; ++i)
 	{
 		Alice.attack("Albert");
@@ -32,6 +35,7 @@ int	main(void)
 		Albert.attack("Alice");
 		Alice.takeDamage(2);
 	}
+	Josef.highFivesGuys();
 	Albert.displayInfo();
 	Josef.displayInfo();
 	Alice.displayInfo();
