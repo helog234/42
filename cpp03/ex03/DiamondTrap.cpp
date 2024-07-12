@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:39:02 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/12 14:55:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/12 17:35:13 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@ DiamondTrap::DiamondTrap(std::string Name)
 : ClapTrap(Name + "_clap_name"), ScavTrap(Name), FragTrap(Name), _Name(Name)
 {
 	_HitPoints = FragTrap::_HitPoints;
-	_EnergyPoints = ScavTrap::_EnergyPoints;
-	_AttackDamage = FragTrap::_AttackDamage;
+	_EnergyPoints = ScavTrap::_HitPoints;
+	_AttackDamage =FragTrap::_HitPoints;
     std::cout << "DiamondTrap default constructor called" << std::endl;
+	std::cout << "DiamondTrap default constructor called" << std::endl;
+    std::cout << "hitpoint" << _HitPoints << std::endl;
+    std::cout << "energy" << _EnergyPoints << std::endl;
+    std::cout << "attack" << _AttackDamage << std::endl;
 	
 	return ;
 }
@@ -27,7 +31,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap &other)
 :ClapTrap(other.ClapTrap::_Name), ScavTrap(other._Name), FragTrap(other._Name), _Name(other._Name)
 {
 	_HitPoints =other._HitPoints;
-	_EnergyPoints = other._HitPoints;
+	_EnergyPoints = other._EnergyPoints;
 	_AttackDamage = other._AttackDamage;
     std::cout << "Copy constructor called" << std::endl;
     return ;

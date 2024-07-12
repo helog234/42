@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:08:46 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/12 15:10:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/12 16:13:09 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class ClapTrap
 {
     public:
 		ClapTrap(std::string Name);
+		ClapTrap(std::string Name, int hit, int energy, int attack);
         ClapTrap(const ClapTrap& other);
         ClapTrap &operator=(const ClapTrap &other);
         ~ClapTrap();

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:38:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/12 15:17:37 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/12 15:40:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ class DiamondTrap: public ScavTrap, public FragTrap
 		
 	private:
 			const std::string	_Name;
-			int					_HitPoints;
+			/* int					_HitPoints;
 			int					_EnergyPoints;
-			int					_AttackDamage;
+			int					_AttackDamage; */
 		
 };
 
