@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:04:03 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/03 12:53:49 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/14 17:24:47 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,12 @@ void MateriaSource::learnMateria(AMateria* m)
 		if (_stock[i] == nullptr)
 		{
 			_stock[i] = m->clone();
+			delete m;
 			return ;
 		}
 		i++;
 	}
+	delete m;
 	//std::cout << "learnMateria called" << std::endl;
 }
 AMateria* MateriaSource::createMateria(std::string const & type)

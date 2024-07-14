@@ -6,19 +6,22 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:20:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/12 17:32:32 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/14 16:41:11 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string Name)
-: ClapTrap(Name, 100, 100, 30)
+FragTrap::FragTrap()
+:  ClapTrap("FragTrap", _initHit, _initEnergy, _initAttack) 
 {
-    std::cout << "HERE FragTrap default constructor called" << std::endl;
-	std::cout << "hitpoint" << _HitPoints << std::endl;
-    std::cout << "energy" << _EnergyPoints << std::endl;
-    std::cout << "attack" << _AttackDamage << std::endl;
+	 std::cout << "FragTrap default constructor called" << std::endl;
+}
+
+FragTrap::FragTrap(std::string Name)
+: ClapTrap(Name, _initHit, _initEnergy, _initAttack)
+{
+    std::cout << "FragTrap default constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &other)

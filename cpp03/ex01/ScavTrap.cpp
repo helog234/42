@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:55:47 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/12 14:30:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/14 16:45:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void ScavTrap::attack(const std::string& target)
 	std::cout << "ScavTrap " << _Name;
 	std::cout << " attacks " << target << std::endl;
 	_EnergyPoints--;
-	_HitPoints--;
 }
 
 void ScavTrap::guardGate()

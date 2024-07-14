@@ -6,23 +6,17 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:39:02 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/12 17:35:13 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/14 16:39:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap(std::string Name)
-: ClapTrap(Name + "_clap_name"), ScavTrap(Name), FragTrap(Name), _Name(Name)
+: ClapTrap(Name + "_clap_name", FragTrap::_initHit, ScavTrap::_initEnergy, FragTrap::_initAttack), _Name(Name)
 {
-	_HitPoints = FragTrap::_HitPoints;
-	_EnergyPoints = ScavTrap::_HitPoints;
-	_AttackDamage =FragTrap::_HitPoints;
+
     std::cout << "DiamondTrap default constructor called" << std::endl;
-	std::cout << "DiamondTrap default constructor called" << std::endl;
-    std::cout << "hitpoint" << _HitPoints << std::endl;
-    std::cout << "energy" << _EnergyPoints << std::endl;
-    std::cout << "attack" << _AttackDamage << std::endl;
 	
 	return ;
 }

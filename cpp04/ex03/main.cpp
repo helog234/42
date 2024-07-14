@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 17:42:00 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/04 17:58:18 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/14 17:25:13 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "Character.hpp"
 
 // test exercice
-/* int main()
+int main()
 {
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
@@ -35,10 +35,11 @@
 	delete me;
 	delete src;
 	return 0;
-} */
+}
 
 
-int main( void ) {
+/* int main( void ) 
+{
 	{
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());
@@ -81,4 +82,4 @@ int main( void ) {
 	}
 
 	return 0;
-}
+} */

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:12:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/12 17:36:14 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/12 18:13:40 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ class FragTrap: virtual public ClapTrap
 		void attack(const std::string& target);
 		void highFivesGuys(void);
 
-	/* protected:
-		const std::string	_Name;
-		int					_HitPoints;
-		int					_EnergyPoints;
-		int					_AttackDamage; */
+	protected:
+		static const unsigned int	_initHit = 100;
+		static const unsigned int	_initEnergy = 100;
+		static const unsigned int	_initAttack = 30;
 };
 
 #endif

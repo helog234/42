@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:52:41 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/11 16:24:59 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/14 18:08:26 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int main()
 	delete cat;
 
 	// WrongAnimal et WrongCat
-	/* const WrongAnimal* wrongMeta = new WrongAnimal();
+	const WrongAnimal* wrongMeta = new WrongAnimal();
 	const WrongAnimal* wrongCat = new WrongCat();
 
 	std::cout << wrongCat->getType() << " " << std::endl;
@@ -72,20 +72,10 @@ int main()
 	wrongMeta->makeSound();
 
 	delete wrongMeta;
-	delete wrongCat; */
-
-	// constructeurs de copie et d'affectation
-	/* Dog originalDog;
-	Dog copyDog = originalDog; 
-	Dog assignedDog;
-	assignedDog = originalDog;
-
-	originalDog.makeSound();
-	copyDog.makeSound();
-	assignedDog.makeSound(); */
+	delete wrongCat;
 
 	// Automatisme
-	/* Animal* animals[4];
+	Animal* animals[4];
 	animals[0] = new Dog();
 	animals[1] = new Cat();
 	animals[2] = new Dog();
@@ -97,7 +87,7 @@ int main()
 
 	for (int i = 0; i < 4; ++i) {
 		delete animals[i];
-	} */
+	}
 	
 	return 0;
 }

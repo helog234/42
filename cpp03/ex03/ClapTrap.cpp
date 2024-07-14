@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:08:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/12 17:30:39 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/14 16:46:44 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 
 ClapTrap::ClapTrap(std::string Name)
-:_Name(Name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
+:_Name(Name), _HitPoints(_initHit), \
+_EnergyPoints(_initEnergy), _AttackDamage(_initAttack)
 {
     std::cout << "ClapTrap default constructor called" << std::endl;
     return ;
@@ -23,10 +24,7 @@ ClapTrap::ClapTrap(std::string Name)
 ClapTrap::ClapTrap(std::string Name, int hit, int energy, int attack)
 :_Name(Name), _HitPoints(hit), _EnergyPoints(energy), _AttackDamage(attack)
 {
-	std::cout << "NEW ClapTrap default constructor called" << std::endl;
-	/* std::cout << "hitpoint" << _HitPoints << std::endl;
-    std::cout << "energy" << _EnergyPoints << std::endl;
-    std::cout << "attack" << _AttackDamage << std::endl; */
+	std::cout << "ClapTrap default constructor called" << std::endl;
 	return ;
 }
 
@@ -72,7 +70,6 @@ void ClapTrap::attack(const std::string& target)
 	std::cout << "ClapTrap " << _Name;
 	std::cout << " attacks " << target;
 	_EnergyPoints--;
-	_HitPoints--;
 }
 	
 void ClapTrap::takeDamage(unsigned int amount)

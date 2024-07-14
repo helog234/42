@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 08:49:58 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/04 18:09:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/14 17:17:07 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,9 @@ void Character::addUnequipped(AMateria* m)
 		MateriaNode* current = _unequipped;
 		while (current && current->next)
 			current = current->next;
-		current->next->materia = m;
-		current->next->next = nullptr;
+		MateriaNode* newNode = new MateriaNode();
+		newNode->materia = m;
+		newNode->next = nullptr;
+		current->next = newNode;
 	}
 }
