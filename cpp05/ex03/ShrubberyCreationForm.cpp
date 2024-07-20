@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:04:25 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/15 17:27:42 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/16 17:06:57 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,22 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		throw NotSignedException();
 	if (executor.getGrade() > this->getExecGrade())
 		throw GradeTooLowException();
-	std::ofstream file(_target + "_shrubbery");
-	if (!file.is_open())
+	std::string filename = _target + "_shrubbery";
+	std::ofstream outfile(filename);
+	if (!outfile.is_open())
 		throw ErrorFileException();
-	file << "             v .   ._, |_  .," << std::endl;
-    file << "      `-._\\/  .  \\ /    |/_" << std::endl;
-    file << "          \\  _\\, y | \\//" << std::endl;
-    file << "   _\\_.___\\, \\/ -.\\||" << std::endl;
-    file << "      `7-,--.`._||  / / ," << std::endl;
-    file << "      /'     `-. `./ / |/_.'" << std::endl;
-    file << "                |    |//" << std::endl;
-    file << "                |_    /" << std::endl;
-    file << "                |-   |" << std::endl;
-    file << "                |   =|" << std::endl;
-    file << "                |    |" << std::endl;
-	file << "---------------/ ,  . \\--------._" << std::endl;
+	outfile << "             v .   ._, |_  .," << std::endl;
+    outfile << "      `-._\\/  .  \\ /    |/_" << std::endl;
+    outfile << "          \\  _\\, y | \\//" << std::endl;
+    outfile << "   _\\_.___\\, \\/ -.\\||" << std::endl;
+    outfile << "      `7-,--.`._||  / / ," << std::endl;
+    outfile << "      /'     `-. `./ / |/_.'" << std::endl;
+    outfile << "                |    |//" << std::endl;
+    outfile << "                |_    /" << std::endl;
+    outfile << "                |-   |" << std::endl;
+    outfile << "                |   =|" << std::endl;
+    outfile << "                |    |" << std::endl;
+	outfile << "---------------/ ,  . \\--------._" << std::endl;
 
-	file.close();
+	outfile.close();
 }

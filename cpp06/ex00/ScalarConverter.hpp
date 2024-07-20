@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 13:39:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/16 15:45:29 by hgandar          ###   ########.fr       */
+/*   Created: 2024/07/17 09:59:59 by hgandar           #+#    #+#             */
+/*   Updated: 2024/07/18 16:52:19 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
-# include "AForm.hpp"
+#ifndef SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
+# include <iostream>
+# include "Converter.hpp"
+# include "Checker.hpp"
 
-class RobotomyRequestForm: public AForm
+class ScalarConverter
 {
 	public:
-		RobotomyRequestForm(std::string const target);
-		~RobotomyRequestForm();
-		RobotomyRequestForm(const RobotomyRequestForm &other);
-		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+		static void convert(const std::string &str);
 
-		void execute(Bureaucrat const & executor) const;
-
-		
 	private:
-	std::string const	_target;
+		ScalarConverter(/* args */);
+		~ScalarConverter();
+		ScalarConverter(const ScalarConverter &other);
+		ScalarConverter &operator=(const ScalarConverter &other);
+};
 
+enum	type
+{
+	CHAR = 0,
+	INT = 1,
+	FLOAT = 2,
+	DOUBLE = 3,
+	MATH = 4,
 };
 
 #endif

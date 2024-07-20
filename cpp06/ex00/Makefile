@@ -5,18 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/07 10:00:38 by hgandar           #+#    #+#              #
-#    Updated: 2024/07/16 15:28:54 by hgandar          ###   ########.fr        #
+#    Created: 2024/07/17 09:57:13 by hgandar           #+#    #+#              #
+#    Updated: 2024/07/18 15:53:23 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = intern
+NAME = Converter
 CC = c++
 CFLAGS = -g -Wall -Wextra -Werror -std=c++98
-CPPFILES = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
-RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
-INC = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp \
-RobotomyRequestForm.hpp PresidentialPardonForm.hpp Intern.hpp
+CPPFILES = main.cpp ScalarConverter.cpp Checker.cpp Converter.cpp Print.cpp
+INC = ScalarConverter.hpp Checker.hpp Converter.hpp Print.hpp
 OFILES = $(CPPFILES:.cpp=.o)
 LEAK = Leaks -atExit --
 SANIT = -fsanitize=address -g3

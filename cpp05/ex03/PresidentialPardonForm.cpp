@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:42:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/15 17:27:34 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/16 16:42:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	(void)other;
 	return (*this);
 }
-
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {

@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 13:39:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/16 15:45:29 by hgandar          ###   ########.fr       */
+/*   Created: 2024/07/19 15:20:46 by hgandar           #+#    #+#             */
+/*   Updated: 2024/07/19 15:40:16 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
-# include "AForm.hpp"
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
+# include <iostream>
 
-class RobotomyRequestForm: public AForm
+template <typename T>
+class Array
 {
 	public:
-		RobotomyRequestForm(std::string const target);
-		~RobotomyRequestForm();
-		RobotomyRequestForm(const RobotomyRequestForm &other);
-		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
-
-		void execute(Bureaucrat const & executor) const;
-
-		
+		Array();
+		Array(unsigned int n);
+		~Array();
+		Array(const Array &other);
+		Array &operator=(const Array &other);
 	private:
-	std::string const	_target;
-
+		T _fill[];
 };
 
 #endif

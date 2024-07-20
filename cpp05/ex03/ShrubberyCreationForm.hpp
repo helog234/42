@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:57:58 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/15 17:28:02 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/16 14:43:02 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class ShrubberyCreationForm: public AForm
 		};
 		
 	private:
-	std::string const	_target;
+		std::string const	_target;
 
 };
 

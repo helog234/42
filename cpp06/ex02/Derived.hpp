@@ -1,34 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Derived.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 13:39:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/16 15:45:29 by hgandar          ###   ########.fr       */
+/*   Created: 2024/07/19 11:16:00 by hgandar           #+#    #+#             */
+/*   Updated: 2024/07/19 13:43:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
-# include "AForm.hpp"
+#ifndef DERIVED_HPP
+# define DERIVED_HPP
+# include "Base.hpp"
+# include <stdlib.h>
+# include <time.h> 
 
-class RobotomyRequestForm: public AForm
+class A: public Base
 {
 	public:
-		RobotomyRequestForm(std::string const target);
-		~RobotomyRequestForm();
-		RobotomyRequestForm(const RobotomyRequestForm &other);
-		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
-
-		void execute(Bureaucrat const & executor) const;
-
-		
-	private:
-	std::string const	_target;
-
+		A();
+		~A();
+		static const std::string& getType();
 };
 
+class B: public Base
+{
+	public:
+		B();
+		~B();
+		static const std::string& getType();
+};
+
+class C: public Base
+{
+	public:
+		C();
+		~C();
+		static const std::string& getType();
+};
+
+Base * generate(void);
+void identify(Base* p);
+void identify(Base& p);
 #endif

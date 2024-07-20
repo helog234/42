@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:40:23 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/15 17:27:26 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/16 16:19:54 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const target)
 : AForm(target, 72, 45), _target(target)
-{}
+{
+	std::cout << "RobotomyRequestForm default constructor" << std::endl;
+}
 
 RobotomyRequestForm::~RobotomyRequestForm()
-{}
+{
+	std::cout << "RobotomyRequestForm destuctor" << std::endl;
+}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
 : AForm(other), _target(other._target)

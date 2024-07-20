@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 08:58:32 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/09 10:24:10 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/16 17:08:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ AForm::AForm(std::string const name, int signedGrade, int execGrade)
 		throw GradeTooHighException();
 	_signedGrade = signedGrade;
 	_execGrade = execGrade;
+	//std::cout << "AForm default constructor" << std::endl;
 }
 
+
 AForm::~AForm()
-{}
+{
+	//std::cout << "AForm destuctor" << std::endl;
+}
 
 AForm::AForm(const AForm &other)
 : _name(other._name), _signed(other._signed), \
@@ -81,11 +85,4 @@ std::ostream& operator<<(std::ostream& out, const AForm& ref)
 	return (out);
 }
 
-/* void AForm::checkConditions(Bureaucrat const & executor)
-{
-	if (_signed == false)
-		throw NotSignedException();
-	if (executor.getGrade() > _execGrade)
-		throw GradeTooLowException();
-	execute(executor);
-} */
+

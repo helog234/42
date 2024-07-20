@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 13:39:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/16 15:45:29 by hgandar          ###   ########.fr       */
+/*   Created: 2024/07/18 16:52:06 by hgandar           #+#    #+#             */
+/*   Updated: 2024/07/18 17:01:33 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
-# include "AForm.hpp"
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
+# include <iostream>
+# include "Data.hpp"
 
-class RobotomyRequestForm: public AForm
+class Serializer
 {
 	public:
-		RobotomyRequestForm(std::string const target);
-		~RobotomyRequestForm();
-		RobotomyRequestForm(const RobotomyRequestForm &other);
-		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
 
-		void execute(Bureaucrat const & executor) const;
-
-		
 	private:
-	std::string const	_target;
+		Serializer(/* args */);
+		~Serializer();
+		Serializer(const Serializer &other);
+		Serializer &operator=(const Serializer &other);
+};
 
+enum	type
+{
+	CHAR = 0,
+	INT = 1,
+	FLOAT = 2,
+	DOUBLE = 3,
+	MATH = 4,
 };
 
 #endif
