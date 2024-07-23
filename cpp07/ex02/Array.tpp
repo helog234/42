@@ -6,33 +6,63 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 15:28:47 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/20 15:29:17 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/21 12:06:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
-Array::Array()
-:_fill(NULL)
-{}
-
-Array::Array(unsigned int n)
-:_fill(new n)
-{}
-
-Array(const Array &other)
+template <typename T>
+Array<T>::Array(void)
 {
-	if (this != &other)
-	{
-		while (other._f)
-		{
-			/* code */
-		}
-		
-		
-	}
+	_fill = new T[0];
 }
 
-Array::~Array()
+template <typename T>
+Array<T>::Array(unsigned int n)
 {
+	_fill = new T[n];
+}
+
+template <typename T>
+Array<T>::Array(const Array &other)
+{
+	_fill = new T[other.size()];
+	for (size_t i = 0; i < other.size(); i++)
+		_fill[i] = other._fill[i];
+}
+
+template <typename T>
+Array<T>& Array<T>::operator=(const Array &other)
+{
+	if (this == &other)
+		return (*this);
+	delete [] _fill;
+	size_t len = other.size();
+	_fill = new T[len];
+	for (size_t i = 0; i < len; i++)
+		_fill[i] = other._fill[i];
+}
+
+template <typename T>
+T& Array<T>::operator[](size_t i)
+{
+	if (i > size())
+		throw Array<T>::OutOfBound();
+	return (_fill[i]);
+}
+
+template <typename T>
+Array<T>::~Array()
+{
+	delete[] _fill;
+}
+
+template <typename T>
+size_t Array<T>::size() const
+{
+	size_t i = 0;
+	while (_fill[i])
+		i++;
+	return (i);
 }

@@ -5,40 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 16:35:38 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/21 12:22:58 by hgandar          ###   ########.fr       */
+/*   Created: 2024/07/22 10:49:28 by hgandar           #+#    #+#             */
+/*   Updated: 2024/07/22 11:42:16 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
-#include <iostream>
+#include "easyfind.hpp"
+#include <vector>
 
 int main(void)
 {
-	Array<int> a(3);
-	Array<int> b = a;
-
-	for (size_t i = 0; i < 3; i++)
-	{
-		a[i] = i + 2;
-		b[i] = i + 1;
-	}
-	for (size_t i = 0; i < 3; i++)
-		std::cout << "a :" << a[i] << " b : " << b[i] << std::endl;
+	std::vector<int> container(10);
+	for (size_t i = 0; i < 10; i++)
+		container[i] = i + 2;
 	
-	int * c = new int();
-	std::cout << "c : " << *c << std::endl;
+	std::cout << "Values in container:" << std::endl;
+	for (std::vector<int>::iterator it = container.begin(); \
+	it != container.end(); ++it)
+		std::cout << *it << " ";
 	
-	Array<int> d(2);
+	std::cout << std::endl;
+	int to_find = 6;
+	std::cout << "Value to find : ";
+	std::cout << to_find << std::endl;
 	try
 	{
-		for (size_t i = 0; i < 3; i++)
-			std::cout << "c : " << d[i] << std::endl;
+		easyfind(container, to_find);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 	
+	to_find = 1;
+	std::cout << "Value to find : ";
+	std::cout << to_find << std::endl;
+	try
+	{
+		easyfind(container, to_find);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return (0);
 }

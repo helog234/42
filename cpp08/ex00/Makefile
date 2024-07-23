@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/19 15:20:36 by hgandar           #+#    #+#              #
-#    Updated: 2024/07/21 12:14:13 by hgandar          ###   ########.fr        #
+#    Created: 2024/07/22 07:48:59 by hgandar           #+#    #+#              #
+#    Updated: 2024/07/22 07:49:46 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Array
+NAME = easyfind
 CC = c++
 CFLAGS = -g -Wall -Wextra -Werror -std=c++98
 CPPFILES = main.cpp
-INC = Array.hpp
+INC = easyfind.hpp
 OFILES = $(CPPFILES:.cpp=.o)
 LEAK = Leaks -atExit --
 SANIT = -fsanitize=address -g3
