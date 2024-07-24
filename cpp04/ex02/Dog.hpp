@@ -6,16 +6,16 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:04:03 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 17:26:15 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:19:54 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_HPP
 # define DOG_HPP
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "Brain.hpp"
 
-class Dog: public Animal
+class Dog: public AAnimal
 {
 public:
 	Dog();

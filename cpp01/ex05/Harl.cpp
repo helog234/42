@@ -6,14 +6,20 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 08:55:33 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/03 18:37:39 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/24 14:23:10 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 #include <map>
 
-Harl::Harl( void ) {}
+Harl::Harl( void ) 
+{
+	_complains[0] = &Harl::debug;
+	_complains[1] = &Harl::info;
+	_complains[2] = &Harl::warning;
+	_complains[3] = &Harl::error;
+}
 
 Harl::~Harl ( void ) {}
 
@@ -50,24 +56,16 @@ void Harl::error( void )
 
 void Harl::complain( std::string level )
 {
-	std::map<std::string, void (Harl::*)(void)> levelMap;
-	
-	levelMap["DEBUG"] = &Harl::debug;
-	levelMap["INFO"] = &Harl::info;
-	levelMap["WARNING"] = &Harl::warning;
-	levelMap["ERROR"] = &Harl::error;
-	
-	std::map<std::string, void (Harl::*)(void)>::iterator it = levelMap.find(level);
-	if (it != levelMap.end())
-		(this->*(it->second))();
-	else
-		std::cout << "Type of complain not found" << std::endl;
+	std::string toCompare[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+	for (int i = 0; i < 4; i++)
+	{
+		if (toCompare[i] == level)
+			return (this->*(_complains[i]))();
+	}
+	std::cout << "Type of complain not found" << std::endl;
 }
 
-//std::map permet d'associer des éléments entre eux (ici string et méthode)
-//l'iterateur (it) pointe vers l'élément passé en paramettre de find()
-// si il n'est pas égal à .end c'est qu'il a trouvé une correspondance
-// dans ce cas on lui demande d'appeler l'élément associé à cette recherche
+
 
 
 

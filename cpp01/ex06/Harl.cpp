@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:02:57 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/16 10:25:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/24 14:33:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 Harl::Harl( void ) 
 {
-	convert["DEBUG"] = D;
-	convert["INFO"] = I;
-	convert["WARNING"] = W;
-	convert["ERROR"] = E;
+	_complains[0] = &Harl::debug;
+	_complains[1] = &Harl::info;
+	_complains[2] = &Harl::warning;
+	_complains[3] = &Harl::error;
 }
 
 Harl::~Harl ( void ) {}
@@ -59,26 +59,28 @@ void Harl::error( void )
 
 void Harl::complain( std::string level )
 {
-	std::map<std::string, Entry>::iterator it = convert.find(level);
-	if (it != convert.end())
+	std::string toCompare[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+	int	i = 0;
+	while (i < 4)
 	{
-		switch (it->second)
-		{
-			case D:
-				debug();
-			case I:
-				info();
-			case W:
-				warning();
-			case E:
-				error();
-				break;
-			default:
-				std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-				break;
-		}
+		if (toCompare[i] == level)
+			break ;
+		i++;
 	}
-	else
-		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-		
+	switch (i)
+	{
+		case 0:
+			debug();
+		case 1:
+			info();
+		case 2:
+			warning();
+		case 3:
+			error();
+			break;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+			break;
+
+	}	
 }

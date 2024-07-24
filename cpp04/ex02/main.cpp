@@ -6,19 +6,20 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:52:41 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 17:30:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:23:35 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
 int main()
 {
-	const int	n = 10;
-	const Animal* block[n];
-	//const Animal* test = new Dog();
+	const int	n = 6;
+	const AAnimal* block[n];
+	// const  AAnimal *d = new test();
+	// test->makeSound();
 	for (size_t i = 0; i < n; i++)
 	{
 		if (i < n/2)
@@ -28,10 +29,9 @@ int main()
 	}
 	for (size_t i = 0; i < n; i++)
 	{
-		std::cout << block[i]->getType() << " " << std::endl;
+		std::cout << block[i]->getType() << " " << ": ";
 		block[i]->makeSound();
 	}
-	//test->makeSound();
 	for (size_t i = 0; i < n; i++)
 		delete block[i];
 	

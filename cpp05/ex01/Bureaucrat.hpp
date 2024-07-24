@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 10:01:36 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/08 10:32:10 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 17:06:25 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include "Form.hpp"
 
+class Form;
 class Bureaucrat
 {
 private:

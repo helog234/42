@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:52:41 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/14 18:08:26 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:09:32 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "Cat.hpp"
 
 //main du sujet
-/* int main()
+int main()
 {
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
@@ -27,8 +27,13 @@
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
 	meta->makeSound();
+	
+	//ajout par moi
+	delete meta;
+	delete i;
+	delete j;
 	return 0;
-} */
+}
 
 //avec wrongAnimal
 /* int main()
@@ -47,7 +52,7 @@
 	return 0;
 } */
 
-int main() 
+/* int main() 
 {
 	const Animal* meta = new Animal();
 	const Animal* dog = new Dog();
@@ -90,4 +95,4 @@ int main()
 	}
 	
 	return 0;
-}
+} */

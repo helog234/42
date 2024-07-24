@@ -6,14 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:08:16 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 17:26:24 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:22:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 Cat::Cat()
-: Animal("Cat")
+: AAnimal("Cat")
 {
 	_Brain = new Brain();
 	std::cout << "Cat default constructor called" << std::endl;
@@ -29,7 +29,7 @@ Cat &Cat::operator=(const Cat& other)
 {
 	if (this != &other)
 	{
-		Animal::operator=(other);
+		AAnimal::operator=(other);
 		_type = other._type;
 		delete _Brain;
 		_Brain = new Brain(*other._Brain);
@@ -46,7 +46,7 @@ Cat::~Cat()
 
 std::string Cat::getType()
 {
-	return (Animal::getType());
+	return (AAnimal::getType());
 }
 
 void Cat::makeSound() const

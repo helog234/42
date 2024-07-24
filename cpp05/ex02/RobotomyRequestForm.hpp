@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:39:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/09 10:32:38 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 17:28:07 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ class RobotomyRequestForm: public AForm
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
 
 		void execute(Bureaucrat const & executor) const;
-		//void beSigned(Bureaucrat &ref);
+
 		
 	private:
 	std::string const	_target;
-	//bool				_signed;
-	//int 				_signedGrade;
-	//int 				_execGrade;
+
 };
 
 #endif

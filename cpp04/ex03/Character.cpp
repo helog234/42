@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 08:49:58 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/14 17:17:07 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:43:35 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,13 @@ Character::~Character()
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (_inventory[i] != nullptr)
+		{
+			std::cout << _inventory[i]->getType() << " deleted" << std::endl;
 			delete _inventory[i];
+		}
 	}
 	clearUnequipped();
-	//std::cout << "Character destructor called" << std::endl;
+	std::cout << "Character destructor called" << std::endl;
 }
 std::string const& Character::getName() const
 {
@@ -92,6 +95,7 @@ void Character::equip(AMateria* m)
 	{
 		if (_inventory[i] == nullptr)
 		{
+			std::cout << "Equiped with " << m->getType() << std::endl;
 			_inventory[i] = m;
 			return ;
 		}
@@ -103,10 +107,16 @@ void Character::equip(AMateria* m)
 void Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= 4 || !_inventory[idx])
+	{
+		std::cout << "Unable to unequiped" << std::endl;
 		return;
+	}
+		
+	std::cout << "Unequiped  " << _inventory[idx]->getType() << std::endl;
 	addUnequipped(_inventory[idx]);
 	_inventory[idx] = nullptr;
 }
+
 void Character::use(int idx, ICharacter& target)
 {
 	if (idx < 4 && _inventory[idx])
@@ -114,6 +124,8 @@ void Character::use(int idx, ICharacter& target)
 		_inventory[idx]->AMateria::use(target);
 		unequip(idx);
 	}
+	else
+		std::cout << "no inventory at that place" << std::endl;	
 	//std::cout << "Character use methode called" << std::endl;	
 }
 
@@ -128,11 +140,12 @@ void Character::clearUnequipped()
 		current = next;
 	}
 	_unequipped = nullptr;
-	//std::cout << "All unequipped Materias deleted" << std::endl;
+	std::cout << "All unequipped Materias deleted" << std::endl;
 }
 
 void Character::addUnequipped(AMateria* m)
 {
+	std::cout << m->getType() << " droped on floor." << std::endl;
 	if (!_unequipped)
 	{
 		MateriaNode* newNode = new MateriaNode();

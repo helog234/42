@@ -6,14 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:05:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 17:26:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:21:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
 Dog::Dog()
-: Animal("Dog")
+: AAnimal("Dog")
 {
 	_Brain = new Brain();
 	std::cout << "Dog default constructor called" << std::endl;
@@ -30,7 +30,7 @@ Dog &Dog::operator=(const Dog& other)
 {
 	if (this != &other)
 	{
-		Animal::operator=(other);
+		AAnimal::operator=(other);
 		_type = other._type;
 		delete _Brain;
 		_Brain = new Brain(*other._Brain);
@@ -47,7 +47,7 @@ Dog::~Dog()
 
 std::string Dog::getType()
 {
-	return (Animal::getType());
+	return (AAnimal::getType());
 }
 
 void Dog::makeSound() const

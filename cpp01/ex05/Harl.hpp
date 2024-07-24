@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 08:44:58 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/04 15:43:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/24 14:20:33 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ class Harl
 		void info( void );
 		void warning( void );
 		void error( void );
+		void (Harl::*_complains[4])(void);
 	
 	public:
 		Harl( void );
 		~Harl ( void );
 		void complain( std::string level );
 		
-		enum Entry { D, I, W, E };
-    	std::map<std::string, Entry> convert;
+		
 };
 
 #endif

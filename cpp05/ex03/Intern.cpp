@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 17:39:11 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/16 16:53:39 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/24 14:43:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 Intern::Intern(void)
 {
-	convert["presidential pardon"] = P;
-	convert["robotomy request"] = R;
-	convert["shrubbery creation"] = S;
+	_convert[0] = "presidential pardon";
+	_convert[1] = "robotomy request";
+	_convert[2] = "shrubbery creation";
 }
 
 Intern::Intern(const Intern &other)
@@ -37,27 +37,24 @@ Intern::~Intern()
 
 AForm* Intern::makeForm(std::string name, std::string target)
 {
-	std::map<std::string, FormType>::iterator it = convert.find(name);
-	if (it != convert.end())
+	int	i = 0;
+	while (i < 3)
 	{
-		std::cout << "Intern creates " << name << std::endl;
-		switch (it->second)
-		{
-			case P:
-			{
-				return (new PresidentialPardonForm(target));
-			}
-			case R:
-			{
-				return (new RobotomyRequestForm(target));
-			}
-			case S:
-			{
-				return (new ShrubberyCreationForm(target));
-			}
-		}
+		if (_convert[i] == name)
+			break ;
+		i++;
 	}
-	else
-		throw WrongName();
+	switch (i)
+	{
+		case 0:
+			return (new PresidentialPardonForm(target));
+		case 1:
+			return (new RobotomyRequestForm(target));
+		case 2:
+			return (new ShrubberyCreationForm(target));
+		default:
+			throw WrongName();
+
+	}	
 }
 

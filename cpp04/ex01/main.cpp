@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:52:41 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 16:51:18 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:11:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main()
 	}
 	for (size_t i = 0; i < n; i++)
 	{
-		std::cout << block[i]->getType() << " " << std::endl;
+		std::cout << block[i]->getType() << " " << ": ";
 		block[i]->makeSound();
 	}
 	for (size_t i = 0; i < n; i++)

@@ -6,16 +6,16 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 13:07:21 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/01 17:26:08 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 14:19:45 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 # define CAT_HPP
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "Brain.hpp"
 
-class Cat: public Animal
+class Cat: public AAnimal
 {
 public:
 	Cat();

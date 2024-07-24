@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:42:27 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/09 10:36:46 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/15 17:27:34 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,6 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-/* void PresidentialPardonForm::beSigned(Bureaucrat &ref)
-{
-	if (ref.getGrade() > _signedGrade)
-		throw GradeTooLowException();
-	if (_signed == true)
-		throw AlreadySignedException();
-	else
-		_signed = true;
-	AForm::beSigned(ref);
-} */
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
