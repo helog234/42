@@ -6,14 +6,14 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 13:32:18 by hgandar           #+#    #+#              #
-#    Updated: 2024/08/02 15:16:41 by hgandar          ###   ########.fr        #
+#    Updated: 2024/08/19 15:41:15 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PmergeMe
 CC = c++
 CFLAGS = -g -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
-CPPFILES = main.cpp PmergeMe.cpp
+CPPFILES = main.cpp PmergeMe.cpp PmergeMe_vec.cpp PmergeMe_lst.cpp
 INC = PmergeMe.hpp
 OFILES = $(CPPFILES:.cpp=.o)
 LEAK = Leaks -atExit --

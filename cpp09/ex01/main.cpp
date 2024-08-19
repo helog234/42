@@ -5,38 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/30 13:39:34 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/19 17:09:07 by hgandar          ###   ########.fr       */
+/*   Created: 2024/07/26 14:13:52 by hgandar           #+#    #+#             */
+/*   Updated: 2024/07/29 11:59:58 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
-#include <algorithm>
+#include "RPN.hpp"
 
 int	main(int argc, char **argv)
 {
-	if (argc < 3)
-		return (0);
+	if (argc < 2 || argc > 2)
+		std::cout << "Error" << std::endl;
+	RPN data = RPN(argv[1]);
 	try
 	{
-		PmergeMe merge = PmergeMe(argv);
-		merge.sorting();
-		std::vector<int> res = merge.getVecResult();
-		if (std::is_sorted(res.begin(), res.end()))
-			std::cout << "Is sorted "<< std::endl;
-		else
-			std::cout << "Is not sorted "<< std::endl;
-		std::list<int> lst = merge.getLstResult();
-		if (std::is_sorted(lst.begin(), lst.end()))
-			std::cout << "Is sorted "<< std::endl;
-		else
-			std::cout << "Is not sorted "<< std::endl;
+		data.calculate();
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
-	
-	return (0);
+
 }

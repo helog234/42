@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:27:41 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/19 13:54:42 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/19 17:02:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <list>
 # include <exception>
 # include <utility>
+# include <time.h>
+# define RED  "\e[0;31m"
+# define GREEN  "\e[0;32m"
+# define INFO "\033[0m"
+# define YELLOW  "\e[0;33m"
 
 class PmergeMe
 {
@@ -27,8 +32,8 @@ class PmergeMe
 		PmergeMe &operator=(const PmergeMe &other);
 
 		void sorting();
-		std::vector<int> getResult();
-		//int PmergeMe::getSize();
+		std::vector<int> getVecResult();
+		std::list<int> getLstResult();
 
 		class WrongEntry: public std::exception
 		{
@@ -40,26 +45,23 @@ class PmergeMe
 		
 		
 	private:
-		//std::deque<unsigned int> _originList;
-		//std::deque<std::pair<int, std::pair<int, bool> > > _originList;
 		std::vector<int> _vec;
-		//std::vector<int> _vecRes;
 		std::list<int> _lst;
-		//std::list<int> _lstRes;
-		/* std::deque<int> _dq;
-		std::deque<int> _dqResult; */
-		/* std::list<int> &_lst;
-		std::list<int> &_lstResult; */
-		
+
 		void parsing(char **str);
 		
-		void vecSortInPair(std::vector<int> &ref, int half, int end);
-		std::vector<int> vecSortLarger(std::vector<int> &ref);
-		std::vector<int>::iterator binarySearch(std::vector<int> &ref, int elem);
-		void mergeInsert(std::vector<int> &largers, std::vector<int> &smallers);
+		void vecSortPairs(std::vector<int> &ref, int half, int end);
+		std::vector<int> vecSort(std::vector<int> &ref);
+		std::vector<int>::iterator vecBinarySearch(std::vector<int> &ref, int elem);
+		void vecMergeInsert(std::vector<int> &largers, std::vector<int> &smallers);
 		std::vector<int> vecInsert(int start, int end, std::vector<int> &ref);
-		//void sortPairs(std::deque<std::pair<int, std::pair<int, bool> > >::iterator it);
-		//void pushInLst(std::deque<std::pair<int, std::pair<int, bool> > >::iterator it);
+
+		void lstSortPairs(std::list<int> &smallers, std::list<int> &largers);
+		std::list<int> lstSort(std::list<int> &ref);
+		std::list<int>::iterator lstBinarySearch(std::list<int> &ref, int elem);
+		void lstMergeInsert(std::list<int> &largers, std::list<int> &smallers);
+		void lstInsert(int half, std::list<int> &smallers, std::list<int> &largers, std::list<int> &ref);
+
 };
 
 #endif

@@ -72,7 +72,8 @@
 		"memory": "cpp",
 		"stack": "cpp",
 		"type_traits": "cpp",
-		"utility": "cpp"
+		"utility": "cpp",
+		"list": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "enabled"
 }

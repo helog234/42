@@ -6,13 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:05:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/24 16:58:28 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/26 09:21:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include "BitcoinExchange.hpp"
 
 bool isLeapYear(int year)
 {
@@ -40,7 +41,7 @@ void	createCSV(std::ofstream &outfile)
 	datetime.tm_isdst = -1;
 	for (size_t year = 2009; year < 2025; year++)
 	{
-		datetime.tm_year = year - 1900;;
+		datetime.tm_year = year - 1900;
 		for (size_t month = 0; month < 12; month++)
 		{
 			datetime.tm_mon = month;
@@ -48,29 +49,55 @@ void	createCSV(std::ofstream &outfile)
 			{
 				if ((month == 1 && day > (isLeapYear(year) ? 29 : 28)) || \
 				((month == 3 || month == 5 || month == 8 || month == 10) && day > 30) \
-				 || day > 31)
+				|| day > 31)
 					continue;
 				datetime.tm_mday = day;
-				datetime.tm_isdst = -1;
 				timestamp = mktime(&datetime);
 				 if (timestamp != -1)
-					outfile << strftime(FormatDate, sizeof(FormatDate), "%Y-%m-%d", &datetime);
-				outfile << std::endl;
+				 	strftime(FormatDate, sizeof(FormatDate), "%Y-%m-%d", &datetime);
+				outfile << FormatDate << "\n";
 			}
 		}
 	}
 
 }
 
-int	main(void)
+void generateInfos(std::ifstream &dataCSV, std::ifstream &testFile)
 {
-	std::ofstream outfile("DateRef.csv");
-	if (!outfile)
+	BitcoinExchange btc = BitcoinExchange(testFile);
+	btc.ctrBtc(dataCSV);
+}
+
+int	main(int argc, char **argv)
+{
+	std::ofstream DateRef;
+	std::ifstream testFile;
+	std::ifstream dataCSV;
+
+	if (argc < 2)
 	{
-		std::cerr << "Error opening file" << std::endl;
+		return(std::cerr << "Error: could not open file." << std::endl, 1);
 		return (1);
 	}
-	createCSV(outfile);
-	outfile.close();
+	testFile.open(argv[1]);
+	DateRef.open("DateRef.csv");
+	dataCSV.open("data.csv");
+	if (!testFile || !DateRef || !dataCSV)
+	{
+		std::cerr << "Error: could not open file." << std::endl;
+		if (testFile.is_open())
+			testFile.close();
+		if (DateRef.is_open())
+			DateRef.close();
+		if (dataCSV.is_open())
+			dataCSV.close();
+		return (1);
+	}
+	createCSV(DateRef);
+	DateRef.close();
+	generateInfos(dataCSV, testFile);
+	
+	dataCSV.close();
+	testFile.close();
 	return (0);
 }

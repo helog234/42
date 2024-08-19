@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 15:28:47 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/21 12:06:51 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/07/26 09:23:23 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ Array<T>& Array<T>::operator=(const Array &other)
 	_fill = new T[len];
 	for (size_t i = 0; i < len; i++)
 		_fill[i] = other._fill[i];
+	return (*this);
 }
 
 template <typename T>
