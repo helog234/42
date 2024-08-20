@@ -6,17 +6,19 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:02:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 10:43:28 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 11:34:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(std::ifstream &dataCSV, std::ifstream &dateRef)
+BitcoinExchange::BitcoinExchange(std::ifstream &dataCSV)
 {
 	std::string Line;
 	
-	_dateRef = dateRef;
+	_dateRef.open("DateRef.csv");
+	if (!_dateRef)
+		throw FileError();
 	getline(dataCSV, Line);
 	while (getline(dataCSV, Line))
 	{
@@ -65,16 +67,13 @@ bool BitcoinExchange::checkConditions(std::string first)
 	}
 	while (getline(_dateRef, tmp))
 	{
-		//std::cout << "here" << std::endl;
 		if (tmp == date)
 			break;
 	}
-	std::cout << "tmp " << tmp << std::endl;
-	std::cout << "date " << date << std::endl;
 	if (_dateRef.eof() && tmp != date)
 	{
-		std::cout << "Error: bad input => ";
-		std::cout << first << std::endl;
+		std::cout << "Error: bad date => ";
+		std::cout << date << std::endl;
 		return (false);
 	}
 	tmp = first.substr(12, first.length());
@@ -135,7 +134,9 @@ std::string date, double amount, double rate)
 		std::cout << first.substr(12, first.length());
 	else
 		std::cout << amount;
-	std::cout << " = " << std::setprecision(2);
+	/* std::cout << "amount " << amount << std::endl;
+	std::cout << "rate " << std::fixed << std::setprecision(2) << rate << std::endl; */
+	std::cout << " = " << std::fixed << std::setprecision(2);
 	std::cout << amount * rate << std::endl;
 }
 

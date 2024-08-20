@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:05:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 10:45:43 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 11:23:10 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,17 @@ void	createCSV(std::ofstream &outfile)
 
 }
 
-void generateInfos(std::ifstream &dataCSV, std::ifstream &testFile, std::ifstream &dateRef)
+void generateInfos(std::ifstream &dataCSV, std::ifstream &testFile)
 {
-	BitcoinExchange btc = BitcoinExchange(dataCSV, dateRef);
-	btc.ctrBtc(testFile);
+	try
+	{
+		BitcoinExchange btc = BitcoinExchange(dataCSV);
+		btc.ctrBtc(testFile);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 int	main(int argc, char **argv)
@@ -73,7 +80,6 @@ int	main(int argc, char **argv)
 	std::ofstream DateRef;
 	std::ifstream testFile;
 	std::ifstream dataCSV;
-	std::ifstream dateRef;
 
 	if (argc < 2)
 	{
@@ -81,32 +87,22 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	dataCSV.open("data.csv");
+	testFile.open(argv[1]);
+	DateRef.open("DateRef.csv");
 	createCSV(DateRef);
-	if (!DateRef || !dataCSV)
+	if (!DateRef || !dataCSV || !testFile)
 	{
 		std::cerr << "Error: could not open file." << std::endl;
 		if (DateRef.is_open())
 			DateRef.close();
+		if (testFile.is_open())
+			testFile.close();
 		if (dataCSV.is_open())
 			dataCSV.close();
 		return (1);
 	}
 	DateRef.close();
-	dateRef.open("DateRef.csv");
-	testFile.open(argv[1]);
-	if (!testFile || !dateRef)
-	{
-		std::cerr << "Error: could not open file." << std::endl;
-		if (testFile.is_open())
-			testFile.close();
-		if (dateRef.is_open())
-			dateRef.close();
-		if (dataCSV.is_open())
-			dataCSV.close();
-		return (1);
-	}
-	generateInfos(dataCSV, testFile, dateRef);
-	
+	generateInfos(dataCSV, testFile);
 	dataCSV.close();
 	testFile.close();
 	return (0);
