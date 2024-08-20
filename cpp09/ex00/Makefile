@@ -6,13 +6,13 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/23 14:45:27 by hgandar           #+#    #+#              #
-#    Updated: 2024/07/25 12:22:11 by hgandar          ###   ########.fr        #
+#    Updated: 2024/08/20 09:58:53 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = btc
 CC = c++
-CFLAGS = -g -Wall -Wextra -Werror -std=c++98
+CFLAGS = -g -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
 CPPFILES = main.cpp BitcoinExchange.cpp
 INC = BitcoinExchange.hpp
 OFILES = $(CPPFILES:.cpp=.o)

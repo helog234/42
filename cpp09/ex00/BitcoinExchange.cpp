@@ -6,20 +6,25 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:02:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/26 14:09:48 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 10:43:28 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(std::ifstream &testFile)
+BitcoinExchange::BitcoinExchange(std::ifstream &dataCSV, std::ifstream &dateRef)
 {
-	std::string lineToSearch;
-	_dateRef.open("DateRef.csv");
+	std::string Line;
 	
-	getline(testFile, lineToSearch);
-	while (getline(testFile, lineToSearch))
-		_toCheck.push_back(lineToSearch);
+	_dateRef = dateRef;
+	getline(dataCSV, Line);
+	while (getline(dataCSV, Line))
+	{
+		std::string date = Line.substr(0, 10);
+		std::string tmp = Line.substr(11, Line.length());
+		double rate = atof(tmp.c_str());
+		_toCheck[date] = rate;
+	}
 }
 
 BitcoinExchange::~BitcoinExchange()
@@ -53,11 +58,19 @@ bool BitcoinExchange::checkConditions(std::string first)
 		return (false);
 	}
 	date = first.substr(0, 10);
+	if (!_dateRef)
+	{
+		std::cerr << "File stream is not open or in a bad state.\n";
+		return false;
+	}
 	while (getline(_dateRef, tmp))
 	{
+		//std::cout << "here" << std::endl;
 		if (tmp == date)
 			break;
 	}
+	std::cout << "tmp " << tmp << std::endl;
+	std::cout << "date " << date << std::endl;
 	if (_dateRef.eof() && tmp != date)
 	{
 		std::cout << "Error: bad input => ";
@@ -77,39 +90,40 @@ bool BitcoinExchange::checkConditions(std::string first)
 	return (true);
 }
 
-void BitcoinExchange::ctrBtc(std::ifstream &dataCSV)
+void BitcoinExchange::ctrBtc(std::ifstream &testFile)
 {
 	std::string search;
 	double tmp = 0.0;
 	std::string tmpstr;
-	std::vector<std::string>::const_iterator it;
-	
-	for (it = _toCheck.begin(); it != _toCheck.end(); ++it)
+	std::map<std::string, double>::iterator it;
+
+	getline(testFile, search);
+	while (getline(testFile, search))
 	{
-		std::string entry = *it;
-		if (checkConditions(entry))
+		if (checkConditions(search))
 		{
-			std::string date = entry.substr(0, 10);
-			std::string amount = entry.substr(12, entry.length());
-			tmp = atof(amount.c_str());
-			dataCSV.clear();
-			dataCSV.seekg(0, std::ios::beg);
-			getline(dataCSV, search);
-			while (getline(dataCSV, search))
+			for (it = _toCheck.begin(); it != _toCheck.end(); ++it)
 			{
-				std::string refDate = search.substr(0, 10);
-				if (refDate >= date)
+				std::string searchDate = search.substr(0, 10);
+				if (it->first >= searchDate)
 				{
-					if (refDate == date)
+					if (searchDate == it->first)
 						tmpstr = search.substr(11, search.length());
-					double rate = atof(tmpstr.c_str());
-					printBtc(entry, date, tmp, rate);
+					else
+					{
+						if (it != _toCheck.begin())
+							it--;
+						else
+							break;
+					}
+					std::string amount = search.substr(12, search.length());
+					tmp = atof(amount.c_str());
+					printBtc(search, searchDate, tmp, it->second);
 					break;
 				}
-				tmpstr = search.substr(11, search.length());
 			}
+			tmpstr = search.substr(11, search.length());
 		}
-		
 	}
 }
 

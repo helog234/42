@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:55:46 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/26 15:11:48 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 10:47:26 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 class BitcoinExchange
 {
 	public:
-		BitcoinExchange(std::ifstream &testFile);
+		BitcoinExchange(std::ifstream &dataCSV, std::ifstream dateRef);
 		~BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange &other);
 		const BitcoinExchange &operator=(const BitcoinExchange &other) const;
@@ -31,8 +31,8 @@ class BitcoinExchange
 		bool checkConditions(std::string first);
 		
 	private:
-		std::ifstream _dateRef;
-		std::vector<std::string> _toCheck;
+		std::ifstream &_dateRef;
+		std::map<std::string, double> _toCheck;
 };
 
 bool isFloat(const std::string& str, size_t len);
