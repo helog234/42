@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 12:10:40 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 14:58:54 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 09:28:38 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,19 @@ int	main(void)
 	}
 	try
 	{
-		Bureaucrat bureaucrat1("Alice", 1);
+		//Bureaucrat bureaucrat1("Alice", 1);
+		Bureaucrat bureaucrat2("Bob", 150);
 
-		std::cout << bureaucrat1 << std::endl;
+		//std::cout << bureaucrat1 << std::endl;
+		std::cout << bureaucrat2 << std::endl;
 		
 	
-		bureaucrat1.incrementGrade();
+		//bureaucrat1.incrementGrade();
+		bureaucrat2.decrementGrade();
 
 		//post modifications
-		std::cout << bureaucrat1 << std::endl;
+		//std::cout << bureaucrat1 << std::endl;
+		std::cout << bureaucrat2 << std::endl;
 	}
 	catch(const std::exception& e)
 	{

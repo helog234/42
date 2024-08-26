@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 13:04:25 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/16 17:06:57 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 12:00:01 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,9 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	outfile << "---------------/ ,  . \\--------._" << std::endl;
 
 	outfile.close();
+}
+
+const char *ShrubberyCreationForm::ErrorFileException::what() const throw()
+{
+	return "could not open file";
 }

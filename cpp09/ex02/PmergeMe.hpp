@@ -6,14 +6,14 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:27:41 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/19 17:02:29 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 14:18:16 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PERGEME_HPP
 # define PERGEME_HPP
 # include <iostream>
-# include <deque>
+# include <vector>
 # include <list>
 # include <exception>
 # include <utility>
@@ -37,10 +37,7 @@ class PmergeMe
 
 		class WrongEntry: public std::exception
 		{
-			virtual const char* what() const throw()
-			{
-				return "Wrong entry. Only unique and positiv interger must be passed.";
-			}
+			virtual const char* what() const throw();
 		};
 		
 		

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 12:10:40 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 15:34:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 09:48:19 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	main(void)
 		bureaucrat2.executeForm(form3);
 		bureaucrat2.executeForm(form1);
 		bureaucrat3.executeForm(form2);
+		bureaucrat2.executeForm(form2);
 		
 
 		//post modifications

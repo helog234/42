@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:50:02 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/23 08:22:22 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:53:27 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,17 @@ class Span
 		class AlreadyTaken: public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return "Location already filled";
-				}
+				virtual const char* what() const throw();
 		};
 		class RangeTooShort: public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return "Range smaller or equal to 1 cannot be calculate";
-				}
+				virtual const char* what() const throw();
 		};
 		class RangeTooBig: public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return "Range is too big to fit into determined sized";
-				}
+				virtual const char* what() const throw();
 		};
 		
 		

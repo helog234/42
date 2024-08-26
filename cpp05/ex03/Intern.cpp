@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 17:39:11 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/24 14:43:29 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:39:27 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,7 @@ AForm* Intern::makeForm(std::string name, std::string target)
 
 	}	
 }
-
+const char *Intern::WrongName::what() const throw()
+{
+	return "Intern : No form corresponding to this name.";
+}

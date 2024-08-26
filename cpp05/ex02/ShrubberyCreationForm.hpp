@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 12:57:58 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 15:10:46 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 11:59:08 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ class ShrubberyCreationForm: public AForm
 		class ErrorFileException: public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return "could not open file";
-				}
+				virtual const char* what() const throw();
 		};
 		
 	private:

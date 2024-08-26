@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 14:13:56 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/29 13:31:06 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:57:56 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,9 @@ int	RPN::divid(int a, int b)
 	if (b == 0)
 		throw Error();
 	return (a / b);
+}
+
+const char *RPN::Error::what() const throw()
+{
+	return "Error";
 }

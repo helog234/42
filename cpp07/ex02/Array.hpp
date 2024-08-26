@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 15:20:46 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/21 12:05:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:44:30 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ class Array
 		class OutOfBound: public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return "Memory out of bound";
-				}
+				virtual const char* what() const throw();	
 		};
 	private:
 		T *_fill;

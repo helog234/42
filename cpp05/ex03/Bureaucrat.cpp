@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 10:03:32 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/16 15:04:10 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 11:52:30 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	Bureaucrat::incrementGrade()
 
 void	Bureaucrat::decrementGrade()
 {
-	if (_grade == 1)
+	if (_grade == 150)
 		throw GradeTooLowException();
 	else
 		_grade++;
@@ -89,14 +89,6 @@ std::ostream&	operator<<(std::ostream& out, const Bureaucrat& ref)
 	return (out);
 }
 
-/* void Bureaucrat::checkConditions(AForm const & form)
-{
-	if (form.getState() == false)
-		throw NotSignedException();
-	if (_grade > form.getExecGrade())
-		throw GradeTooLowException();
-	form.execute(*this);
-} */
 
 void	Bureaucrat::executeForm(AForm const & form)
 {
@@ -122,4 +114,16 @@ void	Bureaucrat::executeForm(AForm const & form)
 		std::cout <<  " because " << e.what() << '\n';
 	}
 	
+}
+
+
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Grade is too high!";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Grade is too low!";
 }

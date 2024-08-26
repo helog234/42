@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:59:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/23 08:22:31 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:53:18 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,19 @@ unsigned int Span::longestSpan()
 	int maxElement = *std::max_element(p_size.begin(), p_size.end());
 	
 	return (maxElement - minElement);
+}
+
+const char *Span::AlreadyTaken::what() const throw()
+{
+	return "Location already filled";
+}
+
+const char *Span::RangeTooShort::what() const throw()
+{
+	return "Range smaller or equal to 1 cannot be calculate";
+}
+
+const char *Span::RangeTooBig::what() const throw()
+{
+	return "Range is too big to fit into determined sized";
 }

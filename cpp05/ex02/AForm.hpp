@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 08:58:43 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 15:35:02 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 11:52:14 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,46 +35,31 @@ class AForm
 		class GradeTooHighException: public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return "Grade is too high (form)!";
-				}
-
+				virtual const char* what() const throw();
 		};
+	
 		class GradeTooLowException: public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return " grade is too low!";
-				}
-
+				virtual const char* what() const throw();
 		};
+		
 		class AlreadySignedException: public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return " form already signed";
-				}
+				virtual const char* what() const throw();
 
 		};
 		class NotSignedException: public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return " form needs to be signed prior executing";
-				}
+				virtual const char* what() const throw();
 
 		};
 		class ErrorFileException: public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return " could not open file";
-				}
+				virtual const char* what() const throw();
 		};
 		
 	private:

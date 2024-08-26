@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 15:28:47 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/26 09:23:23 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:50:13 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,10 @@ size_t Array<T>::size() const
 	while (_fill[i])
 		i++;
 	return (i);
+}
+
+template <typename T>
+const char *Array<T>::OutOfBound::what() const throw()
+{
+	return "Memory out of bound";
 }

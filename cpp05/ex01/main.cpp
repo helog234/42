@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 12:10:40 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 15:08:06 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 12:08:29 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	main(void)
 		
 	
 		bureaucrat1.signForm(form1);
-		bureaucrat1.signForm(form2);
 		bureaucrat2.signForm(form2);
 		bureaucrat1.signForm(form2);
 

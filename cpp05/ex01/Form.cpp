@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 08:58:32 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 15:04:36 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 11:54:17 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,19 @@ std::ostream& operator<<(std::ostream& out, const Form& ref)
 	out << ", grade required to sign it :" << ref.getSignedGrade();
 	out << ", grade required to execute it: " << ref.getExecGrade();
 	return (out);
+}
+
+const char *Form::GradeTooHighException::what() const throw()
+{
+	return "Grade is too high!";
+}
+
+const char *Form::GradeTooLowException::what() const throw()
+{
+	return "Grade is too low!";
+}
+
+const char *Form::AlreadySignedException::what() const throw()
+{
+	return "Grade is too low!";
 }

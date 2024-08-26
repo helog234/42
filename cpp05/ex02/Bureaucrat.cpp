@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 10:03:32 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 15:35:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 11:51:41 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	Bureaucrat::incrementGrade()
 
 void	Bureaucrat::decrementGrade()
 {
-	if (_grade == 1)
+	if (_grade == 150)
 		throw GradeTooLowException();
 	else
 		_grade++;
@@ -115,3 +115,15 @@ void	Bureaucrat::executeForm(AForm const & form)
 	}
 	
 }
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Grade is too high!";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Grade is too low!";
+}
+
+

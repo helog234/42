@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 14:13:51 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/29 13:00:45 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:58:00 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ class RPN
 		
 		class Error: public std::exception
 		{
-			virtual const char* what() const throw()
-			{
-				return "Error";
-			}
+			virtual const char* what() const throw();
 		};
 	
 	private:

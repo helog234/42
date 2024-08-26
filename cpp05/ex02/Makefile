@@ -6,7 +6,7 @@
 #    By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/07 10:00:38 by hgandar           #+#    #+#              #
-#    Updated: 2024/07/08 15:26:14 by hgandar          ###   ########.fr        #
+#    Updated: 2024/08/26 12:11:04 by hgandar          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 OFILES = $(CPPFILES:.cpp=.o)
 LEAK = Leaks -atExit --
 SANIT = -fsanitize=address -g3
+GARDEN = garden_shrubbery
 
 all: $(NAME)
 
@@ -34,6 +35,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(GARDEN)
 
 re: fclean all
 

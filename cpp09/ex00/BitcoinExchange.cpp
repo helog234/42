@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:02:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 11:34:20 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:56:11 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,4 +190,9 @@ bool isFloat(const std::string& str, size_t len)
 			return (false);
 	}
 	return (false);
+}
+
+const char *BitcoinExchange::FileError::what() const throw()
+{
+	return "Error opening file.";
 }

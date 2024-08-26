@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:27:49 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/19 17:07:46 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:59:37 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,10 @@ void PmergeMe::sorting()
 	std::cout << _lst.size() << "  elements with std::list : " << YELLOW;
 	std::cout << static_cast<float>(t2)/CLOCKS_PER_SEC * 1000 << " ms" << std::endl;
 	std::cout << INFO;
+}
+
+const char *PmergeMe::WrongEntry::what() const throw()
+{
+	return "Wrong entry. Only unique and positiv interger must be passed.";
 }
 

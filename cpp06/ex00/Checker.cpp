@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:10:35 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 16:45:04 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:42:18 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ bool isDouble(const std::string& str, size_t len)
 			return (true);
 		j = str[i] - '0';
 		num = num * 10 + j;
-		/* if (checkLimits(num, DOUBLE, str[0]) == false)
-			return (false); */
 	}
 	if (checkLimits(num, DOUBLE, str[0]) == false)
 			return (false);

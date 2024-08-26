@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:55:46 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/20 11:19:07 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/26 13:56:15 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ class BitcoinExchange
 
 		class FileError: public std::exception
 		{
-			virtual const char* what() const throw()
-			{
-				return "Error opening file.";
-			}
+			virtual const char* what() const throw();
 		};
 		
 	private:
