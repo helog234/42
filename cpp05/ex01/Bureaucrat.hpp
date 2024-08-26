@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 10:01:36 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/15 17:06:25 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 15:02:27 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,41 +19,41 @@
 class Form;
 class Bureaucrat
 {
-private:
-	std::string const _name;
-	int	_grade;
-	
-public:
-	Bureaucrat(std::string name, int grade);
-	Bureaucrat(const Bureaucrat &other);
-	Bureaucrat &operator=(const Bureaucrat &other);
-	~Bureaucrat();
+	private:
+		std::string const _name;
+		int	_grade;
+		
+	public:
+		Bureaucrat(std::string name, int grade);
+		Bureaucrat(const Bureaucrat &other);
+		Bureaucrat &operator=(const Bureaucrat &other);
+		~Bureaucrat();
 
-	std::string const getName() const;
-	int getGrade() const;
+		std::string const getName() const;
+		int getGrade() const;
 
-	void signForm(Form &ref);
-	
-	class GradeTooHighException: public std::exception
-	{
-		public:
-			virtual const char* what() const throw()
-			{
-				return "Grade is too high!";
-			}
-	};
-	
-	class GradeTooLowException: public std::exception
-	{
-		public:
-			virtual const char* what() const throw()
-			{
-				return "Grade is too low!";
-			}
-	};
-	
-	void incrementGrade();
-	void decrementGrade();
+		void signForm(Form &ref);
+		
+		class GradeTooHighException: public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return "Grade is too high!";
+				}
+		};
+		
+		class GradeTooLowException: public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return "Grade is too low!";
+				}
+		};
+		
+		void incrementGrade();
+		void decrementGrade();
 	
 };
 

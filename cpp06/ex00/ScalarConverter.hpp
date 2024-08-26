@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 09:59:59 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/18 16:52:19 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 15:51:48 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class ScalarConverter
 		static void convert(const std::string &str);
 
 	private:
-		ScalarConverter(/* args */);
+		ScalarConverter();
 		~ScalarConverter();
 		ScalarConverter(const ScalarConverter &other);
 		ScalarConverter &operator=(const ScalarConverter &other);

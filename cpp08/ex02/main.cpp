@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 11:01:07 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/23 14:41:21 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/21 15:07:46 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,11 @@ int main(void)
 {
 //mine
 	MutantStack<int> mutant;
-	/*std::list<int> mutant;
-	mutant.push_back(1);
-	mutant.push_back(2);
-	mutant.push_back(4);
-	mutant.push_back(8); */
 	mutant.push(1);
-    mutant.push(2);
-    mutant.push(4);
-    mutant.push(8);
+	mutant.push(2);
+	mutant.push(4);
+	mutant.push(8);
 	
-
 	std::cout << "check empty()" << std::endl;
 	std::cout << mutant.empty() << std::endl;
 	std::cout << "check size()" << std::endl;
@@ -65,8 +59,7 @@ int main(void)
 
 	MutantStack<int>::iterator it = mutant.begin();
 	MutantStack<int>::iterator ite = mutant.end();
-	/* std::list<int>::iterator it = mutant.begin();
-	std::list<int>::iterator ite = mutant.end(); */
+
 	std::cout << "while mutant" << std::endl;
 	while (it != ite) 
 	{
@@ -79,7 +72,6 @@ int main(void)
 	std::cout << "mutant end()" << std::endl;
 	std::cout << *ite << std::endl;
 
-	//enlever pour liste
 	std::cout << "check top()" << std::endl;
 	std::cout << mutant.top() << std::endl;
 	std::cout <<"------" << std::endl;
@@ -123,3 +115,49 @@ int main(void)
 	
 	return (0);
 }
+
+//main pour list
+/* int main(void) 
+{
+	std::list<int> mutant;
+	mutant.push_back(1);
+	mutant.push_back(2);
+	mutant.push_back(4);
+	mutant.push_back(8);
+	
+
+	std::cout << "check empty()" << std::endl;
+	std::cout << mutant.empty() << std::endl;
+	std::cout << "check size()" << std::endl;
+	std::cout << mutant.size() << std::endl;
+	std::cout <<"------" << std::endl;
+	std::cout << std::endl;
+
+	std::list<int>::iterator it = mutant.begin();
+	std::list<int>::iterator ite = mutant.end();
+	std::cout << "while mutant" << std::endl;
+	while (it != ite) 
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+	it = mutant.begin();
+	std::cout << "mutant begin()" << std::endl;
+	std::cout << *it << std::endl;
+	std::cout << "mutant end()" << std::endl;
+	std::cout << *ite << std::endl;
+
+	//enlever pour liste
+	std::cout << "check top()" << std::endl;
+	std::cout << mutant.back() << std::endl;
+	std::cout <<"------" << std::endl;
+	std::cout << std::endl;
+	
+	std::cout << "check pop()" << std::endl;
+	mutant.pop_back();
+	std::cout << mutant.back() << std::endl;
+	std::cout <<"------" << std::endl;
+	std::cout << std::endl;
+	
+	return (0);
+} */

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 12:10:40 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/15 17:14:28 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 15:34:45 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 	// tester initialisation avec mauvaises valeurs
 	/* try
 	{
-		Form wrongForm("Blablabla", 1, 1);
+		Form wrongForm("Blablabla", 0, 1);
 	}
 	catch(const std::exception& e)
 	{

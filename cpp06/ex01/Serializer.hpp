@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 16:52:06 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/18 17:01:33 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 16:51:39 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Serializer
 		static Data* deserialize(uintptr_t raw);
 
 	private:
-		Serializer(/* args */);
+		Serializer();
 		~Serializer();
 		Serializer(const Serializer &other);
 		Serializer &operator=(const Serializer &other);

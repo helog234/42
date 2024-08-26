@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 08:58:38 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/18 15:52:00 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 16:48:34 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void printInt(int i)
 	else
 	{
 		if (!isprint(i))
-			std::cout << "Not printable" << std::endl;
+			std::cout << "Non displayable" << std::endl;
 		else
 			std::cout << "'" << static_cast<char>(i) << "'" << std::endl;
 	}
@@ -60,7 +60,7 @@ void printFloat(float f)
 	else
 	{
 		if (!isprint(f))
-			std::cout << "Not printable" << std::endl;
+			std::cout << "Non displayable" << std::endl;
 		else
 			std::cout << "'" << static_cast<char>(f) << "'" << std::endl;
 	}
@@ -85,7 +85,7 @@ void printDouble(double f)
 	else
 	{
 		if (!isprint(f))
-			std::cout << "Not printable" << std::endl;
+			std::cout << "Non displayable" << std::endl;
 		else
 			std::cout << "'" << static_cast<char>(f) << "'" << std::endl;
 	}
@@ -95,7 +95,6 @@ void printDouble(double f)
 		std::cout << "Overflow" << std::endl;
 	else
 		std::cout << static_cast<int>(f) << std::endl;
-	//std::numeric_limits<float>::min() 
 	//gives the smallest positive value representable by a float
 	//but i want the min in the range so i do -max
 	std::cout << "Float : ";
@@ -113,7 +112,7 @@ void printDouble(double f)
 
 void printMath(const std::string& str)
 {
-	std::cout << "Char: Non displayable" << std::endl; 
+	std::cout << "Char: impossible" << std::endl; 
 	std::cout << "Int: Overflow" << std::endl;
 	if (str == "nan" || str == "nanf")
 	{

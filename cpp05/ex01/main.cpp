@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 12:10:40 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/08 11:53:13 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 15:08:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include "Form.hpp"
 #include <stdexcept>
 
-// j'ai ajouté une exepction dans le cas ou le formulaire est deja signé
+// j'ai ajouté une exception dans le cas ou le formulaire est deja signé
 int	main(void)
 {
 	// tester initialisation avec mauvaises valeurs
 	/* try
 	{
-		Form wrongForm("Blablabla", 1, 1);
+		Form wrongForm("Blablabla", 0, 1);
 	}
 	catch(const std::exception& e)
 	{

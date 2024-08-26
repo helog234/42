@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 08:58:43 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/09 10:38:09 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 15:35:02 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ class AForm
 		int getSignedGrade() const;
 		int getExecGrade() const;
 		void beSigned(Bureaucrat &ref);
-		//void checkConditions(Bureaucrat const & executor);
 		virtual void execute(Bureaucrat const & executor) const = 0;
 		
 		class GradeTooHighException: public std::exception

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 08:58:32 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/16 17:08:29 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 15:41:21 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void AForm::beSigned(Bureaucrat &ref)
 std::ostream& operator<<(std::ostream& out, const AForm& ref)
 {
 	out << ref.getName() << " form, signed status : " << ref.getState();
-	out << ", grade required to sign it :" << ref.getSignedGrade();
+	out << ", grade required to sign it : " << ref.getSignedGrade();
 	out << ", grade required to execute it: " << ref.getExecGrade();
 	return (out);
 }

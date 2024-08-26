@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 17:32:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/24 14:43:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 15:38:27 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,6 @@ class Intern
 				}
 		};
 		
-	private:
-		/* void _StockForm(AForm* toAdd);
-		struct FormNode
-		{
-			AForm* form;
-			FormNode* next;
-		};
-		FormNode* _List;
-		void _RemoveList(); */
-		
-		
-		
-		
 };
-
 
 #endif

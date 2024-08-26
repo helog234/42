@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 11:10:35 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/18 15:12:23 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 16:45:04 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ bool isInt(const std::string& str, size_t len)
 			return (false);
 		j = str[i] - '0';
 		num = num * 10 + j;
-		if (checkLimits(num, INT, str[0]) == false)
-			return (false);
 	}
+	if (checkLimits(num, INT, str[0]) == false)
+			return (false);
 	return (true);
 }
 
@@ -57,9 +57,9 @@ bool isFloat(const std::string& str, size_t len)
 			return (true);
 		j = str[i] - '0';
 		num = num * 10 + j;
-		if (checkLimits(num, FLOAT, str[0]) == false)
-			return (false);
 	}
+	if (checkLimits(num, FLOAT, str[0]) == false)
+			return (false);
 	return (false);
 }
 
@@ -80,9 +80,11 @@ bool isDouble(const std::string& str, size_t len)
 			return (true);
 		j = str[i] - '0';
 		num = num * 10 + j;
-		if (checkLimits(num, DOUBLE, str[0]) == false)
-			return (false);
+		/* if (checkLimits(num, DOUBLE, str[0]) == false)
+			return (false); */
 	}
+	if (checkLimits(num, DOUBLE, str[0]) == false)
+			return (false);
 	return (false);
 }
 
@@ -102,7 +104,7 @@ bool checkLimits(size_t num, int type, char sign)
 		if (sign == '-' && static_cast<int>(num) < std::numeric_limits<int>::min())
 			return (false);
 		if ((isdigit(sign) || sign == '+') && \
-		static_cast<int>(num) > std::numeric_limits<int>::max())
+		num > static_cast<size_t> (std::numeric_limits<int>::max()))
 			return (false);
 	}
 	else if (type == FLOAT)
@@ -110,7 +112,7 @@ bool checkLimits(size_t num, int type, char sign)
 		if (sign == '-' && static_cast<float>(num) < std::numeric_limits<float>::min())
 			return (false);
 		if ((isdigit(sign) || sign == '+') && \
-		static_cast<float>(num) > std::numeric_limits<float>::max())
+		num > static_cast<size_t> (std::numeric_limits<float>::max()))
 			return (false);
 	}
 	else if (type == DOUBLE)
@@ -118,7 +120,7 @@ bool checkLimits(size_t num, int type, char sign)
 		if (sign == '-' && static_cast<double>(num) < std::numeric_limits<double>::min())
 			return (false);
 		if ((isdigit(sign) || sign == '+') && \
-		static_cast<double>(num) > std::numeric_limits<double>::max())
+		(num) > static_cast<size_t> (std::numeric_limits<double>::max()))
 			return (false);
 	}
 	return (true);

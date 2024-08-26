@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 10:03:32 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/09 10:38:52 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 15:35:16 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,6 @@ std::ostream&	operator<<(std::ostream& out, const Bureaucrat& ref)
 	return (out);
 }
 
-/* void Bureaucrat::checkConditions(AForm const & form)
-{
-	if (form.getState() == false)
-		throw NotSignedException();
-	if (_grade > form.getExecGrade())
-		throw GradeTooLowException();
-	form.execute(*this);
-} */
 
 void	Bureaucrat::executeForm(AForm const & form)
 {

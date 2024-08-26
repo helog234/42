@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 14:28:23 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/23 08:43:22 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/21 14:52:40 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	main(void)
 	std::cout << sp.longestSpan() << std::endl;
 	return 0; */
 
-	//test avec 10000
-	Span sp = Span(10000);
+	//test avec 20000
+	Span sp = Span(20000);
 	try
 	{
 		std::vector<int> range;
-		for (size_t i = 0; i < 10000; i++)
+		for (size_t i = 0; i < 20000; i++)
 			range.push_back(i);
 		
 		sp.addNumber(range.begin(), range.end());
@@ -62,6 +62,7 @@ int	main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	//test avec emplacement déjà pris
 	Span sp1 = Span(5);
 	try
 	{

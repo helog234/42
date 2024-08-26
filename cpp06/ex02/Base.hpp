@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 11:13:51 by hgandar           #+#    #+#             */
-/*   Updated: 2024/07/19 12:02:16 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/20 16:58:03 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ class Base
 {
 	public:
 		virtual ~Base();
-		
-	private:
-	/* data */
 };
 
 
