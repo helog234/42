@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 10:03:32 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/26 11:52:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/08/27 09:04:06 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,6 @@ void	Bureaucrat::executeForm(AForm const & form)
 	}
 	
 }
-
-
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {

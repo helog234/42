@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   TCPserver.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/19 14:35:16 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/27 16:03:43 by hgandar          ###   ########.fr       */
+/*   Created: 2024/08/27 10:56:48 by hgandar           #+#    #+#             */
+/*   Updated: 2024/08/27 15:54:04 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-# define ITER_HPP
-# include "iostream"
+#ifndef TCPSERVER_HPP
+# define TCPSERVER_HPP
+# include <sys/socket.h>
 
-template <typename T>
-void iter(T *add, size_t len, void (*func)(T &))
-{
-	for (size_t i = 0; i < len; i++)
-		func(add[i]);
-}
-
-template <typename T>
-void printValue(T &i)
-{
-	std::cout << i << std::endl;
-}
 #endif
