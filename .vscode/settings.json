@@ -73,7 +73,10 @@
 		"stack": "cpp",
 		"type_traits": "cpp",
 		"utility": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"numeric": "cpp",
+		"random": "cpp",
+		"filesystem": "c"
 	},
 	"C_Cpp.errorSquiggles": "enabled"
 }

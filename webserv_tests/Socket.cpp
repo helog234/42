@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   socket.cpp                                         :+:      :+:    :+:   */
+/*   Socket.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:40:46 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/30 11:11:49 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/09/03 15:49:32 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ int Socket::getFdSocket()
 {
 	return(_fdSocket);
 }
-struct sockaddr_in Socket::getAddress()
+struct sockaddr_in &Socket::getAddress()
 {
-	return(_address);
+	return(this->_address);
 }
 socklen_t Socket::getLen()
 {

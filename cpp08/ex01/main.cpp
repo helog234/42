@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 14:28:23 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/21 14:52:40 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/09/02 16:19:24 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ int	main(void)
 	try
 	{
 		std::vector<int> range;
-		for (size_t i = 0; i < 300; i++)
+		for (size_t i = 0; i < 10; i++)
 			range.push_back(i);
 		
 		sp.addNumber(range.begin(), range.end());
 		
 		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
-		for (size_t i = 0; i < 300; i++)
+		for (size_t i = 0; i < 10; i++)
 			range.push_back(i);
 		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;

@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:27:49 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/26 13:59:37 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/09/03 09:18:20 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void PmergeMe::sorting()
 			std::cout << *it << " ";
 	}
 	std::cout << std::endl;
-	std::cout << "Before (lst): " << RED;
+	std::cout << INFO << "Before (lst): " << RED;
 	for (std::list<int>::iterator it \
 	 = _lst.begin(); it != _lst.end(); ++it)
 	{

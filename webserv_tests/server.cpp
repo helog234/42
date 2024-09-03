@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 09:45:04 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/30 18:16:53 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/09/03 16:02:50 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void server::loadConfig(const std::string& configFilePath)
 			_name = key;
 		else if (key == "port")
 			_port = stoi(value);
+		else if (key == "size")
+			_maxSize = stoi(value);
 	}
 }
 
@@ -94,14 +96,26 @@ std::vector<std::string> server::parseIndex(const std::string& value)
 	return indices;
 }
 
-/* std::vector<int> server::parsePorts(std::string ports)
+void server::handleRequest(const HttpRequest& request, HttpResponse& response)
 {
-	std::istringstream valueStream(ports);
-	std::vector<int> parsedPorts;
-	std::string portStr;
+	fd_set readFds;
+	fd_set writeFds;
+	int	readyFds = 0;
+	int	clientSocket
 	
-	while (getline(valueStream, portStr, ','))
-		parsedPorts.push_back(stoi(portStr));
-	
-	return (parsedPorts);
-} */
+	while (true)
+	{
+		FD_ZERO(&readFds);
+		FD_ZERO(&writeFds);
+		FD_SET(readFds, &readFds);
+		readyFds = select(readFds + 1, &readFds, &writeFds, NULL, 0);
+		if (readyFds == -1)
+			//faire stopper le programe (errExit("select"); n'est probablement pas autorise)
+		if (FD_ISSET(readFds, &readFds))
+		{
+			socklen_t addrlen = sizeof(serverSocket.getAddress());
+			_clientSocket.setFdSocket() = 
+		}
+		
+	}
+}

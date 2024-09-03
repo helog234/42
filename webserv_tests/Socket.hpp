@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   socket.hpp                                         :+:      :+:    :+:   */
+/*   Socket.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:38:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/30 11:07:30 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/09/03 16:01:47 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ class Socket
 		~Socket();
 
 		int getFdSocket();
-		struct sockaddr_in getAddress();
+		struct sockaddr_in& getAddress();
 		socklen_t getLen();
+
+		int setFdSocket();
+		struct sockaddr_in& setAddress();
+		socklen_t setLen();
 
 		void Bind();
 		void Listen(int connections);

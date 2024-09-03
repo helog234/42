@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 12:59:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/26 13:53:18 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/09/02 12:46:42 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void Span::addNumber(const int i)
 void Span::addNumber(std::vector<int>::iterator start, \
 std::vector<int>::iterator end)
 {
-	size_t range = std::distance(start, end);
+	size_t range = distance(start, end);
 	if (p_size.size() + range > p_N)
 		throw RangeTooBig();
 	p_size.insert(p_size.end(), start, end);
@@ -64,7 +64,7 @@ unsigned int Span::shortestSpan()
 		throw RangeTooShort();
 
 	std::vector<int> sorted = p_size;
-	std::sort(sorted.begin(), sorted.end());
+	sort(sorted.begin(), sorted.end());
 	
 	unsigned int minSpan = std::numeric_limits<unsigned int>::max();
 	for (size_t i = 1; i < sorted.size(); ++i)
@@ -81,8 +81,8 @@ unsigned int Span::longestSpan()
 	if (p_size.size() < 2)
 		throw RangeTooShort();
 
-	int minElement = *std::min_element(p_size.begin(), p_size.end());
-	int maxElement = *std::max_element(p_size.begin(), p_size.end());
+	int minElement = *min_element(p_size.begin(), p_size.end());
+	int maxElement = *max_element(p_size.begin(), p_size.end());
 	
 	return (maxElement - minElement);
 }

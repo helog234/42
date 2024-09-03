@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:56:48 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/30 18:16:12 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/09/03 15:00:37 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sstream>
 # include <utility>
 # include <string>
+# include <poll.h>
 
 struct LocationConfig
 {
@@ -45,6 +46,7 @@ class server
 		std::string _name;
 		//std::vector<int> _ports;
 		int	_port;
+		int _maxSize;
 		std::map<std::string, LocationConfig> _locations;
 		
 	public:

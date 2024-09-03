@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 15:02:08 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/26 13:56:11 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/09/03 09:08:51 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,10 +134,13 @@ std::string date, double amount, double rate)
 		std::cout << first.substr(12, first.length());
 	else
 		std::cout << amount;
-	/* std::cout << "amount " << amount << std::endl;
-	std::cout << "rate " << std::fixed << std::setprecision(2) << rate << std::endl; */
-	std::cout << " = " << std::fixed << std::setprecision(2);
-	std::cout << amount * rate << std::endl;
+		
+	double result = amount * rate;
+	std::cout << " = ";
+	if (result >= 1000)
+		std::cout << std::fixed << std::setprecision(2) << result << std::endl;
+	else 
+		std::cout << std::setprecision(2) << result << std::endl;
 }
 
 bool checkLimits(size_t num, int type, char sign)

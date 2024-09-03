@@ -6,7 +6,7 @@
 /*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 11:50:02 by hgandar           #+#    #+#             */
-/*   Updated: 2024/08/26 13:53:27 by hgandar          ###   ########.fr       */
+/*   Updated: 2024/09/02 09:09:31 by hgandar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <iostream>
 # include <vector>
 # include <limits>
+# include <algorithm>
 
 class Span
 {
