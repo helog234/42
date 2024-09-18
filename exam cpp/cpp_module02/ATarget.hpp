@@ -1,7 +1,5 @@
-#pragma once
 #ifndef ATARGET_HPP
 # define ATARGET_HPP
-
 # include <iostream>
 # include "ASpell.hpp"
 
@@ -18,7 +16,7 @@ class ATarget
 		ATarget(const ATarget& other);
 		ATarget& operator=(const ATarget& other);
 
-		const std::string& getType();
+		const std::string& getType() const;
 
 		virtual ATarget* clone() const = 0;
 

@@ -3,7 +3,8 @@
 Dummy::Dummy()
 : ATarget("Target Practice Dummy") {}
 
-Dummy::~Dummy() {}
+Dummy::~Dummy()
+{}
 
 Dummy::Dummy(const Dummy& other)
 : ATarget("Target Practice Dummy")

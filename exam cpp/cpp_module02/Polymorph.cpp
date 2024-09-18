@@ -5,6 +5,7 @@ Polymorph::Polymorph()
 
 Polymorph::~Polymorph()
 {}
+
 Polymorph::Polymorph(const Polymorph& other)
 : ASpell("Polymorph", "turned into a critter")
 {

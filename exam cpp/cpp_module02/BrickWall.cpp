@@ -3,7 +3,8 @@
 BrickWall::BrickWall()
 : ATarget("Inconspicuous Red-brick Wall") {}
 
-BrickWall::~BrickWall() {}
+BrickWall::~BrickWall()
+{}
 
 BrickWall::BrickWall(const BrickWall& other)
 : ATarget("Inconspicuous Red-brick Wall")

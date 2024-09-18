@@ -5,6 +5,7 @@ Fwoosh::Fwoosh()
 
 Fwoosh::~Fwoosh()
 {}
+
 Fwoosh::Fwoosh(const Fwoosh& other)
 : ASpell("Fwoosh", "fwooshed")
 {

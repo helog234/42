@@ -1,8 +1,10 @@
 #include "TargetGenerator.hpp"
 
-TargetGenerator::TargetGenerator() {}
+TargetGenerator::TargetGenerator()
+{}
 
-TargetGenerator::~TargetGenerator() {}
+TargetGenerator::~TargetGenerator()
+{}
 
 TargetGenerator::TargetGenerator(const TargetGenerator& other)
 {
@@ -15,31 +17,33 @@ TargetGenerator& TargetGenerator::operator=(const TargetGenerator& other)
 	return (*this);
 }
 
-
 void TargetGenerator::learnTargetType(ATarget* target)
 {
-		for (std::map<std::string, ATarget*>::iterator it = book.begin(); it != book.end(); it++)
+	for (std::map<std::string, ATarget*>::iterator it = book.begin(); \
+	it != book.end(); it++)
 	{
 		if (it->first == target->getType())
-			return ;
+			return;
 	}
 	book[target->getType()] = target;
 }
 void TargetGenerator::forgetTargetType(const std::string& type)
 {
-	for (std::map<std::string, ATarget*>::iterator it = book.begin(); it != book.end(); it++)
+	for (std::map<std::string, ATarget*>::iterator it = book.begin(); \
+	it != book.end(); it++)
 	{
 		if (it->first == type)
 		{
 			book.erase(it);
-			return ;
+			return;
 		}
 	}
 }
 
 ATarget* TargetGenerator::createTarget(const std::string& type)
 {
-	for (std::map<std::string, ATarget*>::iterator it = book.begin(); it != book.end(); it++)
+	for (std::map<std::string, ATarget*>::iterator it = book.begin(); \
+	it != book.end(); it++)
 	{
 		if (it->first == type)
 			return (it->second);

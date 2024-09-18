@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Socket.hpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 11:38:54 by hgandar           #+#    #+#             */
-/*   Updated: 2024/09/03 16:01:47 by hgandar          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef SOCKET_HPP
 # define SOCKET_HPP
@@ -17,6 +6,7 @@
 # include <netinet/in.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include "server.hpp"
 # define MAX_CONNECTIONS 500
 
 class Socket
@@ -28,8 +18,14 @@ class Socket
 		
 	public:
 		Socket(int domain, int service, int protocol, int port, u_long interface);
-		Socket(const Socket &other);
-		Socket& operator=(const Socket &other);
+		//toutes les classes qui gèrent des ressources 
+		//systèmes comme les sockets ne devraient pas pourvoir
+		// être copiés sans discernement. La copie d'une socket 
+		//peut entraîner des comportements non définis, comme 
+		//des fermetures de socket inattendues ou des 
+		//conflits sur les ressources réseau.
+		Socket(const Socket &other) = delete;
+		Socket& operator=(const Socket &other) = delete;
 		~Socket();
 
 		int getFdSocket();
@@ -41,7 +37,7 @@ class Socket
 		socklen_t setLen();
 
 		void Bind();
-		void Listen(int connections);
+		void Listen();
 		int Accept();
 
 		ssize_t Send(int client_socket, const char* buffer, size_t buffer_length, int flags);

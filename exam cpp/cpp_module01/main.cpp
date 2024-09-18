@@ -1,8 +1,8 @@
+#include "ASpell.hpp"
+#include "ATarget.hpp"
 #include "Warlock.hpp"
 #include "Fwoosh.hpp"
 #include "Dummy.hpp"
-#include "ASpell.hpp"
-#include "ATarget.hpp"
 
 int main()
 {
@@ -16,6 +16,6 @@ int main()
   richard.introduce();
   richard.launchSpell("Fwoosh", bob);
 
-  richard.forgetSpell("Fwoosh");
+  richard.forgetSpell(fwoosh->getName());
   richard.launchSpell("Fwoosh", bob);
 }

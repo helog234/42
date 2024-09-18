@@ -3,10 +3,12 @@
 ATarget::ATarget(const std::string& Type)
 : type(Type) {}
 
-ATarget::~ATarget() {}
-
+ATarget::~ATarget()
+{}
 ATarget::ATarget(const ATarget& other)
-: type(other.type) {}
+{
+	type = other.type;
+}
 
 ATarget& ATarget::operator=(const ATarget& other)
 {
@@ -15,15 +17,13 @@ ATarget& ATarget::operator=(const ATarget& other)
 	return (*this);
 }
 
-const std::string& ATarget::getType()
+const std::string& ATarget::getType() const
 {
 	return (type);
 }
 
-
 void ATarget::getHitBySpell(const ASpell& spell) const
 {
 	std::cout << type << " has been ";
-	std::cout << spell.getEffect() << std::endl;
+	std::cout << spell.getEffect() << "!" << std::endl;
 }
-

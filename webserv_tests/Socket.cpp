@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Socket.cpp                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hgandar <hgandar@student.42lausanne.ch>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 15:40:46 by hgandar           #+#    #+#             */
-/*   Updated: 2024/09/03 15:49:32 by hgandar          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "Socket.hpp"
 
@@ -23,10 +12,9 @@ Socket::Socket(int domain, int service, int protocol, int port, u_long interface
 	_address.sin_port = htons(port);
 
 	_len = sizeof(_address);
-	
 }
 
-Socket::Socket(const Socket &other)
+/* Socket::Socket(const Socket &other)
 :_fdSocket(other._fdSocket), _address(other._address), _len(other._len)
 {}
 Socket& Socket::operator=(const Socket &other)
@@ -38,7 +26,7 @@ Socket& Socket::operator=(const Socket &other)
 		_len = other._len;
 	}
 	return (*this);
-}
+} */
 
 Socket::~Socket()
 {}
@@ -49,7 +37,7 @@ void Socket::Bind()
 		throw std::runtime_error("Error binding socket.");
 }
 
-void Socket::Listen(int connections)
+void Socket::Listen()
 {
 	if (listen(_fdSocket, MAX_CONNECTIONS) < 0)
 		throw std::runtime_error("Error listening socket.");

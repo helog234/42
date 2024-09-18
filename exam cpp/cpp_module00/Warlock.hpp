@@ -11,14 +11,15 @@ class Warlock
 		Warlock& operator=(const Warlock& other);
 
 	public:
-		Warlock(std::string const &Name, std::string const &Title);
+		Warlock(const std::string& Name, const std::string& Title);
 		~Warlock();
 
 		const std::string& getName() const;
 		const std::string& getTitle() const;
-
 		void setTitle(const std::string& Title);
+
 		void introduce() const;
+
 };
 
 #endif
