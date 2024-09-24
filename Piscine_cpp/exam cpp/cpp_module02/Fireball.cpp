@@ -14,8 +14,22 @@ Fireball::Fireball(const Fireball& other)
 
 Fireball& Fireball::operator=(const Fireball& other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		name = other.name;
+		effects = other.effects;
+	}
 	return (*this);
+}
+
+const std::string& Fireball::getName() const
+{
+	return (name);
+}
+
+const std::string& Fireball::getEffects() const
+{
+	return (effects);
 }
 
 Fireball* Fireball::clone() const

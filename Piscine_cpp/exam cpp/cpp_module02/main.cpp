@@ -1,14 +1,13 @@
+#include "Warlock.hpp"
 #include "ASpell.hpp"
 #include "ATarget.hpp"
-#include "Warlock.hpp"
 #include "Fwoosh.hpp"
 #include "Dummy.hpp"
+#include "SpellBook.hpp"
 #include "Fireball.hpp"
 #include "Polymorph.hpp"
-#include "BrickWall.hpp"
 #include "TargetGenerator.hpp"
-#include "SpellBook.hpp"
-
+#include "BrickWall.hpp"
 
 int main()
 {

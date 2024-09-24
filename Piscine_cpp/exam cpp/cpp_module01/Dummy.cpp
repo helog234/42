@@ -14,8 +14,16 @@ Dummy::Dummy(const Dummy& other)
 
 Dummy& Dummy::operator=(const Dummy& other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		type = other.type;
+	}
 	return (*this);
+}
+
+const std::string& Dummy::getType() const
+{
+	return (type);
 }
 
 Dummy* Dummy::clone() const

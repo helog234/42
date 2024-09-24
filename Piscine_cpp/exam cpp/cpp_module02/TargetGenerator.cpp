@@ -19,34 +19,37 @@ TargetGenerator& TargetGenerator::operator=(const TargetGenerator& other)
 
 void TargetGenerator::learnTargetType(ATarget* target)
 {
-	for (std::map<std::string, ATarget*>::iterator it = book.begin(); \
+	for (std::map<std::string, ATarget*>::iterator it = book.begin();\
 	it != book.end(); it++)
 	{
-		if (it->first == target->getType())
-			return;
+		if (it->second == target)
+			return ;
 	}
 	book[target->getType()] = target;
 }
-void TargetGenerator::forgetTargetType(const std::string& type)
+
+void TargetGenerator::forgetTargetType(std::string type)
 {
-	for (std::map<std::string, ATarget*>::iterator it = book.begin(); \
+	for (std::map<std::string, ATarget*>::iterator it = book.begin();\
 	it != book.end(); it++)
 	{
 		if (it->first == type)
 		{
 			book.erase(it);
-			return;
+			return ;
 		}
 	}
 }
 
 ATarget* TargetGenerator::createTarget(const std::string& type)
 {
-	for (std::map<std::string, ATarget*>::iterator it = book.begin(); \
+	for (std::map<std::string, ATarget*>::iterator it = book.begin();\
 	it != book.end(); it++)
 	{
 		if (it->first == type)
+		{
 			return (it->second);
+		}
 	}
 	return (NULL);
 }

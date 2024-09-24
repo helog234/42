@@ -16,10 +16,9 @@ class Warlock
 
 		const std::string& getName() const;
 		const std::string& getTitle() const;
+
 		void setTitle(const std::string& Title);
-
 		void introduce() const;
-
 };
 
 #endif

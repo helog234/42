@@ -7,12 +7,9 @@ class ATarget;
 
 class ASpell
 {
-	private:
-
-	
 	protected:
 		std::string name;
-		std::string effect;
+		std::string effects;
 
 	public:
 		ASpell(const std::string& Name, const std::string& Effect);
@@ -21,11 +18,10 @@ class ASpell
 		ASpell& operator=(const ASpell& other);
 
 		const std::string& getName() const;
-		const std::string& getEffect() const;
+		const std::string& getEffects() const;
 
 		virtual ASpell* clone() const = 0;
-
-		void launch(const ATarget& target);
+		void launch(const ATarget& target) const;
 };
 
 #endif

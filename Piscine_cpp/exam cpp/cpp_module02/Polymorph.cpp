@@ -14,8 +14,22 @@ Polymorph::Polymorph(const Polymorph& other)
 
 Polymorph& Polymorph::operator=(const Polymorph& other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		name = other.name;
+		effects = other.effects;
+	}
 	return (*this);
+}
+
+const std::string& Polymorph::getName() const
+{
+	return (name);
+}
+
+const std::string& Polymorph::getEffects() const
+{
+	return (effects);
 }
 
 Polymorph* Polymorph::clone() const

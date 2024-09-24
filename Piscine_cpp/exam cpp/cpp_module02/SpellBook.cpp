@@ -17,37 +17,40 @@ SpellBook& SpellBook::operator=(const SpellBook& other)
 	return (*this);
 }
 
+
 void SpellBook::learnSpell(ASpell* spell)
 {
-	for (std::map<std::string, ASpell*>::iterator it = spellBook.begin(); \
-	it != spellBook.end(); it++)
+	for (std::map<std::string, ASpell*>::iterator it = book.begin();\
+	it != book.end(); it++)
 	{
-		if (it->first == spell->getName())
-			return;
+		if (it->second == spell)
+			return ;
 	}
-	spellBook[spell->getName()] = spell;
+	book[spell->getName()] = spell;
 }
 
-void SpellBook::forgetSpell(const std::string& spellName)
+void SpellBook::forgetSpell(std::string spellName)
 {
-	for (std::map<std::string, ASpell*>::iterator it = spellBook.begin(); \
-	it != spellBook.end(); it++)
+	for (std::map<std::string, ASpell*>::iterator it = book.begin();\
+	it != book.end(); it++)
 	{
 		if (it->first == spellName)
 		{
-			spellBook.erase(it);
-			return;
+			book.erase(it);
+			return ;
 		}
 	}
 }
 
 ASpell* SpellBook::createSpell(const std::string& spellName)
 {
-	for (std::map<std::string, ASpell*>::iterator it = spellBook.begin(); \
-	it != spellBook.end(); it++)
+	for (std::map<std::string, ASpell*>::iterator it = book.begin();\
+	it != book.end(); it++)
 	{
 		if (it->first == spellName)
+		{
 			return (it->second);
+		}
 	}
 	return (NULL);
 }

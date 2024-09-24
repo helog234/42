@@ -14,8 +14,16 @@ BrickWall::BrickWall(const BrickWall& other)
 
 BrickWall& BrickWall::operator=(const BrickWall& other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		type = other.type;
+	}
 	return (*this);
+}
+
+const std::string& BrickWall::getType() const
+{
+	return (type);
 }
 
 BrickWall* BrickWall::clone() const
