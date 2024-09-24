@@ -1,0 +1,25 @@
+t_texture :
+	for each texture (NO, SO, WE, EA):
+		in parsing make variable void *img = mlx_xpm_file_to_image(mlx->mlx_ptr, NORTH, &mlx->wall->no_w, &mlx->wall->no_h);
+	int *north = (int *)mlx_get_data_addr(img, &bpp, &ll, &endian); - i don't use bpp, ll & endian
+	int	no_w = gotten from mlx_xpm_file_to_image here above
+	int	no_h = gotten from mlx_xpm_file_to_image here above
+	int	ceiling : rgb value for the ceiling color (ex. C 220, 100, 000 => ceiling = (220 << 16) | (100 << 8) | 000;)
+	int	floor : rgb value for the floor color
+
+t_pos :
+	float	p_x : x value of the starting position + 0.05
+	float	p_y : y value of the starting position + 0.05
+	float	dir_x :	if starting position is NO = -1
+					if starting position is SO = 1 , else = 0
+	float	dir_y :	if starting position is EA = 1
+					if starting position is WE = -1 , else = 0
+	float	plane_x : if starting position is NO or EA = 0.66
+					  if starting position is SO or WE = -0.66
+
+t_data :
+	char	**map : *map - map rows, **map - map colons from file.cub
+	int		map_height : number of map rows
+	int		map_width : number of map colons
+
+- rest should be initialized to 0
