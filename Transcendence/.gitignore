@@ -1,0 +1,18 @@
+# .gitignore
+
+# Environnements virtuels
+env/
+venv/
+__pycache__/
+*.pyc
+
+# Fichiers de configuration
+.env
+
+# Node modules
+node_modules/
+
+# Fichiers construits
+frontend/build/
+
+.DS_Store

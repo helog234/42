@@ -70,7 +70,7 @@ volumes:
       device: '/Users/login/data/mariadb'
 
 networks:
-    inception:
+  inception:
     driver: bridge #bridge=défaut, cela permet de ne pas isoler les container
                    #et de leur permettre de communiquet entre eux
 					

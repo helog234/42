@@ -1,0 +1,70 @@
+# docker-compose.yml
+
+#version: '3.8'
+
+
+services:
+  backend:
+    container_name: backend
+    build: ./backend
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - app-network
+
+  db:
+    container_name: db
+    image: postgres:17.0
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U superuser -d db_transcendance"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - .env
+    depends_on:
+      backend:
+        condition: service_healthy
+      # frontend
+    networks:
+      - app-network
+  # Si vous avez un frontend, décommentez et configurez cette section
+  # frontend:
+  #   container_name: frontend
+  #   build: ./frontend
+  #   ports:
+  #     - "3000:80"  # Expose le port 80 du conteneur sur le port 3000 de l'hôte
+  #   depends_on:
+  #     - backend
+  #   networks:
+  #     - app-network
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge
