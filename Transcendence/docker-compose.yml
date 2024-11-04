@@ -40,8 +40,10 @@ services:
   frontend:
     container_name: frontend
     build:
-      context: .
-      dockerfile: ./frontend/Dockerfile
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    #ports:
+      #- "3000:80"
     networks:
       - app-network
     volumes:
@@ -51,8 +53,8 @@ services:
     container_name: nginx
     build: ./nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:80"
+      - "8443:443"
     env_file:
       - .env
     depends_on:
