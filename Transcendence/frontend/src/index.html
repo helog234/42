@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcendence</title>
+    <link rel="stylesheet" href="/static/css/style.css"> <!-- Chemin vers ton fichier CSS -->
+</head>
+<body>
+    <header>
+        <h1>Bienvenue dans l'API de Transcendence 🚀</h1>
+    </header>
+
+    <main id="content">
+        <p>Chargement des données...</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Transcendence</p>
+    </footer>
+
+    <script>
+        // Fonction pour récupérer des données dynamiques de l'API
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/');
+                if (!response.ok) throw new Error('Erreur de chargement de l\'API');
+                
+                const data = await response.json();
+                document.getElementById('content').innerHTML = `<p>${data.message}</p>`;
+            } catch (error) {
+                console.error('Erreur:', error);
+                document.getElementById('content').innerHTML = `<p>Erreur de chargement des données.</p>`;
+            }
+        }
+
+        // Appel de la fonction fetchData au chargement de la page
+        window.onload = fetchData;
+    </script>
+</body>
+</html>

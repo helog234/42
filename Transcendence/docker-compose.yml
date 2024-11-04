@@ -37,6 +37,16 @@ services:
       timeout: 5s
       retries: 5
 
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+    networks:
+      - app-network
+    volumes:
+      - frontend_build:/app/dist
+
   nginx:
     container_name: nginx
     build: ./nginx
@@ -48,22 +58,17 @@ services:
     depends_on:
       backend:
         condition: service_healthy
-      # frontend
+      frontend:
+        condition: service_started
     networks:
       - app-network
-  # Si vous avez un frontend, décommentez et configurez cette section
-  # frontend:
-  #   container_name: frontend
-  #   build: ./frontend
-  #   ports:
-  #     - "3000:80"  # Expose le port 80 du conteneur sur le port 3000 de l'hôte
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - app-network
+    volumes:
+      - frontend_build:/usr/share/nginx/html
+
 
 volumes:
   postgres_data:
+  frontend_build:
 
 networks:
   app-network:
