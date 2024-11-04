@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production --output-path ./dist"
+    "build": "webpack --config webpack.config.js --mode production"
   },
   "author": "",
   "license": "ISC",
@@ -12,9 +12,9 @@
     "axios": "^0.21.1"
   },
   "devDependencies": {
-    "webpack": "^5.24.2",
-    "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.0.1",
+    "html-webpack-plugin": "^5.5.0"
   }
 }
 
