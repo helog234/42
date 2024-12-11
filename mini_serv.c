@@ -168,7 +168,6 @@ void handle_client_msg(int client_fd)
 }
 
 
-
 int	main(int argc, char *argv[])
 {
 	if (argc != 2)

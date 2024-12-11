@@ -1,0 +1,108 @@
+<!-- app/front/templates/hub.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Hub
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center mb-4">Pong Hub</h2>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <button id="create_game_btn" class="btn btn-primary btn-lg w-100 mb-3">Create a game</button>
+            <button id="create_tournament_btn" class="btn btn-success btn-lg w-100">Create a tournament</button>
+        </div>
+        <div class="col-md-6">
+            <h4>Scheduled tournaments</h4>
+            <ul id="tournaments_list" class="list-group mb-4">
+                <!-- Liste des tournois sera injectée ici -->
+            </ul>
+            
+            <h4>Scheduled games</h4>
+            <ul id="scheduled_games_list" class="list-group">
+                <!-- Liste des jeux programmés sera injectée ici -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Créer un Jeu -->
+<div class="modal fade" id="createGameModal" tabindex="-1" aria-labelledby="createGameModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="create_game_form">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createGameModalLabel">Create a game</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- Champs du formulaire -->
+            <div class="mb-3">
+                <label for="game_name" class="form-label">Game's name</label>
+                <input type="text" class="form-control" id="game_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="game_type" class="form-label">type of game</label>
+                <select class="form-select" id="game_type" required>
+                    <option value="" selected disabled>Select...</option>
+                    <option value="local">Local</option>
+                    <option value="online">Remote</option>
+                </select>
+            </div>
+			<div class="mb-3">
+                <label for="game_rounds" class="form-label">Rounds needed</label>
+                <input type="text" class="form-control" id="game_rounds" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Create</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abort</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Créer un Tournoi -->
+<div class="modal fade" id="createTournamentModal" tabindex="-1" aria-labelledby="createTournamentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="create_tournament_form">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createTournamentModalLabel">Create a tournament</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- Champs du formulaire -->
+            <div class="mb-3">
+                <label for="tournament_name" class="form-label">Tournament's name</label>
+                <input type="text" class="form-control" id="tournament_name" required>
+            </div>
+			<div class="mb-3">
+                <label for="tournament_description" class="form-label">Description</label>
+                <textarea class="form-control" id="tournament_description" rows="4"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="max_player" class="form-label">Max number of player</label>
+                <input type="number" name="quantity" min="1" max="20" id="max_player" required>
+                </input>
+            </div>
+            <div class="mb-3">
+                <label for="tournament_date" class="form-label">Starts</label>
+                <input type="datetime-local" class="form-control" id="tournament_date" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Create</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abort</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script type="module" src="{% static 'front/hub.js' %}"></script>
+{% endblock content %}
