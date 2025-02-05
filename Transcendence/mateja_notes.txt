@@ -1,0 +1,21 @@
+EMAIL_HOST_USER='fttranscendancelausanne@gmail.com'
+EMAIL_HOST_PASSWORD='cvpx tmiv qklw pbbi'
+EMAIL_PASS=transcendance12345!
+
+
+Tests:
+1. register/login with nothing entered in the fields
+2. try to register/login when already logged in (should have message "log-out first" / "already logged-in")
+3. try to access public profile if logged out
+4. try to connect to a match that was already played
+5. try to acces paths as guest user
+6. user1 sends friend request to user2, user1 blocks user2, user2 tries to accept/refuse the friend request
+
+User cases
+1. If I have a user blocked, I should not be able to send him a friend request (the same request is used to de-block and send friend request)
+2. If I send a user a friend request, and I block him before he accepts, he should not be able to accept this friend request anymore.
+3. If I send a user a friend request, and I block him before he accepts, if he refuses this should not delete my entry blocking him.
+4. If I block a user, I don't want to recieve a friend request from him.
+5. If I block a user, but then I unblock him, I want our relationship to reset (not friends, not blocked).
+6. If I block a user, he sees me on his blocked list and cannot unblock me and doesn't see my friends and cannot send me messages and I don't see his messages in general chat.
+7. If I get an friend request from a user and I have a "Pending Request" button, I should still be able to block him.

@@ -1,0 +1,62 @@
+Starter commands:
+pip install virtualenv
+/home/jbidaux/.local/bin/virtualenv env
+
+. env/bin/activate
+This command activates the virtual environment. Upon activation, the shell’s prompt might change to include the name of the activated environment (in this case, (env)), 
+and it modifies the environment variables such as PATH so that the Python interpreter and scripts within the env directory are used in preference to the system-wide Python installation. 
+This means that when you invoke Python or install new packages using pip, it will operate in the context of the virtual environment.
+
+Then 
+pip install django
+export DJANGO_ALLOWED_HOSTS="localhost 127.0.0.1"
+
+We remove db.sqlite3 because we'll use Postgres
+
+In the dockerfile, WORKDIR "sets the working directory for any RUN, CMD, ENTRYPOINT, COPY, and ADD instructions that follow it. 
+If the specified working directory doesn't exist, it will create it with the necessary permissions before proceeding with the rest of the Dockerfile's commands. 
+This behavior effectively makes WORKDIR function similarly to the mkdir -p command, ensuring that the directory exists."
+
+08.11 python3 -m django startproject mysite tutoDjango instead of django-admin startproject mysite djangotutorial
+
+14.11 setting up channels
+modified asgi.py (the whole thing)
+
+19.11 pour visionner django admin, il faut creer un superuser
+python manage.py createsuperuser
+
+pour fix le probleme de l'import model, dans le fichier apps.py:
+    def ready(self):
+        # Import models during app initialization to ensure readiness -> import model issue solved
+        from .models import Game, GamePlayer
+        self.game_model = Game
+        self.gameplayer_model = GamePlayer
+
+puis dans le consumers.py:
+
+from django.apps import apps
+
+ainsi que:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        app_config = apps.get_app_config('server_side_pong')
+        self.Game = app_config.game_model
+        self.GamePlayer = app_config.gameplayer_model
+
+
+21.11.24
+Dire a Loic que je fonctionne avec trois URL pour les 3 type de parties (2-3-4 joueurs)
+
+25.11.24
+Mon jeu fonctionne en recevant deux type de json, eg:
+{
+    "type": "init",
+    "game_id": 42,
+    "game_player_ids": [1, 2]
+}
+et
+{
+    "type": "gameplay",
+    "player_id": 1,
+    "movement": "up"
+}

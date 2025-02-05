@@ -1,38 +1,15 @@
-# Étape 1 : Construire le frontend
-FROM node:18 AS build
+FROM nginx:latest
 
-# Définir le répertoire de travail
-WORKDIR /app
+RUN apt update -y && \
+    apt upgrade -y && \
+    apt install -y openssl && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copier les fichiers de package et installer les dépendances
-COPY ./frontend/package*.json ./
-RUN npm install
+RUN mkdir /etc/nginx/ssl
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:4096 \
+        -out /etc/nginx/ssl/nginx-selfsigned.crt \
+        -keyout /etc/nginx/ssl/nginx-selfsigned.key \
+        -subj "/C=CH/ST=Lausanne/L=Lausanne/O=42School/CN=localhost"
 
-# Copier le reste du code source du frontend
-COPY ./frontend/ ./
-
-# Construire le frontend
-RUN npm run build
-
-# Étape 2 : Préparer l'image Nginx
-FROM nginx:alpine
-
-# Copier les fichiers construits du frontend vers le répertoire servi par Nginx
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Copier la configuration Nginx personnalisée
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-
-# Générer les certificats SSL auto-signés (optionnel)
-RUN apk add --no-cache openssl && \
-    mkdir -p /etc/ssl/private && \
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-      -keyout /etc/ssl/private/transcendence.key \
-      -out /etc/ssl/certs/transcendence.crt \
-      -subj "/C=FR/ST=Paris/L=Paris/O=YourCompany/OU=IT/CN=localhost"
-
-# Exposer les ports 80 et 443
-EXPOSE 80 443
-
-# Démarrer Nginx
-CMD ["nginx", "-g", "daemon off;"]
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d
