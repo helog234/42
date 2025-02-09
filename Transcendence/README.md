@@ -6,8 +6,8 @@ put them here files in da root
 
 ### .env.dev
 ```python
-DEBUG=1
-SECRET_KEY=sghhksdgSDSDG32@@@
+DEBUG=
+SECRET_KEY=
 DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
 SQL_ENGINE=django.db.backends.postgresql
 SQL_DATABASE=hello_django_dev
@@ -16,10 +16,10 @@ SQL_PASSWORD=hello_django
 SQL_HOST=db
 SQL_PORT=5432
 DATABASE=postgres
-EMAIL_HOST_USER='fttranscendancelausanne@gmail.com'
-EMAIL_HOST_PASSWORD='cvpx tmiv qklw pbbi'
-OAUTH2_CLIENT_ID=u-s4t2ud-d5ca430125c89d33f4ea5e75ec06b2cf6e7eb65e1368cc68966a43126188b8b6
-OAUTH2_CLIENT_SECRET=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
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+OAUTH2_CLIENT_ID=
+OAUTH2_CLIENT_SECRET=
 OAUTH2_AUTHORIZATION_URL=https://api.intra.42.fr/oauth/authorize
 OAUTH2_TOKEN_URL=https://api.intra.42.fr/oauth/token
 OAUTH2_USER_INFO_URL=https://api.intra.42.fr/v2/me
@@ -28,9 +28,9 @@ OAUTH2_REDIRECT_URI=https://profile.intra.42.fr/
 
 ### .env.prod
 ```python
-DEBUG=0
+DEBUG=False
 SECRET_KEY=change_me
-FINAL_HOST=10.12.1.2
+FINAL_HOST=10.11.6.1
 # FINAL_HOST=localhost
 DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1] asgiserver FIXME_FINAL_HOST *.local *.lan
 SQL_ENGINE=django.db.backends.postgresql
@@ -40,10 +40,10 @@ SQL_PASSWORD=hello_django
 SQL_HOST=db
 SQL_PORT=5432
 DATABASE=postgres
-EMAIL_HOST_USER='fttranscendancelausanne@gmail.com'
-EMAIL_HOST_PASSWORD='cvpx tmiv qklw pbbi'
-OAUTH2_CLIENT_ID=u-s4t2ud-5cc1fe0840235744d687c5bc69e5137e202912b0e014d92a08b6c4b65eb91bfc
-OAUTH2_CLIENT_SECRET=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
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+OAUTH2_CLIENT_ID=
+OAUTH2_CLIENT_SECRET=
 OAUTH2_AUTHORIZATION_URL=https://api.intra.42.fr/oauth/authorize
 OAUTH2_TOKEN_URL=https://api.intra.42.fr/oauth/token
 OAUTH2_USER_INFO_URL=https://api.intra.42.fr/v2/me
