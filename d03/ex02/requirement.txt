@@ -1,2 +1,0 @@
-requests
-dewiki==0.1.0
