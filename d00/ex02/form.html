@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Formulaire de Contact</title>
+	</head>
+	<body>
+		<h1>Formulaire de Contact</h1>
+		<form>
+			<label for="Firstname">Firstname</label>
+			<input type="text" id="firstname" name="Firstname" placeholder="Firstname" required /> <br />
+
+			<label for="Name">Name</label>
+			<input type="text" id="name" name="Name" placeholder="Name" required /> <br />
+			
+			<label for="Age">Age</label>
+			<input type="number" id="age" name="Age" placeholder="Age" required /> <br />
+
+			<label for="Phone">Phone</label>
+			<input type="tel" id="phone" name="Phone" placeholder="Phone" required /> <br />
+
+			<label for="Email">Email</label>
+			<input type="email" id="email" name="Email" placeholder="Email" required /> <br />
+
+			<label for="student">Student at 42 ?</label>
+			<input type="checkbox" id="student" name="Student"></label><br />
+
+			<label>Gender:</label><br>
+			<input type="radio" id="gender_male" name="gender" value="Male" required>
+			<label for="gender_male">Male</label><br>
+
+			<input type="radio" id="gender_female" name="gender" value="Female">
+			<label for="gender_female">Female</label><br>
+
+			<input type="radio" id="gender_other" name="gender" value="Other">
+			<label for="gender_other">Other</label><br>
+			
+			<button type="button" onclick="displayFormContents()">Run the sexy JavaScript</button>
+
+		</form>
+		<script src="popup.js"></script>
+	</body>
+</html>
