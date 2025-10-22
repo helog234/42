@@ -1,0 +1,20 @@
+{% extends 'ex03/base.html' %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>Black</th>
+        <th>Red</th>
+        <th>Blue</th>
+        <th>Green</th>
+    </tr>
+    {% for row in rows %}
+    <tr>
+        <td style="background-color: {{row.black}}; width: 80px; height: 40px;"></td>
+        <td style="background-color: {{row.red}}; width: 80px; height: 40px;"></td>
+        <td style="background-color: {{row.blue}}; width: 80px; height: 40px;"></td>
+        <td style="background-color: {{row.green}}; width: 80px; height: 40px;"></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

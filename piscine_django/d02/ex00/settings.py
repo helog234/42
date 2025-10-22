@@ -1,0 +1,6 @@
+titre_page = "Curiculum Vitae"
+prenom = "Hélène"
+nom = "Gandar"
+age = "32"
+profession = "Développeuse Python"
+name = "Hélène Gandar"

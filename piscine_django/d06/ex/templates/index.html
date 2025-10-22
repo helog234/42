@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Index</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+      }
+      button {
+        padding: 0.5em 1em;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      button:hover:not(:disabled) {
+        background: #0056b3;
+      }
+      button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      h2 {
+        text-align: center;
+        margin-top: 30px;
+      }
+      p {
+        text-align: center;
+        font-size: 1.2em;
+      }
+      a {
+        display: block;
+        text-align: center;
+        margin: 10px;
+        font-size: 1.1em;
+        color: #007bff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      form {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .tips-creation-container {
+        width: 300px;
+        margin: 20px auto;
+        padding: 2em;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .tips-creation-container h2 {
+        text-align: center;
+        margin-bottom: 1em;
+      }
+      .tips-textarea-container {
+        text-align: center;
+        margin-bottom: 1em;
+      }
+      .tips-creation-container label {
+        display: block;
+        margin-bottom: 0.5em;
+      }
+      .tips-creation-container input[type="text"],
+      .tips-creation-container textarea {
+        width: 100%;
+        padding: 0.5em;
+        margin-bottom: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .tips-creation-container button {
+        width: 100%;
+      }
+
+      .tips-container {
+        max-width: 800px;
+        margin: 30px auto;
+      }
+      .tip-item {
+        background: #fff;
+        margin-bottom: 1.5em;
+        padding: 1.5em;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .tip-content {
+        font-size: 1.2em;
+        margin-bottom: 1em;
+        color: #333;
+        line-height: 1.5;
+      }
+      .tip-meta {
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+        border-bottom: 1px solid #eee;
+      }
+      .tip-votes {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+      }
+      .vote-button {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        padding: 0.6em 1.2em;
+        font-size: 0.95em;
+        border-radius: 6px;
+        transition: all 0.3s;
+      }
+      .upvote-button {
+        background: #28a745;
+      }
+      .upvote-button:hover:not(:disabled) {
+        background: #218838;
+      }
+      .upvote-button:disabled {
+        background: #d4edda;
+        color: #155724;
+      }
+      .downvote-button {
+        background: #dc3545;
+      }
+      .downvote-button:hover:not(:disabled) {
+        background: #c82333;
+      }
+      .downvote-button:disabled {
+        background: #f8d7da;
+        color: #721c24;
+      }
+      .vote-count {
+        font-weight: bold;
+        margin-right: 0.3em;
+      }
+      .no-tips {
+        text-align: center;
+        padding: 2em;
+        color: #666;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Index</h1>
+
+    {% if user.is_authenticated %}
+    <p>Hello, {{ user.username }} {{ user.reputation }}!</p>
+    <form action="{% url 'ex:logout' %}" method="POST">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
+
+    <div class="tips-creation-container">
+      <h2>Submit a Tip</h2>
+      <form method="post" action="{% url 'ex:index' %}">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" name="add_tip">Submit Tip</button>
+      </form>
+    </div>
+    {% else %}
+    <p>Hello, {{ random_name }}</p>
+    <p></p>
+    <p>Please log in to continue</p>
+    <a href="{% url 'ex:login' %}">Login</a>
+    <br />
+    <a href="{% url 'ex:signup' %}">Sign Up</a>
+
+    {% endif %}
+
+    <div class="tips-container">
+      <h2>Tips</h2>
+
+      {% for tip in tips %}
+      <div class="tip-item">
+        <div class="tip-content">{{ tip.content }}</div>
+        <div class="tip-meta">by {{ tip.author.username }} on {{ tip.date }}</div>
+        <div class="tip-votes">
+          <form action="{% url 'ex:vote' tip.id %}" method="post" style="margin: 0">
+            {% csrf_token %}
+            <input type="hidden" name="upvote" value="upvote" />
+            <button type="submit" class="vote-button upvote-button">
+              <span class="vote-count">{{ tip.upvotes.count }}</span>
+              ↑ {% if user in tip.upvotes.all %} Upvoted {% else %} Upvote {% endif %}
+            </button>
+          </form>
+          <form action="{% url 'ex:vote' tip.id %}" method="post" style="margin: 0">
+            {% csrf_token %}
+            <input type="hidden" name="downvote" value="downvote" />
+            <button type="submit" class="vote-button downvote-button">
+              <span class="vote-count">{{ tip.downvotes.count }}</span>
+              ↓ {% if user in tip.downvotes.all %} Downvoted {% else %} Downvote {% endif %}
+            </button>
+          </form>
+        </div>
+        <div class="tip-delete">
+          <form action="{% url 'ex:index' %}" method="post" style="margin-top: 1em">
+            {% csrf_token %}
+            <button type="submit" name="delete_tip" value="{{ tip.id }}" style="background: #6c757d; color: white">
+              Delete Tip
+            </button>
+          </form>
+        </div>
+      </div>
+      {% empty %}
+      <div class="no-tips">No tips available.</div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

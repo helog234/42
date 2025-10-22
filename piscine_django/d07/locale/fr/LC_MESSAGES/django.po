@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-21 19:10+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: blog/templates/blog/article_detail.html:6
+msgid "Details"
+msgstr "Détails"
+
+#: blog/templates/blog/article_detail.html:9
+msgid "Author:"
+msgstr "Auteur :"
+
+#: blog/templates/blog/article_detail.html:10
+msgid "Created on:"
+msgstr "Créé le :"
+
+#: blog/templates/blog/article_detail.html:11
+msgid "Synopsis:"
+msgstr "Synopsis :"
+
+#: blog/templates/blog/article_detail.html:13
+msgid "Content:"
+msgstr "Contenu :"
+
+#: blog/templates/blog/article_detail.html:20
+msgid "Add to favourites"
+msgstr "Ajouter aux favoris"
+
+#: blog/templates/blog/article_form.html:5
+msgid "Publish a new Article"
+msgstr "Publier un nouvel article"
+
+#: blog/templates/blog/article_form.html:18
+msgid "Publish"
+msgstr "Publier"
+
+#: blog/templates/blog/article_list.html:4 blog/templates/blog/home.html:50
+msgid "Articles"
+msgstr "Articles"
+
+#: blog/templates/blog/article_list.html:4
+msgid "Share your writings"
+msgstr "Partagez vos écrits"
+
+#: blog/templates/blog/article_list.html:13
+#: blog/templates/blog/publication_list.html:14
+#: blog/templates/blog/user_favourite_article_list.html:13
+msgid "Title"
+msgstr "Titre"
+
+#: blog/templates/blog/article_list.html:14
+#: blog/templates/blog/user_favourite_article_list.html:14
+msgid "Writer"
+msgstr "Auteur"
+
+#: blog/templates/blog/article_list.html:15
+#: blog/templates/blog/publication_list.html:15
+#: blog/templates/blog/user_favourite_article_list.html:15
+msgid "Created"
+msgstr "Créé le"
+
+#: blog/templates/blog/article_list.html:16
+msgid "When"
+msgstr "Quand"
+
+#: blog/templates/blog/article_list.html:17
+#: blog/templates/blog/publication_list.html:16
+#: blog/templates/blog/user_favourite_article_list.html:16
+msgid "Synopsis"
+msgstr "Synopsis"
+
+#: blog/templates/blog/article_list.html:18
+#: blog/templates/blog/publication_list.html:17
+#: blog/templates/blog/user_favourite_article_list.html:17
+msgid "Action"
+msgstr "Action"
+
+#: blog/templates/blog/article_list.html:28
+#, python-format
+msgid "%(time_since)s ago"
+msgstr "il y a %(time_since)s"
+
+#: blog/templates/blog/article_list.html:33
+#: blog/templates/blog/publication_list.html:27
+msgid "Read"
+msgstr "Lire"
+
+#: blog/templates/blog/article_list.html:38
+msgid "No articles have been written yet."
+msgstr "Aucun article n'a encore été écrit."
+
+#: blog/templates/blog/home.html:7
+msgid "My Blog"
+msgstr "Mon Blog"
+
+#: blog/templates/blog/home.html:33
+msgid "Passer en français"
+msgstr "Passer en français"
+
+#: blog/templates/blog/home.html:33
+msgid "Switch to English"
+msgstr "Switch to English"
+
+#: blog/templates/blog/home.html:54
+#: blog/templates/blog/user_favourite_article_list.html:5
+msgid "Favourites"
+msgstr "Favoris"
+
+#: blog/templates/blog/home.html:57 blog/templates/blog/publication_list.html:5
+msgid "Publications"
+msgstr "Publications"
+
+#: blog/templates/blog/home.html:61 blog/templates/blog/register.html:5
+#: blog/templates/blog/register.html:21
+msgid "Register"
+msgstr "S'inscrire"
+
+#: blog/templates/blog/home.html:67
+msgid "Logged as"
+msgstr "Connecté en tant que"
+
+#: blog/templates/blog/home.html:70
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: blog/templates/blog/home.html:79
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: blog/templates/blog/home.html:85
+msgid "Password"
+msgstr "Mot de passe"
+
+#: blog/templates/blog/home.html:87 blog/templates/blog/login.html:5
+#: blog/templates/blog/login.html:14
+msgid "Login"
+msgstr "Se connecter"
+
+#: blog/templates/blog/home.html:103
+msgid "D07 piscine Django by hgandar - &copy; 2025"
+msgstr "D07 piscine Django par hgandar - &copy; 2025"
+
+#: blog/templates/blog/login.html:8
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"Votre nom d'utilisateur et votre mot de passe ne correspondent pas. Veuillez "
+"réessayer."
+
+#: blog/templates/blog/publication_list.html:5
+msgid "Your contributions"
+msgstr "Vos contributions"
+
+#: blog/templates/blog/publication_list.html:9
+msgid "Publish a new article"
+msgstr "Publier un nouvel article"
+
+#: blog/templates/blog/publication_list.html:32
+msgid "You have not published any articles yet."
+msgstr "Vous n'avez pas encore publié d'articles."
+
+#: blog/templates/blog/register.html:9
+msgid "There were errors in your registration form. Please correct them below."
+msgstr ""
+"Il y avait des erreurs dans votre formulaire d'inscription. Veuillez les "
+"corriger ci-dessous."
+
+#: blog/templates/blog/user_favourite_article_list.html:5
+msgid "Your darlings"
+msgstr "Vos darlings"
+
+#: blog/templates/blog/user_favourite_article_list.html:33
+msgid "You have no favourite articles yet."
+msgstr "Vous n'avez pas encore d'articles favoris."
+
+#: blog/views.py:71
+msgid "Article not found."
+msgstr "Article non trouvé."
+
+#: blog/views.py:78
+#, fuzzy
+#| msgid "Add to favourites"
+msgid "Article added to your favourites."
+msgstr "Article ajouté à vos favoris."
+
+#: blog/views.py:80
+msgid "Article is already in your favourites."
+msgstr "Article déjà dans vos favoris."
+
+#~ msgid "ago"
+#~ msgstr "il y a"

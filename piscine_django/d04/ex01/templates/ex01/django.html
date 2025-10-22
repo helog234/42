@@ -1,0 +1,36 @@
+{% extends 'ex01/base.html' %} {% block title %}<title>Ex01 : Django, framework web.</title>{% endblock %}
+
+{% block content %}
+<h1>Ex01 : Django, framework web.</h1>
+<h2>Django History</h2>
+<p>Django was created in 2003 by a web development team at Lawrence Journal-World newspaper.</p>
+<p>It was released publicly as open-source in 2005.</p>
+<p>Django has since grown to become one of the most popular web frameworks for building web applications in Python.</p>
+<h2>Django Features</h2>
+<ul>
+  <li>Fast development</li>
+  <li>Secure</li>
+  <li>Scalable</li>
+</ul>
+
+<h2>Django Installation</h2>
+<p>To install Django, you can use pip, the Python package manager. Run the following command:</p>
+<pre><code>pip install django</code></pre>
+
+<h2>Starting a Project</h2>
+<p>To start a new Django project, use the following command:</p>
+<pre><code>django-admin startproject projectname</code></pre>
+<p>
+  This will create a new directory called <code>projectname</code> with the necessary files and folder structure for
+  your Django project.
+</p>
+
+<h2>Creating an App</h2>
+<p>To create a new app within your Django project, use the following command:</p>
+<pre><code>python manage.py startapp appname</code></pre>
+<p>
+  This will create a new directory called <code>appname</code> with the necessary files and folder structure for your
+  Django app.
+</p>
+
+{% endblock %}

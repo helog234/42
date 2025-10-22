@@ -1,0 +1,92 @@
+{% extends 'ex01/base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Ex01 : Moteur de template</title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ex01/style2.css' %}" />
+{% endblock style %}
+
+{% block content %}
+    <h1>Ex01 : Moteur de template Django</h1>
+    <p>
+        Avec Django, les templates permettent de fabriquer des pages HTML dynamiques. C'est un moyen simple de mélanger du HTML avec des données qui viennent de ton code Python, comme des noms d'utilisateurs ou des listes d'articles.
+    </p>
+
+    <hr>
+
+    <h2>1. Afficher des variables</h2>
+    <p>
+        Pour afficher une info qui vient de ta vue, tu l'entoures simplement de doubles accolades: <strong>{{ une_variable }}</strong>. Django la remplacera par sa vraie valeur.
+    </p>
+    {% verbatim %}
+    <pre><code>
+&lt;!-- Affiche le nom de l'utilisateur --&gt;
+&lt;p&gt;Salut, {{ user_name }} !&lt;/p&gt;
+    </code></pre>
+    {% endverbatim %}
+
+    <hr>
+
+    <h2>2. Les Blocs <code>&#123;% block ... %&#125;</code></h2>
+    <p>
+        Les blocs, c'est comme des trous à remplir. Tu crées un template principal (<code>base.html</code>) avec des zones vides définies par <strong>&#123;% block nom_du_bloc %&#125;</strong>. Ensuite, dans tes autres pages, tu utilises <strong>&#123;% extends 'base.html' %&#125;</strong> et tu remplis juste les blocs dont tu as besoin.
+    </p>
+    {% verbatim %}
+    <pre><code>
+&lt;!-- Fichier : base.html --&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;{% block title %}Titre par défaut{% endblock %}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    {% block content %}{% endblock %}
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- Fichier : page_enfant.html --&gt;
+{% extends 'base.html' %}
+
+{% block title %}Un titre cool pour ma page{% endblock %}
+
+{% block content %}
+    &lt;h1&gt;Le contenu de ma page !&lt;/h1&gt;
+{% endblock %}
+    </code></pre>
+    {% endverbatim %}
+
+    <hr>
+
+    <h2>3. Les Boucles <code>&#123;% for ... in %&#125;</code></h2>
+    <p>
+        Pour afficher chaque élément d'une liste, tu utilises une boucle <strong>for</strong>. Ça parcourt ta liste et répète un bout de HTML pour chaque item. N'oublie pas de fermer avec <strong>&#123;% endfor %&#125;</strong>.
+    </p>
+    {% verbatim %}
+    <pre><code>
+&lt;ul&gt;
+    {% for fruit in liste_de_fruits %}
+        &lt;li&gt;{{ fruit }}&lt;/li&gt;
+    {% endfor %}
+&lt;/ul&gt;
+    </code></pre>
+    {% endverbatim %}
+
+    <hr>
+
+    <h2>4. Les Conditions <code>&#123;% if %&#125;</code></h2>
+    <p>
+        Tu peux afficher des choses sous certaines conditions avec <strong>&#123;% if ... %&#125;</strong>. C'est utile pour montrer un message si l'utilisateur est connecté, par exemple. Tu peux aussi utiliser <strong>&#123;% else %&#125;</strong> et tu dois finir avec <strong>&#123;% endif %&#125;</strong>.
+    </p>
+    {% verbatim %}
+    <pre><code>
+{% if user.is_authenticated %}
+    &lt;p&gt;Bienvenue, {{ user.username }} !&lt;/p&gt;
+{% else %}
+    &lt;p&gt;Salut l'ami, tu devrais te connecter.&lt;/p&gt;
+{% endif %}
+    </code></pre>
+    {% endverbatim %}
+
+{% endblock %}
