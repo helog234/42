@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div id="account_container">
+        {% include 'account/fragments/login_frag.html' with form=form %}
+    </div>
+{% endblock content %}
+
+{% block javascript %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Fonction pour mettre à jour la navbar
+        function updateNavbar() {
+            $.ajax({
+                type: 'GET',
+                url: '{% url "ajax_navbar" %}',
+                success: function(responseHtml) {
+                    $('#navbarNav').html(responseHtml);
+                },
+                error: function(xhr) {
+                    console.error('Error updating navbar:', xhr);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+
+            // Principal container for account fragments
+            var container = $('#account_container');
+
+            // Login
+            container.on('submit', '#login_form', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "ajax_login" %}',
+                    data: $(this).serialize(),
+                    success: function(responseHtml) {
+                        // After successful login, update navbar and redirect to chat lobby
+                        window.location.href = '{% url "chat_lobby" %}';
+                    },
+                    error: function(xhr) {
+                        container.html(xhr.responseText);
+                    }
+                });
+            });
+
+            // Register
+            container.on('submit', '#register_form', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "ajax_register" %}',
+                    data: $(this).serialize(),
+                    success: function(responseHtml) {
+                        // After successful registration, update navbar and redirect to chat lobby
+                        window.location.href = '{% url "chat_lobby" %}';
+                    },
+                    error: function(xhr) {
+                        container.html(xhr.responseText);
+                    }
+                });
+            });
+
+            // Click on "Register" from login fragment
+            container.on('click', '#show_register_link', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'GET',
+                    url: '{% url "ajax_get_register" %}',
+                    success: function(responseHtml) {
+                        container.html(responseHtml);
+                    }
+                });
+            });
+
+            // Click on "Login" from register fragment
+            container.on('click', '#show_login_link', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'GET', 
+                    url: '{% url "ajax_get_login" %}',
+                    success: function(responseHtml) {
+                        container.html(responseHtml);
+                    }
+                });
+            });
+
+        });
+    </script>
+{% endblock %}

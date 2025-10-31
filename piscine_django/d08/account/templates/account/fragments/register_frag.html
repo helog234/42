@@ -1,0 +1,30 @@
+{% load static %}
+<div class="pt-5 fill_div">
+    <div class="shadow container card border-secondary d-flex justify-content-center">
+        <div class="card-header bg-transparent">
+            <h2 class="text-center m-0">Register</h2>
+        </div>
+        
+        <form id="register_form" method="POST" action="{% url 'ajax_register' %}">
+            {% csrf_token %}
+            <div class="card-body">
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %} {{ error }} {% endfor %}
+                    </div>
+                {% endif %}
+
+                {{ form.as_p }}
+                
+                <div class="d-flex justify-content-center mt-2">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="card-footer text-center">
+            <a href="#" id="show_login_link">Already have an account? Log in.</a>
+        </div>
+    </div>
+</div>

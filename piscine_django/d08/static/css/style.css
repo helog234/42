@@ -1,0 +1,231 @@
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+
+:root {
+    --primary-color: #5d3a50;
+    --secondary-color: #1e1c20;
+    --success-color: #b483a2;
+    --danger-color: #f4d6b2;
+    --light-bg: #ece2e9;
+    --border-color: #dfbad2;
+    --accent-color: #F4A261;
+	
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+/* ============================================
+   OVERRIDE BOOTSTRAP COLORS (Important!)
+   ============================================ */
+
+.navbar.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+    color: white !important;
+}
+
+.card-header.bg-primary {
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+.text-primary {
+    color: var(--secondary-color) !important;
+}
+
+.badge.bg-primary {
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+}
+
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ============================================
+   CONTAINERS
+   ============================================ */
+
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   CARDS & PANELS
+   ============================================ */
+
+.card {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: none;
+    border-radius: 8px;
+}
+
+/* ============================================
+   CHAT STYLES
+   ============================================ */
+
+#chat_messages {
+    height: 400px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+#chat_messages div {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: var(--light-bg);
+}
+
+#chat_messages div strong {
+    color: var(--primary-color);
+}
+
+#chat_messages div em {
+    color: var(--secondary-color);
+    font-size: 0.9em;
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    padding: 5px;
+}
+
+/* Animations for new chat messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#chat_messages div {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ============================================
+   CONNECTED USERS
+   ============================================ */
+
+#connected_users {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+#connected_users h5 {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 8px;
+}
+
+#users_list li {
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    background-color: var(--light-bg);
+    border-radius: 6px;
+    border-left: 3px solid var(--success-color);
+}
+
+#users_list li:hover {
+    background-color: #b995ac;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+
+#chat_message_form {
+    margin-bottom: 20px;
+}
+
+#chat_message_form input {
+    border-radius: 20px 0 0 20px;
+}
+
+#chat_message_form button {
+    border-radius: 0 20px 20px 0;
+}
+
+/* ============================================
+   SCROLLBAR CUSTOMIZATION (WebKit browsers)
+   ============================================ */
+
+#chat_messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat_messages::-webkit-scrollbar-track {
+    background: var(--light-bg);
+    border-radius: 10px;
+}
+
+#chat_messages::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+#chat_messages::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ============================================
+   LOBBY STYLES
+   ============================================ */
+
+.list-group-item {
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    #chat_messages {
+        height: 300px;
+    }
+}

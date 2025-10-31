@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'chat_lobby' %}">
+      <i class="fas fa-comments"></i> Chat App
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      {% include 'account/fragments/navbar_frag.html' %}
+    </div>
+  </div>
+</nav>
+
+<script>
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function updateNavbar() {
+    fetch('{% url "ajax_navbar" %}')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('navbarNav').innerHTML = html;
+        })
+        .catch(error => console.error('Error updating navbar:', error));
+}
+
+function logout() {
+    const csrftoken = getCookie('csrftoken');
+    
+    fetch('{% url "ajax_logout" %}', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken,
+            'Content-Type': 'application/json',
+        },
+        credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success) {
+            updateNavbar();
+        }
+    })
+    .catch(error => {
+        console.error('Logout error:', error);
+        window.location.href = '{% url "home" %}';
+    });
+}
+</script>

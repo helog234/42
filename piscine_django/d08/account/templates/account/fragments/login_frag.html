@@ -1,0 +1,41 @@
+{% load static %}
+<div class="pt-5 fill_div">
+    <div class="shadow container card border-secondary d-flex justify-content-center">
+        <div class="card-header bg-transparent">
+            <h2 class="text-center m-0">Login</h2>
+        </div>
+        <form id="login_form" method="POST" action="{% url 'ajax_login' %}">
+            {% csrf_token %}
+            <div class="card-body">
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="form-group mb-2">
+                    <label for="id_username">Username</label>
+                    <input type="text" name="username" class="form-control" id="id_username" ...>
+                    {% if form.username.errors %}
+                        <span class="text-danger">{{ form.username.errors.as_text }}</span>
+                    {% endif %}
+                </div>
+                <div class="form-group mb-2">
+                    <label for="id_password">Password</label>
+                    <input type="password" name="password" class="form-control" id="id_password" ...>
+                    {% if form.password.errors %}
+                        <span class="text-danger">{{ form.password.errors.as_text }}</span>
+                    {% endif %}
+                </div>
+                <div class="d-flex justify-content-center mt-2">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        </form>
+        <div class="card-footer text-center">
+            <a href="#" id="show_register_link">No account? Register here.</a>
+        </div>
+    </div>
+</div>
